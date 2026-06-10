@@ -1,0 +1,80 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Terms & Conditions | FreeInjuryCalc"
+  description="Review the Terms and Conditions of FreeInjuryCalc.com. Understand legal disclaimers, usage guidelines, and calculator limitations."
+>
+  <Header />
+
+  <main class="flex-grow bg-canvas transition-colors duration-200 py-16 md:py-24">
+    <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 font-sans">
+      
+      <!-- Page Header -->
+      <div class="border-b border-hairline pb-8 mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+          User Terms
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mt-4 mb-4">
+          Terms & Conditions
+        </h1>
+        <p class="text-sm md:text-base text-body leading-relaxed">
+          Last updated: June 10, 2026. Please read these terms carefully before utilizing our online calculation utilities.
+        </p>
+      </div>
+
+      <!-- Content -->
+      <div class="space-y-8 text-xs md:text-sm text-body leading-relaxed">
+        
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-ink">1. Acceptance of Terms</h2>
+          <p>
+            By accessing or using FreeInjuryCalc.com, you agree to comply with and be bound by these Terms and Conditions. If you do not agree with any part of these terms, you must immediately cease all use of our site and calculation tools.
+          </p>
+        </div>
+
+        <div class="space-y-4 p-6 border border-hairline bg-canvas-soft-2 rounded-lg">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-ink font-mono mb-2">No Legal Advice Disclaimer</h3>
+          <p class="text-[11px] leading-relaxed">
+            The calculators and information provided on FreeInjuryCalc.com are intended strictly for educational and illustrative purposes. <strong>They do not constitute formal legal advice, representation, or recommendations.</strong> Using our tools or contacting us does not establish an attorney-client relationship. Insurance adjusters evaluate claims using complex internal parameters. You should always speak with a qualified, licensed personal injury lawyer in your jurisdiction for tailored advice on your case.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-ink">2. License to Use</h2>
+          <p>
+            You are granted a limited, non-exclusive, non-transferable, revocable license to access and use FreeInjuryCalc.com for personal, non-commercial purposes. You may use our calculators to evaluate your own potential insurance claims, but you may not republish, scrape, copy, or redistribute our calculation logic or databases without explicit written consent.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-ink">3. Limitation of Liability</h2>
+          <p>
+            FreeInjuryCalc.com, its owners, and its contributors will not be held liable for any damages, losses, or legal outcomes arising from your use of this website. Our calculations are automated approximations based on general models. We do not guarantee their accuracy, completeness, or applicability to your specific incident. You assume full responsibility for any choices made based on our indicators.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-ink">4. Third-Party Websites & Advertisements</h2>
+          <p>
+            Our website contains links to third-party portals, including advertisers like Google AdSense. We do not monitor or control the contents, advertising policies, or terms of third-party platforms. Any transactions or engagement with these third parties are solely between you and the respective provider.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h2 class="text-lg md:text-xl font-bold text-ink">5. Modifications to Terms</h2>
+          <p>
+            We reserve the right to modify these Terms and Conditions at any time without notice. Updated versions will be posted directly to this page, and your continued use of FreeInjuryCalc.com constitutes acceptance of those modified terms.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

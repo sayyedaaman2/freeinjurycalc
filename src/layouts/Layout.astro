@@ -16,6 +16,83 @@ const {
 } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://freeinjurycalc.com");
+
+// Setup keywords for On-Page SEO
+const baseKeywords = [
+  "car accident settlement calculator",
+  "passenger car accident settlement calculator",
+  "personal injury car accident settlement calculator",
+  "free car accident settlement calculator",
+  "car accident settlement calculator free"
+];
+
+if (stateName) {
+  baseKeywords.unshift(
+    `car accident settlement calculator ${stateName.toLowerCase()}`,
+    `${stateName.toLowerCase()} car accident settlement calculator`,
+    `car accident settlement calculator ${stateName.toLowerCase()} free`
+  );
+} else {
+  baseKeywords.push(
+    "car accident settlement calculator california",
+    "car accident settlement calculator texas",
+    "michigan car accident settlement calculator",
+    "car accident settlement calculator georgia",
+    "car accident settlement calculator virginia",
+    "car accident settlement calculator florida",
+    "car accident settlement calculator missouri",
+    "car accident settlement calculator illinois",
+    "car accident settlement calculator arizona",
+    "car accident settlement calculator new york",
+    "car accident settlement calculator colorado",
+    "car accident settlement calculator ohio",
+    "car accident settlement calculator ontario",
+    "car accident settlement calculator new"
+  );
+}
+
+const keywordsString = baseKeywords.join(", ");
+
+// JSON-LD Software Application Schema
+const softwareSchema = {
+  "@context": "https://schema.org",
+  "@type": "SoftwareApplication",
+  "name": stateName ? `${stateName} Car Accident Settlement Calculator` : "Free Car Accident Settlement Calculator",
+  "operatingSystem": "All",
+  "applicationCategory": "BusinessApplication",
+  "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "USD"
+  },
+  "description": stateName 
+    ? `Calculate your estimated car accident settlement payout in ${stateName} instantly. Auto-calculates based on medical bills, lost wages, and ${stateName}'s comparative negligence laws.`
+    : "Estimate your car accident settlement payout instantly. Auto-calculates based on medical bills, lost wages, and state-specific comparative negligence laws."
+};
+
+// JSON-LD FAQ Schema for State pages
+const faqSchema = stateName ? {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": `How is a car accident settlement calculated in ${stateName}?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Car accident settlements in ${stateName} are calculated by summing your economic damages (such as medical bills, hospitalization fees, ambulance charges, and lost wages) and applying a multiplier (usually 1.5 to 5 depending on severity) to estimate pain and suffering. The final settlement amount is then adjusted according to ${stateName}'s comparative or contributory negligence rules.`
+      }
+    },
+    {
+      "@type": "Question",
+      "name": `Does ${stateName} limit non-economic damages?`,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": `Each state has different rules regarding non-economic damage caps. In some states, pain and suffering damages are uncapped, whereas other states place specific legislative caps. Use the ${stateName} car accident settlement calculator above to get parameters specific to ${stateName} law.`
+      }
+    }
+  ]
+} : null;
 ---
 
 <!doctype html>
@@ -23,8 +100,12 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://freeinju
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="Free Injury" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
     
     <!-- Canonical URL -->
@@ -33,6 +114,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://freeinju
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
+    <meta name="keywords" content={keywordsString} />
+
+    <!-- Structured JSON-LD Schema -->
+    <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
+    {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

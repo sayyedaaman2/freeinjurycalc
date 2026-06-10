@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Server Error | 500 Error"
+  description="An unexpected error occurred on FreeInjuryCalc.com."
+>
+  <Header />
+
+  <main class="flex-grow flex items-center justify-center bg-canvas transition-colors duration-200 py-24 md:py-32">
+    <div class="mx-auto max-w-md px-4 text-center font-sans">
+      
+      <!-- Icon representation (Minimalist Server Error) -->
+      <div class="flex justify-center mb-8">
+        <svg class="w-16 h-16 text-link animate-pulse" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M5.25 14.25h13.5m-13.5 3h13.5m-13.5-6h13.5m-13.5-3h13.5m-16.5 12h19.5a1.5 1.5 0 001.5-1.5V5.25a1.5 1.5 0 00-1.5-1.5H3a1.5 1.5 0 00-1.5 1.5v13.5a1.5 1.5 0 001.5 1.5z" />
+        </svg>
+      </div>
+
+      <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+        Error 500
+      </span>
+
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-ink mt-6 mb-4">
+        Server error.
+      </h1>
+
+      <p class="text-xs md:text-sm text-body leading-relaxed mb-10">
+        An unexpected error occurred while processing your request. Please try reloading the page or check back later.
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a 
+          href="/" 
+          class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded-md bg-primary text-on-primary hover:opacity-95 transition-opacity duration-150"
+        >
+          Go Back Home
+        </a>
+        <a 
+          href="/contact-us" 
+          class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium rounded-md border border-hairline bg-canvas hover:bg-canvas-soft-2 hover:border-hairline-strong transition-all duration-150 text-ink"
+        >
+          Contact Support
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

@@ -1,0 +1,54 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Page Not Found | 404 Error"
+  description="The page you are looking for does not exist on FreeInjuryCalc.com."
+>
+  <Header />
+
+  <main class="flex-grow flex items-center justify-center bg-canvas transition-colors duration-200 py-24 md:py-32">
+    <div class="mx-auto max-w-md px-4 text-center font-sans">
+      
+      <!-- Icon representation (Minimalist Warning Triangle) -->
+      <div class="flex justify-center mb-8">
+        <svg class="w-16 h-16 text-link animate-bounce" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v3.75m-9.303 3.376C1.83 15.002 2.067 13.75 3 13.064l6.003-4.402a3 3 0 013.994 0l6.003 4.402c.933.686 1.17 1.938.167 3.064L13.17 20.13a3 3 0 01-4.34 0L3.697 16.44z" />
+        </svg>
+      </div>
+
+      <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+        Error 404
+      </span>
+
+      <h1 class="text-3xl md:text-4xl font-extrabold tracking-tight text-ink mt-6 mb-4">
+        Page not found.
+      </h1>
+
+      <p class="text-xs md:text-sm text-body leading-relaxed mb-10">
+        The page you are looking for might have been removed, had its name changed, or is temporarily unavailable. 
+      </p>
+
+      <div class="flex flex-col sm:flex-row justify-center gap-4">
+        <a 
+          href="/" 
+          class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded-md bg-primary text-on-primary hover:opacity-95 transition-opacity duration-150"
+        >
+          Go Back Home
+        </a>
+        <a 
+          href="/#calculator" 
+          class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium rounded-md border border-hairline bg-canvas hover:bg-canvas-soft-2 hover:border-hairline-strong transition-all duration-150 text-ink"
+        >
+          Use Calculator
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

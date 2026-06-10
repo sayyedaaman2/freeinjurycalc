@@ -1,0 +1,21 @@
+# Prevents indexing of the staging pages.dev domain
+https://freeinjurycalc.pages.dev/*
+  X-Robots-Tag: noindex
+
+# Global security headers for all paths
+/*
+  X-Frame-Options: DENY
+  X-Content-Type-Options: nosniff
+  X-XSS-Protection: 1; mode=block
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: interest-cohort=()
+
+# Cache static build assets aggressively
+/_astro/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# Cache media assets
+/favicon*
+  Cache-Control: public, max-age=86400
+/apple-touch-icon*
+  Cache-Control: public, max-age=86400

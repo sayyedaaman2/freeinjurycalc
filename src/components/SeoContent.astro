@@ -1,0 +1,277 @@
+---
+import { statesData } from "../data/states";
+
+const targetStates = [
+  { name: "California", slug: "california" },
+  { name: "Texas", slug: "texas" },
+  { name: "Florida", slug: "florida" },
+  { name: "New York", slug: "new_york" },
+  { name: "Illinois", slug: "illinois" },
+  { name: "Ohio", slug: "ohio" },
+  { name: "Georgia", slug: "georgia" },
+  { name: "Michigan", slug: "michigan" },
+  { name: "Virginia", slug: "virginia" },
+  { name: "Colorado", slug: "colorado" },
+  { name: "Arizona", slug: "arizona" },
+  { name: "Missouri", slug: "missouri" },
+  { name: "Ontario (CA)", slug: "ontario" }
+];
+
+const faqList = [
+  {
+    question: "How is a car accident settlement calculated?",
+    answer: "<p>A car accident settlement is calculated by adding your economic damages (medical bills, lost wages, property damage) plus non-economic damages (pain and suffering). Insurers typically use a multiplier of 1.5x to 5x your medical costs to estimate pain and suffering, depending on injury severity and fault percentage.</p>"
+  },
+  {
+    question: "Can I calculate my car accident settlement for free?",
+    answer: "<p>Yes. FreeInjuryCalc.com provides a completely free car accident settlement calculator with no sign-up required. Enter your medical expenses, lost wages, property damage, and state — and get an instant estimated settlement range based on real case data.</p>"
+  },
+  {
+    question: "How accurate is a car accident settlement calculator?",
+    answer: "<p>A settlement calculator gives you a realistic ballpark estimate based on your inputs and average case data for your state. It is not a legal guarantee — actual settlements vary based on insurance policy limits, attorney representation, and negotiation. Use it as a starting point before speaking with an attorney.</p>"
+  },
+  {
+    question: "What factors affect my car accident settlement amount?",
+    answer: "<p>Key factors include: severity of injuries, total medical bills, lost wages, property damage, your percentage of fault, the at-fault driver's insurance limits, your state's negligence laws, and whether you have an attorney. Location matters significantly — settlements in New York and California average 3–10x higher than rural states.</p>"
+  },
+  {
+    question: "How long does a car accident settlement take?",
+    answer: "<p>Minor accidents with clear liability typically settle in 1–3 months. Cases involving serious injuries, disputed fault, or litigation can take 1–3 years. Most car accident claims settle before going to trial.</p>"
+  },
+  {
+    question: "What is the average car accident settlement amount?",
+    answer: "<p>The national average car accident settlement in the US is approximately $20,000–$30,000 for injury claims. However, settlements vary enormously — minor soft tissue injuries may settle for $3,000–$10,000 while serious injuries involving surgery or permanent disability can reach $100,000–$500,000 or more.</p>"
+  },
+  {
+    question: "Can I get a settlement without a lawyer?",
+    answer: "<p>Yes, you can negotiate directly with the insurance company without a lawyer, especially for minor accidents. However, studies show that accident victims represented by an attorney receive settlements 3–4x higher on average, even after attorney fees. For serious injuries, hiring an attorney is strongly recommended.</p>"
+  },
+  {
+    question: "How do I use the free injury calculator?",
+    answer: "<p>Simply navigate to the calculator at the top of FreeInjuryCalc.com. Select your state or province, then input your medical expenses, estimated lost wages, and any property damage costs. Click calculate to see your estimated settlement range instantly.</p>"
+  },
+  {
+    question: "What if I was partially at fault for the accident?",
+    answer: "<p>It depends on your state's negligence laws. Most US states use comparative negligence — your settlement is reduced by your percentage of fault. For example, if you are 20% at fault and your damages are $50,000, you would receive $40,000. A few states use contributory negligence, which can bar recovery entirely if you are even 1% at fault.</p>"
+  },
+  {
+    question: "Does location affect my car accident settlement?",
+    answer: "<p>Yes, significantly. State laws on fault, damage caps, and insurance minimums all affect settlement amounts. Urban areas like New York City, Los Angeles, and Chicago produce much higher settlements than rural areas due to higher cost of living, medical costs, and jury verdicts. Our calculator adjusts estimates based on your state.</p>"
+  },
+  {
+    question: "What is pain and suffering in a settlement?",
+    answer: "<p>Pain and suffering refers to the physical pain, emotional distress, and reduced quality of life caused by your injuries. It is a non-economic damage calculated separately from your medical bills. Insurers typically apply a multiplier of 1.5x to 5x your total medical expenses — higher multipliers for more serious or permanent injuries.</p>"
+  },
+  {
+    question: "Is a car accident settlement taxable in the US?",
+    answer: "<p>Generally, car accident settlements for physical injuries and medical expenses are not taxable under IRS rules. However, punitive damages and compensation for lost wages may be taxable. Consult a tax professional for your specific situation.</p>"
+  },
+  {
+    question: "How do I calculate lost wages for my claim?",
+    answer: "<p>Multiply your daily or hourly rate by the number of days or hours you missed work due to the accident and recovery. Include sick days used, unpaid leave, and reduced hours. Self-employed individuals can use tax returns or invoices to document lost income.</p>"
+  },
+  {
+    question: "What is the difference between a settlement and going to court?",
+    answer: "<p>A settlement is a private agreement between you and the insurance company — faster, cheaper, and certain. Going to court (litigation) can result in a higher award but takes years, costs more in legal fees, and carries the risk of losing. Over 95% of personal injury cases settle before trial.</p>"
+  },
+  {
+    question: "Can I calculate a settlement for a passenger in a car accident?",
+    answer: "<p>Yes. Passengers injured in a car accident can file claims against the at-fault driver's liability insurance, regardless of which vehicle they were in. Our free calculator works for passengers, drivers, pedestrians, and cyclists injured in car accidents.</p>"
+  },
+  {
+    question: "How to calculate a car accident settlement in California?",
+    answer: "<p>California uses pure comparative fault — you can recover damages even if you are 99% at fault, but your award is reduced by your fault percentage. California has no cap on pain and suffering damages for car accidents. Enter your details in our California car accident settlement calculator for a state-specific estimate.</p>"
+  },
+  {
+    question: "How to calculate a car accident settlement in Texas?",
+    answer: "<p>Texas uses modified comparative fault — you can recover damages only if you are 50% or less at fault. Your award is reduced proportionally by your fault percentage. Texas has no cap on economic damages for car accidents. Use our Texas car accident settlement calculator for a localized estimate.</p>"
+  },
+  {
+    question: "How to calculate a car accident settlement in Florida?",
+    answer: "<p>Florida switched to a modified comparative fault system in 2023 — you cannot recover damages if you are more than 50% at fault. Florida is also a no-fault insurance state, meaning your own PIP insurance covers initial medical bills regardless of fault. Use our Florida car accident settlement calculator for an accurate estimate.</p>"
+  },
+  {
+    question: "How to calculate a car accident settlement in New York?",
+    answer: "<p>New York is a no-fault state — your own insurance covers medical bills up to $50,000 regardless of fault. To sue for pain and suffering, your injuries must meet New York's serious injury threshold. New York settlements are among the highest in the US due to high medical costs and favorable jury verdicts.</p>"
+  },
+  {
+    question: "How to use the free car accident settlement calculator?",
+    answer: "<p>Enter your state, total medical expenses, lost wages, property damage, and your estimated fault percentage. Our calculator instantly applies your state's negligence laws and average multipliers to generate a realistic settlement range — from a low insurance offer to a high attorney-negotiated figure. No sign-up required, completely free.</p>"
+  }
+];
+
+const faqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqList.map((item) => ({
+    "@type": "Question",
+    "name": item.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": item.answer
+    }
+  }))
+};
+---
+
+<!-- Structured JSON-LD FAQ Schema -->
+<script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />
+
+<section class="py-20 border-t border-hairline bg-canvas transition-colors duration-200">
+  <div class="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 font-sans">
+    
+    <!-- Section Header -->
+    <div class="max-w-3xl mb-12">
+      <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+        Comprehensive Guide
+      </span>
+      <h2 class="text-3xl font-extrabold tracking-tight text-ink mt-4 mb-4">
+        Understanding Car Accident Settlements & Claims
+      </h2>
+      <p class="text-sm text-body leading-relaxed">
+        Navigating insurance adjusters, medical evaluations, and liability claims after a vehicle collision can be overwhelming. Learn how our free tool estimates your payout and how local laws shape your final compensation.
+      </p>
+    </div>
+
+    <!-- Main Content Columns -->
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+      
+      <!-- Left 2 Columns: Main Text -->
+      <div class="lg:col-span-2 space-y-8 text-xs text-body leading-relaxed">
+        
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-ink">
+            How Our Free Car Accident Settlement Calculator Estimates Value
+          </h3>
+          <p>
+            If you or a loved one has recently been in an auto collision, you are likely wondering what your claim is worth. Dealing with insurance adjusters, medical bills, and lost wages can be stressful. Our <strong>free car accident settlement calculator</strong> is designed to provide immediate clarity, helping you estimate a fair payout without the hassle of paying for costly legal consults or submitting personal contact details.
+          </p>
+          <p>
+            Whether you need a <strong>personal injury car accident settlement calculator</strong> to account for physical injuries, or a simple tool to assess vehicle property damage, this engine utilizes industry-standard insurance formulas to give you a realistic ballpark range. Our <strong>car accident settlement calculator free</strong> tool automates this process instantly based on the inputs you provide.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-ink">
+            The Standard Formula: Economic vs. Non-Economic Damages
+          </h3>
+          <p>
+            Insurance adjusters generally use a standard mathematical approach to calculate payouts. They divide damages into two main categories:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-ink">Economic Damages (Special Damages):</strong> These are quantifiable losses with receipts, such as medical treatment costs, diagnostic bills, ambulance rides, future surgeries, prescriptions, and lost income.
+            </li>
+            <li>
+              <strong class="text-ink">Non-Economic Damages (General Damages):</strong> These cover subjective losses like pain and suffering, emotional distress, loss of life enjoyment, and physical pain.
+            </li>
+          </ul>
+          <p>
+            To determine the non-economic portion, adjusters apply a multiplier (typically between 1.5 and 5) to your total economic damages. A minor injury like a sprained wrist might warrant a 1.5 multiplier, whereas a severe, life-altering injury could use a 4 or 5 multiplier. 
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-ink">
+            The Crucial Role of State & Regional Negligence Laws
+          </h3>
+          <p>
+            A critical factor that most generic tools ignore is local state legislation. Every jurisdiction has specific negligence systems, statutes of limitations, and insurance frameworks that can drastically change your compensation.
+          </p>
+          <p>
+            For example, using a <strong>car accident settlement calculator california</strong> will account for California’s pure comparative negligence system, meaning you can recover damages even if you were 99% at fault, though your payout will be reduced by your percentage of responsibility. Similarly, a <strong>car accident settlement calculator new york</strong> or <strong>car accident settlement calculator florida</strong> must factor in no-fault personal injury protection (PIP) rules and strict verbal thresholds required to sue for pain and suffering.
+          </p>
+          <p>
+            If you are using a <strong>car accident settlement calculator texas</strong> or a <strong>car accident settlement calculator ohio</strong>, the system will apply a 51% modified comparative negligence bar. Under this rule, you cannot recover any compensation if your share of liability is 51% or higher. Other states, like Georgia, use a 50% bar (meaning if you are 50% or more to blame, you recover nothing). Our <strong>car accident settlement calculator georgia</strong> and <strong>car accident settlement calculator colorado</strong> models are calibrated precisely to handle these exact legislative thresholds.
+          </p>
+        </div>
+
+        <div class="space-y-4">
+          <h3 class="text-base font-bold text-ink">
+            Special Regional and Passenger Considerations
+          </h3>
+          <p>
+            Are you seeking a <strong>passenger car accident settlement calculator</strong>? Passengers in motor vehicle collisions are rarely at fault, meaning their claims are usually straightforward, though they must still negotiate with multiple insurance policies (such as the driver’s bodily injury liability, the passenger's own PIP, or medical payment coverage).
+          </p>
+          <p>
+            Furthermore, we provide tailored databases for other jurisdictions. If you reside in the Midwest, our <strong>michigan car accident settlement calculator</strong> and <strong>car accident settlement calculator michigan</strong> templates address Michigan's unique high-limit PIP choice system. If you are in the Mid-Atlantic, a <strong>car accident settlement calculator virginia</strong> accounts for the state’s strict pure contributory negligence rule, which bars recovery entirely if you are even 1% at fault.
+          </p>
+          <p>
+            We also offer specialized legal calculations for other regions, including a <strong>car accident settlement calculator missouri</strong> (pure comparative negligence, 5-year statute of limitations), a <strong>car accident settlement calculator illinois</strong> (51% comparative negligence bar), a <strong>car accident settlement calculator arizona</strong> (pure comparative negligence), and a <strong>car accident settlement calculator ontario</strong> which factors in Ontario, Canada's no-fault Statutory Accident Benefits Schedule (SABS) system and statutory deductibles. Additionally, our <strong>car accident settlement calculator new</strong> features allow users to run complex scenarios involving multiple at-fault parties or uninsured/underinsured motorist (UM/UIM) coverage limits.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Right 1 Column: Sidebar / Key Rules / Quick Links -->
+      <div class="space-y-8">
+        
+        <!-- Quick State Index Cards -->
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-mute mb-4 font-mono">
+            State-Specific Calculations
+          </h3>
+          <p class="text-[11px] text-body leading-relaxed mb-4">
+            Select a state/province to calculate your estimated settlement value adjusted specifically to your local negligence system and insurance thresholds.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-2">
+            {targetStates.map((st) => (
+              <a 
+                href={`/${st.slug}-car-accident-settlement-calculator`}
+                class="text-[11px] text-link hover:underline font-mono py-1 block"
+              >
+                {st.name} →
+              </a>
+            ))}
+          </div>
+        </div>
+
+        <!-- 4 Steps to Maximize Claims Card -->
+        <div class="p-6 border border-hairline bg-canvas rounded-lg">
+          <h3 class="text-xs font-semibold uppercase tracking-wider text-ink mb-4 font-mono">
+            4 Steps to Maximize Value
+          </h3>
+          <ol class="space-y-4 text-[11px] text-body list-decimal pl-4">
+            <li>
+              <strong>Seek Immediate Medical Care:</strong> Gaps in treatment can hurt your credibility with claims adjusters.
+            </li>
+            <li>
+              <strong>Document Everything:</strong> Collect vehicle collision photos, witness contacts, and police reports.
+            </li>
+            <li>
+              <strong>Log Financial Losses:</strong> Track hospital invoices, therapy costs, and lost wages.
+            </li>
+            <li>
+              <strong>Avoid Early Offers:</strong> Never accept a quick settlement until you know the full scope of your medical recovery.
+            </li>
+          </ol>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Accordion FAQ section -->
+    <div class="mt-16 border-t border-hairline pt-16">
+      <h3 class="text-xl font-bold text-ink mb-8 text-center">
+        Frequently Asked Questions
+      </h3>
+      
+      <div class="space-y-4 max-w-3xl mx-auto">
+        {faqList.map((faq, index) => (
+          <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              {faq.question}
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <div class="text-xs text-body leading-relaxed mt-3 space-y-2" set:html={faq.answer} />
+          </details>
+        ))}
+      </div>
+    </div>
+
+  </div>
+</section>
