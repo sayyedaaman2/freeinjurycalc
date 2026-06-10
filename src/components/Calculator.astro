@@ -1,0 +1,736 @@
+---
+import { statesData } from "../data/states";
+
+interface Props {
+  preselectedState?: string;
+}
+
+const { preselectedState = "" } = Astro.props;
+
+// Sort states for the dropdowns
+const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompare(b.name));
+---
+<div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans">
+  <!-- Tabs Navigation -->
+  <div class="flex border-b border-hairline bg-canvas-soft-2/50 transition-colors duration-200">
+    <button 
+      data-tab="quick" 
+      class="flex-1 py-4 text-xs font-semibold uppercase tracking-wider font-mono border-b-2 border-transparent hover:text-ink text-body transition-all duration-200 cursor-pointer active-tab-btn"
+    >
+      Method 1: Quick Estimate
+    </button>
+    <button 
+      data-tab="detailed" 
+      class="flex-1 py-4 text-xs font-semibold uppercase tracking-wider font-mono border-b-2 border-transparent hover:text-ink text-body transition-all duration-200 cursor-pointer"
+    >
+      Method 2: Detailed Ledger
+    </button>
+    <button 
+      data-tab="state-laws" 
+      class="flex-1 py-4 text-xs font-semibold uppercase tracking-wider font-mono border-b-2 border-transparent hover:text-ink text-body transition-all duration-200 cursor-pointer"
+    >
+      Method 3: State-Specific
+    </button>
+  </div>
+
+  <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+    
+    <!-- LEFT: Inputs Panel (Cols 1-7) -->
+    <div class="lg:col-span-7 flex flex-col gap-6">
+      
+      <!-- Shared State Selector (For Quick and State-Specific) -->
+      <div id="state-select-container">
+        <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+          Select Accident State
+        </label>
+        <select 
+          id="calculator-state" 
+          class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all duration-150 cursor-pointer"
+        >
+          <option value="" disabled selected>Select your state...</option>
+          {sortedStates.map((state) => (
+            <option value={state.slug} selected={state.slug === preselectedState}>{state.name}</option>
+          ))}
+        </select>
+      </div>
+
+      <!-- TAB 1: Quick Estimate Form -->
+      <div id="panel-quick" class="tab-panel flex flex-col gap-6">
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            Injury Severity
+          </label>
+          <select 
+            id="quick-injury-type" 
+            class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all duration-150 cursor-pointer"
+          >
+            <option value="1.5">Minor (Whiplash, minor bruising, muscle strain)</option>
+            <option value="2.5" selected>Moderate (Bone fractures, simple surgery, mild concussion)</option>
+            <option value="4.0">Severe (Multiple fractures, spinal trauma, traumatic brain injury)</option>
+            <option value="5.0">Permanent / Catastrophic (Paralysis, amputation, severe disfigurement)</option>
+          </select>
+        </div>
+
+        <div>
+          <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            Medical Bills ($)
+          </label>
+          <input 
+            type="number" 
+            id="quick-med-bills" 
+            value="7500" 
+            min="0" 
+            step="500"
+            class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all duration-150"
+            placeholder="Enter medical bills incurred..."
+          />
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+              Your Share of Fault
+            </label>
+            <span id="quick-fault-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
+              0%
+            </span>
+          </div>
+          <input 
+            type="range" 
+            id="quick-fault" 
+            min="0" 
+            max="100" 
+            value="0" 
+            class="w-full h-2 bg-hairline rounded-lg appearance-none cursor-pointer accent-primary"
+          />
+          <div class="flex justify-between text-[10px] text-mute font-mono mt-1">
+            <span>0% (Not at fault)</span>
+            <span>50%</span>
+            <span>100% (Fully at fault)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 2: Detailed Calculator Form -->
+      <div id="panel-detailed" class="tab-panel hidden flex flex-col gap-5">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              Past Medical Bills ($)
+            </label>
+            <input 
+              type="number" 
+              id="detail-med-past" 
+              value="12000" 
+              min="0" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all"
+            />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              Est. Future Medicals ($)
+            </label>
+            <input 
+              type="number" 
+              id="detail-med-future" 
+              value="3000" 
+              min="0" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              Past Lost Wages ($)
+            </label>
+            <input 
+              type="number" 
+              id="detail-wages-past" 
+              value="4500" 
+              min="0" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all"
+            />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              Est. Future Lost Income ($)
+            </label>
+            <input 
+              type="number" 
+              id="detail-wages-future" 
+              value="0" 
+              min="0" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all"
+            />
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              Property Damage / Vehicle ($)
+            </label>
+            <input 
+              type="number" 
+              id="detail-property" 
+              value="6500" 
+              min="0" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all"
+            />
+          </div>
+          <div>
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+              At-Fault Insurance limits ($)
+            </label>
+            <select 
+              id="detail-policy-limit" 
+              class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all cursor-pointer"
+            >
+              <option value="15000">California Min ($15,000)</option>
+              <option value="25000">Texas/Mid Min ($25,000)</option>
+              <option value="50000">Moderate Limit ($50,000)</option>
+              <option value="100000" selected>Typical Standard ($100,000)</option>
+              <option value="250000">Premium Standard ($250,000)</option>
+              <option value="9999999">Unlimited / Commercial Policy</option>
+            </select>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+              Pain & Suffering Multiplier
+            </label>
+            <span id="detail-multiplier-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
+              2.5x
+            </span>
+          </div>
+          <input 
+            type="range" 
+            id="detail-multiplier" 
+            min="1.5" 
+            max="5.0" 
+            step="0.1" 
+            value="2.5" 
+            class="w-full h-2 bg-hairline rounded-lg appearance-none cursor-pointer accent-primary"
+          />
+          <div class="flex justify-between text-[10px] text-mute font-mono mt-1">
+            <span>1.5x (Minor pain)</span>
+            <span>3.0x</span>
+            <span>5.0x (Permanent pain)</span>
+          </div>
+        </div>
+
+        <div>
+          <div class="flex items-center justify-between mb-2">
+            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+              Your Share of Fault
+            </label>
+            <span id="detail-fault-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
+              0%
+            </span>
+          </div>
+          <input 
+            type="range" 
+            id="detail-fault" 
+            min="0" 
+            max="100" 
+            value="0" 
+            class="w-full h-2 bg-hairline rounded-lg appearance-none cursor-pointer accent-primary"
+          />
+          <div class="flex justify-between text-[10px] text-mute font-mono mt-1">
+            <span>0%</span>
+            <span>50%</span>
+            <span>100%</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TAB 3: State-Specific Information Card -->
+      <div id="panel-state-laws" class="tab-panel hidden flex flex-col gap-4">
+        <div id="state-details-card" class="p-5 border border-hairline bg-canvas-soft-2 rounded-lg flex flex-col gap-4 transition-all duration-200">
+          <div class="flex items-center justify-between border-b border-hairline pb-3">
+            <h3 id="state-law-title" class="text-base font-semibold text-ink font-sans">
+              State Legal Information
+            </h3>
+            <span id="state-law-limitations" class="text-[11px] font-semibold font-mono text-link bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-2 py-0.5 rounded">
+              Statute: -
+            </span>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs leading-relaxed">
+            <div>
+              <span class="block font-semibold uppercase text-[10px] font-mono text-mute">Negligence System</span>
+              <span id="state-law-rule" class="text-ink font-medium">Select a state above</span>
+            </div>
+            <div>
+              <span class="block font-semibold uppercase text-[10px] font-mono text-mute">Insurance Rules</span>
+              <span id="state-law-no-fault" class="text-ink font-medium">Select a state above</span>
+            </div>
+            <div class="sm:col-span-2">
+              <span class="block font-semibold uppercase text-[10px] font-mono text-mute">Pain & Suffering Caps</span>
+              <span id="state-law-caps" class="text-ink font-medium">Select a state above</span>
+            </div>
+          </div>
+
+          <div class="border-t border-hairline pt-3 mt-1">
+            <span class="block font-semibold uppercase text-[10px] font-mono text-mute mb-1">Plain English Summary</span>
+            <p id="state-law-explanation" class="text-xs text-body leading-relaxed font-sans">
+              Please choose a state in the dropdown above to auto-apply state laws and read the legal analysis.
+            </p>
+          </div>
+        </div>
+        <p class="text-[11px] text-mute font-sans italic">
+          *Note: To calculate damages adjusted to these laws, toggle back to Method 1 or Method 2. The selected state applies globally to all tabs.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: Settlement Outputs Dashboard (Cols 8-12) -->
+    <div class="lg:col-span-5 flex flex-col gap-6 border-t lg:border-t-0 lg:border-l border-hairline pt-8 lg:pt-0 lg:pl-8 justify-start">
+      
+      <!-- Big Value Callout -->
+      <div class="text-center lg:text-left">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-mute block mb-1">
+          Estimated Payout Range
+        </span>
+        <div id="output-range" class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight font-sans transition-all duration-200">
+          $0
+        </div>
+        <p class="text-xs text-mute font-sans mt-1">
+          *BALLPARK ESTIMATE. NO SIGN-UP REQUIRED.
+        </p>
+      </div>
+
+      <!-- State Warning / Alert Box (Flashes dynamically) -->
+      <div id="state-alert-box" class="hidden p-4 rounded-lg border text-xs leading-relaxed font-sans transition-all duration-200">
+        <!-- Injected dynamically -->
+      </div>
+
+      <!-- Stacked Visual Breakdown Chart -->
+      <div class="flex flex-col gap-2">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-mute block">
+          Visual Component Breakdown
+        </span>
+        <!-- Stacked Horizontal Bar Chart -->
+        <div class="w-full h-8 bg-canvas-soft-2 border border-hairline rounded-md overflow-hidden flex transition-all duration-300">
+          <div id="bar-med" class="h-full bg-cyan transition-all duration-300" style="width: 0%;" title="Medical"></div>
+          <div id="bar-wage" class="h-full bg-violet transition-all duration-300" style="width: 0%;" title="Lost Wages"></div>
+          <div id="bar-prop" class="h-full bg-link transition-all duration-300" style="width: 0%;" title="Property"></div>
+          <div id="bar-pain" class="h-full bg-highlight-magenta transition-all duration-300" style="width: 0%;" title="Pain & Suffering"></div>
+          <div id="bar-fault" class="h-full bg-error/30 dark:bg-error/20 border-l border-dashed border-error/50 transition-all duration-300" style="width: 0%;" title="Fault Deduction"></div>
+        </div>
+        <!-- Legend -->
+        <div class="flex flex-wrap gap-x-4 gap-y-2 text-[10px] text-body font-mono mt-1">
+          <div class="flex items-center gap-1">
+            <span class="w-2.5 h-2.5 bg-cyan rounded-sm"></span> Medical
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-2.5 h-2.5 bg-violet rounded-sm"></span> Wages
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-2.5 h-2.5 bg-link rounded-sm"></span> Property
+          </div>
+          <div class="flex items-center gap-1">
+            <span class="w-2.5 h-2.5 bg-highlight-magenta rounded-sm"></span> Pain/Suffering
+          </div>
+          <div id="legend-fault" class="hidden flex items-center gap-1">
+            <span class="w-2.5 h-2.5 bg-error/30 dark:bg-error/20 border border-dashed border-error/50 rounded-sm"></span> Fault Ded.
+          </div>
+        </div>
+      </div>
+
+      <!-- Ledger Items -->
+      <div class="border-t border-hairline pt-4 flex flex-col gap-2">
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-body font-sans">Total Economic Losses:</span>
+          <span id="ledger-eco" class="font-mono text-ink font-semibold">$0</span>
+        </div>
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-body font-sans">Pain & Suffering (Est.):</span>
+          <span id="ledger-pain" class="font-mono text-ink font-semibold">$0</span>
+        </div>
+        <div id="ledger-fault-row" class="hidden flex items-center justify-between text-xs text-error">
+          <span class="font-sans">Fault Deduction:</span>
+          <span id="ledger-fault" class="font-mono font-semibold">-$0</span>
+        </div>
+        <div id="ledger-cap-row" class="hidden flex items-center justify-between text-xs text-warning-deep dark:text-warning">
+          <span class="font-sans">Insurance Cap Limit:</span>
+          <span id="ledger-cap" class="font-mono font-semibold">Cap applied</span>
+        </div>
+        <div class="flex items-center justify-between text-xs border-t border-hairline pt-2 mt-1">
+          <span class="font-semibold text-ink font-sans">Calculated Net Settlement:</span>
+          <span id="ledger-net" class="font-mono font-bold text-ink">$0</span>
+        </div>
+      </div>
+
+      <!-- AdSense Optimization Card -->
+      <div class="adsense-card p-5 rounded-lg text-center shadow-sm transition-all duration-200 mt-2">
+        <span class="text-[9px] font-semibold font-mono uppercase tracking-wider text-mute block mb-1">Sponsored Evaluation</span>
+        <a 
+          href="#consult-attorney" 
+          class="text-xs font-semibold text-link hover:underline block mb-2 leading-snug"
+        >
+          Need to secure this payout? Get a Free Legal Consultation in your state.
+        </a>
+        <p class="text-[10px] text-mute leading-relaxed font-sans">
+          Insurance adjusters frequently offer low settlements to unrepresented claimants. Get a local lawyer to maximize your claim.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<!-- Client-side script database integration and controller -->
+<script define:vars={{ statesData }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    // Elements selectors
+    const tabs = document.querySelectorAll('[data-tab]');
+    const tabPanels = document.querySelectorAll('.tab-panel');
+    const stateSelector = document.getElementById('calculator-state');
+    
+    // Quick Estimate inputs
+    const quickInjury = document.getElementById('quick-injury-type');
+    const quickBills = document.getElementById('quick-med-bills');
+    const quickFault = document.getElementById('quick-fault');
+    const quickFaultVal = document.getElementById('quick-fault-val');
+    
+    // Detailed inputs
+    const detailMedPast = document.getElementById('detail-med-past');
+    const detailMedFuture = document.getElementById('detail-med-future');
+    const detailWagePast = document.getElementById('detail-wages-past');
+    const detailWageFuture = document.getElementById('detail-wages-future');
+    const detailProperty = document.getElementById('detail-property');
+    const detailPolicyLimit = document.getElementById('detail-policy-limit');
+    const detailMultiplier = document.getElementById('detail-multiplier');
+    const detailMultiplierVal = document.getElementById('detail-multiplier-val');
+    const detailFault = document.getElementById('detail-fault');
+    const detailFaultVal = document.getElementById('detail-fault-val');
+    
+    // Outputs
+    const outputRange = document.getElementById('output-range');
+    const ledgerEco = document.getElementById('ledger-eco');
+    const ledgerPain = document.getElementById('ledger-pain');
+    const ledgerFault = document.getElementById('ledger-fault');
+    const ledgerFaultRow = document.getElementById('ledger-fault-row');
+    const ledgerCap = document.getElementById('ledger-cap');
+    const ledgerCapRow = document.getElementById('ledger-cap-row');
+    const ledgerNet = document.getElementById('ledger-net');
+    
+    // Alert & State info card
+    const stateAlertBox = document.getElementById('state-alert-box');
+    const stateLawTitle = document.getElementById('state-law-title');
+    const stateLawLimitations = document.getElementById('state-law-limitations');
+    const stateLawRule = document.getElementById('state-law-rule');
+    const stateLawNoFault = document.getElementById('state-law-no-fault');
+    const stateLawCaps = document.getElementById('state-law-caps');
+    const stateLawExplanation = document.getElementById('state-law-explanation');
+    
+    // Bars
+    const barMed = document.getElementById('bar-med');
+    const barWage = document.getElementById('bar-wage');
+    const barProp = document.getElementById('bar-prop');
+    const barPain = document.getElementById('bar-pain');
+    const barFault = document.getElementById('bar-fault');
+    const legendFault = document.getElementById('legend-fault');
+
+    let currentTab = 'quick'; // quick, detailed, state-laws
+    
+    // Force active state to URL state parameter or preselected
+    let selectedStateSlug = stateSelector.value || 'california';
+    if (!stateSelector.value) {
+      stateSelector.value = 'california';
+    }
+
+    // Tab switcher
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        tabs.forEach(t => {
+          t.classList.remove('border-primary', 'text-ink', 'active-tab-btn');
+          t.classList.add('border-transparent', 'text-body');
+        });
+        tab.classList.add('border-primary', 'text-ink', 'active-tab-btn');
+        tab.classList.remove('border-transparent', 'text-body');
+        
+        currentTab = tab.getAttribute('data-tab');
+        
+        tabPanels.forEach(panel => {
+          panel.classList.add('hidden');
+        });
+        
+        const targetPanel = document.getElementById(`panel-${currentTab}`);
+        if (targetPanel) {
+          targetPanel.classList.remove('hidden');
+        }
+        
+        // Hide state selector for state info tab, since it's inside the panel already
+        const selectContainer = document.getElementById('state-select-container');
+        if (currentTab === 'state-laws') {
+          // Keep it visible or move it. We will keep it visible as it controls the state.
+        }
+        
+        calculate();
+      });
+    });
+
+    // Helper: format money
+    function formatUSD(num) {
+      return new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0
+      }).format(num);
+    }
+
+    // Sync sliders values
+    quickFault.addEventListener('input', () => {
+      quickFaultVal.textContent = `${quickFault.value}%`;
+      // Sync detailed fault slider just in case
+      detailFault.value = quickFault.value;
+      detailFaultVal.textContent = `${quickFault.value}%`;
+      calculate();
+    });
+
+    detailFault.addEventListener('input', () => {
+      detailFaultVal.textContent = `${detailFault.value}%`;
+      // Sync quick fault slider
+      quickFault.value = detailFault.value;
+      quickFaultVal.textContent = `${detailFault.value}%`;
+      calculate();
+    });
+
+    detailMultiplier.addEventListener('input', () => {
+      detailMultiplierVal.textContent = `${detailMultiplier.value}x`;
+      calculate();
+    });
+
+    // Trigger calculation on input events
+    const allInputs = [
+      stateSelector, quickInjury, quickBills, quickFault,
+      detailMedPast, detailMedFuture, detailWagePast, detailWageFuture,
+      detailProperty, detailPolicyLimit, detailMultiplier, detailFault
+    ];
+    
+    allInputs.forEach(input => {
+      if (input) {
+        input.addEventListener('input', calculate);
+        input.addEventListener('change', calculate);
+      }
+    });
+
+    // Main Calculator core logic
+    function calculate() {
+      const stateSlug = stateSelector.value;
+      selectedStateSlug = stateSlug;
+      const state = statesData[stateSlug];
+      
+      if (!state) return;
+      
+      // Update State Laws Card text in Panel 3
+      stateLawTitle.textContent = `${state.name} Insurance Laws`;
+      stateLawLimitations.textContent = `Statute: ${state.statuteOfLimitations} Years`;
+      stateLawExplanation.textContent = state.explanation;
+      
+      // Systems display
+      let systemText = "";
+      if (state.negligenceRule === 'contributory') {
+        systemText = "Pure Contributory Negligence (0% Fault bar)";
+      } else if (state.negligenceRule === 'modified_50') {
+        systemText = "Modified Comparative Negligence (50% Fault bar)";
+      } else if (state.negligenceRule === 'modified_51') {
+        systemText = "Modified Comparative Negligence (51% Fault bar)";
+      } else {
+        systemText = "Pure Comparative Negligence (No fault bar)";
+      }
+      stateLawRule.textContent = systemText;
+      
+      let pipText = "";
+      if (state.noFault) {
+        pipText = `No-Fault State (PIP Limit: ${formatUSD(state.pipLimit)})`;
+        if (state.verbalThreshold) {
+          pipText += ` + Serious Injury verbal threshold`;
+        } else if (state.monetaryThreshold) {
+          pipText += ` + Monetary threshold of ${formatUSD(state.monetaryThreshold)}`;
+        }
+      } else {
+        pipText = "At-Fault / Tort-based State (No PIP required to sue)";
+      }
+      stateLawNoFault.textContent = pipText;
+      
+      stateLawCaps.textContent = state.damageCap 
+        ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
+        : "No caps on general pain and suffering damages for car accident claims.";
+
+      // Calculation inputs
+      let medicalBills = 0;
+      let wages = 0;
+      let property = 0;
+      let multiplier = 2.5;
+      let faultPct = 0;
+      let policyLimit = 99999999;
+      
+      if (currentTab === 'quick') {
+        medicalBills = parseFloat(quickBills.value) || 0;
+        multiplier = parseFloat(quickInjury.value) || 2.5;
+        faultPct = parseFloat(quickFault.value) || 0;
+      } else {
+        // Detailed inputs
+        const medPast = parseFloat(detailMedPast.value) || 0;
+        const medFuture = parseFloat(detailMedFuture.value) || 0;
+        const wagePast = parseFloat(detailWagePast.value) || 0;
+        const wageFuture = parseFloat(detailWageFuture.value) || 0;
+        
+        medicalBills = medPast + medFuture;
+        wages = wagePast + wageFuture;
+        property = parseFloat(detailProperty.value) || 0;
+        multiplier = parseFloat(detailMultiplier.value) || 2.5;
+        faultPct = parseFloat(detailFault.value) || 0;
+        policyLimit = parseFloat(detailPolicyLimit.value) || 99999999;
+      }
+      
+      // Calculate
+      let economicLosses = medicalBills + wages + property;
+      let painSuffering = medicalBills * multiplier;
+      
+      // Apply damage caps on pain and suffering if state enforces them
+      if (state.damageCap && painSuffering > state.damageCap) {
+        painSuffering = state.damageCap;
+      }
+      
+      let grossSettlement = economicLosses + painSuffering;
+      
+      // Check Fault Rules
+      let isBarred = false;
+      let barReason = "";
+      
+      if (state.negligenceRule === 'contributory' && faultPct > 0) {
+        isBarred = true;
+        barReason = `Under ${state.name}'s strict pure contributory negligence rule, you cannot recover any damages if you are even 1% at fault.`;
+      } else if (state.negligenceRule === 'modified_50' && faultPct >= 50) {
+        isBarred = true;
+        barReason = `Under ${state.name}'s modified comparative negligence rule, you cannot recover damages if you are 50% or more at fault.`;
+      } else if (state.negligenceRule === 'modified_51' && faultPct >= 51) {
+        isBarred = true;
+        barReason = `Under ${state.name}'s 51% bar rule, you cannot recover damages if you are 51% or more at fault (more than half at fault).`;
+      }
+      
+      let faultReduction = 0;
+      let netSettlement = 0;
+      
+      if (isBarred) {
+        netSettlement = 0;
+        faultReduction = grossSettlement;
+      } else {
+        faultReduction = grossSettlement * (faultPct / 100);
+        netSettlement = grossSettlement - faultReduction;
+      }
+      
+      // Apply Insurance Cap on Bodily Injury portion (excl property damage)
+      let exceedsLimit = false;
+      let cappedLimit = netSettlement;
+      let bodilyInjuryPart = netSettlement - property;
+      
+      if (bodilyInjuryPart > policyLimit) {
+        exceedsLimit = true;
+        cappedLimit = policyLimit + property;
+      }
+      
+      // Output ranges
+      let finalCalculated = exceedsLimit ? cappedLimit : netSettlement;
+      
+      // Check PIP warnings
+      let pipAlertText = "";
+      let isPipAlert = false;
+      if (state.noFault && !isBarred) {
+        if (state.monetaryThreshold && medicalBills < state.monetaryThreshold) {
+          isPipAlert = true;
+          pipAlertText = `In ${state.name}, medical bills must exceed ${formatUSD(state.monetaryThreshold)} to sue for pain and suffering. You may only claim PIP out-of-pocket medical coverage.`;
+        } else if (state.verbalThreshold && currentTab === 'quick' && quickInjury.value === "1.5") {
+          isPipAlert = true;
+          pipAlertText = `In ${state.name}, minor injuries do not meet the verbal threshold required to sue for pain and suffering. You can only claim out-of-pocket expenses under your PIP policy.`;
+        }
+      }
+      
+      // Manage Alerts Display
+      if (isBarred) {
+        stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
+        stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;
+      } else if (isPipAlert) {
+        stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
+        stateAlertBox.innerHTML = `<strong>PIP Constraints:</strong> ${pipAlertText}`;
+      } else if (exceedsLimit) {
+        stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
+        stateAlertBox.innerHTML = `<strong>Policy Cap Applied:</strong> Payout exceeds the chosen liability policy limit of ${formatUSD(policyLimit)}. You can sue the driver personally for the excess, but the insurance company will only cover up to the limit.`;
+      } else {
+        stateAlertBox.className = "hidden";
+      }
+
+      // Update Ledger values
+      ledgerEco.textContent = formatUSD(economicLosses);
+      ledgerPain.textContent = formatUSD(painSuffering);
+      
+      if (faultPct > 0) {
+        ledgerFaultRow.classList.remove('hidden');
+        ledgerFault.textContent = `-${formatUSD(faultReduction)}`;
+        legendFault.classList.remove('hidden');
+      } else {
+        ledgerFaultRow.classList.add('hidden');
+        legendFault.classList.add('hidden');
+      }
+      
+      if (exceedsLimit) {
+        ledgerCapRow.classList.remove('hidden');
+      } else {
+        ledgerCapRow.classList.add('hidden');
+      }
+      
+      ledgerNet.textContent = formatUSD(finalCalculated);
+      
+      // Big payout range
+      let lowEnd = finalCalculated * 0.85;
+      let highEnd = finalCalculated * 1.15;
+      
+      if (finalCalculated === 0) {
+        outputRange.textContent = "$0";
+      } else {
+        outputRange.textContent = `${formatUSD(lowEnd)} - ${formatUSD(highEnd)}`;
+      }
+      
+      // Update stacked breakdown chart widths
+      if (finalCalculated === 0) {
+        barMed.style.width = "0%";
+        barWage.style.width = "0%";
+        barProp.style.width = "0%";
+        barPain.style.width = "0%";
+        barFault.style.width = "100%";
+      } else {
+        // Compute parts relative to total gross
+        const totalForChart = grossSettlement;
+        const pMed = (medicalBills / totalForChart) * 100;
+        const pWage = (wages / totalForChart) * 100;
+        const pProp = (property / totalForChart) * 100;
+        const pPain = (painSuffering / totalForChart) * 100;
+        
+        // Fault reduction is deducted, but we display it relative to the gross
+        const pFault = (faultReduction / totalForChart) * 100;
+        
+        // Adjust for policy limit visual cap if needed, for simplicity we scale net parts
+        const netFactor = (finalCalculated / grossSettlement);
+        
+        barMed.style.width = `${pMed * netFactor}%`;
+        barWage.style.width = `${pWage * netFactor}%`;
+        barProp.style.width = `${pProp * netFactor}%`;
+        barPain.style.width = `${pPain * netFactor}%`;
+        barFault.style.width = `${pFault + (netFactor < 1 ? (1 - netFactor) * 100 : 0)}%`;
+      }
+    }
+    
+    // Initial execution
+    calculate();
+  });
+</script>

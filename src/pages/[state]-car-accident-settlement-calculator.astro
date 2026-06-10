@@ -1,0 +1,204 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Calculator from "../components/Calculator.astro";
+import Educational from "../components/Educational.astro";
+import Footer from "../components/Footer.astro";
+import { statesData, type StateLaw } from "../data/states";
+
+export async function getStaticPaths() {
+  return Object.entries(statesData).map(([slug, stateInfo]) => ({
+    params: { state: slug },
+    props: { stateInfo },
+  }));
+}
+
+interface Props {
+  stateInfo: StateLaw;
+}
+
+const { stateInfo } = Astro.props;
+const { state } = Astro.params;
+
+// Custom page title & description for maximum SEO relevance
+const pageTitle = `${stateInfo.name} Car Accident Settlement Calculator | Free & Instant`;
+const pageDescription = `Estimate your car accident payout in ${stateInfo.name} instantly. Calculator applies ${stateInfo.name}'s specific negligence rules, PIP thresholds, and damage caps.`;
+
+// Helper formatting inside Astro template block
+function formatUSD(num: number | null) {
+  if (num === null) return "$0";
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0
+  }).format(num);
+}
+---
+
+<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name}>
+  <!-- Header Navigation -->
+  <Header />
+
+  <main class="flex-grow">
+    <!-- State-Specific Hero Section -->
+    <section class="relative pt-16 pb-12 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <!-- Back Link -->
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1 text-xs text-body hover:text-link mb-6 transition-colors duration-150 font-mono"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to National Calculator
+        </a>
+
+        <!-- State-Specific Heading -->
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
+          {stateInfo.name} Car Accident Settlement Calculator.
+        </h1>
+        
+        <!-- State-Specific Subheading -->
+        <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed mb-6">
+          Calculate your estimated claim value adjusted specifically to <span class="text-ink font-semibold">{stateInfo.name} state car accident laws</span>, negligence systems, and local liability caps.
+        </p>
+
+        <!-- Brief State Law Quick Glance Badges -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8">
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Rule: {stateInfo.negligenceRule === 'contributory' ? 'Contributory Negligence' : stateInfo.negligenceRule === 'pure' ? 'Pure Comparative' : 'Modified Comparative'}
+          </span>
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Insurance: {stateInfo.noFault ? 'No-Fault (PIP)' : 'Fault (Tort)'}
+          </span>
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Statute of Limitations: {stateInfo.statuteOfLimitations} Years
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preselected Calculator -->
+    <section id="calculator-section" class="pb-16 px-4 sm:px-6 lg:px-8">
+      <Calculator preselectedState={state} />
+    </section>
+
+    <!-- State Legal Guide Explanation Section -->
+    <section class="py-16 border-t border-hairline bg-canvas transition-colors duration-200">
+      <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
+        
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          Understanding {stateInfo.name} Car Accident Settlement Laws
+        </h2>
+
+        <!-- Grid of detailed state rules -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          
+          <!-- Column 1: Negligence -->
+          <div class="flex flex-col gap-2">
+            <h3 class="text-sm font-semibold uppercase font-mono text-mute">
+              1. Negligence & Shared Fault
+            </h3>
+            <p class="text-xs text-body leading-relaxed">
+              {stateInfo.negligenceRule === 'contributory' && (
+                `Alabama, Maryland, North Carolina, and Virginia operate under pure contributory negligence. If you contributed to the accident in any way (even 1% at fault), you are legally barred from recovering any damages from the other driver.`
+              )}
+              {stateInfo.negligenceRule === 'pure' && (
+                `${stateInfo.name} operates under a pure comparative negligence system. This means you can recover compensation even if you were 99% at fault, though your settlement will be reduced by your exact percentage of fault.`
+              )}
+              {stateInfo.negligenceRule === 'modified_50' && (
+                `${stateInfo.name} operates under a 50% modified comparative negligence bar. You can only recover damages if your fault is less than 50% (49% or less). If you are 50% or more at fault, you get nothing.`
+              )}
+              {stateInfo.negligenceRule === 'modified_51' && (
+                `${stateInfo.name} operates under a 51% modified comparative negligence bar. You can recover damages as long as your fault does not exceed 50% (a 50/50 split allows recovery). If you are 51% or more at fault, your recovery is barred.`
+              )}
+            </p>
+          </div>
+
+          <!-- Column 2: Insurance Rules -->
+          <div class="flex flex-col gap-2">
+            <h3 class="text-sm font-semibold uppercase font-mono text-mute">
+              2. Insurance & PIP Thresholds
+            </h3>
+            <p class="text-xs text-body leading-relaxed">
+              {stateInfo.noFault ? (
+                `${stateInfo.name} is a no-fault state. You are required to file claim expenses through your own Personal Injury Protection (PIP) insurance up to ${formatUSD(stateInfo.pipLimit)}. You cannot sue the other driver for non-economic pain and suffering unless your injuries meet the state's ${stateInfo.verbalThreshold ? 'verbal serious injury threshold' : `monetary medical bill threshold of ${formatUSD(stateInfo.monetaryThreshold)}`}.`
+              ) : (
+                `${stateInfo.name} is an at-fault (tort) state. If another driver caused the collision, you can immediately file a claim against their liability coverage or file a personal injury lawsuit for both medical bills and pain and suffering without needing to meet a PIP threshold.`
+              )}
+            </p>
+          </div>
+
+          <!-- Column 3: Statute of Limitations -->
+          <div class="flex flex-col gap-2">
+            <h3 class="text-sm font-semibold uppercase font-mono text-mute">
+              3. Time Limits (Statute of Limitations)
+            </h3>
+            <p class="text-xs text-body leading-relaxed">
+              In {stateInfo.name}, you have exactly <strong>{stateInfo.statuteOfLimitations} years</strong> from the date of the motor vehicle accident to file a formal lawsuit in civil court. If you miss this deadline, your claim will be barred forever.
+            </p>
+          </div>
+
+          <!-- Column 4: Pain and Suffering Caps -->
+          <div class="flex flex-col gap-2">
+            <h3 class="text-sm font-semibold uppercase font-mono text-mute">
+              4. Non-Economic Damage Caps
+            </h3>
+            <p class="text-xs text-body leading-relaxed">
+              {stateInfo.damageCap ? (
+                stateInfo.damageCapExplanation
+              ) : (
+                `There are no statutory limits or caps on pain and suffering (non-economic damages) in ${stateInfo.name} for general car accident injuries. Your pain and suffering compensation will be evaluated based on the severity of the injury, recovery time, and impact on your daily life.`
+              )}
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Plain English Summary Card -->
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
+          <h3 class="text-sm font-semibold text-ink mb-2">Summary of {stateInfo.name} Car Accident Claims</h3>
+          <p class="text-xs text-body leading-relaxed">
+            {stateInfo.explanation} When negotiating with auto insurance adjusters in {stateInfo.name}, they will verify your medical records, check policy limits, and calculate fault percentage. Having structured documentations (doctor visits, police reports, proof of lost wages) is essential to maximize your payout.
+          </p>
+        </div>
+
+        <!-- Lead Capture Mock Consultation -->
+        <div id="consult-attorney" class="p-8 border border-hairline bg-canvas rounded-lg text-center shadow-sm relative overflow-hidden">
+          <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
+          <span class="text-[10px] font-semibold font-mono uppercase tracking-wider text-link mb-3 block">
+            Free Case Assessment
+          </span>
+          <h3 class="text-lg font-bold text-ink mb-3">
+            Want to maximize your {stateInfo.name} settlement?
+          </h3>
+          <p class="text-xs text-body leading-relaxed max-w-xl mx-auto mb-6">
+            Our calculator estimates basic ballpark ranges. An experienced local personal injury attorney in {stateInfo.name} can review your accident records to identify additional sources of recovery (like umbrella policies, underinsured motorist coverage, or product liability).
+          </p>
+          <div class="flex flex-col sm:flex-row justify-center gap-4">
+            <a 
+              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - State: ${stateInfo.name}"
+              class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded bg-primary text-on-primary hover:opacity-90 transition-opacity"
+            >
+              Get Free Case Evaluation
+            </a>
+            <a 
+              href="/#state-laws"
+              class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium rounded border border-hairline bg-canvas hover:bg-canvas-soft-2 transition-all text-ink"
+            >
+              Select Another State
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- General Educational section as secondary value -->
+    <Educational />
+  </main>
+
+  <!-- Footer Navigation -->
+  <Footer />
+</Layout>
