@@ -1,0 +1,154 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Calculator from "../components/Calculator.astro";
+import Educational from "../components/Educational.astro";
+import Footer from "../components/Footer.astro";
+import { specialCalculators, type SpecialCalculator } from "../data/specialCalculators";
+
+export async function getStaticPaths() {
+  const categories = ["whiplash", "back-injury", "neck-injury", "slip-and-fall", "motorcycle-accident", "truck-accident"];
+  return categories.map((key) => {
+    const data = specialCalculators[key];
+    return {
+      params: { type: key },
+      props: { data },
+    };
+  });
+}
+
+interface Props {
+  data: SpecialCalculator;
+}
+
+const { data } = Astro.props;
+const { type } = Astro.params;
+---
+
+<Layout title={data.title} description={data.description}>
+  <!-- Header Navigation -->
+  <Header />
+
+  <main class="flex-grow">
+    <!-- Hero Section -->
+    <section class="relative pt-16 pb-12 overflow-hidden">
+      <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
+        <!-- Back Link -->
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1 text-xs text-body hover:text-link mb-6 transition-colors duration-150 font-mono"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to General Calculator
+        </a>
+
+        <!-- Custom Heading -->
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
+          {data.h1}
+        </h1>
+        
+        <!-- Custom Subheading -->
+        <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed mb-6">
+          {data.intro}
+        </p>
+
+        <!-- Glance badges -->
+        <div class="flex flex-wrap justify-center gap-2 mb-8">
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Category: {data.subtitle}
+          </span>
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Preset: Severity {data.presetSeverity}x
+          </span>
+          <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
+            Base Meds: ${data.presetMedBills.toLocaleString()}
+          </span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Preselected Calculator -->
+    <section id="calculator-section" class="pb-16 px-4 sm:px-6 lg:px-8">
+      <Calculator 
+        preselectedSeverity={data.presetSeverity} 
+        preselectedMedBills={data.presetMedBills} 
+        preselectedTab={data.presetTab}
+        calculatorType={data.calculatorType}
+      />
+    </section>
+
+    <!-- Specific Guide Section -->
+    <section class="py-16 border-t border-hairline bg-canvas transition-colors duration-200">
+      <div class="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 font-sans">
+        
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          {data.aboutHeading1}
+        </h2>
+        <p class="text-xs text-body leading-relaxed mb-10">
+          {data.aboutContent1}
+        </p>
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          {data.aboutHeading2}
+        </h2>
+        <p class="text-xs text-body leading-relaxed mb-10">
+          {data.aboutContent2}
+        </p>
+
+        <!-- Accordion FAQs -->
+        <div class="mt-12 mb-12 border-t border-hairline pt-12">
+          <h3 class="text-xl font-bold text-ink mb-6">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4">
+            {data.faqs.map((faq, index) => (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
+                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                  {faq.question}
+                  <span class="transition group-open:rotate-180 text-mute">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </span>
+                </summary>
+                <div class="text-xs text-body leading-relaxed mt-3">
+                  <p>{faq.answer}</p>
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+
+        <!-- Lead Capture Mock Consultation -->
+        <div id="consult-attorney" class="p-8 border border-hairline bg-canvas rounded-lg text-center shadow-sm relative overflow-hidden">
+          <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
+          <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+            Legal Evaluation
+          </span>
+          <h3 class="text-xl font-semibold text-ink mt-4 mb-2">
+            Speak to a Personal Injury Attorney
+          </h3>
+          <p class="text-xs text-body max-w-lg mx-auto leading-relaxed mb-6">
+            Valuing an injury claim requires careful assessment of liability, medical records, and insurance coverage. Talk to a verified local lawyer to get an accurate evaluation and protect your rights.
+          </p>
+          <a 
+            href="#consult-attorney" 
+            class="inline-block px-5 py-2.5 bg-link hover:bg-link-hover text-canvas font-medium text-xs rounded transition-colors duration-150 font-mono cursor-pointer"
+          >
+            Get a Free Legal Case Review.
+          </a>
+          <p class="text-[10px] text-mute leading-relaxed font-sans mt-3">
+            Insurance adjusters frequently offer low settlements to unrepresented claimants. Get a local lawyer to maximize your claim.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- General Educational section as secondary value -->
+    <Educational />
+  </main>
+
+  <!-- Footer Section -->
+  <Footer />
+</Layout>

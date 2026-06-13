@@ -3,14 +3,34 @@ import { statesData } from "../data/states";
 
 interface Props {
   preselectedState?: string;
+  preselectedSeverity?: string;
+  preselectedMedBills?: number;
+  preselectedTab?: 'quick' | 'detailed';
+  calculatorType?: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering';
 }
 
-const { preselectedState = "" } = Astro.props;
+const {
+  preselectedState = "",
+  preselectedSeverity = "",
+  preselectedMedBills = null,
+  preselectedTab = "quick",
+  calculatorType = "car-accident"
+} = Astro.props;
 
 // Sort states for the dropdowns
 const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompare(b.name));
 ---
 <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans">
+  {calculatorType === "workers-comp" && (
+    <div class="p-4 bg-violet/10 text-ink text-xs border-b border-hairline flex items-start gap-2.5">
+      <svg class="w-5 h-5 text-violet shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <span class="font-bold">Workers' Compensation Mode:</span> Workers' comp is a no-fault system. It covers 100% of your medical bills and replaces 2/3 of your lost wages, but does <strong>not</strong> pay for pain & suffering. Negligence/fault options have been disabled as they do not apply.
+      </div>
+    </div>
+  )}
   <!-- Tabs Navigation -->
   <div class="flex border-b border-hairline bg-canvas-soft-2/50 transition-colors duration-200">
     <button 
@@ -387,7 +407,7 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
 </div>
 
 <!-- Client-side script database integration and controller -->
-<script define:vars={{ statesData }}>
+<script define:vars={{ statesData, preselectedState, preselectedSeverity, preselectedMedBills, preselectedTab, calculatorType }}>
   document.addEventListener('DOMContentLoaded', () => {
     // Elements selectors
     const tabs = document.querySelectorAll('[data-tab]');
@@ -442,22 +462,69 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
     let currentTab = 'quick'; // quick, detailed, state-laws
     
     // Force active state to URL state parameter or preselected
-    let selectedStateSlug = stateSelector.value || 'california';
-    if (!stateSelector.value) {
+    let selectedStateSlug = preselectedState || stateSelector.value || 'california';
+    if (preselectedState && stateSelector.value !== preselectedState) {
+      stateSelector.value = preselectedState;
+    } else if (!stateSelector.value) {
       stateSelector.value = 'california';
     }
 
-    // Tab switcher
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
+    // Apply injury severity presets if passed
+    if (preselectedSeverity) {
+      if (quickInjury) quickInjury.value = preselectedSeverity;
+      if (detailMultiplier) {
+        detailMultiplier.value = preselectedSeverity;
+        if (detailMultiplierVal) detailMultiplierVal.textContent = preselectedSeverity + 'x';
+      }
+    }
+
+    // Apply medical bills preset if passed
+    if (preselectedMedBills) {
+      if (quickBills) quickBills.value = preselectedMedBills;
+      if (detailMedPast) detailMedPast.value = preselectedMedBills;
+      if (detailMedFuture) detailMedFuture.value = 0;
+    }
+
+    // Disable/hide fault & multiplier options if Workers' Comp
+    if (calculatorType === 'workers-comp') {
+      if (quickInjury) {
+        quickInjury.disabled = true;
+        quickInjury.style.opacity = '0.6';
+        quickInjury.style.cursor = 'not-allowed';
+      }
+      if (detailMultiplier) {
+        detailMultiplier.disabled = true;
+        detailMultiplier.style.opacity = '0.6';
+        detailMultiplier.style.cursor = 'not-allowed';
+      }
+      if (quickFault) {
+        quickFault.disabled = true;
+        quickFault.value = 0;
+        if (quickFaultVal) quickFaultVal.textContent = '0%';
+        quickFault.style.opacity = '0.6';
+        quickFault.style.cursor = 'not-allowed';
+      }
+      if (detailFault) {
+        detailFault.disabled = true;
+        detailFault.value = 0;
+        if (detailFaultVal) detailFaultVal.textContent = '0%';
+        detailFault.style.opacity = '0.6';
+        detailFault.style.cursor = 'not-allowed';
+      }
+    }
+
+    // Tab switcher function
+    function switchTab(tabName) {
+      const tabButton = document.querySelector(`[data-tab="${tabName}"]`);
+      if (tabButton) {
         tabs.forEach(t => {
           t.classList.remove('border-primary', 'text-ink', 'active-tab-btn');
           t.classList.add('border-transparent', 'text-body');
         });
-        tab.classList.add('border-primary', 'text-ink', 'active-tab-btn');
-        tab.classList.remove('border-transparent', 'text-body');
+        tabButton.classList.add('border-primary', 'text-ink', 'active-tab-btn');
+        tabButton.classList.remove('border-transparent', 'text-body');
         
-        currentTab = tab.getAttribute('data-tab');
+        currentTab = tabName;
         
         tabPanels.forEach(panel => {
           panel.classList.add('hidden');
@@ -468,15 +535,20 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
           targetPanel.classList.remove('hidden');
         }
         
-        // Hide state selector for state info tab, since it's inside the panel already
-        const selectContainer = document.getElementById('state-select-container');
-        if (currentTab === 'state-laws') {
-          // Keep it visible or move it. We will keep it visible as it controls the state.
-        }
-        
         calculate();
+      }
+    }
+
+    // Tab switcher click handlers
+    tabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        switchTab(tab.getAttribute('data-tab'));
       });
     });
+
+    if (preselectedTab && preselectedTab !== 'quick') {
+      switchTab(preselectedTab);
+    }
 
     // Helper: format money
     function formatUSD(num) {
@@ -655,9 +727,25 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
           pipAlertText = `In ${state.name}, minor injuries do not meet the verbal threshold required to sue for pain and suffering. You can only claim out-of-pocket expenses under your PIP policy.`;
         }
       }
+
+      // Workers' Comp Overrides
+      if (calculatorType === 'workers-comp') {
+        economicLosses = medicalBills + (wages * 0.6667) + property;
+        painSuffering = 0;
+        grossSettlement = economicLosses;
+        faultReduction = 0;
+        netSettlement = economicLosses;
+        finalCalculated = economicLosses;
+        isBarred = false;
+        isPipAlert = false;
+        exceedsLimit = false;
+      }
       
       // Manage Alerts Display
-      if (isBarred) {
+      if (calculatorType === 'workers-comp') {
+        stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
+        stateAlertBox.innerHTML = `<strong>Workers' Compensation rules apply:</strong> Compensation covers 100% of medical expenses and 66.67% of lost wages. Pain & suffering is not paid. Fault does not bar or reduce recovery.`;
+      } else if (isBarred) {
         stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
         stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;
       } else if (isPipAlert) {

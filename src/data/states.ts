@@ -117,9 +117,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 2,
     explanation: "Delaware follows the 51% modified comparative negligence bar. You are eligible to recover compensation from the other party as long as your share of fault is 50% or less, with the settlement reduced by your fault percentage."
   },
-  district_of_columbia: {
+  "district-of-columbia": {
     name: "District of Columbia",
-    slug: "district_of_columbia",
+    slug: "district-of-columbia",
     negligenceRule: "contributory",
     noFault: false,
     pipLimit: 0,
@@ -390,9 +390,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 2,
     explanation: "Nevada operates under the 51% modified comparative negligence bar. You can recover damages from the other driver as long as you are 50% or less at fault. If your fault is 51% or higher, recovery is barred."
   },
-  new_hampshire: {
+  "new-hampshire": {
     name: "New Hampshire",
-    slug: "new_hampshire",
+    slug: "new-hampshire",
     negligenceRule: "modified_51",
     noFault: false,
     pipLimit: 0,
@@ -403,9 +403,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "New Hampshire follows the 51% modified comparative negligence bar, meaning you can recover compensation as long as your fault does not exceed 50%."
   },
-  new_jersey: {
+  "new-jersey": {
     name: "New Jersey",
-    slug: "new_jersey",
+    slug: "new-jersey",
     negligenceRule: "modified_51",
     noFault: true,
     pipLimit: 15000, // basic policy is $15k, standard is up to $250k
@@ -416,9 +416,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 2,
     explanation: "New Jersey is a choice no-fault state. Under the standard policy verbal threshold (Limitation on Lawsuit), you cannot sue for pain and suffering unless you suffer permanent injury or disfigurement. New Jersey applies the 51% modified comparative negligence bar."
   },
-  new_mexico: {
+  "new-mexico": {
     name: "New Mexico",
-    slug: "new_mexico",
+    slug: "new-mexico",
     negligenceRule: "pure",
     noFault: false,
     pipLimit: 0,
@@ -429,9 +429,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "New Mexico uses a pure comparative negligence system, meaning you can recover compensation regardless of your fault percentage, reduced by your share of liability."
   },
-  new_york: {
+  "new-york": {
     name: "New York",
-    slug: "new_york",
+    slug: "new-york",
     negligenceRule: "pure",
     noFault: true,
     pipLimit: 50000,
@@ -442,9 +442,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "New York is a no-fault state with a high PIP medical coverage requirement of $50,000. To sue for pain and suffering, your injuries must meet the verbal 'serious injury' threshold defined in Insurance Law § 5102(d). New York is a pure comparative negligence state."
   },
-  north_carolina: {
+  "north-carolina": {
     name: "North Carolina",
-    slug: "north_carolina",
+    slug: "north-carolina",
     negligenceRule: "contributory",
     noFault: false,
     pipLimit: 0,
@@ -455,9 +455,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "North Carolina is one of the few pure contributory negligence states. If your own actions contributed to the accident in any way (even 1%), you are legally barred from recovering any damages from the other party."
   },
-  north_dakota: {
+  "north-dakota": {
     name: "North Dakota",
-    slug: "north_dakota",
+    slug: "north-dakota",
     negligenceRule: "modified_51",
     noFault: true,
     pipLimit: 30000,
@@ -520,9 +520,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 2,
     explanation: "Pennsylvania is a choice no-fault state. If you selected Limited Tort on your insurance, you cannot sue for pain and suffering unless your injury is deemed 'serious' (verbal threshold). Pennsylvania uses the 51% modified comparative negligence bar."
   },
-  rhode_island: {
+  "rhode-island": {
     name: "Rhode Island",
-    slug: "rhode_island",
+    slug: "rhode-island",
     negligenceRule: "pure",
     noFault: false,
     pipLimit: 0,
@@ -533,9 +533,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "Rhode Island is a pure comparative negligence state. You can recover damages even if you are mostly at fault, with your compensation reduced by your exact share of liability."
   },
-  south_carolina: {
+  "south-carolina": {
     name: "South Carolina",
-    slug: "south_carolina",
+    slug: "south-carolina",
     negligenceRule: "modified_51",
     noFault: false,
     pipLimit: 0,
@@ -546,9 +546,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "South Carolina follows the 51% modified comparative negligence bar. If your fault is 50% or less, you can recover, but your damages will be reduced proportionally."
   },
-  south_dakota: {
+  "south-dakota": {
     name: "South Dakota",
-    slug: "south_dakota",
+    slug: "south-dakota",
     negligenceRule: "pure", // slight-gross system modeled as pure with warning text
     noFault: false,
     pipLimit: 0,
@@ -637,9 +637,9 @@ export const statesData: Record<string, StateLaw> = {
     statuteOfLimitations: 3,
     explanation: "Washington state is a pure comparative negligence state. You can recover damages even if you were 99% responsible for the accident, though your recovery will be reduced by your share of fault. Pain and suffering damages are uncapped."
   },
-  west_virginia: {
+  "west-virginia": {
     name: "West Virginia",
-    slug: "west_virginia",
+    slug: "west-virginia",
     negligenceRule: "modified_50",
     noFault: false,
     pipLimit: 0,
@@ -678,7 +678,7 @@ export const statesData: Record<string, StateLaw> = {
   },
   ontario: {
     name: "Ontario",
-    slug: "ontario",
+    slug: "canada/ontario",
     negligenceRule: "pure",
     noFault: true,
     pipLimit: 65000,

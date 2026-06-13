@@ -7,10 +7,12 @@ import Footer from "../components/Footer.astro";
 import { statesData, type StateLaw } from "../data/states";
 
 export async function getStaticPaths() {
-  return Object.entries(statesData).map(([slug, stateInfo]) => ({
-    params: { state: slug },
-    props: { stateInfo },
-  }));
+  return Object.entries(statesData)
+    .filter(([slug]) => slug !== "ontario")
+    .map(([slug, stateInfo]) => ({
+      params: { state: slug },
+      props: { stateInfo },
+    }));
 }
 
 interface Props {
@@ -166,6 +168,117 @@ function formatUSD(num: number | null) {
           <p class="text-xs text-body leading-relaxed">
             {stateInfo.explanation} When negotiating with auto insurance adjusters in {stateInfo.name}, they will verify your medical records, check policy limits, and calculate fault percentage. Having structured documentations (doctor visits, police reports, proof of lost wages) is essential to maximize your payout.
           </p>
+        </div>
+
+        <!-- State-Specific FAQ Accordion -->
+        <div class="mt-12 mb-12 border-t border-hairline pt-12">
+          <h3 class="text-xl font-bold text-ink mb-6">
+            Frequently Asked Questions about {stateInfo.name} Accident Claims
+          </h3>
+          <div class="space-y-4">
+            
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                How is a car accident settlement calculated in {stateInfo.name}?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                <p>
+                  In {stateInfo.name}, car accident settlements are calculated by summing your total economic damages (including all medical bills, therapy costs, and lost wages) and adding non-economic damages (pain and suffering). Non-economic damages are usually estimated by multiplying your medical costs by a factor of 1.5x to 5x depending on severity.
+                </p>
+                <p>
+                  The final settlement payout is then adjusted based on {stateInfo.name}'s negligence laws, which reduce or bar compensation if you share fault for the crash.
+                </p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                What happens if I am found partially at fault for the accident in {stateInfo.name}?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                {stateInfo.negligenceRule === 'contributory' && (
+                  <p>
+                    {stateInfo.name} operates under a strict <strong>pure contributory negligence</strong> system. If you share even 1% of the fault for the crash, you are legally barred from recovering any compensation from the other party. You must be completely fault-free to win a claim.
+                  </p>
+                )}
+                {stateInfo.negligenceRule === 'modified_50' && (
+                  <p>
+                    {stateInfo.name} uses the <strong>50% modified comparative negligence</strong> rule. You can recover damages only if your fault is 49% or less. If you are 50% or more at fault, you get nothing. If you are 20% at fault, your settlement is reduced by 20% (e.g. recovering $8,000 of a $10,000 claim).
+                  </p>
+                )}
+                {stateInfo.negligenceRule === 'modified_51' && (
+                  <p>
+                    {stateInfo.name} operates under the <strong>51% modified comparative negligence</strong> rule. You can recover damages as long as you are 50% or less at fault. If your fault is 51% or higher, your claim is barred completely. If you are 25% at fault, your final payout is reduced by 25%.
+                  </p>
+                )}
+                {stateInfo.negligenceRule === 'pure' && (
+                  <p>
+                    {stateInfo.name} follows a <strong>pure comparative negligence</strong> system. You can recover compensation even if you are 99% responsible for the crash. However, your payout will be reduced by your exact percentage of fault. For example, if you are 70% at fault and your damages are $10,000, you will recover $3,000.
+                  </p>
+                )}
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                How long do I have to file a lawsuit in {stateInfo.name}?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                <p>
+                  In {stateInfo.name}, the statute of limitations for personal injury claims resulting from a motor vehicle accident is strictly <strong>{stateInfo.statuteOfLimitations} {stateInfo.statuteOfLimitations === 1 ? 'year' : 'years'}</strong> from the date of the crash. If you do not file a formal lawsuit in civil court before this deadline, you will lose your legal right to seek compensation forever.
+                </p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Does {stateInfo.name} limit or cap pain and suffering damages?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                {stateInfo.damageCap ? (
+                  <p>
+                    Yes. {stateInfo.damageCapExplanation}
+                  </p>
+                ) : (
+                  <p>
+                    No. There are no statutory limits or legislative caps on pain and suffering (non-economic damages) in {stateInfo.name} for general car accident injury claims. Payouts are evaluated based on injury severity, pain levels, recovery period, and impact on daily life.
+                  </p>
+                )}
+              </div>
+            </details>
+
+            {stateInfo.noFault && (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                  How do no-fault PIP rules affect my lawsuit in {stateInfo.name}?
+                  <span class="transition group-open:rotate-180 text-mute">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </span>
+                </summary>
+                <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                  <p>
+                    Because {stateInfo.name} is a <strong>no-fault</strong> insurance state, you must first file a claim with your own Personal Injury Protection (PIP) policy to cover medical bills up to {formatUSD(stateInfo.pipLimit)} regardless of who caused the crash. 
+                  </p>
+                  <p>
+                    You are legally barred from filing a lawsuit against the at-fault driver for additional pain and suffering damages unless your injuries are severe enough to exceed the state's threshold. {stateInfo.verbalThreshold ? "This requires meeting the state's serious injury verbal threshold (permanent impairment or disfigurement)." : `This requires having medical bills that exceed the statutory monetary threshold of ${formatUSD(stateInfo.monetaryThreshold)}.`}
+                  </p>
+                </div>
+              </details>
+            )}
+
+          </div>
         </div>
 
         <!-- Lead Capture Mock Consultation -->

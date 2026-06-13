@@ -1,7 +1,12 @@
 ---
 import { statesData } from "../data/states";
 
-const statesList = Object.values(statesData).sort((a, b) => a.name.localeCompare(b.name));
+const statesList = Object.values(statesData)
+  .filter((state) => state.slug !== "canada/ontario")
+  .sort((a, b) => a.name.localeCompare(b.name));
+
+const canadaList = Object.values(statesData)
+  .filter((state) => state.slug === "canada/ontario");
 ---
 <section id="state-laws" class="py-16 border-t border-hairline bg-canvas transition-colors duration-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -33,6 +38,27 @@ const statesList = Object.values(statesData).sort((a, b) => a.name.localeCompare
         </a>
       ))}
     </div>
+
+    {canadaList.length > 0 && (
+      <div class="mt-10 pt-6 border-t border-hairline">
+        <h3 class="text-xs font-semibold uppercase tracking-wider text-mute mb-4 font-mono">
+          Canadian Provinces
+        </h3>
+        <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-y-3 gap-x-4">
+          {canadaList.map((state) => (
+            <a 
+              href={`/${state.slug}-car-accident-settlement-calculator`} 
+              class="text-xs text-body hover:text-link hover:underline transition-colors duration-150 py-1.5 flex items-center gap-1.5 font-sans"
+            >
+              <svg class="w-3.5 h-3.5 text-mute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+              {state.name} Calculator
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
     
   </div>
 </section>
