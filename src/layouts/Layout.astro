@@ -15,43 +15,24 @@ const {
   stateName,
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || "https://freeinjurycalc.com");
-
-// Setup keywords for On-Page SEO
-const baseKeywords = [
-  "car accident settlement calculator",
-  "passenger car accident settlement calculator",
-  "personal injury car accident settlement calculator",
-  "free car accident settlement calculator",
-  "car accident settlement calculator free"
-];
-
-if (stateName) {
-  baseKeywords.unshift(
-    `car accident settlement calculator ${stateName.toLowerCase()}`,
-    `${stateName.toLowerCase()} car accident settlement calculator`,
-    `car accident settlement calculator ${stateName.toLowerCase()} free`
-  );
-} else {
-  baseKeywords.push(
-    "car accident settlement calculator california",
-    "car accident settlement calculator texas",
-    "michigan car accident settlement calculator",
-    "car accident settlement calculator georgia",
-    "car accident settlement calculator virginia",
-    "car accident settlement calculator florida",
-    "car accident settlement calculator missouri",
-    "car accident settlement calculator illinois",
-    "car accident settlement calculator arizona",
-    "car accident settlement calculator new york",
-    "car accident settlement calculator colorado",
-    "car accident settlement calculator ohio",
-    "car accident settlement calculator ontario",
-    "car accident settlement calculator new"
-  );
+let pathname = Astro.url.pathname;
+if (!pathname.endsWith('/')) {
+  pathname += '/';
 }
+const canonicalURL = new URL(pathname, Astro.site || "https://freeinjurycalc.com");
 
-const keywordsString = baseKeywords.join(", ");
+// WebSite schema for homepage
+const websiteSchema = !stateName ? {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "FreeInjuryCalc",
+  "url": "https://freeinjurycalc.com/",
+  "potentialAction": {
+    "@type": "SearchAction",
+    "target": "https://freeinjurycalc.com/?q={search_term_string}",
+    "query-input": "required name=search_term_string"
+  }
+} : null;
 
 // JSON-LD Software Application Schema
 const softwareSchema = {
@@ -99,6 +80,11 @@ const faqSchema = stateName ? {
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script is:inline>
+      if (window.location.hostname === 'www.freeinjurycalc.com') {
+        window.location.replace('https://freeinjurycalc.com' + window.location.pathname + window.location.search + window.location.hash);
+      }
+    </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHYP8T4517"></script>
@@ -123,11 +109,11 @@ const faqSchema = stateName ? {
     <!-- SEO Meta Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="keywords" content={keywordsString} />
 
     <!-- Structured JSON-LD Schema -->
     <script type="application/ld+json" set:html={JSON.stringify(softwareSchema)} />
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
+    {websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

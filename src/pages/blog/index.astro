@@ -1,0 +1,76 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+import { blogPosts } from "../../data/blog";
+---
+
+<Layout 
+  title="Personal Injury Blog & Settlement Guides | FreeInjuryCalc"
+  description="Explore expert articles, step-by-step accident checklists, and comprehensive guides explaining how car accident settlements are calculated by insurance companies."
+>
+  <Header />
+
+  <main class="flex-grow bg-canvas transition-colors duration-200 py-16 md:py-24">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 font-sans">
+      
+      <!-- Section Header -->
+      <div class="max-w-3xl mb-16">
+        <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+          Knowledge Center
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink mt-4 mb-4">
+          Settlement Guides & Legal Insights
+        </h1>
+        <p class="text-sm sm:text-base text-body leading-relaxed">
+          Learn how insurance companies evaluate claims, understand complex state liability rules, and discover how to maximize your car accident injury settlement payout.
+        </p>
+      </div>
+
+      <!-- Blog Grid -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {blogPosts.map((post) => (
+          <article class="flex flex-col p-6 rounded-lg border border-hairline bg-canvas-soft hover:border-hairline-strong hover:bg-canvas transition-all duration-200 shadow-sm relative group">
+            <!-- Category & Read Time -->
+            <div class="flex items-center justify-between mb-4">
+              <span class="text-[10px] font-semibold tracking-wider uppercase text-link font-mono bg-link-bg-soft/20 dark:bg-link-bg-soft/5 px-2 py-0.5 rounded">
+                {post.category}
+              </span>
+              <span class="text-[10px] text-mute font-mono">
+                {post.readTime}
+              </span>
+            </div>
+            
+            <!-- Title -->
+            <h2 class="text-base font-bold text-ink mb-3 group-hover:text-link transition-colors duration-150 leading-snug">
+              <a href={`/blog/${post.slug}/`}>
+                {post.title}
+              </a>
+            </h2>
+            
+            <!-- Description -->
+            <p class="text-xs text-body leading-relaxed mb-6 flex-grow">
+              {post.description}
+            </p>
+            
+            <!-- Footer Card -->
+            <div class="flex items-center justify-between border-t border-hairline pt-4 mt-auto">
+              <span class="text-[10px] text-mute font-mono">
+                {post.date}
+              </span>
+              <span class="text-[11px] font-semibold text-link flex items-center gap-1 group-hover:gap-2 transition-all duration-150">
+                Read Article
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                </svg>
+              </span>
+            </div>
+          </article>
+        ))}
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

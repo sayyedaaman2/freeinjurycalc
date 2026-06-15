@@ -7,12 +7,10 @@ import Footer from "../components/Footer.astro";
 import { statesData, type StateLaw } from "../data/states";
 
 export async function getStaticPaths() {
-  return Object.entries(statesData)
-    .filter(([slug]) => slug !== "ontario")
-    .map(([slug, stateInfo]) => ({
-      params: { state: slug },
-      props: { stateInfo },
-    }));
+  return Object.entries(statesData).map(([slug, stateInfo]) => ({
+    params: { state: slug },
+    props: { stateInfo },
+  }));
 }
 
 interface Props {

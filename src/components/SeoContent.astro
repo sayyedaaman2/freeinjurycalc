@@ -13,8 +13,7 @@ const targetStates = [
   { name: "Virginia", slug: "virginia" },
   { name: "Colorado", slug: "colorado" },
   { name: "Arizona", slug: "arizona" },
-  { name: "Missouri", slug: "missouri" },
-  { name: "Ontario (CA)", slug: "canada/ontario" }
+  { name: "Missouri", slug: "missouri" }
 ];
 
 const faqList = [
@@ -197,7 +196,7 @@ const faqSchema = {
             Furthermore, we provide tailored databases for other jurisdictions. If you reside in the Midwest, our <strong>michigan car accident settlement calculator</strong> and <strong>car accident settlement calculator michigan</strong> templates address Michigan's unique high-limit PIP choice system. If you are in the Mid-Atlantic, a <strong>car accident settlement calculator virginia</strong> accounts for the state’s strict pure contributory negligence rule, which bars recovery entirely if you are even 1% at fault.
           </p>
           <p>
-            We also offer specialized legal calculations for other regions, including a <strong>car accident settlement calculator missouri</strong> (pure comparative negligence, 5-year statute of limitations), a <strong>car accident settlement calculator illinois</strong> (51% comparative negligence bar), a <strong>car accident settlement calculator arizona</strong> (pure comparative negligence), and a <strong>car accident settlement calculator ontario</strong> which factors in Ontario, Canada's no-fault Statutory Accident Benefits Schedule (SABS) system and statutory deductibles. Additionally, our <strong>car accident settlement calculator new</strong> features allow users to run complex scenarios involving multiple at-fault parties or uninsured/underinsured motorist (UM/UIM) coverage limits.
+            We also offer specialized legal calculations for other regions, including a <strong>car accident settlement calculator missouri</strong> (pure comparative negligence, 5-year statute of limitations), a <strong>car accident settlement calculator illinois</strong> (51% comparative negligence bar), and a <strong>car accident settlement calculator arizona</strong> (pure comparative negligence). Additionally, our new calculation features allow users to run complex scenarios involving multiple at-fault parties or uninsured/underinsured motorist (UM/UIM) coverage limits.
           </p>
         </div>
 
@@ -218,7 +217,7 @@ const faqSchema = {
           <div class="grid grid-cols-2 gap-2">
             {targetStates.map((st) => (
               <a 
-                href={`/${st.slug}-car-accident-settlement-calculator`}
+                href={`/${st.slug}-car-accident-settlement-calculator/`}
                 class="text-[11px] text-link hover:underline font-mono py-1 block"
               >
                 {st.name} →
