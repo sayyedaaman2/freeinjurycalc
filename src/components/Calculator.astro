@@ -428,6 +428,30 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
 <!-- Client-side script database integration and controller -->
 <script define:vars={{ statesData, preselectedState, preselectedSeverity, preselectedMedBills, preselectedTab, calculatorType }}>
   document.addEventListener('DOMContentLoaded', () => {
+    // Debounced Google Analytics tracking helper
+    let trackingTimeout = null;
+    function queueAnalyticsTracking(data) {
+      if (trackingTimeout) {
+        clearTimeout(trackingTimeout);
+      }
+      trackingTimeout = setTimeout(() => {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'calculator_calculation', {
+            'calculator_method': data.method,
+            'calculator_state': data.state,
+            'calculator_type': data.calculatorType,
+            'medical_bills': data.medicalBills,
+            'multiplier': data.multiplier,
+            'fault_percent': data.faultPct,
+            'net_settlement': data.netSettlement,
+            'range_low': data.rangeLow,
+            'range_high': data.rangeHigh,
+            'exceeds_policy_limit': data.exceedsLimit
+          });
+        }
+      }, 2000);
+    }
+
     // Elements selectors
     const tabs = document.querySelectorAll('[data-tab]');
     const tabPanels = document.querySelectorAll('.tab-panel');
@@ -558,15 +582,47 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
       }
     }
 
-    // Tab switcher click handlers
+    // Tab switcher click handlers with GA tracking
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
-        switchTab(tab.getAttribute('data-tab'));
+        const tabName = tab.getAttribute('data-tab');
+        switchTab(tabName);
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'calculator_tab_switch', {
+            'tab_name': tabName,
+            'calculator_type': calculatorType
+          });
+        }
       });
     });
 
     if (preselectedTab && preselectedTab !== 'quick') {
       switchTab(preselectedTab);
+    }
+
+    // State Selector GA tracking
+    if (stateSelector) {
+      stateSelector.addEventListener('change', () => {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'calculator_state_select', {
+            'state_name': stateSelector.value,
+            'calculator_type': calculatorType
+          });
+        }
+      });
+    }
+
+    // Sponsored CTA GA tracking
+    const sponsoredLink = document.querySelector('.adsense-card a[href="#consult-attorney"]');
+    if (sponsoredLink) {
+      sponsoredLink.addEventListener('click', () => {
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'calculator_consult_click', {
+            'calculator_type': calculatorType,
+            'source_element': 'sponsored_card'
+          });
+        }
+      });
     }
 
     // Helper: format money
@@ -835,6 +891,20 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
         barPain.style.width = `${pPain * netFactor}%`;
         barFault.style.width = `${pFault + (netFactor < 1 ? (1 - netFactor) * 100 : 0)}%`;
       }
+
+      // Queue Google Analytics event tracking
+      queueAnalyticsTracking({
+        method: currentTab,
+        state: stateSlug,
+        calculatorType: calculatorType,
+        medicalBills: medicalBills,
+        multiplier: multiplier,
+        faultPct: faultPct,
+        netSettlement: Math.round(finalCalculated),
+        rangeLow: Math.round(lowEnd),
+        rangeHigh: Math.round(highEnd),
+        exceedsLimit: exceedsLimit
+      });
     }
     
     // Initial execution
