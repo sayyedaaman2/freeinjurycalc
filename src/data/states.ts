@@ -675,5 +675,18 @@ export const statesData: Record<string, StateLaw> = {
     damageCapExplanation: null,
     statuteOfLimitations: 4,
     explanation: "Wyoming follows the 51% modified comparative negligence bar. You can recover damages if you are 50% or less at fault, reduced in proportion to your fault share."
+  },
+  ontario: {
+    name: "Ontario (Canada)",
+    slug: "ontario",
+    negligenceRule: "pure",
+    noFault: true,
+    pipLimit: 65000,
+    verbalThreshold: true,
+    monetaryThreshold: null,
+    damageCap: null,
+    damageCapExplanation: "Ontario has an inflation-adjusted cap on pain and suffering (non-economic) damages of around $450,000, and a statutory deductible of approximately $46,000 for awards that fall below $150,000.",
+    statuteOfLimitations: 2,
+    explanation: "Ontario operates under a no-fault insurance system governed by the Statutory Accident Benefits Schedule (SABS). You claim accident benefits directly from your own insurer, regardless of fault. For pain and suffering lawsuits against the at-fault driver, injuries must meet a verbal threshold of serious and permanent impairment, and non-economic damages are subject to a statutory deductible of about $46,000."
   }
 };
