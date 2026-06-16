@@ -29,12 +29,7 @@ const websiteSchema = !stateName ? {
   "@context": "https://schema.org",
   "@type": "WebSite",
   "name": "FreeInjuryCalc",
-  "url": "https://freeinjurycalc.com/",
-  "potentialAction": {
-    "@type": "SearchAction",
-    "target": "https://freeinjurycalc.com/?q={search_term_string}",
-    "query-input": "required name=search_term_string"
-  }
+  "url": "https://freeinjurycalc.com/"
 } : null;
 
 // JSON-LD Software Application Schema
@@ -89,6 +84,7 @@ const faqSchema = stateName ? {
       }
     </script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="max-image-preview:large, index, follow" />
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-RHYP8T4517"></script>
     <script is:inline>
