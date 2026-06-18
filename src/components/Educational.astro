@@ -1,4 +1,20 @@
 ---
+import { spinEducationalCard } from "../utils/textSpinner";
+
+interface Props {
+  stateName?: string;
+  seedName?: string;
+}
+
+const { stateName, seedName } = Astro.props;
+const seed = stateName || seedName;
+
+function getCard(cardNumber: number, defaultTitle: string, defaultText: string) {
+  if (seed) {
+    return spinEducationalCard(seed, cardNumber, defaultTitle, defaultText);
+  }
+  return { title: defaultTitle, text: defaultText };
+}
 ---
 <section id="how-it-works" class="py-16 border-t border-hairline bg-canvas-soft-2 transition-colors duration-200">
   <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -9,10 +25,14 @@
         Legal Breakdown
       </span>
       <h2 class="text-3xl font-semibold tracking-tight text-ink mt-4 mb-3 font-sans">
-        What affects my settlement amount?
+        {stateName ? `${stateName} Settlement Value Factors` : seedName ? `${seedName} Compensation Factors` : "What affects my settlement amount?"}
       </h2>
       <p class="text-sm text-body font-sans leading-relaxed">
-        Car accident settlements are not random. They are calculated based on concrete evidence, financial losses, and local state laws. Here are the five key pillars that decide the value of your claim.
+        {stateName 
+          ? `Car accident settlements in ${stateName} are determined by key legal guidelines, financial evidence, and insurance policy limitations. Here are the six core pillars that govern your claim.`
+          : seedName
+          ? `Evaluating compensation for ${seedName.toLowerCase()} depends on standard diagnostic evidence, personal financial impact, and insurance coverage constraints.`
+          : "Car accident settlements are not random. They are calculated based on concrete evidence, financial losses, and local state laws. Here are the five key pillars that decide the value of your claim."}
       </p>
     </div>
 
@@ -27,10 +47,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">State Negligence Rules</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          Your compensation is reduced directly by your percentage of fault. In <strong>contributory negligence</strong> states (like MD, VA), even 1% fault bars your recovery entirely. In <strong>modified comparative</strong> states (like TX, FL), you are barred if your fault exceeds 50% or 51%.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(1, "State Negligence Rules", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(1, "", "Your compensation is reduced directly by your percentage of fault. In <strong>contributory negligence</strong> states (like MD, VA), even 1% fault bars your recovery entirely. In <strong>modified comparative</strong> states (like TX, FL), you are barred if your fault exceeds 50% or 51%.").text} />
       </div>
 
       <!-- Card 2: Medical Treatment -->
@@ -41,10 +61,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">Medical Bills & Diagnostics</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          Insurance adjusters use medical bills as the baseline for economic damages. Consistent diagnostic testing, ambulance rides, and hospital records show that your injuries are legitimate, severe, and directly caused by the collision.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(2, "Medical Bills & Diagnostics", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(2, "", "Insurance adjusters use medical bills as the baseline for economic damages. Consistent diagnostic testing, ambulance rides, and hospital records show that your injuries are legitimate, severe, and directly caused by the collision.").text} />
       </div>
 
       <!-- Card 3: Lost Wages -->
@@ -55,10 +75,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">Lost Income & Earning Capacity</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          If you missed work to recover, you are entitled to claim past lost wages. If your injuries cause long-term disability that limits your future employment options, the claims should include estimated future lost earning capacity.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(3, "Lost Income & Earning Capacity", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(3, "", "If you missed work to recover, you are entitled to claim past lost wages. If your injuries cause long-term disability that limits your future employment options, the claims should include estimated future lost earning capacity.").text} />
       </div>
 
       <!-- Card 4: Pain & Suffering -->
@@ -69,10 +89,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">Pain and Suffering Multiplier</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          Non-economic damages cover emotional distress, loss of life enjoyment, and physical pain. Typically estimated by multiplying medical expenses by 1.5 (minor injury) to 5.0 (catastrophic permanent injuries) depending on the severity of the case.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(4, "Pain and Suffering Multiplier", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(4, "", "Non-economic damages cover emotional distress, loss of life enjoyment, and physical pain. Typically estimated by multiplying medical expenses by 1.5 (minor injury) to 5.0 (catastrophic permanent injuries) depending on the severity of the case.").text} />
       </div>
 
       <!-- Card 5: Policy Limits -->
@@ -83,10 +103,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">At-Fault Insurance Limits</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          This is a major real-world bottleneck. An insurance company is only legally required to pay up to their policy's liability limits. If the at-fault driver has a minimum state policy (e.g., $15,000 in CA), recovering damages beyond that limit is extremely difficult.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(5, "At-Fault Insurance Limits", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(5, "", "This is a major real-world bottleneck. An insurance company is only legally required to pay up to their policy's liability limits. If the at-fault driver has a minimum state policy (e.g., $15,000 in CA), recovering damages beyond that limit is extremely difficult.").text} />
       </div>
 
       <!-- Card 6: No-Fault Insurance (PIP) -->
@@ -97,10 +117,10 @@
             <path stroke-linecap="round" stroke-linejoin="round" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
         </div>
-        <h3 class="text-base font-semibold text-ink font-sans mb-2">PIP & Tort Thresholds</h3>
-        <p class="text-xs text-body leading-relaxed font-sans">
-          In no-fault states (like NY, FL, MA), you must claim medical costs from your own PIP insurance. You cannot sue the other driver for pain and suffering unless your injuries meet a "verbal threshold" (serious injury) or your medical bills exceed a state monetary threshold.
-        </p>
+        <h3 class="text-base font-semibold text-ink font-sans mb-2">
+          {getCard(6, "PIP & Tort Thresholds", "").title}
+        </h3>
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(6, "", "In no-fault states (like NY, FL, MA), you must claim medical costs from your own PIP insurance. You cannot sue the other driver for pain and suffering unless your injuries meet a verbal threshold or your medical bills exceed a state monetary threshold.").text} />
       </div>
       
     </div>
