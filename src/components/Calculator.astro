@@ -18,7 +18,9 @@ const {
 } = Astro.props;
 
 // Sort states for the dropdowns
-const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompare(b.name));
+const sortedStates = Object.values(statesData)
+  .filter((state) => state.slug !== "ontario")
+  .sort((a, b) => a.name.localeCompare(b.name));
 ---
 <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans">
   {calculatorType === "workers-comp" && (
@@ -71,6 +73,9 @@ const sortedStates = Object.values(statesData).sort((a, b) => a.name.localeCompa
           {sortedStates.map((state) => (
             <option value={state.slug} selected={state.slug === preselectedState}>{state.name}</option>
           ))}
+          {preselectedState === 'ontario' && (
+            <option value="ontario" selected>{statesData.ontario.name}</option>
+          )}
         </select>
       </div>
 

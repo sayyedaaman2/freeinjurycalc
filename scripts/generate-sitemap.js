@@ -49,6 +49,7 @@ function generateSitemap() {
 
   // 3. US State pages
   for (const slug of stateSlugs) {
+    if (slug === 'ontario') continue;
     xml += `  <url>
     <loc>${SITE_URL}/${slug}-car-accident-settlement-calculator/</loc>
     <lastmod>${CURRENT_DATE}</lastmod>
@@ -56,6 +57,14 @@ function generateSitemap() {
     <priority>0.8</priority>
   </url>\n`;
   }
+
+  // 3.5 Canada pages
+  xml += `  <url>
+    <loc>${SITE_URL}/canada/ontario-car-accident-settlement-calculator/</loc>
+    <lastmod>${CURRENT_DATE}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n`;
 
   // 4. Special Calculator pages
   for (const slug of specialSlugs) {
