@@ -66,6 +66,14 @@ function generateSitemap() {
     <priority>0.8</priority>
   </url>\n`;
 
+  // 3.7 Florida Diminished Value Calculator
+  xml += `  <url>
+    <loc>${SITE_URL}/florida-diminished-value-calculator/</loc>
+    <lastmod>${CURRENT_DATE}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n`;
+
   // 4. Special Calculator pages
   for (const slug of specialSlugs) {
     xml += `  <url>
@@ -89,7 +97,8 @@ function generateSitemap() {
   xml += '</urlset>\n';
 
   fs.writeFileSync(sitemapPath, xml, 'utf8');
-  console.log(`Successfully generated sitemap.xml at ${sitemapPath} with ${1 + staticPages.length + stateSlugs.length + specialSlugs.length + blogSlugs.length} URLs.`);
+  const totalUrls = 1 + staticPages.length + (stateSlugs.length - 1) + 1 + 1 + specialSlugs.length + blogSlugs.length;
+  console.log(`Successfully generated sitemap.xml at ${sitemapPath} with ${totalUrls} URLs.`);
 }
 
 generateSitemap();

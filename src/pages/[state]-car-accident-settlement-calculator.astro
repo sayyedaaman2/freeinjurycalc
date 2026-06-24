@@ -118,6 +118,26 @@ if (state === 'california') {
   pageDescription = "Calculate your Florida car accident settlement. Applies FL no-fault insurance rules and 2023 modified comparative fault changes. Free.";
 } else if (state === 'texas') {
   pageDescription = "Estimate your Texas car accident settlement value. Uses TX 51% modified comparative negligence rules. Instant, free, no sign-up.";
+} else if (state === 'michigan') {
+  pageDescription = "Estimate your Michigan car accident settlement payout. Calibrated for MI no-fault insurance rules, PIP choices, and serious impairment thresholds. 100% free.";
+} else if (state === 'missouri') {
+  pageDescription = "Calculate your Missouri car accident settlement range. Applies MO pure comparative fault rules—recover compensation even if you are mostly at fault.";
+} else if (state === 'virginia') {
+  pageDescription = "Estimate your Virginia car accident settlement value. Accounts for VA's strict pure contributory negligence rules (1% fault bar). Free & instant.";
+} else if (state === 'colorado') {
+  pageDescription = "Calculate your Colorado car accident settlement. Applies CO 50% modified comparative negligence rules and the $642,180 pain and suffering cap.";
+}
+
+let customIntro = `This specialized <strong>${stateInfo.name.toLowerCase()} car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding local statutes of limitations, shared fault negligence systems, and PIP rules is key to calculating your final payout.`;
+
+if (state === 'michigan') {
+  customIntro = `This specialized <strong>Michigan car accident settlement calculator</strong> is calibrated for Michigan's complex no-fault auto insurance laws. To sue the at-fault driver for non-economic pain and suffering in Michigan, your injuries must pass the strict 'serious impairment of body function' threshold. Estimate your payout instantly below.`;
+} else if (state === 'missouri') {
+  customIntro = `This specialized <strong>Missouri car accident settlement calculator</strong> is calibrated for Missouri's pure comparative fault system. In Missouri, you can recover personal injury compensation even if you were 99% responsible for the crash. Calculate your potential payout range instantly below.`;
+} else if (state === 'virginia') {
+  customIntro = `This specialized <strong>Virginia car accident settlement calculator</strong> factors in Virginia's strict pure contributory negligence rule. In Virginia, if you share even 1% of the blame for the crash, you cannot recover any compensation from the other driver. Calculate your potential payout below.`;
+} else if (state === 'colorado') {
+  customIntro = `This specialized <strong>Colorado car accident settlement calculator</strong> integrates Colorado's 50% modified comparative fault rules and the statutory cap on pain and suffering damages ($642,180, which can be doubled to $1.28M under clear proof). Estimate your recovery value below.`;
 }
 
 // Helper formatting inside Astro template block
@@ -193,9 +213,7 @@ function formatUSD(num: number | null) {
           Understanding {stateInfo.name} Car Accident Settlement Laws
         </h2>
 
-        <p class="text-xs text-body leading-relaxed mb-8">
-          This specialized <strong>{stateInfo.name.toLowerCase()} car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding local statutes of limitations, shared fault negligence systems, and PIP rules is key to calculating your final payout.
-        </p>
+        <p class="text-xs text-body leading-relaxed mb-8" set:html={customIntro} />
 
         <!-- Grid of detailed state rules -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">

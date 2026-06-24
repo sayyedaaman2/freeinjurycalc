@@ -1,0 +1,309 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="Florida Diminished Value Calculator | Claim Loss in Car Value"
+  description="Estimate your vehicle's post-accident lost value in Florida using the standard 17c diminished value calculator formula. 100% free and instant."
+>
+  <Header />
+
+  <main class="flex-grow py-16 bg-canvas-soft transition-colors duration-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header Section -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1 text-xs text-body hover:text-link mb-6 transition-colors duration-150 font-mono"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Settlement Calculators
+        </a>
+        <span class="block text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full w-fit mx-auto mb-4">
+          Florida Third-Party Tort Claims
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans leading-tight mb-4">
+          Florida Diminished Value Calculator
+        </h1>
+        <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed">
+          When your car is damaged in an accident that wasn't your fault, it loses resale value even after perfect repairs. Estimate your lost value using the insurance industry's standard <strong>17c formula</strong>.
+        </p>
+      </div>
+
+      <!-- Calculator Section -->
+      <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans mb-16">
+        <div class="p-4 bg-link/5 text-ink text-xs border-b border-hairline flex items-start gap-2.5">
+          <svg class="w-5 h-5 text-link shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <span class="font-bold">Florida Law Note:</span> You can file a diminished value claim in Florida as long as you were not at fault for the crash and the negligent driver carries insurance. You have up to 4 years to file a claim.
+          </div>
+        </div>
+
+        <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left Panel: Inputs (Cols 1-7) -->
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- Vehicle Pre-Accident Value -->
+            <div class="flex flex-col gap-2">
+              <label for="vehicle-value" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Pre-Accident Vehicle Value ($)
+              </label>
+              <p class="text-[11px] text-mute mb-1">
+                Enter your vehicle's retail value right before the crash (e.g. KBB / NADA value).
+              </p>
+              <input 
+                type="number" 
+                id="vehicle-value" 
+                min="500" 
+                max="500000" 
+                value="25000" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150"
+              />
+            </div>
+
+            <!-- Vehicle Mileage -->
+            <div class="flex flex-col gap-2">
+              <label for="vehicle-mileage" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Vehicle Mileage (Miles)
+              </label>
+              <p class="text-[11px] text-mute mb-1">
+                Enter your car's odometer reading at the time of the collision.
+              </p>
+              <input 
+                type="number" 
+                id="vehicle-mileage" 
+                min="0" 
+                max="300000" 
+                value="35000" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150"
+              />
+            </div>
+
+            <!-- Damage Severity -->
+            <div class="flex flex-col gap-2">
+              <label for="damage-severity" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Damage Severity Level
+              </label>
+              <p class="text-[11px] text-mute mb-1">
+                Select the structural damage extent after repair inspection.
+              </p>
+              <select 
+                id="damage-severity" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150 cursor-pointer"
+              >
+                <option value="0.25">Minor (Bumper scrapes, single body panel replaced, cosmetic only)</option>
+                <option value="0.50" selected>Moderate (Multiple panels damaged, minor frame pull, no airbag)</option>
+                <option value="0.75">Major (Structural frame damage, suspension parts replaced, airbag deployed)</option>
+                <option value="1.00">Severe (Severe chassis distortion, steering assembly repair, structural rebuild)</option>
+                <option value="0.00">None / Negligible (Very minor paint scratch, easily detailed)</option>
+              </select>
+            </div>
+
+          </div>
+
+          <!-- Right Panel: Results (Cols 8-12) -->
+          <div class="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-hairline pt-8 lg:pt-0 lg:pl-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-6">
+              
+              <!-- Title -->
+              <div>
+                <h3 class="text-sm font-semibold uppercase font-mono text-mute mb-1">
+                  Calculation Breakdown
+                </h3>
+                <p class="text-[10px] text-mute font-mono">
+                  Using Industry Standard 17c Formula
+                </p>
+              </div>
+
+              <!-- Metrics -->
+              <div class="space-y-4">
+                
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Base Value:</span>
+                  <span id="output-base-value" class="text-xs font-semibold text-ink font-mono">$25,000</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">10% Maximum Cap:</span>
+                  <span id="output-cap-value" class="text-xs font-semibold text-ink font-mono">$2,500</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Damage Multiplier:</span>
+                  <span id="output-damage-multiplier" class="text-xs font-semibold text-ink font-mono">x 0.50</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Mileage Multiplier:</span>
+                  <span id="output-mileage-multiplier" class="text-xs font-semibold text-ink font-mono">x 0.80</span>
+                </div>
+
+              </div>
+
+              <!-- Final Payout Box -->
+              <div class="p-6 bg-canvas-soft-2/50 border border-hairline rounded-lg text-center relative overflow-hidden transition-colors duration-200">
+                <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-mute font-mono">
+                  Estimated Diminished Value
+                </span>
+                <p id="output-final-claim" class="text-3xl font-extrabold text-ink font-mono tracking-tight mt-2 mb-1">
+                  $1,000
+                </p>
+                <p class="text-[9px] text-mute font-sans">
+                  Loss range estimates depend on professional independent appraisal reports.
+                </p>
+              </div>
+
+            </div>
+
+            <!-- mock consultation CTA -->
+            <div id="consult-box" class="mt-8">
+              <a 
+                href="#florida-appraisal-guide" 
+                class="block w-full text-center py-2.5 bg-link hover:bg-link-hover text-canvas font-medium text-xs rounded transition-colors duration-150 font-mono cursor-pointer"
+              >
+                Learn How to Claim
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Florida Diminished Value Guide Section -->
+      <section id="florida-appraisal-guide" class="py-16 border-t border-hairline bg-canvas transition-colors duration-200 rounded-xl px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="font-sans text-xs md:text-sm text-body leading-relaxed space-y-6">
+          <h2 class="text-2xl font-bold tracking-tight text-ink">
+            How to File a Diminished Value Claim in Florida
+          </h2>
+          <p>
+            Florida law permits car owners to recover "diminished value" compensation after a motor vehicle accident. Even if your vehicle is repaired to pristine cosmetic condition, its trade-in or resale value is permanently lower because it now carries a "wreck record" on services like Carfax. 
+          </p>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            What is the 17c Diminished Value Formula?
+          </h3>
+          <p>
+            Most major auto insurance companies (including State Farm, GEICO, and Progressive) use the <strong>17c formula</strong> to establish a baseline for diminished value negotiations. Originated in a Georgia court case (State Farm v. Mabry), the formula applies a series of caps and modifiers:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-ink">10% Cap:</strong> Insurance companies assert that a vehicle can never lose more than 10% of its total market value due to an accident. This establishes the absolute limit of your claim.
+            </li>
+            <li>
+              <strong class="text-ink">Damage Multiplier:</strong> A multiplier is applied based on the structural repair class: 0.00 for cosmetic blemishes, 0.25 for minor panel repairs, 0.50 for multiple panels, 0.75 for suspension/frame pulls, and 1.00 for severe safety system issues or airbag deployment.
+            </li>
+            <li>
+              <strong class="text-ink">Mileage Multiplier:</strong> Younger vehicles retain more value. The mileage multiplier docks value on a scale: 1.00 (under 20k miles), 0.80 (20k-40k), 0.60 (40k-60k), 0.40 (60k-80k), 0.20 (80k-100k), and 0.00 (over 100k miles).
+            </li>
+          </ul>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Florida Rules & Requirements for Diminished Value
+          </h3>
+          <p>
+            To file a successful diminished value recovery claim in Florida, you must satisfy several legal guidelines:
+          </p>
+          <ul class="list-disc pl-5 space-y-2">
+            <li>
+              <strong class="text-ink">No-Fault / Third-Party Claim:</strong> In Florida, you cannot file a diminished value claim against your own insurance policy (first-party claim) unless you are claiming against an uninsured motorist coverage clause. It must be filed as a third-party tort claim against the at-fault driver's insurance.
+            </li>
+            <li>
+              <strong class="text-ink">Comparative Fault:</strong> Under Florida's modified comparative fault system, you cannot recover if you are found more than 50% responsible. If you are partially at-fault (e.g. 20%), your diminished value claim is docked by that same percentage.
+            </li>
+            <li>
+              <strong class="text-ink">4-Year Statute of Limitations:</strong> Florida Statutes Section 95.11 gives you up to 4 years from the accident date to file a diminished value claim or lawsuit.
+            </li>
+          </ul>
+
+          <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mt-8">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-ink font-mono mb-2">
+              Pro-Tip: Get an Independent Appraisal
+            </h4>
+            <p class="text-[11px] leading-relaxed">
+              Insurance companies use the 17c formula because it minimizes payouts. To counter their low offer, you should hire an independent licensed auto appraiser to inspect your repaired car, run local market comparisons, and issue a certified diminished value appraisal report.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  function calculateDiminishedValue() {
+    const valueInput = document.getElementById("vehicle-value") as HTMLInputElement;
+    const mileageInput = document.getElementById("vehicle-mileage") as HTMLInputElement;
+    const severitySelect = document.getElementById("damage-severity") as HTMLSelectElement;
+
+    if (!valueInput || !mileageInput || !severitySelect) return;
+
+    const value = parseFloat(valueInput.value) || 0;
+    const mileage = parseFloat(mileageInput.value) || 0;
+    const damageMultiplier = parseFloat(severitySelect.value) || 0;
+
+    // 17c Formula Logic
+    const maxCap = value * 0.10;
+
+    // Mileage Multiplier scale
+    let mileageMultiplier = 0.00;
+    if (mileage < 20000) {
+      mileageMultiplier = 1.00;
+    } else if (mileage < 40000) {
+      mileageMultiplier = 0.80;
+    } else if (mileage < 60000) {
+      mileageMultiplier = 0.60;
+    } else if (mileage < 80000) {
+      mileageMultiplier = 0.40;
+    } else if (mileage < 100000) {
+      mileageMultiplier = 0.20;
+    } else {
+      mileageMultiplier = 0.00;
+    }
+
+    const estimatedClaim = maxCap * damageMultiplier * mileageMultiplier;
+
+    // Format outputs
+    const formatUSD = (num: number) => {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(num);
+    };
+
+    const outputBase = document.getElementById("output-base-value");
+    const outputCap = document.getElementById("output-cap-value");
+    const outputDamage = document.getElementById("output-damage-multiplier");
+    const outputMileage = document.getElementById("output-mileage-multiplier");
+    const outputFinal = document.getElementById("output-final-claim");
+
+    if (outputBase) outputBase.textContent = formatUSD(value);
+    if (outputCap) outputCap.textContent = formatUSD(maxCap);
+    if (outputDamage) outputDamage.textContent = `x ${damageMultiplier.toFixed(2)}`;
+    if (outputMileage) outputMileage.textContent = `x ${mileageMultiplier.toFixed(2)}`;
+    if (outputFinal) outputFinal.textContent = formatUSD(estimatedClaim);
+  }
+
+  // Setup Event Listeners
+  const valueInput = document.getElementById("vehicle-value");
+  const mileageInput = document.getElementById("vehicle-mileage");
+  const severitySelect = document.getElementById("damage-severity");
+
+  if (valueInput) valueInput.addEventListener("input", calculateDiminishedValue);
+  if (mileageInput) mileageInput.addEventListener("input", calculateDiminishedValue);
+  if (severitySelect) severitySelect.addEventListener("change", calculateDiminishedValue);
+
+  // Initial Run
+  calculateDiminishedValue();
+</script>

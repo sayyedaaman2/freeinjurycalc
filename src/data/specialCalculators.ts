@@ -139,31 +139,39 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "motorcycle-accident": {
     slug: "motorcycle-accident-settlement-calculator",
-    title: "Motorcycle Accident Settlement Calculator | High Value Claims",
-    description: "Calculate your motorcycle accident settlement range. Learn how severe injuries, road rash, and insurance limits impact rider settlements.",
-    h1: "Motorcycle Accident Settlement Calculator.",
-    intro: "Estimate your motorcycle accident payout. Calibrated for severe rider injuries, road rash, and high liability insurance limits.",
+    title: "Motorcycle Accident Settlement & Compensation Calculator",
+    description: "Estimate your motorcycle injury claim payout instantly. Learn how severe road rash, orthopedic fractures, helmet laws, and insurance limits affect your average motorcycle accident compensation.",
+    h1: "Motorcycle Accident Settlement & Compensation Calculator.",
+    intro: "Calculate a realistic motorcycle accident compensation estimate. Calibrated for severe rider injuries, road rash, and liability policy limits.",
     subtitle: "Motorcycle Injury Settlement Valuation",
     presetSeverity: "4.0",
     presetMedBills: 35000,
     presetTab: "detailed",
     calculatorType: "car-accident",
-    aboutHeading1: "Severity of Motorcycle Injury Claims",
-    aboutContent1: "Motorcyclists lack the physical protection of passenger cars. As a result, motorcycle crashes frequently result in severe orthopedic fractures, road rash, traumatic brain injuries, and long-term disability. These high-severity injuries lead to much higher average medical bills and larger claim values.",
-    aboutHeading2: "Overcoming Insurance Rider Bias",
-    aboutContent2: "Insurance adjusters often hold a biased view that motorcyclists are inherently reckless. Overcoming this prejudice is critical. Accurate police reports, witness statements, and hiring a personal injury attorney help demonstrate that the other driver violated your right of way, preserving your payout.",
+    aboutHeading1: "How is Motorcycle Accident Compensation Calculated?",
+    aboutContent1: "Calculating the value of a motorcycle accident injury claim involves adding up all financial losses (economic damages) and applying an insurance multiplier to account for physical pain, emotional distress, and loss of quality of life (non-economic damages). Because motorcycle riders lack structural protection, crashes often cause severe road rash, bone fractures, and head trauma. This leads to higher-than-average medical bills, making the total compensation claim significantly larger than typical passenger car accident cases.",
+    aboutHeading2: "Key Factors Affecting Motorcycle Injury Claim Payouts",
+    aboutContent2: "Several factors influence the final settlement value of a motorcycle crash: 1. Severity of Injuries: Traumatic brain injuries, complex fractures, and severe road rash requiring skin grafts command higher multipliers (3.0x to 5.0x+). 2. Policy Limits: The at-fault driver's liability limit acts as a cap on your recovery unless commercial coverage is involved. 3. Helmet Laws & Comparative Fault: If your state has a helmet law and you were not wearing one, the insurance adjuster will try to reduce your payout by arguing that you contributed to your own head or neck injuries.",
     faqs: [
       {
         question: "Why do motorcycle accident settlements tend to be larger?",
         answer: "Riders suffer far more severe physical trauma in a crash, leading to high medical bills, significant lost wages, and larger pain and suffering multipliers (usually 3.0x to 5.0x)."
       },
       {
-        question: "What is the average payout for a motorcycle crash?",
+        question: "What is the average compensation for a motorcycle accident?",
         answer: "Due to the severity of injuries, motorcycle accident settlements frequently exceed $50,000 to $150,000+, subject to the at-fault driver's insurance limits."
       },
       {
-        question: "Does wearing a helmet affect my settlement?",
-        answer: "In many states, if you were not wearing a helmet and suffered head or neck injuries, the insurer will argue comparative negligence, which can reduce your compensation."
+        question: "Does wearing a helmet affect my injury claim calculator results?",
+        answer: "In states with mandatory helmet laws, if you were not wearing a helmet and suffered head or neck injuries, the insurer will argue comparative negligence, which can reduce your compensation."
+      },
+      {
+        question: "How does road rash affect my pain and suffering multiplier?",
+        answer: "Road rash is a painful, complex skin injury. Severe road rash that requires debridement, skin grafts, or leaves permanent scarring is treated as a major injury by claim adjusters, justifying a higher pain and suffering multiplier (e.g., 3x to 4x)."
+      },
+      {
+        question: "What if the insurance adjuster blames me for the motorcycle crash?",
+        answer: "Insurers often hold a biased view that motorcyclists are inherently reckless. Overcoming this requires solid evidence: accident photos, police reports, and witness statements proving the other driver violated your right of way."
       }
     ]
   },

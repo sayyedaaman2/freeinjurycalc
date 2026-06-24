@@ -151,5 +151,34 @@ export const blogPosts: BlogPost[] = [
       <h2 class="text-lg font-bold text-ink mt-8 mb-4">3. Punitive Damages: Taxable</h2>
       <p class="mb-4">Punitive damages are awarded in rare cases to punish the defendant for egregious or reckless behavior (such as driving under the influence). Unlike compensatory damages, <strong>punitive damages are always taxable</strong>. You must report them as "Other Income" on your tax return, even if they were awarded in connection with a physical injury claim.</p>
     `
+  },
+  {
+    slug: "does-vermont-have-damage-caps-on-truck-accident-settlements",
+    title: "Does Vermont Have Damage Caps on Truck Accident Settlements?",
+    description: "Learn about Vermont's negligence rules, commercial truck insurance limits, and whether the state places caps on pain and suffering in truck accidents.",
+    date: "June 25, 2026",
+    readTime: "5 min read",
+    category: "Damage Caps",
+    content: `
+      <p class="mb-4">When you or a loved one is involved in a serious collision with a commercial vehicle—such as an 18-wheeler, semi-truck, or delivery box truck—the physical and financial consequences are often catastrophic. In the wake of such a crash, understanding the state laws that govern your recovery is crucial. One of the most common questions injury victims ask is: <strong>does Vermont place statutory limits or caps on truck accident settlement payouts?</strong></p>
+      
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">The Short Answer: No Damage Caps in Vermont</h2>
+      <p class="mb-4">Unlike several other states that limit the amount of non-economic compensation (such as physical pain, emotional suffering, loss of consortium, and lifestyle disruption) a victim can recover, <strong>Vermont does not impose statutory caps on compensatory damages</strong> in personal injury or wrongful death claims resulting from motor vehicle accidents, including commercial truck crashes.</p>
+      
+      <p class="mb-4">This means you are legally entitled to recover the full value of both your economic and non-economic damages, regardless of how high that sum might be, provided you can prove the defendant's liability and the extent of your losses.</p>
+      
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">Understanding Vermont's Shared Fault Rules (51% Bar)</h2>
+      <p class="mb-4">While Vermont doesn't cap your damages, your final compensation check is subject to the state's <strong>51% modified comparative negligence rule</strong> (Vermont Statutes Title 12, Section 1036). Under this standard:</p>
+      <ul class="list-disc pl-6 mb-4 space-y-2">
+        <li>You can recover damages only if your share of fault for the accident is <strong>50% or less</strong>.</li>
+        <li>If you are found <strong>51% or more at fault</strong> for the crash, you are legally barred from recovering any compensation from the other parties.</li>
+        <li>If you qualify for recovery but share a portion of the blame, your total compensation is reduced by your fault share. For example, if your total damages are valued at $200,000 and you are found 10% responsible (e.g., for failing to signal or speed), your final payout will be docked by 10%, leaving you with $180,000.</li>
+      </ul>
+      
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">Commercial Truck Insurance Policy Limits</h2>
+      <p class="mb-4">In standard passenger vehicle crashes, insurance policy limits are often a bottleneck (with minimum limits as low as $25,000 in many states). However, commercial truck accidents involve different insurance standards. Under Federal Motor Carrier Safety Administration (FMCSA) regulations, commercial trucks carrying non-hazardous freight must carry a minimum of <strong>$750,000</strong> in liability insurance, while those carrying hazardous materials must carry up to <strong>$5,000,000</strong>.</p>
+      
+      <p class="mb-4">Because these high commercial policies are available, the lack of damage caps in Vermont allows victims of commercial truck accidents to pursue full, seven-figure settlements or jury verdicts in cases of permanent disability, traumatic brain injury, or wrongful death.</p>
+    `
   }
 ];
