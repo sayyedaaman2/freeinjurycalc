@@ -62,7 +62,7 @@ const sortedStates = Object.values(statesData)
       
       <!-- Shared State Selector (For Quick and State-Specific) -->
       <div id="state-select-container">
-        <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+        <label for="calculator-state" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
           Select Accident State
         </label>
         <select 
@@ -82,7 +82,7 @@ const sortedStates = Object.values(statesData)
       <!-- TAB 1: Quick Estimate Form -->
       <div id="panel-quick" class="tab-panel flex flex-col gap-6">
         <div>
-          <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+          <label for="quick-injury-type" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
             Injury Severity
           </label>
           <select 
@@ -97,7 +97,7 @@ const sortedStates = Object.values(statesData)
         </div>
 
         <div>
-          <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+          <label for="quick-med-bills" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
             Medical Bills ($)
           </label>
           <input 
@@ -113,7 +113,7 @@ const sortedStates = Object.values(statesData)
 
         <div>
           <div class="flex items-center justify-between mb-2">
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+            <label for="quick-fault" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
               Your Share of Fault
             </label>
             <span id="quick-fault-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
@@ -140,7 +140,7 @@ const sortedStates = Object.values(statesData)
       <div id="panel-detailed" class="tab-panel hidden flex flex-col gap-5">
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-med-past" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               Past Medical Bills ($)
             </label>
             <input 
@@ -152,7 +152,7 @@ const sortedStates = Object.values(statesData)
             />
           </div>
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-med-future" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               Est. Future Medicals ($)
             </label>
             <input 
@@ -167,7 +167,7 @@ const sortedStates = Object.values(statesData)
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-wages-past" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               Past Lost Wages ($)
             </label>
             <input 
@@ -179,7 +179,7 @@ const sortedStates = Object.values(statesData)
             />
           </div>
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-wages-future" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               Est. Future Lost Income ($)
             </label>
             <input 
@@ -194,7 +194,7 @@ const sortedStates = Object.values(statesData)
 
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-property" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               Property Damage / Vehicle ($)
             </label>
             <input 
@@ -206,7 +206,7 @@ const sortedStates = Object.values(statesData)
             />
           </div>
           <div>
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
+            <label for="detail-policy-limit" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute mb-2">
               At-Fault Insurance limits ($)
             </label>
             <select 
@@ -225,7 +225,7 @@ const sortedStates = Object.values(statesData)
 
         <div>
           <div class="flex items-center justify-between mb-2">
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+            <label for="detail-multiplier" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
               Pain & Suffering Multiplier
             </label>
             <span id="detail-multiplier-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
@@ -250,7 +250,7 @@ const sortedStates = Object.values(statesData)
 
         <div>
           <div class="flex items-center justify-between mb-2">
-            <label class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+            <label for="detail-fault" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
               Your Share of Fault
             </label>
             <span id="detail-fault-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
