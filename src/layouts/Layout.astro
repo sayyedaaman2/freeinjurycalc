@@ -1,5 +1,7 @@
 ---
 import "../styles/global.css";
+import "@fontsource-variable/inter";
+import "@fontsource-variable/jetbrains-mono";
 
 interface Props {
   title?: string;
@@ -292,14 +294,6 @@ const breadcrumbSchema = {
     <meta property="twitter:description" content={description} />
     <meta property="twitter:image" content={ogImage} />
 
-    <!-- Fonts preconnect and load (optimized for FCP/LCP performance) -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" media="print" onload="this.media='all'" />
-    <noscript>
-      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet" />
-    </noscript>
 
     <!-- Blocking script to initialize theme before painting -->
     <script is:inline>

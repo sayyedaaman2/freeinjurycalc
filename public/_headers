@@ -2,20 +2,31 @@
 https://freeinjurycalc.pages.dev/*
   X-Robots-Tag: noindex
 
-# Global security headers for all paths
+# Global security headers and caching policy for all paths (HTML pages)
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: interest-cohort=()
+  Cache-Control: public, max-age=0, must-revalidate
 
-# Cache static build assets aggressively
+# Cache static build assets aggressively (JS, CSS, fonts, and hashed media assets)
 /_astro/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache media assets
-/favicon*
-  Cache-Control: public, max-age=86400
-/apple-touch-icon*
-  Cache-Control: public, max-age=86400
+# Caching for public directory static assets
+/*.png
+  Cache-Control: public, max-age=604800, must-revalidate
+/*.jpg
+  Cache-Control: public, max-age=604800, must-revalidate
+/*.jpeg
+  Cache-Control: public, max-age=604800, must-revalidate
+/*.webp
+  Cache-Control: public, max-age=604800, must-revalidate
+/*.svg
+  Cache-Control: public, max-age=604800, must-revalidate
+/*.ico
+  Cache-Control: public, max-age=604800, must-revalidate
+/site.webmanifest
+  Cache-Control: public, max-age=86400, must-revalidate
