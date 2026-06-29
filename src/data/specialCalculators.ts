@@ -139,31 +139,31 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "motorcycle-accident": {
     slug: "motorcycle-accident-settlement-calculator",
-    title: "Motorcycle Accident Calculator | Motorcycle Settlement & Payout",
-    description: "Estimate your motorcycle injury claim value. Calculate bike accident settlement, motorcycle crash compensation, and motorcycle accident value.",
-    h1: "Motorcycle Accident Settlement & Compensation Calculator.",
-    intro: "Calculate your motorcycle payout and motorcycle compensation. Use our motorcycle accident calculator to estimate motorcycle accident value for your motorcycle accident claim.",
+    title: "Motorcycle Accident Settlement Calculator | Payout & Claim Estimator",
+    description: "Free online motorcycle accident settlement calculator. Estimate your motorbike accident claim compensation, average injury payouts, and understand how motorcycle risk factors affect your settlement.",
+    h1: "Motorcycle Accident Settlement Calculator",
+    intro: "Calculate your motorcycle injury claim compensation value. Use our free motorcycle accident compensation calculator to estimate payouts, evaluate motorbike accident claim values, and check your settlement range.",
     subtitle: "Motorcycle Injury Settlement Valuation",
     presetSeverity: "4.0",
     presetMedBills: 35000,
     presetTab: "detailed",
     calculatorType: "car-accident",
-    aboutHeading1: "Determining Your Motorcycle Accident Value & Settlement",
-    aboutContent1: "Evaluating a motorcycle accident claim requires assessing severe physical trauma, such as road rash or bone fractures. To secure a fair motorcycle settlement, you must document all medical treatments and lost earnings. Our motorcycle injury calculator integrates these costs to establish a baseline bike accident settlement target and calculate motorcycle crash compensation.",
-    aboutHeading2: "Using a Motorcycle Injury Calculator for Maximum Recovery",
-    aboutContent2: "A motorcycle payout is often higher than a passenger car claim because riders lack crash protection, leading to higher medical costs. Our motorcycle accident calculator helps you assess your motorcycle injury claim and estimate your motorcycle accident value. It applies higher multipliers to reflect the severe physical pain of rider injuries, helping you negotiate a fair motorcycle compensation.",
+    aboutHeading1: "Motorcycle & Motorbike Accident Claim Calculators",
+    aboutContent1: "Filing a motorcycle accident claim (or a motorbike accident claim) involves unique calculations compared to standard car accidents. Because motorcycle riders are exposed to direct impact, injuries like severe fractures, head trauma, and road rash require extensive rehabilitation. Our motorcycle injury claim calculator helps you sum up medical bills, lost wages, and out-of-pocket costs, then applies standard insurer formulas to estimate your potential motorcycle accident settlement value. Using a dedicated motorcycle accident compensation calculator helps ensure you don't undervalue your claim when negotiating with insurance adjusters.",
+    aboutHeading2: "What is the Average Settlement for a Motorcycle Accident?",
+    aboutContent2: "When asking what is the average payout for a motorcycle accident, values typically range from $50,000 to $150,000 for moderate injuries, and can easily exceed $500,000 for severe, permanent disabilities. These high amounts reflect the massive medical expenses and long recovery periods. Additionally, insurers use complex liability math (similar to a motorcycle risk calculator) to evaluate how factors like helmet usage, road conditions, and lane splitting affect comparative negligence, which can reduce your net settlement. Using our motorcycle accident claim calculator helps you estimate these numbers beforehand.",
     faqs: [
       {
-        question: "How does a motorcycle accident calculator estimate my motorcycle settlement?",
-        answer: "Our motorcycle accident calculator sums up your medical bills and lost wages and applies a multiplier for pain and suffering. This determines your estimated motorcycle accident value and motorcycle payout range."
+        question: "How does a motorcycle accident settlement calculator work?",
+        answer: "Our motorcycle accident settlement calculator adds your economic damages (medical treatments, lost income) and applies a pain and suffering multiplier (usually 2x to 5x) to estimate non-economic damages. This generates a realistic motorcycle accident compensation calculator estimation."
       },
       {
-        question: "What is the average motorcycle crash compensation for a motorcycle injury claim?",
-        answer: "The average bike accident settlement is around $50,000 to $150,000 due to the severity of rider injuries. Our motorcycle injury calculator evaluates these claims based on real policy limits."
+        question: "What is the average payout for a motorcycle accident?",
+        answer: "While minor bumps can settle for $10,000 to $25,000, the average settlement for a motorcycle accident with moderate injuries ranges between $50,000 and $150,000. Catastrophic motorbike accident claims involving surgery or brain injuries frequently yield payouts exceeding $300,000."
       },
       {
-        question: "Why is motorcycle compensation usually higher than car claims?",
-        answer: "Motorcycle compensation is typically higher because a motorcycle accident claim involves substantial economic losses and higher pain and suffering, which increases the motorcycle accident value."
+        question: "How do motorcycle risk factors affect my injury claim value?",
+        answer: "Under comparative negligence rules, insurers use a motorcycle risk calculator approach to evaluate liability. If you weren't wearing a helmet, or if road hazards contributed to the crash, your percentage of fault might reduce your total motorcycle injury claim calculator payout. Proving the other driver was fully at fault is key."
       }
     ]
   },
