@@ -1,0 +1,479 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="New York Workers' Comp Settlement Calculator | NYS SLU Chart"
+  description="Estimate your New York workers' compensation Schedule Loss of Use (SLU) settlement value. Auto-calculates body part values, weeks of pay, and benefit caps."
+>
+  <Header />
+
+  <main class="flex-grow py-16 bg-canvas-soft transition-colors duration-200">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      
+      <!-- Header Section -->
+      <div class="text-center max-w-3xl mx-auto mb-12">
+        <a 
+          href="/" 
+          class="inline-flex items-center gap-1 text-xs text-body hover:text-link mb-6 transition-colors duration-150 font-mono"
+        >
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+          </svg>
+          Back to Settlement Calculators
+        </a>
+        <span class="block text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full w-fit mx-auto mb-4">
+          NYS Workers' Compensation Board
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans leading-tight mb-4">
+          New York Workers' Comp SLU Calculator
+        </h1>
+        <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed">
+          If you sustained a permanent injury to an arm, leg, hand, foot, finger, or toe on the job, you may be entitled to a lump-sum <strong>Schedule Loss of Use (SLU)</strong> award. Use our interactive calculator to estimate your payout.
+        </p>
+      </div>
+
+      <!-- Calculator Section -->
+      <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans mb-16">
+        <div class="p-4 bg-violet/10 text-ink text-xs border-b border-hairline flex items-start gap-2.5">
+          <svg class="w-5 h-5 text-violet shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <div>
+            <span class="font-bold">NYS Statutory Compensation:</span> SLU awards are no-fault benefits calculated using NYS Workers' Comp Board schedules. Pain and suffering damages do not apply, but prior temporary disability checks are deducted from the final lump sum.
+          </div>
+        </div>
+
+        <div class="p-6 md:p-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+          <!-- Left Panel: Inputs (Cols 1-7) -->
+          <div class="lg:col-span-7 flex flex-col gap-6">
+            
+            <!-- Injured Body Part Selection -->
+            <div class="flex flex-col gap-2">
+              <label for="body-part" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Injured Body Part
+              </label>
+              <select 
+                id="body-part" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150 cursor-pointer"
+              >
+                <option value="arm" data-weeks="312" selected>Arm (312 Weeks max)</option>
+                <option value="leg" data-weeks="288">Leg (288 Weeks max)</option>
+                <option value="hand" data-weeks="244">Hand (244 Weeks max)</option>
+                <option value="foot" data-weeks="205">Foot (205 Weeks max)</option>
+                <option value="eye" data-weeks="160">Eye (160 Weeks max)</option>
+                <option value="thumb" data-weeks="75">Thumb (75 Weeks max)</option>
+                <option value="index-finger" data-weeks="46">First (Index) Finger (46 Weeks max)</option>
+                <option value="middle-finger" data-weeks="30">Second (Middle) Finger (30 Weeks max)</option>
+                <option value="ring-finger" data-weeks="25">Third (Ring) Finger (25 Weeks max)</option>
+                <option value="little-finger" data-weeks="15">Fourth (Little) Finger (15 Weeks max)</option>
+                <option value="great-toe" data-weeks="38">Great Toe (38 Weeks max)</option>
+                <option value="other-toe" data-weeks="16">Other Toes (16 Weeks max)</option>
+              </select>
+            </div>
+
+            <!-- Accident Date (For rate caps) -->
+            <div class="flex flex-col gap-2">
+              <label for="accident-period" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Date of Injury (For Rate Caps)
+              </label>
+              <select 
+                id="accident-period" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150 cursor-pointer"
+              >
+                <option value="2025-2026" data-cap="1171.46" selected>July 1, 2025 – June 30, 2026 (Max Cap: $1,171.46/wk)</option>
+                <option value="2024-2025" data-cap="1145.43">July 1, 2024 – June 30, 2025 (Max Cap: $1,145.43/wk)</option>
+                <option value="2023-2024" data-cap="1125.46">July 1, 2023 – June 30, 2024 (Max Cap: $1,125.46/wk)</option>
+                <option value="2022-2023" data-cap="1122.81">July 1, 2022 – June 30, 2023 (Max Cap: $1,122.81/wk)</option>
+              </select>
+            </div>
+
+            <!-- Average Weekly Wage -->
+            <div class="flex flex-col gap-2">
+              <label for="weekly-wage" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Pre-Accident Average Weekly Wage ($)
+              </label>
+              <input 
+                type="number" 
+                id="weekly-wage" 
+                min="50" 
+                max="10000" 
+                value="1200" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150"
+              />
+            </div>
+
+            <!-- Impairment Rating Slider -->
+            <div class="flex flex-col gap-2">
+              <div class="flex items-center justify-between">
+                <label for="impairment-rating" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                  Physician's Loss of Use Rating
+                </label>
+                <span id="impairment-val" class="text-xs font-semibold font-mono text-ink bg-canvas-soft-2 border border-hairline px-2 py-0.5 rounded">
+                  25%
+                </span>
+              </div>
+              <input 
+                type="range" 
+                id="impairment-rating" 
+                min="1" 
+                max="100" 
+                value="25" 
+                class="w-full h-2 bg-hairline rounded-lg appearance-none cursor-pointer accent-primary"
+              />
+              <div class="flex justify-between text-[10px] text-mute font-mono mt-1">
+                <span>1% (Minor stiffness)</span>
+                <span>50% (Partial loss)</span>
+                <span>100% (Total loss)</span>
+              </div>
+            </div>
+
+            <!-- Temporary disability paid deduction -->
+            <div class="flex flex-col gap-2">
+              <label for="temp-paid" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+                Temporary Disability Payouts Received ($)
+              </label>
+              <p class="text-[10px] text-mute leading-normal">
+                Enter total wage replacement checks paid to you while you were off work. These will be deducted from your final SLU lump sum.
+              </p>
+              <input 
+                type="number" 
+                id="temp-paid" 
+                min="0" 
+                max="100000" 
+                value="2000" 
+                class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md focus:border-link focus:outline-none text-xs transition-colors duration-150"
+              />
+            </div>
+
+          </div>
+
+          <!-- Right Panel: Results (Cols 8-12) -->
+          <div class="lg:col-span-5 border-t lg:border-t-0 lg:border-l border-hairline pt-8 lg:pt-0 lg:pl-8 flex flex-col justify-between">
+            <div class="flex flex-col gap-6">
+              
+              <div>
+                <h3 class="text-sm font-semibold uppercase font-mono text-mute mb-1">
+                  NYS SLU Settlement Math
+                </h3>
+                <p class="text-[10px] text-mute font-mono">
+                  Calculated based on NYS WCB rules
+                </p>
+              </div>
+
+              <!-- Metrics -->
+              <div class="space-y-3.5">
+                
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Body Part Max Weeks:</span>
+                  <span id="output-max-weeks" class="text-xs font-semibold text-ink font-mono">312 Weeks</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Your Awarded Weeks:</span>
+                  <span id="output-awarded-weeks" class="text-xs font-semibold text-ink font-mono">78 Weeks</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">2/3 Weekly Wage Rate:</span>
+                  <span id="output-weekly-rate" class="text-xs font-semibold text-ink font-mono">$800.00 / wk</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline text-warning-deep dark:text-warning" id="rate-cap-warning-row">
+                  <span class="text-xs font-mono">Rate Capped:</span>
+                  <span id="output-capped-status" class="text-xs font-semibold font-mono">No Cap</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline">
+                  <span class="text-xs text-body font-mono">Gross SLU Payout:</span>
+                  <span id="output-gross-slu" class="text-xs font-semibold text-ink font-mono">$62,400</span>
+                </div>
+
+                <div class="flex justify-between items-center py-2 border-b border-hairline text-error">
+                  <span class="text-xs font-mono">Prior Payments Deducted:</span>
+                  <span id="output-deductions" class="text-xs font-semibold font-mono">-$2,000</span>
+                </div>
+
+              </div>
+
+              <!-- Final Payout Box -->
+              <div class="p-6 bg-violet/5 border border-violet/20 rounded-lg text-center relative overflow-hidden transition-colors duration-200">
+                <div class="absolute inset-0 bg-radial-gradient from-violet/5 to-transparent pointer-events-none"></div>
+                <span class="text-[10px] font-semibold uppercase tracking-wider text-mute font-mono">
+                  Estimated Net SLU Settlement Check
+                </span>
+                <p id="output-net-settlement" class="text-3xl font-extrabold text-ink font-mono tracking-tight mt-2 mb-1">
+                  $60,400
+                </p>
+                <p class="text-[9px] text-mute font-sans">
+                  Estimates depend on permanent impairment ratings certified by authorized doctors.
+                </p>
+              </div>
+
+            </div>
+
+            <div id="consult-box" class="mt-8">
+              <a 
+                href="#nys-slu-guide" 
+                class="block w-full text-center py-2.5 bg-link hover:bg-link-hover text-canvas font-medium text-xs rounded transition-colors duration-150 font-mono cursor-pointer"
+              >
+                Read NYS SLU Payout Guide
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Guide & FAQ section -->
+      <section id="nys-slu-guide" class="py-16 border-t border-hairline bg-canvas transition-colors duration-200 rounded-xl px-6 md:px-12 max-w-4xl mx-auto">
+        <div class="font-sans text-xs md:text-sm text-body leading-relaxed space-y-6">
+          <h2 class="text-2xl font-bold tracking-tight text-ink">
+            New York Workers' Comp Schedule Loss of Use (SLU) Guide
+          </h2>
+          <p>
+            In New York State, workers who suffer permanent injuries to limbs, fingers, toes, vision, or hearing are eligible for a cash award known as a <strong>Schedule Loss of Use (SLU)</strong>. This award represents a lump-sum compensation for the permanent loss of earning capacity caused by your physical impairment. 
+          </p>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            How is a New York SLU Settlement Payout Calculated?
+          </h3>
+          <p>
+            NYS workers' comp settlements for extremities are highly structured and are calculated using three variables:
+          </p>
+          <ol class="list-decimal pl-5 space-y-2">
+            <li>
+              <strong class="text-ink">Statutory Member Weeks:</strong> The New York State Workers' Compensation Law assigns a fixed maximum number of weeks of benefits to each eligible body part (e.g., 312 weeks for an Arm, 244 weeks for a Hand, 288 weeks for a Leg, 205 weeks for a Foot).
+            </li>
+            <li>
+              <strong class="text-ink">Physician's Loss of Use Percentage:</strong> Once you reach Maximum Medical Improvement (MMI), your treating doctor or an Independent Medical Examiner (IME) will measure your range of motion and assign a permanent impairment rating percentage (from 1% to 100%).
+            </li>
+            <li>
+              <strong class="text-ink">Your Weekly Compensation Rate:</strong> This rate is two-thirds (66.67%) of your pre-accident average weekly wage, capped by the state statutory maximum weekly benefit corresponding to the date of your accident.
+            </li>
+          </ol>
+
+          <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg my-8">
+            <h4 class="text-xs font-semibold uppercase tracking-wider text-ink font-mono mb-2">
+              The Math Formula in Practice:
+            </h4>
+            <p class="text-[11px] leading-relaxed mb-4">
+              If an employee injures their hand on the job, averages a $1,200 weekly wage, and is assigned a 25% loss of use by the physician:
+            </p>
+            <ul class="list-disc pl-5 text-[11px] space-y-1">
+              <li>Hand Max Weeks = 244 Weeks</li>
+              <li>Awarded Weeks = 244 Weeks &times; 25% = 61 Weeks</li>
+              <li>Weekly Rate = 2/3 &times; $1,200 = $800</li>
+              <li>Gross SLU Award = 61 Weeks &times; $800 = $48,800</li>
+              <li><strong>Net Lump Sum:</strong> Any prior temporary disability benefits paid while out of work will be deducted from the $48,800 payout.</li>
+            </ul>
+          </div>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            NYS Workers' Comp Schedule Loss of Use Chart
+          </h3>
+          <p>
+            The statutory table below shows the maximum weeks of compensation assigned to each body part under New York State law:
+          </p>
+          
+          <div class="overflow-x-auto my-6 border border-hairline rounded-lg">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-canvas-soft-2 border-b border-hairline font-mono text-ink">
+                  <th class="p-3">Body Part</th>
+                  <th class="p-3">Max Weeks of Compensation (100% Loss)</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-hairline">
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Arm</td>
+                  <td class="p-3">312 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Leg</td>
+                  <td class="p-3">288 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Hand</td>
+                  <td class="p-3">244 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Foot</td>
+                  <td class="p-3">205 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Eye (Vision)</td>
+                  <td class="p-3">160 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Thumb</td>
+                  <td class="p-3">75 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">First (Index) Finger</td>
+                  <td class="p-3">46 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Second (Middle) Finger</td>
+                  <td class="p-3">30 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Third (Ring) Finger</td>
+                  <td class="p-3">25 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Fourth (Little) Finger</td>
+                  <td class="p-3">15 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Great Toe</td>
+                  <td class="p-3">38 Weeks</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Other Toes (each)</td>
+                  <td class="p-3">16 Weeks</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4">
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Do I receive an SLU award if I injured my back or neck?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>No. In New York, the spine (neck, upper, and lower back), brain, heart, and lungs are classified as "non-schedule" injuries. Compensation for these injuries is not based on a week-based body part chart. Instead, it is paid as ongoing weekly benefits determined by your loss of wage-earning capacity (LWEC).</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Can I return to work after getting a Schedule Loss of Use check?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>Yes. Because an SLU award represents compensation for the permanent loss of functional use of a member rather than temporary lost time, you can receive your full SLU payout even if you return to your job at full pay.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                How do prior payments affect my final SLU payout?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>Any temporary total disability (TTD) or temporary partial disability (TPD) wage replacement benefits you received while you were recovering and unable to work are treated as an advance on your final SLU award. They are deducted dollar-for-dollar from your final lump-sum check. If the prior payments exceed the total SLU award, you will not receive an additional payout (but you will not have to pay anything back).</p>
+              </div>
+            </details>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
+
+<script>
+  function calculateNYWorkersComp() {
+    const partSelect = document.getElementById("body-part") as HTMLSelectElement;
+    const periodSelect = document.getElementById("accident-period") as HTMLSelectElement;
+    const wageInput = document.getElementById("weekly-wage") as HTMLInputElement;
+    const impairmentInput = document.getElementById("impairment-rating") as HTMLInputElement;
+    const tempPaidInput = document.getElementById("temp-paid") as HTMLInputElement;
+
+    if (!partSelect || !periodSelect || !wageInput || !impairmentInput || !tempPaidInput) return;
+
+    // Get input values
+    const selectedOption = partSelect.options[partSelect.selectedIndex];
+    const maxWeeks = parseFloat(selectedOption.getAttribute("data-weeks") || "0");
+    const bodyPartName = selectedOption.text.split(" (")[0];
+
+    const periodOption = periodSelect.options[periodSelect.selectedIndex];
+    const maxRateCap = parseFloat(periodOption.getAttribute("data-cap") || "0");
+
+    const wage = parseFloat(wageInput.value) || 0;
+    const impairment = parseFloat(impairmentInput.value) || 0;
+    const tempPaid = parseFloat(tempPaidInput.value) || 0;
+
+    // SLU Calculation
+    const awardedWeeks = maxWeeks * (impairment / 100);
+    const standardWeeklyRate = (2 / 3) * wage;
+    
+    // Apply Cap
+    const isCapped = standardWeeklyRate > maxRateCap;
+    const finalWeeklyRate = Math.min(standardWeeklyRate, maxRateCap);
+
+    const grossSlu = awardedWeeks * finalWeeklyRate;
+    const netSettlement = Math.max(0, grossSlu - tempPaid);
+
+    // Format helper
+    const formatUSD = (num: number) => {
+      return new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+        maximumFractionDigits: 0
+      }).format(num);
+    };
+
+    // Update impairment slider label
+    const impairmentVal = document.getElementById("impairment-val");
+    if (impairmentVal) impairmentVal.textContent = `${impairment}%`;
+
+    // Render results
+    const outputMaxWeeks = document.getElementById("output-max-weeks");
+    const outputAwardedWeeks = document.getElementById("output-awarded-weeks");
+    const outputWeeklyRate = document.getElementById("output-weekly-rate");
+    const outputCappedStatus = document.getElementById("output-capped-status");
+    const rateCapWarningRow = document.getElementById("rate-cap-warning-row");
+    const outputGrossSlu = document.getElementById("output-gross-slu");
+    const outputDeductions = document.getElementById("output-deductions");
+    const outputNet = document.getElementById("output-net-settlement");
+
+    if (outputMaxWeeks) outputMaxWeeks.textContent = `${maxWeeks} Weeks`;
+    if (outputAwardedWeeks) outputAwardedWeeks.textContent = `${awardedWeeks.toFixed(1)} Weeks`;
+    if (outputWeeklyRate) outputWeeklyRate.textContent = `${formatUSD(standardWeeklyRate)} / wk`;
+    if (outputGrossSlu) outputGrossSlu.textContent = formatUSD(grossSlu);
+    if (outputDeductions) outputDeductions.textContent = `-${formatUSD(tempPaid)}`;
+    if (outputNet) outputNet.textContent = formatUSD(netSettlement);
+
+    if (isCapped) {
+      if (outputCappedStatus) outputCappedStatus.textContent = `Capped at ${formatUSD(maxRateCap)}/wk`;
+      if (rateCapWarningRow) rateCapWarningRow.classList.remove("hidden");
+    } else {
+      if (outputCappedStatus) outputCappedStatus.textContent = "No Cap Applied";
+      if (rateCapWarningRow) rateCapWarningRow.classList.add("hidden");
+    }
+  }
+
+  // Set event listeners
+  const partSelect = document.getElementById("body-part");
+  const periodSelect = document.getElementById("accident-period");
+  const wageInput = document.getElementById("weekly-wage");
+  const impairmentInput = document.getElementById("impairment-rating");
+  const tempPaidInput = document.getElementById("temp-paid");
+
+  if (partSelect) partSelect.addEventListener("change", calculateNYWorkersComp);
+  if (periodSelect) periodSelect.addEventListener("change", calculateNYWorkersComp);
+  if (wageInput) wageInput.addEventListener("input", calculateNYWorkersComp);
+  if (impairmentInput) impairmentInput.addEventListener("input", calculateNYWorkersComp);
+  if (tempPaidInput) tempPaidInput.addEventListener("input", calculateNYWorkersComp);
+
+  // Run initial calculation
+  calculateNYWorkersComp();
+</script>

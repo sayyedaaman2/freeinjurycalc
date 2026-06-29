@@ -118,6 +118,7 @@ const breadcrumbNames: Record<string, string> = {
   "motorcycle-accident-settlement-calculator": "Motorcycle Accident Settlement Calculator",
   "truck-accident-settlement-calculator": "Truck Accident Settlement Calculator",
   "florida-diminished-value-calculator": "Florida Diminished Value Calculator",
+  "new-york-workers-comp-settlement-calculator": "New York Workers' Comp Settlement Calculator",
 };
 
 const origin = Astro.site ? Astro.site.origin : "https://freeinjurycalc.com";
@@ -180,7 +181,8 @@ if (segments.length > 0) {
       "slip-and-fall-settlement-calculator",
       "motorcycle-accident-settlement-calculator",
       "truck-accident-settlement-calculator",
-      "florida-diminished-value-calculator"
+      "florida-diminished-value-calculator",
+      "new-york-workers-comp-settlement-calculator"
     ];
     
     if (toolSlugs.includes(firstSegment)) {

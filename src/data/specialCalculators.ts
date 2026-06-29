@@ -256,5 +256,35 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
         answer: "Workplace injury compensation covers all authorized medical treatment, prescription costs, and wage replacement checks. These are the core statutory benefits in a workers compensation claim."
       }
     ]
+  },
+  "new-york-workers-comp": {
+    slug: "new-york-workers-comp-settlement-calculator",
+    title: "New York Workers' Comp Settlement Calculator | NYS SLU & Body Part Values Chart",
+    description: "Calculate your New York workers' comp Schedule Loss of Use (SLU) settlement value. Input body part, percentage loss, and wages to estimate your payout under NYS law.",
+    h1: "New York Workers' Comp Settlement Calculator.",
+    intro: "Estimate your NYS Schedule Loss of Use (SLU) award and body part settlement value. Uses official New York State workers' comp charts and body part weeks schedules.",
+    subtitle: "New York SLU & Body Part Values",
+    presetSeverity: "25%",
+    presetMedBills: 0,
+    presetTab: "quick",
+    calculatorType: "workers-comp",
+    aboutHeading1: "Filing a NY Workers' Comp Claim & Schedule Loss of Use (SLU)",
+    aboutContent1: "A New York Schedule Loss of Use (SLU) award is a lump-sum payment for permanent functional loss of an extremity, vision, or hearing caused by a work accident. Unlike standard personal injury claims, workers' compensation is a no-fault system. You do not need to prove negligence, but general pain and suffering is not covered. An SLU award depends on which body part was injured and the percentage of permanent impairment determined by your doctor.",
+    aboutHeading2: "How the NYS Workers' Comp Body Part Chart and Weeks Work",
+    aboutContent2: "The New York State Workers' Compensation Board sets a maximum number of weeks of benefit payments for each body part. For instance, a 100% loss of use of an Arm equals 312 weeks, a Hand equals 244 weeks, a Leg equals 288 weeks, and a Foot equals 205 weeks. Your final SLU compensation is calculated by multiplying the maximum weeks for the body part by your impairment rating, then multiplying by two-thirds of your average weekly wage (subject to state statutory maximums). Any temporary disability benefits already paid while you were recovering are deducted from the final lump sum.",
+    faqs: [
+      {
+        question: "What is a Schedule Loss of Use (SLU) award in New York?",
+        answer: "An SLU award is a cash benefit paid to NY workers who have permanently lost use of a body part (like an arm, leg, finger, hand, foot, or toe) due to a work injury, after reaching Maximum Medical Improvement."
+      },
+      {
+        question: "How do you calculate a NYS workers' comp settlement amount?",
+        answer: "Multiply the statutory maximum weeks for the body part by the doctor's assigned impairment percentage, then multiply by 2/3 of your Average Weekly Wage (subject to state limits). Subtract any prior temporary payments received."
+      },
+      {
+        question: "Are medical bills deducted from a NY workers' comp settlement?",
+        answer: "No, workers' comp insurance covers 100% of necessary authorized medical treatment. Prior temporary weekly wage replacement payments are deducted from the final SLU lump-sum payout."
+      }
+    ]
   }
 };
