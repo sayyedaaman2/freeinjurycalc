@@ -8,6 +8,7 @@ interface Props {
   description?: string;
   ogImage?: string;
   stateName?: string;
+  customFaqSchema?: any;
 }
 
 const {
@@ -15,6 +16,7 @@ const {
   description = "Estimate your car accident settlement value instantly. Free, no sign-up required. Choose from Quick, Detailed, or State-Specific calculation methods.",
   ogImage = "/og-image.png",
   stateName,
+  customFaqSchema,
 } = Astro.props;
 
 let pathname = Astro.url.pathname;
@@ -79,7 +81,7 @@ const webAppSchema = isHomepage ? {
 } : null;
 
 // JSON-LD FAQ Schema for State pages
-const faqSchema = stateName ? {
+const faqSchema = customFaqSchema || (stateName ? {
   "@context": "https://schema.org",
   "@type": "FAQPage",
   "mainEntity": [
@@ -100,7 +102,7 @@ const faqSchema = stateName ? {
       }
     }
   ]
-} : null;
+} : null);
 
 // Breadcrumb Names mapping for standard static routes
 const breadcrumbNames: Record<string, string> = {

@@ -5,19 +5,16 @@ import Calculator from "../components/Calculator.astro";
 import Educational from "../components/Educational.astro";
 import Footer from "../components/Footer.astro";
 import { statesData, type StateLaw } from "../data/states";
+import { stateLegalDetails } from "../data/stateLegalDetails";
 import {
-  spinNegligence,
-  spinInsurance,
-  spinStatute,
-  spinDamageCap,
-  spinSummary,
-  spinConsultation,
-  spinFAQ1,
-  spinFAQ2,
-  spinFAQ3,
-  spinFAQ4,
-  spinFAQ5
-} from "../utils/textSpinner";
+  generateNegligenceContent,
+  generateInsuranceContent,
+  generateStatuteContent,
+  generateDamageCapContent,
+  generateSummaryContent,
+  generateSettlementExample,
+  generateFAQs
+} from "../utils/stateContentGenerator";
 
 export async function getStaticPaths() {
   return Object.entries(statesData)
@@ -34,6 +31,8 @@ interface Props {
 
 const { stateInfo } = Astro.props;
 const { state } = Astro.params;
+
+const stateDetails = stateLegalDetails[state];
 
 const stateAbbreviations: Record<string, string> = {
   alabama: "AL", alaska: "AK", arizona: "AZ", arkansas: "AR", california: "CA",
@@ -106,52 +105,35 @@ const adjacentStates: Record<string, string[]> = {
 const abbrev = stateAbbreviations[state] || "";
 const relatedSlugs = adjacentStates[state] || [];
 
+// 100% Unique Legal copy compiled dynamically
+const negligenceContent = generateNegligenceContent(stateInfo.name, stateInfo.negligenceRule, stateDetails.statuteRef);
+const insuranceContent = generateInsuranceContent(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.minInsurance);
+const statuteContent = generateStatuteContent(stateInfo.name, stateInfo.statuteOfLimitations, stateDetails.govDeadline);
+const damageCapContent = generateDamageCapContent(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation);
+const summaryContent = generateSummaryContent(stateInfo.name, stateInfo.explanation, stateDetails.majorCity, stateDetails.courtName);
+const settlementExampleContent = generateSettlementExample(state, stateInfo.name, stateInfo.negligenceRule, stateInfo.damageCap, stateDetails.majorCity, stateDetails.courtName);
+const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.statuteOfLimitations, stateInfo.damageCap, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.statuteRef, stateDetails.courtName);
+
 // Custom page title & description for maximum SEO relevance
-const pageTitle = `${stateInfo.name} Car Accident Settlement Calculator 2026 — Free ${abbrev} Estimate`;
-let pageDescription = `Estimate your ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} negligence rules, PIP limits, and pain and suffering caps. 100% free & instant.`;
+const pageTitle = `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
+const pageDescription = `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
-if (state === 'california') {
-  pageDescription = "Calculate your California car accident settlement instantly. Uses CA pure comparative negligence rules. Free, no sign-up required.";
-} else if (state === 'new-york') {
-  pageDescription = "Estimate your New York car accident settlement. Accounts for NY no-fault PIP rules and serious injury thresholds. 100% Free.";
-} else if (state === 'florida') {
-  pageDescription = "Calculate your Florida car accident settlement. Applies FL no-fault insurance rules and 2023 modified comparative fault changes. Free.";
-} else if (state === 'texas') {
-  pageDescription = "Estimate your Texas car accident settlement value. Uses TX 51% modified comparative negligence rules. Instant, free, no sign-up.";
-} else if (state === 'michigan') {
-  pageDescription = "Estimate your Michigan car accident settlement payout. Calibrated for MI no-fault insurance rules, PIP choices, and serious impairment thresholds. 100% free.";
-} else if (state === 'missouri') {
-  pageDescription = "Calculate your Missouri car accident settlement range. Applies MO pure comparative fault rules—recover compensation even if you are mostly at fault.";
-} else if (state === 'virginia') {
-  pageDescription = "Estimate your Virginia car accident settlement value. Accounts for VA's strict pure contributory negligence rules (1% fault bar). Free & instant.";
-} else if (state === 'colorado') {
-  pageDescription = "Calculate your Colorado car accident settlement. Applies CO 50% modified comparative negligence rules and the $642,180 pain and suffering cap.";
-}
-
-let customIntro = `This specialized <strong>${stateInfo.name.toLowerCase()} car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding local statutes of limitations, shared fault negligence systems, and PIP rules is key to calculating your final payout.`;
-
-if (state === 'michigan') {
-  customIntro = `This specialized <strong>Michigan car accident settlement calculator</strong> is calibrated for Michigan's complex no-fault auto insurance laws. To sue the at-fault driver for non-economic pain and suffering in Michigan, your injuries must pass the strict 'serious impairment of body function' threshold. Estimate your payout instantly below.`;
-} else if (state === 'missouri') {
-  customIntro = `This specialized <strong>Missouri car accident settlement calculator</strong> is calibrated for Missouri's pure comparative fault system. In Missouri, you can recover personal injury compensation even if you were 99% responsible for the crash. Calculate your potential payout range instantly below.`;
-} else if (state === 'virginia') {
-  customIntro = `This specialized <strong>Virginia car accident settlement calculator</strong> factors in Virginia's strict pure contributory negligence rule. In Virginia, if you share even 1% of the blame for the crash, you cannot recover any compensation from the other driver. Calculate your potential payout below.`;
-} else if (state === 'colorado') {
-  customIntro = `This specialized <strong>Colorado car accident settlement calculator</strong> integrates Colorado's 50% modified comparative fault rules and the statutory cap on pain and suffering damages ($642,180, which can be doubled to $1.28M under clear proof). Estimate your recovery value below.`;
-}
-
-// Helper formatting inside Astro template block
-function formatUSD(num: number | null) {
-  if (num === null) return "$0";
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(num);
-}
+// Dynamic custom FAQ Page Schema markup
+const customFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name}>
+<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name} customFaqSchema={customFaqSchema}>
   <!-- Header Navigation -->
   <Header />
 
@@ -213,7 +195,9 @@ function formatUSD(num: number | null) {
           Understanding {stateInfo.name} Car Accident Settlement Laws
         </h2>
 
-        <p class="text-xs text-body leading-relaxed mb-8" set:html={customIntro} />
+        <p class="text-xs text-body leading-relaxed mb-8">
+          This specialized <strong>{stateInfo.name.toLowerCase()} car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding local statutes of limitations, shared fault negligence systems, and insurance policy guidelines is key to calculating your final payout.
+        </p>
 
         <!-- Grid of detailed state rules -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
@@ -221,49 +205,47 @@ function formatUSD(num: number | null) {
           <!-- Column 1: Negligence -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              1. Negligence & Shared Fault
+              1. Negligence & Fault Rules under {stateDetails.statuteRef}
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinNegligence(stateInfo.name, stateInfo.negligenceRule)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={negligenceContent} />
           </div>
 
           <!-- Column 2: Insurance Rules -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              2. Insurance & PIP Thresholds
+              2. Insurance Requirements ({stateDetails.minInsurance})
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinInsurance(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={insuranceContent} />
           </div>
 
           <!-- Column 3: Statute of Limitations -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              3. Time Limits (Statute of Limitations)
+              3. Civil Lawsuit Deadlines (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed" set:html={spinStatute(stateInfo.name, stateInfo.statuteOfLimitations)} />
+            <p class="text-xs text-body leading-relaxed" set:html={statuteContent} />
           </div>
 
           <!-- Column 4: Pain and Suffering Caps -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              4. Non-Economic Damage Caps
+              4. Pain & Suffering Valuation
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinDamageCap(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={damageCapContent} />
           </div>
 
         </div>
 
+        <!-- Hypothetical localized example -->
+        <h3 class="text-base font-bold text-ink mt-8 mb-3">
+          Hypothetical Accident Settlement Example in {stateDetails.majorCity}
+        </h3>
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12 text-xs text-body leading-relaxed font-sans" set:html={settlementExampleContent} />
+
         <!-- Plain English Summary Card -->
-        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
+        <div class="p-6 border border-hairline bg-canvas rounded-lg mb-12">
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of {stateInfo.name} Car Accident Claims</h3>
-          <p class="text-xs text-body leading-relaxed">
-            {spinSummary(stateInfo.name, stateInfo.explanation)}
-          </p>
+          <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
 
         <!-- State-Specific FAQ Accordion -->
@@ -272,71 +254,19 @@ function formatUSD(num: number | null) {
             Frequently Asked Questions about {stateInfo.name} Accident Claims
           </h3>
           <div class="space-y-4">
-            
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How is a car accident settlement calculated in {stateInfo.name}?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  {spinFAQ1(stateInfo.name)}
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What happens if I am found partially at fault for the accident in {stateInfo.name}?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ2(stateInfo.name, stateInfo.negligenceRule)} />
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How long do I have to file a lawsuit in {stateInfo.name}?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ3(stateInfo.name, stateInfo.statuteOfLimitations)} />
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Does {stateInfo.name} limit or cap pain and suffering damages?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ4(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)} />
-              </div>
-            </details>
-
-            {stateInfo.noFault && (
-              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            {faqs.map((faq, index) => (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
                 <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                  How do no-fault PIP rules affect my lawsuit in {stateInfo.name}?
+                  {faq.question}
                   <span class="transition group-open:rotate-180 text-mute">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                   </span>
                 </summary>
                 <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                  <p set:html={spinFAQ5(stateInfo.name, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)} />
+                  <p set:html={faq.answer} />
                 </div>
               </details>
-            )}
-
+            ))}
           </div>
         </div>
 
@@ -350,11 +280,11 @@ function formatUSD(num: number | null) {
             Want to maximize your {stateInfo.name} settlement?
           </h3>
           <p class="text-xs text-body leading-relaxed max-w-xl mx-auto mb-6">
-            {spinConsultation(stateInfo.name)}
+            Our calculator estimates basic ballpark ranges. An experienced local personal injury attorney in {stateInfo.name} can review your accident records to identify additional sources of recovery (like umbrella policies, underinsured motorist coverage, or product liability).
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - State: ${stateInfo.name}"
+              href={`mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - State: ${stateInfo.name}`}
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded bg-primary text-on-primary hover:opacity-90 transition-opacity"
             >
               Get Free Case Evaluation
@@ -381,9 +311,13 @@ function formatUSD(num: number | null) {
           {relatedSlugs.slice(0, 4).map((slug) => {
             const relState = statesData[slug];
             if (!relState) return null;
+            const isCanadian = ["ontario", "british-columbia", "alberta"].includes(slug);
+            const linkHref = isCanadian
+              ? (slug === "british-columbia" ? `/canada/british-columbia-icbc-settlement-calculator/` : `/canada/${slug}-car-accident-settlement-calculator/`)
+              : `/${slug}-car-accident-settlement-calculator/`;
             return (
               <a 
-                href={`/${slug}-car-accident-settlement-calculator/`}
+                href={linkHref}
                 class="flex items-center gap-2 p-3 rounded border border-hairline bg-canvas hover:border-link text-xs font-medium text-ink hover:text-link transition-all font-sans"
               >
                 <svg class="w-3.5 h-3.5 text-mute" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -404,4 +338,3 @@ function formatUSD(num: number | null) {
   <!-- Footer Navigation -->
   <Footer />
 </Layout>
-

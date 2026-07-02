@@ -1,4 +1,6 @@
 ---
+import { statesData } from "../data/states";
+import { stateLegalDetails } from "../data/stateLegalDetails";
 import { spinEducationalCard } from "../utils/textSpinner";
 
 interface Props {
@@ -9,7 +11,54 @@ interface Props {
 const { stateName, seedName } = Astro.props;
 const seed = stateName || seedName;
 
+// Match state data dynamically
+const stateKey = stateName
+  ? Object.keys(statesData).find(
+      (key) =>
+        statesData[key].name.toLowerCase() === stateName.toLowerCase() ||
+        statesData[key].name.toLowerCase().includes(stateName.toLowerCase())
+    )
+  : null;
+
+const stateLaw = stateKey ? statesData[stateKey] : null;
+const stateDetails = stateKey ? stateLegalDetails[stateKey] : null;
+
 function getCard(cardNumber: number, defaultTitle: string, defaultText: string) {
+  // Override Card 1 (Liability), 5 (Insurance limits), and 6 (PIP/No-fault) for state pages
+  if (stateLaw && stateDetails) {
+    if (cardNumber === 1) {
+      let ruleText = "";
+      if (stateLaw.negligenceRule === "contributory") {
+        ruleText = `Under ${stateLaw.name}'s strict contributory negligence law (${stateDetails.statuteRef}), any share of fault (even 1%) completely bars you from receiving compensation.`;
+      } else if (stateLaw.negligenceRule === "pure") {
+        ruleText = `Under ${stateLaw.name}'s pure comparative fault system (${stateDetails.statuteRef}), you can recover damages at any percentage of fault, though your payout is reduced by your fault share.`;
+      } else {
+        const threshold = stateLaw.negligenceRule === "modified_50" ? "50%" : "51%";
+        ruleText = `Under ${stateLaw.name}'s modified comparative negligence standard (${stateDetails.statuteRef}), you can only recover if your fault is below ${threshold}. If you meet or exceed this bar, recovery is prohibited.`;
+      }
+      return {
+        title: `${stateLaw.name} Negligence Rules`,
+        text: ruleText
+      };
+    }
+    
+    if (cardNumber === 5) {
+      return {
+        title: `${stateLaw.name} Auto Insurance Limits`,
+        text: `Every motorist in ${stateLaw.name} must maintain minimum liability coverage, currently set at <strong>${stateDetails.minInsurance}</strong>. Your payout from the insurer is capped at these policy limits unless you have underinsured motorist coverage or file a personal claim against the driver's assets.`
+      };
+    }
+    
+    if (cardNumber === 6) {
+      return {
+        title: stateLaw.noFault ? "No-Fault PIP Thresholds" : "At-Fault Tort Claim rules",
+        text: stateLaw.noFault
+          ? `As a no-fault state, ${stateLaw.name} requires Personal Injury Protection (PIP) limits of up to <strong>$${stateLaw.pipLimit.toLocaleString()}</strong>. You cannot file a lawsuit against the other driver unless you meet statutory verbal or medical thresholds.`
+          : `${stateLaw.name} is an at-fault (tort) state. There is no PIP requirement to bring a civil action, allowing you to seek economic and non-economic damages from the negligent driver's policy immediately.`
+      };
+    }
+  }
+
   if (seed) {
     return spinEducationalCard(seed, cardNumber, defaultTitle, defaultText);
   }
@@ -29,7 +78,7 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
       </h2>
       <p class="text-sm text-body font-sans leading-relaxed">
         {stateName 
-          ? `Car accident settlements in ${stateName} are determined by key legal guidelines, financial evidence, and insurance policy limitations. Here are the six core pillars that govern your claim.`
+          ? `Car accident claims in ${stateName} are determined by key legal guidelines, financial evidence, and insurance policy limitations. Here are the six core pillars that govern your case.`
           : seedName
           ? `Evaluating compensation for ${seedName.toLowerCase()} depends on standard diagnostic evidence, personal financial impact, and insurance coverage constraints.`
           : "Car accident settlements are not random. They are calculated based on concrete evidence, financial losses, and local state laws. Here are the five key pillars that decide the value of your claim."}
@@ -50,7 +99,7 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
         <h3 class="text-base font-semibold text-ink font-sans mb-2">
           {getCard(1, "State Negligence Rules", "").title}
         </h3>
-        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(1, "", "Your compensation is reduced directly by your percentage of fault. In <strong>contributory negligence</strong> states (like MD, VA), even 1% fault bars your recovery entirely. In <strong>modified comparative</strong> states (like TX, FL), you are barred if your fault exceeds 50% or 51%.").text} />
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(1, "", "Your compensation is reduced directly by your percentage of fault. In contributory negligence states, even 1% fault bars your recovery entirely.").text} />
       </div>
 
       <!-- Card 2: Medical Treatment -->
@@ -106,7 +155,7 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
         <h3 class="text-base font-semibold text-ink font-sans mb-2">
           {getCard(5, "At-Fault Insurance Limits", "").title}
         </h3>
-        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(5, "", "This is a major real-world bottleneck. An insurance company is only legally required to pay up to their policy's liability limits. If the at-fault driver has a minimum state policy (e.g., $15,000 in CA), recovering damages beyond that limit is extremely difficult.").text} />
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(5, "", "Payouts are practically capped by the at-fault driver's insurance policy limits. Even if your damages are high, recovering beyond the insurer's liability maximum is difficult.").text} />
       </div>
 
       <!-- Card 6: No-Fault Insurance (PIP) -->
@@ -120,7 +169,7 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
         <h3 class="text-base font-semibold text-ink font-sans mb-2">
           {getCard(6, "PIP & Tort Thresholds", "").title}
         </h3>
-        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(6, "", "In no-fault states (like NY, FL, MA), you must claim medical costs from your own PIP insurance. You cannot sue the other driver for pain and suffering unless your injuries meet a verbal threshold or your medical bills exceed a state monetary threshold.").text} />
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(6, "", "In no-fault states, you must claim medical costs from your own PIP insurance first.").text} />
       </div>
       
     </div>

@@ -5,27 +5,67 @@ import Calculator from "../../components/Calculator.astro";
 import Educational from "../../components/Educational.astro";
 import Footer from "../../components/Footer.astro";
 import { statesData } from "../../data/states";
+import { stateLegalDetails } from "../../data/stateLegalDetails";
+import {
+  generateNegligenceContent,
+  generateInsuranceContent,
+  generateStatuteContent,
+  generateDamageCapContent,
+  generateSummaryContent,
+  generateSettlementExample,
+  generateFAQs
+} from "../../utils/stateContentGenerator";
 
 const stateInfo = statesData.alberta;
 const state = "alberta";
 
+const stateDetails = stateLegalDetails[state];
+
+// 100% Unique Legal copy compiled dynamically
+const negligenceContent = generateNegligenceContent(stateInfo.name, stateInfo.negligenceRule, stateDetails.statuteRef);
+const insuranceContent = generateInsuranceContent(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.minInsurance);
+const statuteContent = generateStatuteContent(stateInfo.name, stateInfo.statuteOfLimitations, stateDetails.govDeadline);
+const damageCapContent = generateDamageCapContent(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation);
+const summaryContent = generateSummaryContent(stateInfo.name, stateInfo.explanation, stateDetails.majorCity, stateDetails.courtName);
+const settlementExampleContent = generateSettlementExample(state, stateInfo.name, stateInfo.negligenceRule, stateInfo.damageCap, stateDetails.majorCity, stateDetails.courtName);
+
+// Custom FAQs for Alberta
+const faqs = [
+  {
+    question: "What is the minor injury cap in Alberta for 2026?",
+    answer: "For accidents occurring in 2026, the pain and suffering cap for minor injuries (such as sprains, minor whiplash strains) is $6,306. This cap is adjusted annually for inflation. However, it does not apply to claims for serious permanent impairments, lost income, or out-of-pocket medical care expenses."
+  },
+  {
+    question: "What does Alberta's Section B cover?",
+    answer: "Section B is a mandatory no-fault accident benefit in every Alberta auto policy. Regardless of who caused the collision, it covers medical and rehabilitation expenses up to $50,000 for up to 2 years, along with weekly income replacement benefits."
+  },
+  {
+    question: "Is Alberta shifting to a no-fault auto insurance system?",
+    answer: "Yes. The Alberta government has announced a transition to a care-first, no-fault auto insurance model scheduled to take effect on January 1, 2027. However, accidents occurring prior to this transition are still governed by the comparative fault tort system, preserving the right to sue."
+  }
+];
+
 // Custom page title & description for Alberta Canada
 const pageTitle = "Alberta Car Accident Settlement Calculator | AB Payouts 2026";
-const pageDescription = "Calculate your Alberta car accident settlement payout. Applies AB Section B benefits and the 2026 minor injury cap ($6,306). Free.";
+const pageDescription = `Calculate your Alberta car accident settlement payout. Applies AB Section B benefits and the 2026 minor injury cap ($6,306) under ${stateDetails.statuteRef}.`;
 
 const relatedSlugs = ["ontario", "british-columbia", "montana", "north-dakota"];
 
-function formatUSD(num: number | null) {
-  if (num === null) return "$0";
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(num);
-}
+const customFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name}>
+<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name} customFaqSchema={customFaqSchema}>
   <!-- Header Navigation -->
   <Header />
 
@@ -97,11 +137,9 @@ function formatUSD(num: number | null) {
           <!-- Column 1: Negligence -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              1. Negligence & Shared Fault
+              1. Negligence & Fault Rules under {stateDetails.statuteRef}
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              Alberta follows a pure comparative negligence model. If you share fault for the accident, your final settlement payout is reduced in direct proportion to your percentage of liability. For instance, if you are 25% at fault, your total payout is reduced by 25%. You can still recover compensation even if you are mostly at fault.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={negligenceContent} />
           </div>
 
           <!-- Column 2: Section B Accident Benefits -->
@@ -109,39 +147,37 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               2. Section B Benefits
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              Every auto policy in Alberta includes mandatory Section B accident benefits. Regardless of fault, Section B covers up to <strong>$50,000</strong> of necessary medical and rehabilitation treatment expenses within 2 years of the crash, as well as modest weekly disability/lost wage checks.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={insuranceContent} />
           </div>
 
           <!-- Column 3: Statute of Limitations -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              3. Time Limits (Statute of Limitations)
+              3. Civil Claim Deadlines (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              In Alberta, the standard statute of limitations for personal injury claims resulting from a motor vehicle accident is <strong>2 years</strong>. You must either settle your claim or file a formal lawsuit in the Alberta Court of King's Bench within 2 years of the crash date.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={statuteContent} />
           </div>
 
-          <!-- Column 4: The 2026 Minor Injury Cap -->
+          <!-- Column 4: The Minor Injury Cap -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               4. Pain & Suffering Minor Injury Cap
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              Alberta's Minor Injury Regulation (MIR) limits general non-economic damages (pain and suffering) for minor soft-tissue injuries. For accidents occurring in 2026, this cap is set at <strong>$6,306</strong>. This cap is adjusted annually for inflation. However, it does not limit claims for wage loss, out-of-pocket costs, or serious permanent impairments.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={damageCapContent} />
           </div>
 
         </div>
 
+        <!-- Hypothetical localized example -->
+        <h3 class="text-base font-bold text-ink mt-8 mb-3">
+          Hypothetical Accident Settlement Example in {stateDetails.majorCity}
+        </h3>
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12 text-xs text-body leading-relaxed font-sans" set:html={settlementExampleContent} />
+
         <!-- Plain English Summary Card -->
-        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
+        <div class="p-6 border border-hairline bg-canvas rounded-lg mb-12">
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of Alberta Accident Claims</h3>
-          <p class="text-xs text-body leading-relaxed">
-            {stateInfo.explanation} Note that insurers will frequently attempt to classify injuries (such as whiplash WAD II or chronic muscle strains) under the minor injury cap to limit their payouts. If your injury results in a serious impairment—meaning it prevents you from working or participating in normal activities on a permanent or long-term basis—you can bypass the cap and seek full, uncapped general damages.
-          </p>
+          <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
 
         <!-- Province-Specific FAQ Accordion -->
@@ -150,49 +186,19 @@ function formatUSD(num: number | null) {
             Frequently Asked Questions about Alberta Accident Claims
           </h3>
           <div class="space-y-4">
-            
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What is the minor injury cap in Alberta for 2026?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  For accidents occurring in 2026, the cap on pain and suffering damages for minor injuries is $6,306. Minor injuries include simple sprains, strains, and whiplash-associated disorders (WAD I and II) that resolve without causing permanent physical impairment.
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What does Alberta's Section B cover?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  Section B is a no-fault insurance coverage in Alberta that pays for medical bills, dental care, physical therapy, chiropractic treatments, and prescriptions up to a limit of $50,000 (or for up to 2 years, whichever comes first). It also provides basic disability income replacement checks.
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Is Alberta shifting to a no-fault auto insurance system?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  Yes. Alberta has announced plans to transition to a "care-first" no-fault insurance model scheduled to take effect on January 1, 2027. However, accidents occurring in 2026 remain governed by the current tort-based comparative fault system, preserving the right to sue.
-                </p>
-              </div>
-            </details>
-
+            {faqs.map((faq, index) => (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
+                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                  {faq.question}
+                  <span class="transition group-open:rotate-180 text-mute">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </span>
+                </summary>
+                <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                  <p set:html={faq.answer} />
+                </div>
+              </details>
+            ))}
           </div>
         </div>
 

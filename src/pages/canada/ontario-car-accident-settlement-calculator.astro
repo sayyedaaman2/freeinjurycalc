@@ -5,40 +5,52 @@ import Calculator from "../../components/Calculator.astro";
 import Educational from "../../components/Educational.astro";
 import Footer from "../../components/Footer.astro";
 import { statesData } from "../../data/states";
+import { stateLegalDetails } from "../../data/stateLegalDetails";
 import {
-  spinNegligence,
-  spinInsurance,
-  spinStatute,
-  spinDamageCap,
-  spinSummary,
-  spinConsultation,
-  spinFAQ1,
-  spinFAQ2,
-  spinFAQ3,
-  spinFAQ4,
-  spinFAQ5
-} from "../../utils/textSpinner";
+  generateNegligenceContent,
+  generateInsuranceContent,
+  generateStatuteContent,
+  generateDamageCapContent,
+  generateSummaryContent,
+  generateSettlementExample,
+  generateFAQs
+} from "../../utils/stateContentGenerator";
 
 const stateInfo = statesData.ontario;
 const state = "ontario";
 
+const stateDetails = stateLegalDetails[state];
+
+// 100% Unique Legal copy compiled dynamically
+const negligenceContent = generateNegligenceContent(stateInfo.name, stateInfo.negligenceRule, stateDetails.statuteRef);
+const insuranceContent = generateInsuranceContent(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.minInsurance);
+const statuteContent = generateStatuteContent(stateInfo.name, stateInfo.statuteOfLimitations, stateDetails.govDeadline);
+const damageCapContent = generateDamageCapContent(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation);
+const summaryContent = generateSummaryContent(stateInfo.name, stateInfo.explanation, stateDetails.majorCity, stateDetails.courtName);
+const settlementExampleContent = generateSettlementExample(state, stateInfo.name, stateInfo.negligenceRule, stateInfo.damageCap, stateDetails.majorCity, stateDetails.courtName);
+const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.statuteOfLimitations, stateInfo.damageCap, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.statuteRef, stateDetails.courtName);
+
 // Custom page title & description for Ontario Canada
 const pageTitle = "Ontario Car Accident Settlement Calculator | ON Claims 2026";
-const pageDescription = "Calculate your Ontario car accident settlement payout. Learn about SABS no-fault benefits, pain and suffering deductibles, and car accident settlements in Ontario.";
+const pageDescription = `Calculate your Ontario car accident settlement payout. Applies comparative fault negligence rules under ${stateDetails.statuteRef}, SABS accident benefits, and statutory deductibles in Toronto and ON.`;
 
 const relatedSlugs = ["british-columbia", "alberta", "new-york", "michigan"];
 
-function formatUSD(num: number | null) {
-  if (num === null) return "$0";
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(num);
-}
+const customFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name}>
+<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name} customFaqSchema={customFaqSchema}>
   <!-- Header Navigation -->
   <Header />
 
@@ -110,11 +122,9 @@ function formatUSD(num: number | null) {
           <!-- Column 1: Negligence -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              1. Negligence & Shared Fault
+              1. Negligence & Fault Rules under {stateDetails.statuteRef}
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinNegligence(stateInfo.name, stateInfo.negligenceRule)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={negligenceContent} />
           </div>
 
           <!-- Column 2: Insurance Rules -->
@@ -122,37 +132,37 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               2. Insurance & SABS Thresholds
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinInsurance(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={insuranceContent} />
           </div>
 
           <!-- Column 3: Statute of Limitations -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              3. Time Limits (Statute of Limitations)
+              3. Civil Lawsuit Deadlines (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed" set:html={spinStatute(stateInfo.name, stateInfo.statuteOfLimitations)} />
+            <p class="text-xs text-body leading-relaxed" set:html={statuteContent} />
           </div>
 
           <!-- Column 4: Pain and Suffering Caps -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              4. Non-Economic Damage Caps & Deductibles
+              4. Pain & Suffering Valuation
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              {spinDamageCap(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)}
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={damageCapContent} />
           </div>
 
         </div>
 
+        <!-- Hypothetical localized example -->
+        <h3 class="text-base font-bold text-ink mt-8 mb-3">
+          Hypothetical Accident Settlement Example in {stateDetails.majorCity}
+        </h3>
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12 text-xs text-body leading-relaxed font-sans" set:html={settlementExampleContent} />
+
         <!-- Plain English Summary Card -->
-        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
+        <div class="p-6 border border-hairline bg-canvas rounded-lg mb-12">
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of Ontario Car Accident Claims</h3>
-          <p class="text-xs text-body leading-relaxed">
-            {spinSummary(stateInfo.name, stateInfo.explanation)}
-          </p>
+          <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
 
         <!-- State-Specific FAQ Accordion -->
@@ -161,71 +171,19 @@ function formatUSD(num: number | null) {
             Frequently Asked Questions about Ontario Accident Claims
           </h3>
           <div class="space-y-4">
-            
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How is a car accident settlement calculated in Ontario?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  {spinFAQ1(stateInfo.name)}
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What happens if I am found partially at fault for the accident in Ontario?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ2(stateInfo.name, stateInfo.negligenceRule)} />
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How long do I have to file a lawsuit in Ontario?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ3(stateInfo.name, stateInfo.statuteOfLimitations)} />
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Does Ontario limit or cap pain and suffering damages?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ4(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)} />
-              </div>
-            </details>
-
-            {stateInfo.noFault && (
-              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            {faqs.map((faq, index) => (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
                 <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                  How do no-fault SABS rules affect my lawsuit in Ontario?
+                  {faq.question}
                   <span class="transition group-open:rotate-180 text-mute">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                   </span>
                 </summary>
                 <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                  <p set:html={spinFAQ5(stateInfo.name, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)} />
+                  <p set:html={faq.answer} />
                 </div>
               </details>
-            )}
-
+            ))}
           </div>
         </div>
 
@@ -239,11 +197,11 @@ function formatUSD(num: number | null) {
             Want to maximize your Ontario settlement?
           </h3>
           <p class="text-xs text-body leading-relaxed max-w-xl mx-auto mb-6">
-            {spinConsultation(stateInfo.name)}
+            Our calculator estimates basic ballpark ranges. An experienced local personal injury attorney in Ontario can review your accident records to identify additional sources of recovery (like umbrella policies, underinsured motorist coverage, or product liability).
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - Province: Ontario"
+              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - State: Ontario"
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded bg-primary text-on-primary hover:opacity-90 transition-opacity"
             >
               Get Free Case Evaluation
@@ -264,10 +222,10 @@ function formatUSD(num: number | null) {
     <section class="py-12 border-t border-hairline bg-canvas-soft-2 transition-colors duration-200">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
         <h3 class="text-xs font-semibold uppercase tracking-wider text-mute font-mono mb-4 text-center sm:text-left">
-          Related Calculators
+          Related State Calculators
         </h3>
         <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
-          {relatedSlugs.map((slug) => {
+          {relatedSlugs.slice(0, 4).map((slug) => {
             const relState = statesData[slug];
             if (!relState) return null;
             const isCanadian = ["ontario", "british-columbia", "alberta"].includes(slug);

@@ -5,40 +5,67 @@ import Calculator from "../../components/Calculator.astro";
 import Educational from "../../components/Educational.astro";
 import Footer from "../../components/Footer.astro";
 import { statesData } from "../../data/states";
+import { stateLegalDetails } from "../../data/stateLegalDetails";
 import {
-  spinNegligence,
-  spinInsurance,
-  spinStatute,
-  spinDamageCap,
-  spinSummary,
-  spinConsultation,
-  spinFAQ1,
-  spinFAQ2,
-  spinFAQ3,
-  spinFAQ4,
-  spinFAQ5
-} from "../../utils/textSpinner";
+  generateNegligenceContent,
+  generateInsuranceContent,
+  generateStatuteContent,
+  generateDamageCapContent,
+  generateSummaryContent,
+  generateSettlementExample,
+  generateFAQs
+} from "../../utils/stateContentGenerator";
 
 const stateInfo = statesData["british-columbia"];
 const state = "british-columbia";
 
+const stateDetails = stateLegalDetails[state];
+
+// 100% Unique Legal copy compiled dynamically
+const negligenceContent = generateNegligenceContent(stateInfo.name, stateInfo.negligenceRule, stateDetails.statuteRef);
+const insuranceContent = generateInsuranceContent(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.minInsurance);
+const statuteContent = generateStatuteContent(stateInfo.name, stateInfo.statuteOfLimitations, stateDetails.govDeadline);
+const damageCapContent = generateDamageCapContent(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation);
+const summaryContent = generateSummaryContent(stateInfo.name, stateInfo.explanation, stateDetails.majorCity, stateDetails.courtName);
+const settlementExampleContent = generateSettlementExample(state, stateInfo.name, stateInfo.negligenceRule, stateInfo.damageCap, stateDetails.majorCity, stateDetails.courtName);
+
+// Custom FAQs for B.C. Enhanced Care
+const faqs = [
+  {
+    question: "Can I sue for pain and suffering in British Columbia?",
+    answer: "No. Under British Columbia's Enhanced Care no-fault system, traditional lawsuits for non-economic pain and suffering are barred for B.C. residents. The only exception is if the at-fault driver is convicted of a specific criminal code offense (like street racing or impaired driving). Otherwise, medical treatment is covered directly, and lost wages are replaced under statutory caps."
+  },
+  {
+    question: "What does the ICBC settlement calculator estimate?",
+    answer: "Because tort lawsuits are barred, this calculator estimates your statutory no-fault benefits, including 100% of medically necessary rehabilitation and physiotherapy expenses, along with up to 90% wage replacement for lost income (subject to ICBC's maximum annual wage threshold)."
+  },
+  {
+    question: "How much does ICBC pay for permanent impairment?",
+    answer: "If you sustain a permanent impairment (such as loss of limb mobility or permanent cognitive deficits) due to a crash, you may qualify for a lump-sum impairment payout. The benefit is calculated based on a clinical impairment percentage rating up to a maximum statutory limit of over $260,000."
+  }
+];
+
 // Custom page title & description for British Columbia Canada
 const pageTitle = "ICBC Settlement Calculator | British Columbia No-Fault Payouts";
-const pageDescription = "Use the British Columbia ICBC settlement calculator. Learn about Enhanced Care no-fault benefits, income replacement, and permanent impairment schedules. Free.";
+const pageDescription = `Use the British Columbia ICBC settlement calculator. Learn about Enhanced Care no-fault benefits, income replacement, and permanent impairment schedules under ${stateDetails.statuteRef}.`;
 
 const relatedSlugs = ["ontario", "alberta", "washington", "oregon"];
 
-function formatUSD(num: number | null) {
-  if (num === null) return "$0";
-  return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0
-  }).format(num);
-}
+const customFaqSchema = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqs.map((faq) => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
 ---
 
-<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name}>
+<Layout title={pageTitle} description={pageDescription} stateName={stateInfo.name} customFaqSchema={customFaqSchema}>
   <!-- Header Navigation -->
   <Header />
 
@@ -110,11 +137,9 @@ function formatUSD(num: number | null) {
           <!-- Column 1: Negligence -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              1. Negligence & Fault Rules
+              1. Negligence & Fault Rules under {stateDetails.statuteRef}
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              British Columbia operates under a pure no-fault insurance system for personal injuries. However, ICBC still determines fault for vehicle property damage and premium adjustments. If you are found at fault, your insurance rates may rise, but your access to medical treatment and wage replacement benefits remains unchanged.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={negligenceContent} />
           </div>
 
           <!-- Column 2: Insurance Rules -->
@@ -122,19 +147,15 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               2. Enhanced Accident Care Benefits
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              Under Enhanced Care, medical and rehabilitation benefits are care-based and practically unlimited based on medical necessity. Approved treatments (such as physiotherapy, chiropractic care, and psychological counseling) are covered directly, so you don't pay out of pocket.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={insuranceContent} />
           </div>
 
           <!-- Column 3: Statute of Limitations -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              3. Time Limits (Statute of Limitations)
+              3. Civil Claim Deadlines (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              You must report your accident to ICBC promptly. In British Columbia, the standard time limit to file a claim for Enhanced Accident Benefits is <strong>2 years</strong> from the date of the accident. Missing this window can result in the loss of all medical and wage benefits.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={statuteContent} />
           </div>
 
           <!-- Column 4: Pain and Suffering Laws -->
@@ -142,19 +163,21 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               4. Pain & Suffering Limitations
             </h3>
-            <p class="text-xs text-body leading-relaxed">
-              Under the Enhanced Care model, the right to sue an at-fault driver for general pain and suffering is <strong>eliminated</strong> for all B.C. residents. The only exception is if the at-fault driver is convicted of a specific criminal offence related to the crash (e.g., impaired driving). Instead, permanent impairments receive structured lump-sum payouts.
-            </p>
+            <p class="text-xs text-body leading-relaxed" set:html={damageCapContent} />
           </div>
 
         </div>
 
+        <!-- Hypothetical localized example -->
+        <h3 class="text-base font-bold text-ink mt-8 mb-3">
+          Enhanced Care Benefit Structure in {stateDetails.majorCity}
+        </h3>
+        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12 text-xs text-body leading-relaxed font-sans" set:html={settlementExampleContent} />
+
         <!-- Plain English Summary Card -->
-        <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
+        <div class="p-6 border border-hairline bg-canvas rounded-lg mb-12">
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of BC ICBC Accident Payouts</h3>
-          <p class="text-xs text-body leading-relaxed">
-            {stateInfo.explanation} If you suffer a permanent impairment (such as loss of limb function or severe cognitive damage), you are eligible for a lump-sum impairment payment of up to approximately $260,000 depending on the percentage rating assigned by your doctor. Income replacement is paid at 90% of your net earnings, up to a maximum limit (currently around $109,000 gross annual income, adjusted yearly).
-          </p>
+          <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
 
         <!-- Province-Specific FAQ Accordion -->
@@ -163,49 +186,19 @@ function formatUSD(num: number | null) {
             Frequently Asked Questions about ICBC Claims
           </h3>
           <div class="space-y-4">
-            
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Can I sue for pain and suffering in British Columbia?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  No. B.C.'s Enhanced Care model has barred general lawsuits for pain and suffering. Instead, ICBC provides care-based accident benefits directly. Lawsuits are restricted to extreme scenarios involving criminal charges, such as street racing or driving under the influence.
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What does the ICBC settlement calculator estimate?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  Because general damages are barred, our calculator estimates the economic benefits you are eligible to recover, including 100% medical treatment coverage and up to 90% income replacement for lost wages (based on 2/3 of weekly wages up to B.C. maximum caps).
-                </p>
-              </div>
-            </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How much does ICBC pay for permanent impairment?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p>
-                  If a medical professional confirms you have sustained a permanent impairment, you are entitled to a lump-sum payout. The amount depends on the injury rating, ranging from a few thousand dollars for minor permanent impairments up to a maximum statutory cap of over $260,000 for catastrophic impairment.
-                </p>
-              </div>
-            </details>
-
+            {faqs.map((faq, index) => (
+              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open={index === 0}>
+                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                  {faq.question}
+                  <span class="transition group-open:rotate-180 text-mute">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                  </span>
+                </summary>
+                <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
+                  <p set:html={faq.answer} />
+                </div>
+              </details>
+            ))}
           </div>
         </div>
 
