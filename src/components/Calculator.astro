@@ -19,7 +19,7 @@ const {
 
 // Sort states for the dropdowns
 const sortedStates = Object.values(statesData)
-  .filter((state) => state.slug !== "ontario")
+  .filter((state) => !["ontario", "british-columbia", "alberta"].includes(state.slug))
   .sort((a, b) => a.name.localeCompare(b.name));
 ---
 <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans">
@@ -73,8 +73,8 @@ const sortedStates = Object.values(statesData)
           {sortedStates.map((state) => (
             <option value={state.slug} selected={state.slug === preselectedState}>{state.name}</option>
           ))}
-          {preselectedState === 'ontario' && (
-            <option value="ontario" selected>{statesData.ontario.name}</option>
+          {preselectedState && ["ontario", "british-columbia", "alberta"].includes(preselectedState) && (
+            <option value={preselectedState} selected>{statesData[preselectedState].name}</option>
           )}
         </select>
       </div>
@@ -714,7 +714,7 @@ const sortedStates = Object.values(statesData)
       }
       stateLawNoFault.textContent = pipText;
       
-      stateLawCaps.textContent = state.damageCap 
+      stateLawCaps.textContent = state.damageCap !== null 
         ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
         : "No caps on general pain and suffering damages for car accident claims.";
 
@@ -750,7 +750,7 @@ const sortedStates = Object.values(statesData)
       let painSuffering = medicalBills * multiplier;
       
       // Apply damage caps on pain and suffering if state enforces them
-      if (state.damageCap && painSuffering > state.damageCap) {
+      if (state.damageCap !== null && painSuffering > state.damageCap) {
         painSuffering = state.damageCap;
       }
       

@@ -688,5 +688,32 @@ export const statesData: Record<string, StateLaw> = {
     damageCapExplanation: "Ontario has an inflation-adjusted cap on pain and suffering (non-economic) damages of around $450,000, and a statutory deductible of approximately $46,000 for awards that fall below $150,000.",
     statuteOfLimitations: 2,
     explanation: "Ontario operates under a no-fault insurance system governed by the Statutory Accident Benefits Schedule (SABS). You claim accident benefits directly from your own insurer, regardless of fault. For pain and suffering lawsuits against the at-fault driver, injuries must meet a verbal threshold of serious and permanent impairment, and non-economic damages are subject to a statutory deductible of about $46,000."
+  },
+  "british-columbia": {
+    name: "British Columbia (Canada)",
+    slug: "british-columbia",
+    negligenceRule: "pure",
+    noFault: true,
+    pipLimit: 999999,
+    verbalThreshold: true,
+    monetaryThreshold: null,
+    damageCap: 0,
+    damageCapExplanation: "Under British Columbia's ICBC Enhanced Care model, lawsuits for pain and suffering are generally eliminated. In place of lawsuits, victims receive structured care benefits and lump-sum payouts for permanent impairment according to a regulatory schedule.",
+    statuteOfLimitations: 2,
+    explanation: "British Columbia operates under a pure no-fault insurance model called Enhanced Care. You cannot sue an at-fault driver for general damages like pain and suffering. Instead, ICBC provides care-based benefits including unlimited medical rehabilitation support, income replacement of up to 90% of net income, and scheduled lump sums for permanent impairments."
+  },
+  alberta: {
+    name: "Alberta (Canada)",
+    slug: "alberta",
+    negligenceRule: "pure",
+    noFault: false,
+    pipLimit: 50000,
+    verbalThreshold: false,
+    monetaryThreshold: null,
+    damageCap: 6306,
+    damageCapExplanation: "Alberta has a statutory cap on pain and suffering damages for injuries classified as 'minor' (such as sprains, strains, and minor whiplash). In 2026, this cap is set at $6,306 and is adjusted annually for inflation.",
+    statuteOfLimitations: 2,
+    explanation: "Alberta currently operates under a tort-based auto insurance system with Section B accident benefits. You can sue the at-fault driver for damages. However, non-economic pain and suffering damages for minor injuries are capped at $6,306 for 2026. The province is scheduled to transition to a no-fault system in January 2027."
   }
 };
+

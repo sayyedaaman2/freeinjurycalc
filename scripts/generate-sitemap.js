@@ -49,18 +49,30 @@ function generateSitemap() {
 
   // 3. US State pages
   for (const slug of stateSlugs) {
-    if (slug === 'ontario') continue;
+    if (['ontario', 'british-columbia', 'alberta'].includes(slug)) continue;
     xml += `  <url>
-    <loc>${SITE_URL}/${slug}-car-accident-settlement-calculator/</loc>
-    <lastmod>${CURRENT_DATE}</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>\n`;
+      <loc>${SITE_URL}/${slug}-car-accident-settlement-calculator/</loc>
+      <lastmod>${CURRENT_DATE}</lastmod>
+      <changefreq>monthly</changefreq>
+      <priority>0.8</priority>
+    </url>\n`;
   }
 
   // 3.5 Canada pages
   xml += `  <url>
     <loc>${SITE_URL}/canada/ontario-car-accident-settlement-calculator/</loc>
+    <lastmod>${CURRENT_DATE}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n`;
+  xml += `  <url>
+    <loc>${SITE_URL}/canada/british-columbia-icbc-settlement-calculator/</loc>
+    <lastmod>${CURRENT_DATE}</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>\n`;
+  xml += `  <url>
+    <loc>${SITE_URL}/canada/alberta-car-accident-settlement-calculator/</loc>
     <lastmod>${CURRENT_DATE}</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
@@ -97,7 +109,7 @@ function generateSitemap() {
   xml += '</urlset>\n';
 
   fs.writeFileSync(sitemapPath, xml, 'utf8');
-  const totalUrls = 1 + staticPages.length + (stateSlugs.length - 1) + 1 + 1 + specialSlugs.length + blogSlugs.length;
+  const totalUrls = 1 + staticPages.length + (stateSlugs.length - 3) + 3 + 1 + specialSlugs.length + blogSlugs.length;
   console.log(`Successfully generated sitemap.xml at ${sitemapPath} with ${totalUrls} URLs.`);
 }
 

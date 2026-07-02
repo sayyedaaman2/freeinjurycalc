@@ -19,14 +19,14 @@ import {
   spinFAQ5
 } from "../../utils/textSpinner";
 
-const stateInfo = statesData.ontario;
-const state = "ontario";
+const stateInfo = statesData["british-columbia"];
+const state = "british-columbia";
 
-// Custom page title & description for Ontario Canada
-const pageTitle = "Ontario Car Accident Settlement Calculator | ON Claims 2026";
-const pageDescription = "Calculate your Ontario car accident settlement payout. Learn about SABS no-fault benefits, pain and suffering deductibles, and car accident settlements in Ontario.";
+// Custom page title & description for British Columbia Canada
+const pageTitle = "ICBC Settlement Calculator | British Columbia No-Fault Payouts";
+const pageDescription = "Use the British Columbia ICBC settlement calculator. Learn about Enhanced Care no-fault benefits, income replacement, and permanent impairment schedules. Free.";
 
-const relatedSlugs = ["british-columbia", "alberta", "new-york", "michigan"];
+const relatedSlugs = ["ontario", "alberta", "washington", "oregon"];
 
 function formatUSD(num: number | null) {
   if (num === null) return "$0";
@@ -43,7 +43,7 @@ function formatUSD(num: number | null) {
   <Header />
 
   <main class="flex-grow">
-    <!-- State-Specific Hero Section -->
+    <!-- Province Hero Section -->
     <section class="relative pt-16 pb-12 overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <!-- Back Link -->
@@ -57,23 +57,23 @@ function formatUSD(num: number | null) {
           Back to National Calculator
         </a>
 
-        <!-- State-Specific Heading -->
+        <!-- Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          Ontario Car Accident Settlement Calculator.
+          ICBC Settlement Calculator.
         </h1>
         
-        <!-- State-Specific Subheading -->
+        <!-- Subheading -->
         <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed mb-6">
-          Calculate your estimated claim value adjusted specifically to <span class="text-ink font-semibold">Ontario province car accident laws</span>, SABS accident benefits, and statutory deductibles.
+          Calculate your estimated care benefits and income replacement adjusted specifically to <span class="text-ink font-semibold">British Columbia's ICBC Enhanced Care no-fault laws</span>.
         </p>
 
-        <!-- Brief State Law Quick Glance Badges -->
+        <!-- Brief Law Glance Badges -->
         <div class="flex flex-wrap justify-center gap-2 mb-4">
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
-            Rule: Pure Comparative
+            Rule: No-Fault (Enhanced Care)
           </span>
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
-            Insurance: No-Fault (SABS)
+            Right to Sue: Generally Barred
           </span>
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
             Statute of Limitations: 2 Years
@@ -92,38 +92,38 @@ function formatUSD(num: number | null) {
       <Calculator preselectedState={state} />
     </section>
 
-    <!-- State Legal Guide Explanation Section -->
+    <!-- Province Legal Guide Section -->
     <section class="py-16 border-t border-hairline bg-canvas transition-colors duration-200">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
         
         <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
-          Understanding Ontario Car Accident Settlement Laws
+          Understanding British Columbia's ICBC No-Fault Insurance Laws
         </h2>
 
         <p class="text-xs text-body leading-relaxed mb-8">
-          This specialized <strong>Ontario car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding provincial statutes of limitations, shared fault negligence systems, and SABS rules is key to calculating your final payout.
+          On May 1, 2021, British Columbia transitioned to the <strong>Enhanced Care</strong> no-fault auto insurance model. This legislative change significantly modified how car accident settlements are processed in B.C. Using our <strong>icbc settlement calculator</strong> helps clarify your available statutory benefits under these regulations.
         </p>
 
-        <!-- Grid of detailed state rules -->
+        <!-- Grid of detailed rules -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           
           <!-- Column 1: Negligence -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              1. Negligence & Shared Fault
+              1. Negligence & Fault Rules
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinNegligence(stateInfo.name, stateInfo.negligenceRule)}
+              British Columbia operates under a pure no-fault insurance system for personal injuries. However, ICBC still determines fault for vehicle property damage and premium adjustments. If you are found at fault, your insurance rates may rise, but your access to medical treatment and wage replacement benefits remains unchanged.
             </p>
           </div>
 
           <!-- Column 2: Insurance Rules -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              2. Insurance & SABS Thresholds
+              2. Enhanced Accident Care Benefits
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinInsurance(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)}
+              Under Enhanced Care, medical and rehabilitation benefits are care-based and practically unlimited based on medical necessity. Approved treatments (such as physiotherapy, chiropractic care, and psychological counseling) are covered directly, so you don't pay out of pocket.
             </p>
           </div>
 
@@ -132,16 +132,18 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               3. Time Limits (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed" set:html={spinStatute(stateInfo.name, stateInfo.statuteOfLimitations)} />
+            <p class="text-xs text-body leading-relaxed">
+              You must report your accident to ICBC promptly. In British Columbia, the standard time limit to file a claim for Enhanced Accident Benefits is <strong>2 years</strong> from the date of the accident. Missing this window can result in the loss of all medical and wage benefits.
+            </p>
           </div>
 
-          <!-- Column 4: Pain and Suffering Caps -->
+          <!-- Column 4: Pain and Suffering Laws -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              4. Non-Economic Damage Caps & Deductibles
+              4. Pain & Suffering Limitations
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinDamageCap(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)}
+              Under the Enhanced Care model, the right to sue an at-fault driver for general pain and suffering is <strong>eliminated</strong> for all B.C. residents. The only exception is if the at-fault driver is convicted of a specific criminal offence related to the crash (e.g., impaired driving). Instead, permanent impairments receive structured lump-sum payouts.
             </p>
           </div>
 
@@ -149,110 +151,88 @@ function formatUSD(num: number | null) {
 
         <!-- Plain English Summary Card -->
         <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
-          <h3 class="text-sm font-semibold text-ink mb-2">Summary of Ontario Car Accident Claims</h3>
+          <h3 class="text-sm font-semibold text-ink mb-2">Summary of BC ICBC Accident Payouts</h3>
           <p class="text-xs text-body leading-relaxed">
-            {spinSummary(stateInfo.name, stateInfo.explanation)}
+            {stateInfo.explanation} If you suffer a permanent impairment (such as loss of limb function or severe cognitive damage), you are eligible for a lump-sum impairment payment of up to approximately $260,000 depending on the percentage rating assigned by your doctor. Income replacement is paid at 90% of your net earnings, up to a maximum limit (currently around $109,000 gross annual income, adjusted yearly).
           </p>
         </div>
 
-        <!-- State-Specific FAQ Accordion -->
+        <!-- Province-Specific FAQ Accordion -->
         <div class="mt-12 mb-12 border-t border-hairline pt-12">
           <h3 class="text-xl font-bold text-ink mb-6">
-            Frequently Asked Questions about Ontario Accident Claims
+            Frequently Asked Questions about ICBC Claims
           </h3>
           <div class="space-y-4">
             
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How is a car accident settlement calculated in Ontario?
+                Can I sue for pain and suffering in British Columbia?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
                 <p>
-                  {spinFAQ1(stateInfo.name)}
+                  No. B.C.'s Enhanced Care model has barred general lawsuits for pain and suffering. Instead, ICBC provides care-based accident benefits directly. Lawsuits are restricted to extreme scenarios involving criminal charges, such as street racing or driving under the influence.
                 </p>
               </div>
             </details>
 
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What happens if I am found partially at fault for the accident in Ontario?
+                What does the ICBC settlement calculator estimate?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ2(stateInfo.name, stateInfo.negligenceRule)} />
+                <p>
+                  Because general damages are barred, our calculator estimates the economic benefits you are eligible to recover, including 100% medical treatment coverage and up to 90% income replacement for lost wages (based on 2/3 of weekly wages up to B.C. maximum caps).
+                </p>
               </div>
             </details>
 
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How long do I have to file a lawsuit in Ontario?
+                How much does ICBC pay for permanent impairment?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ3(stateInfo.name, stateInfo.statuteOfLimitations)} />
+                <p>
+                  If a medical professional confirms you have sustained a permanent impairment, you are entitled to a lump-sum payout. The amount depends on the injury rating, ranging from a few thousand dollars for minor permanent impairments up to a maximum statutory cap of over $260,000 for catastrophic impairment.
+                </p>
               </div>
             </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Does Ontario limit or cap pain and suffering damages?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ4(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)} />
-              </div>
-            </details>
-
-            {stateInfo.noFault && (
-              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                  How do no-fault SABS rules affect my lawsuit in Ontario?
-                  <span class="transition group-open:rotate-180 text-mute">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                  </span>
-                </summary>
-                <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                  <p set:html={spinFAQ5(stateInfo.name, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)} />
-                </div>
-              </details>
-            )}
 
           </div>
         </div>
 
-        <!-- Lead Capture Mock Consultation -->
+        <!-- Consultation box -->
         <div id="consult-attorney" class="p-8 border border-hairline bg-canvas rounded-lg text-center shadow-sm relative overflow-hidden">
           <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
           <span class="text-[10px] font-semibold font-mono uppercase tracking-wider text-link mb-3 block">
-            Free Case Assessment
+            Case Evaluation Info
           </span>
           <h3 class="text-lg font-bold text-ink mb-3">
-            Want to maximize your Ontario settlement?
+            Having trouble securing your ICBC benefits?
           </h3>
           <p class="text-xs text-body leading-relaxed max-w-xl mx-auto mb-6">
-            {spinConsultation(stateInfo.name)}
+            Although the Enhanced Care model restricts standard tort lawsuits, disputes often arise regarding treatment approvals, income replacement calculations, or permanent impairment ratings. Consulting a lawyer or advocate in B.C. can help you appeal ICBC decisions through the Civil Resolution Tribunal (CRT).
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - Province: Ontario"
+              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - Province: British Columbia"
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded bg-primary text-on-primary hover:opacity-90 transition-opacity"
             >
-              Get Free Case Evaluation
+              Request Advocate Contact
             </a>
             <a 
               href="/#state-laws"
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium rounded border border-hairline bg-canvas hover:bg-canvas-soft-2 transition-all text-ink"
             >
-              Select Another State
+              Select Another State/Province
             </a>
           </div>
         </div>
@@ -260,7 +240,7 @@ function formatUSD(num: number | null) {
       </div>
     </section>
 
-    <!-- Related State Calculators Section -->
+    <!-- Related Calculators Section -->
     <section class="py-12 border-t border-hairline bg-canvas-soft-2 transition-colors duration-200">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
         <h3 class="text-xs font-semibold uppercase tracking-wider text-mute font-mono mb-4 text-center sm:text-left">

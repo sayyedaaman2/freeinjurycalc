@@ -138,8 +138,8 @@ if (segments.length > 0) {
   
   if (stateName) {
     // State page (could be US state or Ontario Canada)
-    const isOntario = firstSegment === 'canada' || pathname.includes('/canada/');
-    if (isOntario) {
+    const isCanada = firstSegment === 'canada' || pathname.includes('/canada/');
+    if (isCanada) {
       breadcrumbList.push(
         {
           "@type": "ListItem",
@@ -150,8 +150,8 @@ if (segments.length > 0) {
         {
           "@type": "ListItem",
           "position": 3,
-          "name": "Ontario Car Accident Settlement Calculator",
-          "item": `${origin}/canada/ontario-car-accident-settlement-calculator/`
+          "name": stateName.includes("Canada") ? `${stateName} Calculator` : `${stateName} (Canada) Calculator`,
+          "item": `${origin}${pathname}`
         }
       );
     } else {

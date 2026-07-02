@@ -21,7 +21,7 @@ import {
 
 export async function getStaticPaths() {
   return Object.entries(statesData)
-    .filter(([slug]) => slug !== 'ontario')
+    .filter(([slug]) => !['ontario', 'british-columbia', 'alberta'].includes(slug))
     .map(([slug, stateInfo]) => ({
       params: { state: slug },
       props: { stateInfo },

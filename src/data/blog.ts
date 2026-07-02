@@ -632,5 +632,82 @@ export const blogPosts: BlogPost[] = [
       </ol>
       <p class="mb-4">To estimate your potential compensation before talking to an insurance representative, run your numbers through our comprehensive <strong>motorbike accident claim calculator</strong> to understand the real value of your claim.</p>
     `
+  },
+  {
+    slug: "how-to-calculate-a-car-accident-settlement-in-canada",
+    title: "How to Calculate a Car Accident Settlement in Canada (Ontario, BC, Alberta)",
+    description: "Learn how Canadian car accident settlements are calculated, including Ontario SABS, BC ICBC Enhanced Care, and Alberta's minor injury cap rules.",
+    date: "July 2, 2026",
+    readTime: "7 min read",
+    category: "Settlement Process",
+    content: `
+      <p class="mb-4">If you've been injured in a motor vehicle collision in Canada, estimating your potential compensation is vital for financial recovery. However, unlike the United States, Canadian provinces govern auto insurance under highly localized, distinct legislative systems. Navigating these rules requires an understanding of how an online <strong>injury settlement calculator canada</strong> or <strong>car accident settlement canada</strong> model handles regional constraints.</p>
+      
+      <p class="mb-4">Depending on whether your accident occurred in Ontario, British Columbia, or Alberta, your rights to seek general damages for pain and suffering and claim out-of-pocket costs vary dramatically. Let's break down how settlements are evaluated across Canada.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">1. Ontario Car Accident Settlements: SABS & Deductibles</h2>
+      <p class="mb-4">Ontario operates under a hybrid no-fault auto insurance system governed by the Statutory Accident Benefits Schedule (SABS). If you are injured in a crash, you claim direct medical and rehabilitation benefits from your own insurer, regardless of who caused the accident.</p>
+      <p class="mb-4">However, if your injuries are serious, you can also sue the at-fault driver. To succeed in a claim for pain and suffering (non-economic damages) in Ontario, your case must meet two major hurdles:</p>
+      <ul class="list-disc pl-6 mb-4 space-y-2">
+        <li><strong>The Verbal Threshold:</strong> Your injuries must constitute a permanent, serious impairment of an important physical, mental, or psychological function. Minor whiplash or bruises do not qualify.</li>
+        <li><strong>The Statutory Deductible:</strong> For pain and suffering awards under approximately $150,000, Ontario law applies a statutory deductible of about $46,000. If a judge values your pain and suffering at $60,000, you will only receive $14,000 after the deductible is subtracted.</li>
+      </ul>
+      <p class="mb-4">This makes calculating <strong>car accident settlements in ontario</strong> unique, as minor-to-moderate claims often yield zero net tort payout due to the deductible.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">2. British Columbia: ICBC Enhanced Care (No-Fault)</h2>
+      <p class="mb-4">In British Columbia, the right to sue for car accident injuries was largely eliminated on May 1, 2021, with the introduction of ICBC's <strong>Enhanced Care</strong> model. This pure no-fault insurance system removed the courts and lawyers from the injury claims process.</p>
+      <p class="mb-4">Under this model, you cannot sue the at-fault driver for pain and suffering, except in extreme cases involving criminal convictions. Instead, all B.C. residents receive care-based recovery benefits directly from ICBC:</p>
+      <ul class="list-disc pl-6 mb-4 space-y-2">
+        <li><strong>Care Coverage:</strong> Unlimited funding for necessary medical, chiropractic, physiotherapy, and rehabilitation treatments based on clinical needs.</li>
+        <li><strong>Income Replacement:</strong> Paid at 90% of your net income, up to a maximum gross limit of approximately $109,000.</li>
+        <li><strong>Permanent Impairment:</strong> If you suffer a permanent impairment, a scheduled lump-sum payment is awarded based on a regulatory chart (up to ~$260,000).</li>
+      </ul>
+      <p class="mb-4">To estimate these statutory benefits, claimants utilize a specialized <strong>icbc settlement calculator</strong> framework that excludes general damages and focuses on healthcare and wage replacement allocations.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">3. Alberta Car Accident Settlements: Minor Injury Caps</h2>
+      <p class="mb-4">Alberta currently utilizes a tort-based auto insurance system with Section B accident benefits. You can sue the negligent driver for both economic losses and pain and suffering, though your net settlement is subject to comparative negligence rules if you shared fault.</p>
+      <p class="mb-4">However, Alberta places a statutory cap on general pain and suffering damages for injuries deemed \"minor\" under the Minor Injury Regulation (MIR). For accidents in 2026, the <strong>alberta minor injury cap is set at $6,306</strong>. This cap applies to sprains, strains, and minor whiplash (WAD I & II) that do not result in a serious, long-term impairment of function.</p>
+      <p class="mb-4">If your injury causes a serious impairment that prevents you from performing your job or normal activities, you can bypass the cap and seek uncapped general damages. This distinction is critical when running an online <strong>car accident settlement calculator alberta</strong>.</p>
+      
+      <p class="mb-4">Note that Alberta is scheduled to transition to a care-first no-fault auto insurance system on January 1, 2027. Claims arising from crashes in 2026 are still handled under the current cap-and-tort system.</p>
+    `
+  },
+  {
+    slug: "car-insurance-write-off-payout-calculator",
+    title: "Car Insurance Write Off Calculator: How Total Loss Payouts are Valued",
+    description: "Learn how auto insurers calculate a write-off payout. Discover Actual Cash Value (ACV), total loss thresholds, and how to negotiate vehicle payouts.",
+    date: "July 2, 2026",
+    readTime: "6 min read",
+    category: "Financial Advice",
+    content: `
+      <p class="mb-4">After a motor vehicle accident, the physical damage to your car or SUV can be substantial. If the cost to repair the vehicle is close to or exceeds its market value, your insurance company will declare it a \"total loss\" or \"write-off.\" Understanding how insurers determine this payout is key to negotiating a fair recovery.</p>
+      
+      <p class="mb-4">Many drivers look for a <strong>car insurance write off calculator</strong> or a general <strong>car insurance payout calculator</strong> to estimate what they will receive. Here is how adjusters value a totaled vehicle.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">How Do Insurers Decide to Write Off a Car?</h2>
+      <p class="mb-4">An insurance adjuster will rarely wait until repair costs exceed 100% of the vehicle's value to write it off. Instead, they apply a <strong>Total Loss Threshold</strong> (usually between 70% and 80% of the vehicle's worth, depending on state regulations and insurer policy):</p>
+      <p class="mb-4">$$\\text{Repair Costs} + \\text{Estimated Salvage Value} \\ge \\text{Actual Cash Value (ACV)}$$</p>
+      <p class="mb-4">If this formula is met, it is more economically viable for the insurance company to pay you the value of the car and sell the damaged shell to a salvage yard for parts rather than pay for repairs and supply a rental car for weeks.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">The Calculation: Actual Cash Value (ACV) vs. Replacement Cost</h2>
+      <p class="mb-4">A standard auto policy pays out the <strong>Actual Cash Value (ACV)</strong> of the vehicle immediately prior to the crash. ACV is not what you paid for the car, nor is it the cost of a brand-new model. Instead, ACV represents market value, which accounts for:</p>
+      <ul class="list-disc pl-6 mb-4 space-y-2">
+        <li>Year, make, model, and engine type.</li>
+        <li>Mileage on the odometer prior to the crash.</li>
+        <li>Pre-existing wear and tear, rust, or interior damage.</li>
+        <li>Recent improvements (such as a brand-new transmission or fresh tires with receipts).</li>
+      </ul>
+      <p class="mb-4">In contrast, if you purchased a special <strong>replacement cost endorsement</strong>, the insurer is obligated to pay the cost to buy a new, identical vehicle without deducting depreciation. This is typical only for vehicles under two years old.</p>
+
+      <h2 class="text-lg font-bold text-ink mt-8 mb-4">How to Use a Car Insurance Claim Calculator to Negotiate</h2>
+      <p class="mb-4">When the adjuster offers you a payout settlement, they will present a valuation report (often generated by software like Audatex or CCC ONE) listing local comparable vehicles (\"comps\") that sold recently. You should verify this report carefully:</p>
+      <ol class="list-decimal pl-6 mb-4 space-y-2">
+        <li><strong>Check Options & Trims:</strong> Ensure the adjuster correctly documented all features (leather seats, premium audio, driver assist packages). Missing trims can discount your payout by thousands.</li>
+        <li><strong>Research Local Comps:</strong> Conduct your own search on AutoTrader or local dealership sites. Find 3 to 5 matching vehicles of the same year, trim, and mileage in your geographic area. If the average selling price is higher than the insurer's offer, present these comps to the adjuster.</li>
+        <li><strong>Submit Receipts:</strong> If you replaced the tires, brakes, or engine components in the weeks leading up to the crash, submit these receipts. While you won't get dollar-for-dollar value back, it increases the overall condition rating and final payout.</li>
+      </ol>
+      <p class="mb-4">If you are still unhappy with the valuation, you can activate the \"appraisal clause\" in your insurance policy. This allows you and the insurer to hire independent appraisers to negotiate a binding valuation.</p>
+    `
   }
 ];
+

@@ -5,28 +5,15 @@ import Calculator from "../../components/Calculator.astro";
 import Educational from "../../components/Educational.astro";
 import Footer from "../../components/Footer.astro";
 import { statesData } from "../../data/states";
-import {
-  spinNegligence,
-  spinInsurance,
-  spinStatute,
-  spinDamageCap,
-  spinSummary,
-  spinConsultation,
-  spinFAQ1,
-  spinFAQ2,
-  spinFAQ3,
-  spinFAQ4,
-  spinFAQ5
-} from "../../utils/textSpinner";
 
-const stateInfo = statesData.ontario;
-const state = "ontario";
+const stateInfo = statesData.alberta;
+const state = "alberta";
 
-// Custom page title & description for Ontario Canada
-const pageTitle = "Ontario Car Accident Settlement Calculator | ON Claims 2026";
-const pageDescription = "Calculate your Ontario car accident settlement payout. Learn about SABS no-fault benefits, pain and suffering deductibles, and car accident settlements in Ontario.";
+// Custom page title & description for Alberta Canada
+const pageTitle = "Alberta Car Accident Settlement Calculator | AB Payouts 2026";
+const pageDescription = "Calculate your Alberta car accident settlement payout. Applies AB Section B benefits and the 2026 minor injury cap ($6,306). Free.";
 
-const relatedSlugs = ["british-columbia", "alberta", "new-york", "michigan"];
+const relatedSlugs = ["ontario", "british-columbia", "montana", "north-dakota"];
 
 function formatUSD(num: number | null) {
   if (num === null) return "$0";
@@ -43,7 +30,7 @@ function formatUSD(num: number | null) {
   <Header />
 
   <main class="flex-grow">
-    <!-- State-Specific Hero Section -->
+    <!-- Province Hero Section -->
     <section class="relative pt-16 pb-12 overflow-hidden">
       <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center relative z-10">
         <!-- Back Link -->
@@ -57,23 +44,23 @@ function formatUSD(num: number | null) {
           Back to National Calculator
         </a>
 
-        <!-- State-Specific Heading -->
+        <!-- Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          Ontario Car Accident Settlement Calculator.
+          Alberta Car Accident Settlement Calculator.
         </h1>
         
-        <!-- State-Specific Subheading -->
+        <!-- Subheading -->
         <p class="text-base text-body font-sans max-w-2xl mx-auto leading-relaxed mb-6">
-          Calculate your estimated claim value adjusted specifically to <span class="text-ink font-semibold">Ontario province car accident laws</span>, SABS accident benefits, and statutory deductibles.
+          Estimate your estimated claim value adjusted specifically to <span class="text-ink font-semibold">Alberta provincial car accident laws</span>, Section B medical limits, and minor injury caps.
         </p>
 
-        <!-- Brief State Law Quick Glance Badges -->
+        <!-- Brief Law Glance Badges -->
         <div class="flex flex-wrap justify-center gap-2 mb-4">
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
             Rule: Pure Comparative
           </span>
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
-            Insurance: No-Fault (SABS)
+            Minor Injury Cap: $6,306 (2026)
           </span>
           <span class="px-2.5 py-1 text-[10px] font-semibold font-mono rounded bg-canvas border border-hairline text-ink">
             Statute of Limitations: 2 Years
@@ -92,19 +79,19 @@ function formatUSD(num: number | null) {
       <Calculator preselectedState={state} />
     </section>
 
-    <!-- State Legal Guide Explanation Section -->
+    <!-- Province Legal Guide Section -->
     <section class="py-16 border-t border-hairline bg-canvas transition-colors duration-200">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
         
         <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
-          Understanding Ontario Car Accident Settlement Laws
+          Understanding Alberta Car Accident Settlement Laws
         </h2>
 
         <p class="text-xs text-body leading-relaxed mb-8">
-          This specialized <strong>Ontario car accident settlement calculator</strong> helps you estimate potential compensation for personal injury and vehicle damage claims. Whether you are using this as a driver or a passenger, understanding provincial statutes of limitations, shared fault negligence systems, and SABS rules is key to calculating your final payout.
+          Alberta operates under a tort-based auto insurance system. This means that if you are injured due to another driver's negligence, you have the right to file a claim or lawsuit against the at-fault driver's insurance policy to seek compensation. Our <strong>alberta car accident settlement calculator</strong> is designed to estimate payouts using provincial rules, including Section B accident benefits and minor injury caps.
         </p>
 
-        <!-- Grid of detailed state rules -->
+        <!-- Grid of detailed rules -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           
           <!-- Column 1: Negligence -->
@@ -113,17 +100,17 @@ function formatUSD(num: number | null) {
               1. Negligence & Shared Fault
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinNegligence(stateInfo.name, stateInfo.negligenceRule)}
+              Alberta follows a pure comparative negligence model. If you share fault for the accident, your final settlement payout is reduced in direct proportion to your percentage of liability. For instance, if you are 25% at fault, your total payout is reduced by 25%. You can still recover compensation even if you are mostly at fault.
             </p>
           </div>
 
-          <!-- Column 2: Insurance Rules -->
+          <!-- Column 2: Section B Accident Benefits -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              2. Insurance & SABS Thresholds
+              2. Section B Benefits
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinInsurance(stateInfo.name, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)}
+              Every auto policy in Alberta includes mandatory Section B accident benefits. Regardless of fault, Section B covers up to <strong>$50,000</strong> of necessary medical and rehabilitation treatment expenses within 2 years of the crash, as well as modest weekly disability/lost wage checks.
             </p>
           </div>
 
@@ -132,16 +119,18 @@ function formatUSD(num: number | null) {
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
               3. Time Limits (Statute of Limitations)
             </h3>
-            <p class="text-xs text-body leading-relaxed" set:html={spinStatute(stateInfo.name, stateInfo.statuteOfLimitations)} />
+            <p class="text-xs text-body leading-relaxed">
+              In Alberta, the standard statute of limitations for personal injury claims resulting from a motor vehicle accident is <strong>2 years</strong>. You must either settle your claim or file a formal lawsuit in the Alberta Court of King's Bench within 2 years of the crash date.
+            </p>
           </div>
 
-          <!-- Column 4: Pain and Suffering Caps -->
+          <!-- Column 4: The 2026 Minor Injury Cap -->
           <div class="flex flex-col gap-2">
             <h3 class="text-sm font-semibold uppercase font-mono text-mute">
-              4. Non-Economic Damage Caps & Deductibles
+              4. Pain & Suffering Minor Injury Cap
             </h3>
             <p class="text-xs text-body leading-relaxed">
-              {spinDamageCap(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)}
+              Alberta's Minor Injury Regulation (MIR) limits general non-economic damages (pain and suffering) for minor soft-tissue injuries. For accidents occurring in 2026, this cap is set at <strong>$6,306</strong>. This cap is adjusted annually for inflation. However, it does not limit claims for wage loss, out-of-pocket costs, or serious permanent impairments.
             </p>
           </div>
 
@@ -149,101 +138,79 @@ function formatUSD(num: number | null) {
 
         <!-- Plain English Summary Card -->
         <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg mb-12">
-          <h3 class="text-sm font-semibold text-ink mb-2">Summary of Ontario Car Accident Claims</h3>
+          <h3 class="text-sm font-semibold text-ink mb-2">Summary of Alberta Accident Claims</h3>
           <p class="text-xs text-body leading-relaxed">
-            {spinSummary(stateInfo.name, stateInfo.explanation)}
+            {stateInfo.explanation} Note that insurers will frequently attempt to classify injuries (such as whiplash WAD II or chronic muscle strains) under the minor injury cap to limit their payouts. If your injury results in a serious impairment—meaning it prevents you from working or participating in normal activities on a permanent or long-term basis—you can bypass the cap and seek full, uncapped general damages.
           </p>
         </div>
 
-        <!-- State-Specific FAQ Accordion -->
+        <!-- Province-Specific FAQ Accordion -->
         <div class="mt-12 mb-12 border-t border-hairline pt-12">
           <h3 class="text-xl font-bold text-ink mb-6">
-            Frequently Asked Questions about Ontario Accident Claims
+            Frequently Asked Questions about Alberta Accident Claims
           </h3>
           <div class="space-y-4">
             
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200" open>
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How is a car accident settlement calculated in Ontario?
+                What is the minor injury cap in Alberta for 2026?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
                 <p>
-                  {spinFAQ1(stateInfo.name)}
+                  For accidents occurring in 2026, the cap on pain and suffering damages for minor injuries is $6,306. Minor injuries include simple sprains, strains, and whiplash-associated disorders (WAD I and II) that resolve without causing permanent physical impairment.
                 </p>
               </div>
             </details>
 
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                What happens if I am found partially at fault for the accident in Ontario?
+                What does Alberta's Section B cover?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ2(stateInfo.name, stateInfo.negligenceRule)} />
+                <p>
+                  Section B is a no-fault insurance coverage in Alberta that pays for medical bills, dental care, physical therapy, chiropractic treatments, and prescriptions up to a limit of $50,000 (or for up to 2 years, whichever comes first). It also provides basic disability income replacement checks.
+                </p>
               </div>
             </details>
 
             <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
               <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                How long do I have to file a lawsuit in Ontario?
+                Is Alberta shifting to a no-fault auto insurance system?
                 <span class="transition group-open:rotate-180 text-mute">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
                 </span>
               </summary>
               <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ3(stateInfo.name, stateInfo.statuteOfLimitations)} />
+                <p>
+                  Yes. Alberta has announced plans to transition to a "care-first" no-fault insurance model scheduled to take effect on January 1, 2027. However, accidents occurring in 2026 remain governed by the current tort-based comparative fault system, preserving the right to sue.
+                </p>
               </div>
             </details>
-
-            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                Does Ontario limit or cap pain and suffering damages?
-                <span class="transition group-open:rotate-180 text-mute">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                </span>
-              </summary>
-              <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                <p set:html={spinFAQ4(stateInfo.name, stateInfo.damageCap, stateInfo.damageCapExplanation)} />
-              </div>
-            </details>
-
-            {stateInfo.noFault && (
-              <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
-                <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
-                  How do no-fault SABS rules affect my lawsuit in Ontario?
-                  <span class="transition group-open:rotate-180 text-mute">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
-                  </span>
-                </summary>
-                <div class="text-xs text-body leading-relaxed mt-3 space-y-2">
-                  <p set:html={spinFAQ5(stateInfo.name, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold)} />
-                </div>
-              </details>
-            )}
 
           </div>
         </div>
 
-        <!-- Lead Capture Mock Consultation -->
+        <!-- Consultation Box -->
         <div id="consult-attorney" class="p-8 border border-hairline bg-canvas rounded-lg text-center shadow-sm relative overflow-hidden">
           <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
           <span class="text-[10px] font-semibold font-mono uppercase tracking-wider text-link mb-3 block">
-            Free Case Assessment
+            Case Assessment Info
           </span>
           <h3 class="text-lg font-bold text-ink mb-3">
-            Want to maximize your Ontario settlement?
+            Want to challenge the minor injury cap in Alberta?
           </h3>
           <p class="text-xs text-body leading-relaxed max-w-xl mx-auto mb-6">
-            {spinConsultation(stateInfo.name)}
+            Insurers will almost always attempt to classify your soft-tissue injuries under the minor injury cap to keep payouts low. If you have chronic pain or long-term restrictions on work, consulting a qualified Alberta personal injury lawyer is key to bypassing the cap and recovering fair general damages.
           </p>
           <div class="flex flex-col sm:flex-row justify-center gap-4">
             <a 
-              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - Province: Ontario"
+              href="mailto:consult@freeinjurycalc.com?subject=Free Case Evaluation Request - Province: Alberta"
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-semibold rounded bg-primary text-on-primary hover:opacity-90 transition-opacity"
             >
               Get Free Case Evaluation
@@ -252,7 +219,7 @@ function formatUSD(num: number | null) {
               href="/#state-laws"
               class="inline-flex items-center justify-center px-5 py-2.5 text-xs font-medium rounded border border-hairline bg-canvas hover:bg-canvas-soft-2 transition-all text-ink"
             >
-              Select Another State
+              Select Another State/Province
             </a>
           </div>
         </div>
@@ -260,7 +227,7 @@ function formatUSD(num: number | null) {
       </div>
     </section>
 
-    <!-- Related State Calculators Section -->
+    <!-- Related Calculators Section -->
     <section class="py-12 border-t border-hairline bg-canvas-soft-2 transition-colors duration-200">
       <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
         <h3 class="text-xs font-semibold uppercase tracking-wider text-mute font-mono mb-4 text-center sm:text-left">
