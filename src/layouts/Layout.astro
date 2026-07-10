@@ -37,6 +37,16 @@ const websiteSchema = !stateName ? {
   "url": "https://freeinjurycalc.com/"
 } : null;
 
+const organizationSchema = isHomepage ? {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "FreeInjuryCalc",
+  "url": "https://freeinjurycalc.com",
+  "logo": "https://freeinjurycalc.com/favicon-96x96.png",
+  "description": "Free Injury Calculator provides transparent personal injury settlement claim estimates based on actual state comparative negligence laws.",
+  "sameAs": []
+} : null;
+
 // JSON-LD Software Application Schema
 const softwareSchema = {
   "@context": "https://schema.org",
@@ -106,10 +116,11 @@ const faqSchema = customFaqSchema || (stateName ? {
 
 // Breadcrumb Names mapping for standard static routes
 const breadcrumbNames: Record<string, string> = {
-  "about-us": "About Us",
-  "contact-us": "Contact Us",
+  "about": "About Us",
+  "contact": "Contact Us",
   "privacy-policy": "Privacy Policy",
-  "terms-conditions": "Terms & Conditions",
+  "terms-of-service": "Terms of Service",
+  "disclaimer": "Disclaimer",
   "blog": "Blog",
   "workers-compensation-calculator": "Workers' Compensation Calculator",
   "pain-and-suffering-calculator": "Pain and Suffering Calculator",
@@ -288,6 +299,7 @@ const breadcrumbSchema = {
     {faqSchema && <script type="application/ld+json" set:html={JSON.stringify(faqSchema)} />}
     {websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
+    {organizationSchema && <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

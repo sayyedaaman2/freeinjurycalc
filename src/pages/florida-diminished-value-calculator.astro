@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import SpecialtyCalculators from "../components/SpecialtyCalculators.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -193,6 +194,9 @@ import Footer from "../components/Footer.astro";
           <p>
             Most major auto insurance companies (including State Farm, GEICO, and Progressive) use the <strong>17c formula</strong> to establish a baseline for diminished value negotiations. Originated in a Georgia court case (State Farm v. Mabry), the formula applies a series of caps and modifiers:
           </p>
+          <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
+            Diminished Value Payout = (Pre-Accident Book Value &times; 10% Cap) &times; Damage Modifier &times; Mileage Modifier
+          </div>
           <ul class="list-disc pl-5 space-y-2">
             <li>
               <strong class="text-ink">10% Cap:</strong> Insurance companies assert that a vehicle can never lose more than 10% of its total market value due to an accident. This establishes the absolute limit of your claim.
@@ -204,6 +208,44 @@ import Footer from "../components/Footer.astro";
               <strong class="text-ink">Mileage Multiplier:</strong> Younger vehicles retain more value. The mileage multiplier docks value on a scale: 1.00 (under 20k miles), 0.80 (20k-40k), 0.60 (40k-60k), 0.40 (60k-80k), 0.20 (80k-100k), and 0.00 (over 100k miles).
             </li>
           </ul>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Understanding the Calculator Input Fields
+          </h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Pre-Accident Vehicle Value:</strong> The clean retail value of your car right before the crash. Use databases like Kelley Blue Book (KBB) or NADA to find this number.</li>
+            <li><strong>Vehicle Mileage:</strong> The odometer reading at the time of the collision. Cars with over 100,000 miles are assigned a mileage multiplier of 0.00 under the 17c formula, meaning insurers will automatically deny claims on high-mileage cars.</li>
+            <li><strong>Damage Severity Level:</strong> Categorized based on the final itemized repair bill. Structural and frame damage warrants a higher modifier than bolt-on cosmetic parts.</li>
+          </ul>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Worked Calculation Examples
+          </h3>
+          <div class="space-y-4">
+            <div class="p-4 border border-hairline bg-canvas rounded">
+              <strong class="text-ink block mb-1">Example A: Nearly New Sedan with Moderate Damage</strong>
+              <p>Your sedan is worth $35,000 and has 12,000 miles. You sustain moderate side-impact damage (0.50 damage modifier).</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1">
+                <li>10% Max Cap: $3,500</li>
+                <li>Damage Modifier: 0.50 (moderate panel repairs)</li>
+                <li>Mileage Modifier: 1.00 (under 20,000 miles)</li>
+                <li>Calculation: $3,500 &times; 0.50 &times; 1.00 = $1,750</li>
+                <li><strong>Estimated 17c Diminished Value: $1,750</strong></li>
+              </ul>
+            </div>
+
+            <div class="p-4 border border-hairline bg-canvas rounded">
+              <strong class="text-ink block mb-1">Example B: Luxury SUV with Severe Frame Damage</strong>
+              <p>Your SUV is worth $60,000 and has 45,000 miles. You suffer major frame distortion (0.75 modifier) and airbags deploy.</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1">
+                <li>10% Max Cap: $6,000</li>
+                <li>Damage Modifier: 0.75 (frame pull + airbags)</li>
+                <li>Mileage Modifier: 0.60 (40,000 to 60,000 miles)</li>
+                <li>Calculation: $6,000 &times; 0.75 &times; 0.60 = $2,700</li>
+                <li><strong>Estimated 17c Diminished Value: $2,700</strong></li>
+              </ul>
+            </div>
+          </div>
 
           <h3 class="text-lg font-bold text-ink mt-8">
             Florida Rules & Requirements for Diminished Value
@@ -231,11 +273,92 @@ import Footer from "../components/Footer.astro";
               Insurance companies use the 17c formula because it minimizes payouts. To counter their low offer, you should hire an independent licensed auto appraiser to inspect your repaired car, run local market comparisons, and issue a certified diminished value appraisal report.
             </p>
           </div>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Frequently Asked Questions
+          </h3>
+          <div class="space-y-4">
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Can I claim diminished value if the accident was my fault?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>No. In Florida, first-party diminished value claims against your own collision policy are prohibited. You can only recover if another driver caused the crash and you are claiming against their liability policy.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Does a leased vehicle qualify for diminished value?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>No. To file a diminished value claim, you must be the legal owner of the vehicle. For leased cars, the leasing company holds the title and suffers the financial loss, meaning only they can file the claim.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                How do I prove my diminished value claim to the insurer?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>You must provide: itemized repair bills showing structural/frame repairs, photos of the damage, and a certified independent appraisal report demonstrating the drop in trade-in value through local dealer quotes.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                What if my car is declared a total loss?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>If your car is totaled, you do not have a diminished value claim. Instead, the insurance company is required to pay you the full actual cash value (ACV) of the vehicle prior to the accident, plus sales tax and title transfer fees.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Can I claim diminished value if the other driver was uninsured?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>Yes, but only if you carry Uninsured Motorist Property Damage (UMPD) coverage on your own policy. In that case, you file a first-party claim under that specific rider.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                How much does an independent appraisal cost?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>A certified independent diminished value appraisal in Florida typically costs between $150 and $350. This cost is generally not reimbursed by the insurer, but it is necessary to secure a fair payout.</p>
+              </div>
+            </details>
+          </div>
+
         </div>
       </section>
 
     </div>
   </main>
+
+  <!-- Specialty Calculators Cross-linking Directory Section -->
+  <SpecialtyCalculators />
 
   <Footer />
 </Layout>

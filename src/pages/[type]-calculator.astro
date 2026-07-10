@@ -3,6 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
 import Calculator from "../components/Calculator.astro";
 import Educational from "../components/Educational.astro";
+import SpecialtyCalculators from "../components/SpecialtyCalculators.astro";
 import Footer from "../components/Footer.astro";
 import { specialCalculators, type SpecialCalculator } from "../data/specialCalculators";
 
@@ -99,6 +100,26 @@ const { type } = Astro.params;
           {data.aboutContent2}
         </p>
 
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          How the Settlement Formula Works
+        </h2>
+        <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.formulaExplanation} />
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          Understanding the Calculator Inputs
+        </h2>
+        <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.inputsExplanation} />
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          Worked Payout Examples
+        </h2>
+        <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.workedExamples} />
+
+        <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
+          Legal & Practical Background Context
+        </h2>
+        <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.legalBackground} />
+
         <!-- Accordion FAQs -->
         <div class="mt-12 mb-12 border-t border-hairline pt-12">
           <h3 class="text-xl font-bold text-ink mb-6">
@@ -146,6 +167,9 @@ const { type } = Astro.params;
 
       </div>
     </section>
+
+    <!-- Specialty Calculators Cross-linking Directory Section -->
+    <SpecialtyCalculators />
 
     <!-- General Educational section as secondary value -->
     <Educational seedName={data.title} />

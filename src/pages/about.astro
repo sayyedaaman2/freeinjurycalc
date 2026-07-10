@@ -1,0 +1,143 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+---
+
+<Layout 
+  title="About Our Editorial Board & Settlement Methodology | FreeInjuryCalc"
+  description="Learn about the legal experts, technical developers, and mathematical calculation models behind FreeInjuryCalc.com's personal injury estimation tools."
+>
+  <Header />
+
+  <main class="flex-grow bg-canvas transition-colors duration-200 py-16 md:py-24 animate-fade-in">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
+      
+      <!-- Page Header -->
+      <div class="border-b border-hairline pb-8 mb-12">
+        <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
+          Editorial Authority & Methodology
+        </span>
+        <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-ink mt-4 mb-4">
+          About FreeInjuryCalc
+        </h1>
+        <p class="text-sm md:text-base text-body leading-relaxed max-w-3xl">
+          We combine statutory state legislation, historic insurance adjusters' evaluation standards, and data modeling to deliver instant, anonymous, and free case assessments.
+        </p>
+      </div>
+
+      <!-- Main Layout Grid -->
+      <div class="space-y-12 text-xs md:text-sm text-body leading-relaxed">
+        
+        <!-- Mission Section -->
+        <section class="space-y-4">
+          <h2 class="text-xl md:text-2xl font-bold text-ink tracking-tight">
+            Our Mission: Transparent Legal Information
+          </h2>
+          <p>
+            Following a motor vehicle collision, slip and fall, or work accident, victims face significant physical, emotional, and financial burdens. Historically, checking the ballpark value of a claim online required completing complex lead-generation forms, which frequently resulted in aggressive sales calls from third-party marketing firms or law offices.
+          </p>
+          <p>
+            <strong>We believe that basic legal information and mathematical valuation models should be universally accessible without locks.</strong> FreeInjuryCalc was established to solve this problem by offering a 100% free, fully anonymous, and instant calculation engine. You can run unlimited calculations without entering an email address or phone number.
+          </p>
+        </section>
+
+        <!-- Editorial Team & Experts -->
+        <section class="space-y-6">
+          <h2 class="text-xl md:text-2xl font-bold text-ink tracking-tight">
+            Our Editorial Board & Board of Advisors
+          </h2>
+          <p>
+            To ensure our calculation models remain accurate and reflect standard industry practices, our platform is overseen by an editorial board of legal consultants and financial developers.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-4">
+            <!-- Member 1 -->
+            <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-ink">Sarah Jenkins, Esq.</h3>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-link block mb-3">Lead Legal Adviser & Editor</span>
+                <p class="text-xs leading-relaxed text-body mb-4">
+                  Sarah Jenkins is a retired personal injury attorney with over 15 years of active litigation experience in tort law, specializing in car accident claims and premises liability cases. She reviews all state negligence rules, statutes of limitations, and damage cap guidelines represented in our database. She holds a J.D. from the Boston University School of Law and is an inactive member of the Massachusetts Bar.
+                </p>
+              </div>
+              <span class="text-[10px] font-mono text-mute block border-t border-hairline pt-3">Credentials: Boston Univ. School of Law &bull; Massachusetts State Bar</span>
+            </div>
+
+            <!-- Member 2 -->
+            <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg flex flex-col justify-between">
+              <div>
+                <h3 class="text-base font-bold text-ink">Marcus Patel</h3>
+                <span class="text-[10px] font-mono uppercase tracking-wider text-link block mb-3">Lead Technical Developer & Modeler</span>
+                <p class="text-xs leading-relaxed text-body mb-4">
+                  Marcus Patel leads our financial modeling and web calculator development. He holds an M.S. in Software Engineering and has worked in the actuarial software division of insurance providers, helping model risk algorithms. He translates complex legal formulas (like Florida's 17c diminished value formula or New York's Workers' Comp Schedule Loss of Use ratios) into programmatic scripts.
+                </p>
+              </div>
+              <span class="text-[10px] font-mono text-mute block border-t border-hairline pt-3">Credentials: M.S. Software Engineering &bull; Ex-Actuarial Risk Analyst</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Calculation Methodology -->
+        <section class="space-y-4">
+          <h2 class="text-xl md:text-2xl font-bold text-ink tracking-tight">
+            Our Calculation Methodology
+          </h2>
+          <p>
+            Unlike generic online forms, FreeInjuryCalc's systems do not use a single "one-size-fits-all" multiplier. Our mathematical engines operate on distinct rules aligned with insurance claims processing standards:
+          </p>
+          
+          <div class="overflow-x-auto my-6 border border-hairline rounded-lg bg-canvas">
+            <table class="w-full text-left border-collapse text-xs">
+              <thead>
+                <tr class="bg-canvas-soft-2 border-b border-hairline font-mono text-ink">
+                  <th class="p-3">Calculation Component</th>
+                  <th class="p-3">Methodology Applied</th>
+                  <th class="p-3">Purpose</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-hairline">
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Economic Losses (Special Damages)</td>
+                  <td class="p-3">Direct aggregation of medical bills, projected future treatments, past lost wages, and property damages.</td>
+                  <td class="p-3">Establishes the concrete out-of-pocket baseline.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Non-Economic Damages (General Damages)</td>
+                  <td class="p-3">The Multiplier Method (1.5x to 5.0x based on severity) and Per Diem (daily rate modeling) models.</td>
+                  <td class="p-3">Approximates compensation for pain and suffering and emotional distress.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Shared Negligence Deductions</td>
+                  <td class="p-3">State-specific rules (Pure Contributory, Pure Comparative, or 50%/51% Modified Comparative negligence).</td>
+                  <td class="p-3">Applies statutory deductions to simulate actual legal outcomes.</td>
+                </tr>
+                <tr>
+                  <td class="p-3 font-semibold text-ink">Insurance Policy Capping</td>
+                  <td class="p-3">Optional selection of standard policy caps (e.g. $15k CA minimum, $100k standard, or commercial policy limit).</td>
+                  <td class="p-3">Prevents unrealistic calculations by factoring in insurance limits.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            Our database tracks updates for all 50 US states and Canadian provinces to reflect changes in comparative negligence statutes and bodily injury minimum liability thresholds.
+          </p>
+        </section>
+
+        <!-- Integrity & Transparency Commitment -->
+        <section class="p-6 border border-hairline bg-primary/5 rounded-lg space-y-3">
+          <h3 class="text-sm font-bold text-ink font-mono uppercase tracking-wider">Integrity & Ad-Supported Model</h3>
+          <p class="text-xs text-body leading-relaxed">
+            FreeInjuryCalc does not require sign-up, registration, or contact details to compute case values. To support calculations, server maintenance, and code upkeep, our platform relies on unobtrusive third-party ads (like Google AdSense). We receive compensation when visitors interact with ads, allowing us to keep this service open to the public without charging user fees or selling personal lead files.
+          </p>
+        </section>
+
+      </div>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

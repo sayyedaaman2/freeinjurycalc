@@ -1,6 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Header from "../components/Header.astro";
+import SpecialtyCalculators from "../components/SpecialtyCalculators.astro";
 import Footer from "../components/Footer.astro";
 ---
 
@@ -238,37 +239,59 @@ import Footer from "../components/Footer.astro";
           </p>
 
           <h3 class="text-lg font-bold text-ink mt-8">
-            How is a New York SLU Settlement Payout Calculated?
+            How the New York SLU Calculation and Formula Works
           </h3>
           <p>
-            NYS workers' comp settlements for extremities are highly structured and are calculated using three variables:
+            The NYS workers' comp system applies a statutory mathematical formula to determine your final payout amount. The formula uses three core factors:
           </p>
-          <ol class="list-decimal pl-5 space-y-2">
-            <li>
-              <strong class="text-ink">Statutory Member Weeks:</strong> The New York State Workers' Compensation Law assigns a fixed maximum number of weeks of benefits to each eligible body part (e.g., 312 weeks for an Arm, 244 weeks for a Hand, 288 weeks for a Leg, 205 weeks for a Foot).
-            </li>
-            <li>
-              <strong class="text-ink">Physician's Loss of Use Percentage:</strong> Once you reach Maximum Medical Improvement (MMI), your treating doctor or an Independent Medical Examiner (IME) will measure your range of motion and assign a permanent impairment rating percentage (from 1% to 100%).
-            </li>
-            <li>
-              <strong class="text-ink">Your Weekly Compensation Rate:</strong> This rate is two-thirds (66.67%) of your pre-accident average weekly wage, capped by the state statutory maximum weekly benefit corresponding to the date of your accident.
-            </li>
-          </ol>
+          <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
+            Final SLU Award = (Statutory Weeks for Body Part &times; Medical Loss of Use Rating %) &times; (2/3 &times; Pre-Injury Weekly Wage)
+          </div>
+          <p>
+            This gross award represents the maximum amount payable for your specific extremity injury. Under NYS law, the insurance carrier is allowed to deduct any prior temporary disability benefits (TDR) paid to you while you were off work recovering. This ensures that wage replacements are not paid twice for the same period.
+          </p>
 
-          <div class="p-6 border border-hairline bg-canvas-soft-2 rounded-lg my-8">
-            <h4 class="text-xs font-semibold uppercase tracking-wider text-ink font-mono mb-2">
-              The Math Formula in Practice:
-            </h4>
-            <p class="text-[11px] leading-relaxed mb-4">
-              If an employee injures their hand on the job, averages a $1,200 weekly wage, and is assigned a 25% loss of use by the physician:
-            </p>
-            <ul class="list-disc pl-5 text-[11px] space-y-1">
-              <li>Hand Max Weeks = 244 Weeks</li>
-              <li>Awarded Weeks = 244 Weeks &times; 25% = 61 Weeks</li>
-              <li>Weekly Rate = 2/3 &times; $1,200 = $800</li>
-              <li>Gross SLU Award = 61 Weeks &times; $800 = $48,800</li>
-              <li><strong>Net Lump Sum:</strong> Any prior temporary disability benefits paid while out of work will be deducted from the $48,800 payout.</li>
-            </ul>
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Understanding the Calculator Input Fields
+          </h3>
+          <ul class="list-disc pl-5 space-y-2">
+            <li><strong>Injured Body Part:</strong> Selection determines the maximum weeks allowed by law. Extremities like arms or legs carry more weeks than digits like thumbs or toes.</li>
+            <li><strong>Date of Injury (Rate Caps):</strong> The maximum weekly benefit rate is capped under NYS law based on the fiscal period (July 1 to June 30) in which the accident occurred. For instance, the maximum rate cap for July 2025 to June 2026 is set at $1,171.46 per week.</li>
+            <li><strong>Pre-Accident Average Weekly Wage (AWW):</strong> Computed by taking your total earnings in the 52 weeks prior to the crash and dividing by 52. The benefit rate is 2/3 (66.67%) of this AWW, up to the statutory cap.</li>
+            <li><strong>Physician's Loss of Use Rating (%):</strong> Once you reach Maximum Medical Improvement (MMI), your doctor will evaluate your joint flexibility, muscle loss, or surgical outcomes and assign a percentage representing your permanent impairment rating.</li>
+            <li><strong>Temporary Disability Payouts Received:</strong> Any prior weekly checks paid to you while you were out of work. These act as an advance and are subtracted from the final lump sum.</li>
+          </ul>
+
+          <h3 class="text-lg font-bold text-ink mt-8">
+            Worked Settlement Examples
+          </h3>
+          <div class="space-y-4">
+            <div class="p-4 border border-hairline bg-canvas rounded">
+              <strong class="text-ink block mb-1">Example A: 20% Permanent Impairment of the Thumb</strong>
+              <p>You suffer a crush injury to your thumb. Your AWW is $900. Your physician certifies a 20% SLU. You received $1,200 in temporary benefits while treating.</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1">
+                <li>Thumb Max Weeks: 75 Weeks</li>
+                <li>Awarded Weeks: 75 &times; 20% = 15 Weeks</li>
+                <li>Weekly Rate: 2/3 &times; $900 = $600 / week</li>
+                <li>Gross SLU Award: 15 weeks &times; $600 = $9,000</li>
+                <li>Temporary Benefit Deduction: -$1,200</li>
+                <li><strong>Final Net Lump Sum Check: $7,800</strong></li>
+              </ul>
+            </div>
+
+            <div class="p-4 border border-hairline bg-canvas rounded">
+              <strong class="text-ink block mb-1">Example B: 40% Permanent Impairment of the Leg (Capped Wage)</strong>
+              <p>You undergo knee surgery following a work crash. Your AWW is $2,100. Injury occurs in October 2025. Your doctor certifies a 40% leg loss. You received $8,000 in TTD benefits.</p>
+              <ul class="list-disc pl-5 mt-2 space-y-1">
+                <li>Leg Max Weeks: 288 Weeks</li>
+                <li>Awarded Weeks: 288 &times; 40% = 115.2 Weeks</li>
+                <li>Raw Weekly Rate: 2/3 &times; $2,100 = $1,400 (exceeds cap)</li>
+                <li>Capped Weekly Rate: $1,171.46 / week (Statutory cap)</li>
+                <li>Gross SLU Award: 115.2 weeks &times; $1,171.46 = $134,952.19</li>
+                <li>Temporary Benefit Deduction: -$8,000</li>
+                <li><strong>Final Net Lump Sum Check: $126,952.19</strong></li>
+              </ul>
+            </div>
           </div>
 
           <h3 class="text-lg font-bold text-ink mt-8">
@@ -378,6 +401,42 @@ import Footer from "../components/Footer.astro";
                 <p>Any temporary total disability (TTD) or temporary partial disability (TPD) wage replacement benefits you received while you were recovering and unable to work are treated as an advance on your final SLU award. They are deducted dollar-for-dollar from your final lump-sum check. If the prior payments exceed the total SLU award, you will not receive an additional payout (but you will not have to pay anything back).</p>
               </div>
             </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                What if the insurance doctor assigns a lower rating than my treating doctor?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>This is extremely common. The insurance carrier's Independent Medical Examiner (IME) will often assign a lower impairment percentage. In these cases, a Workers' Compensation Law Judge will hold a hearing, evaluate the deposition transcripts, and either split the difference or rule in favor of the more credible medical report.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Is a NYS Workers' Comp SLU award taxable?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>No. Under federal IRS guidelines, workers' compensation benefit payments and lump-sum SLU settlements are 100% tax-free at both the federal and state level.</p>
+              </div>
+            </details>
+
+            <details class="group p-5 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+              <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+                Can I sue my employer in NY civil court instead?
+                <span class="transition group-open:rotate-180 text-mute">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+                </span>
+              </summary>
+              <div class="text-xs text-body leading-relaxed mt-3">
+                <p>Generally, no. Workers' compensation is the exclusive remedy for work-related injuries under New York law, meaning you cannot sue your employer for negligence. However, you can bring a third-party lawsuit if your injury was caused by a negligent third party (such as a manufacturer of defective equipment or a separate subcontractor at a job site).</p>
+              </div>
+            </details>
           </div>
 
         </div>
@@ -385,6 +444,9 @@ import Footer from "../components/Footer.astro";
 
     </div>
   </main>
+
+  <!-- Specialty Calculators Cross-linking Directory Section -->
+  <SpecialtyCalculators />
 
   <Footer />
 </Layout>

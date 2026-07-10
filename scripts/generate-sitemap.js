@@ -37,7 +37,7 @@ function generateSitemap() {
   </url>\n`;
 
   // 2. Static pages
-  const staticPages = ['blog', 'about-us', 'contact-us', 'privacy-policy', 'terms-conditions'];
+  const staticPages = ['blog', 'about', 'contact', 'privacy-policy', 'terms-of-service', 'disclaimer'];
   for (const page of staticPages) {
     xml += `  <url>
     <loc>${SITE_URL}/${page}/</loc>

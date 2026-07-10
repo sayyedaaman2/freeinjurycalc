@@ -10,6 +10,11 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always'
   },
+  redirects: {
+    '/about-us/': '/about/',
+    '/contact-us/': '/contact/',
+    '/terms-conditions/': '/terms-of-service/',
+  },
   vite: {
     plugins: [tailwindcss()]
   }
