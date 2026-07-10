@@ -661,12 +661,12 @@ export const blogPosts: BlogPost[] = [
         <li><strong>Income Replacement:</strong> Paid at 90% of your net income, up to a maximum gross limit of approximately $109,000.</li>
         <li><strong>Permanent Impairment:</strong> If you suffer a permanent impairment, a scheduled lump-sum payment is awarded based on a regulatory chart (up to ~$260,000).</li>
       </ul>
-      <p class="mb-4">To estimate these statutory benefits, claimants utilize a specialized <strong>icbc settlement calculator</strong> framework that excludes general damages and focuses on healthcare and wage replacement allocations.</p>
+      <p class="mb-4">To estimate these statutory benefits, claimants utilize a specialized ICBC benefit estimation framework that excludes general damages and focuses on healthcare and wage replacement allocations.</p>
 
       <h2 class="text-lg font-bold text-ink mt-8 mb-4">3. Alberta Car Accident Settlements: Minor Injury Caps</h2>
       <p class="mb-4">Alberta currently utilizes a tort-based auto insurance system with Section B accident benefits. You can sue the negligent driver for both economic losses and pain and suffering, though your net settlement is subject to comparative negligence rules if you shared fault.</p>
       <p class="mb-4">However, Alberta places a statutory cap on general pain and suffering damages for injuries deemed \"minor\" under the Minor Injury Regulation (MIR). For accidents in 2026, the <strong>alberta minor injury cap is set at $6,306</strong>. This cap applies to sprains, strains, and minor whiplash (WAD I & II) that do not result in a serious, long-term impairment of function.</p>
-      <p class="mb-4">If your injury causes a serious impairment that prevents you from performing your job or normal activities, you can bypass the cap and seek uncapped general damages. This distinction is critical when running an online <strong>car accident settlement calculator alberta</strong>.</p>
+      <p class="mb-4">If your injury causes a serious impairment that prevents you from performing your job or normal activities, you can bypass the cap and seek uncapped general damages. This distinction is critical when evaluating an online claim for Alberta.</p>
       
       <p class="mb-4">Note that Alberta is scheduled to transition to a care-first no-fault auto insurance system on January 1, 2027. Claims arising from crashes in 2026 are still handled under the current cap-and-tort system.</p>
     `
