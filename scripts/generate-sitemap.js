@@ -8,8 +8,6 @@ function generateSitemap() {
   const sitemapPath = path.join(process.cwd(), 'public', 'sitemap.xml');
   const statesFilePath = path.join(process.cwd(), 'src', 'data', 'states.ts');
   const specialFilePath = path.join(process.cwd(), 'src', 'data', 'specialCalculators.ts');
-  const blogFilePath = path.join(process.cwd(), 'src', 'data', 'blog.ts');
-
   // Parse state slugs using regex
   const statesFileContent = fs.readFileSync(statesFilePath, 'utf8');
   const stateMatches = [...statesFileContent.matchAll(/slug:\s*["']([^"']+)["']/g)];
@@ -20,10 +18,14 @@ function generateSitemap() {
   const specialMatches = [...specialFileContent.matchAll(/slug:\s*["']([^"']+)["']/g)];
   const specialSlugs = [...new Set(specialMatches.map(m => m[1]))];
 
-  // Parse blog slugs using regex
-  const blogFileContent = fs.readFileSync(blogFilePath, 'utf8');
-  const blogMatches = [...blogFileContent.matchAll(/slug:\s*["']([^"']+)["']/g)];
-  const blogSlugs = [...new Set(blogMatches.map(m => m[1]))];
+  // Define static blog slugs
+  const blogSlugs = [
+    'how-car-accident-settlements-are-calculated',
+    'average-car-accident-settlement-by-state',
+    'what-is-pain-and-suffering',
+    'how-long-does-settlement-take',
+    'car-accident-settlement-vs-lawsuit'
+  ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';

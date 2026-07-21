@@ -2,12 +2,54 @@
 import Layout from "../../layouts/Layout.astro";
 import Header from "../../components/Header.astro";
 import Footer from "../../components/Footer.astro";
-import { blogPosts } from "../../data/blog";
+
+const staticPosts = [
+  {
+    slug: "how-car-accident-settlements-are-calculated",
+    title: "How Car Accident Settlements Are Calculated in 2026",
+    description: "Learn the exact formulas insurance adjusters use, including the multiplier method, to calculate your medical expenses, lost wages, and pain and suffering.",
+    date: "June 25, 2026",
+    readTime: "8 min read",
+    category: "Settlement Calculus"
+  },
+  {
+    slug: "average-car-accident-settlement-by-state",
+    title: "Average Car Accident Settlement Amounts by State 2026",
+    description: "Review a complete breakdown of average settlement values across all 50 US states, and understand why location dramatically affects your claim value.",
+    date: "June 25, 2026",
+    readTime: "10 min read",
+    category: "Legal Geography"
+  },
+  {
+    slug: "what-is-pain-and-suffering",
+    title: "What is Pain and Suffering in a Car Accident Claim?",
+    description: "Understand how non-economic damages are defined, how the multiplier vs per diem methods are applied, and how to document your pain and suffering.",
+    date: "June 25, 2026",
+    readTime: "7 min read",
+    category: "Damages Guide"
+  },
+  {
+    slug: "how-long-does-settlement-take",
+    title: "How Long Does a Car Accident Settlement Take in 2026?",
+    description: "Understand the step-by-step timeline of a car accident settlement, the factors that delay or speed up insurance payouts, and state statutes of limitations.",
+    date: "June 25, 2026",
+    readTime: "8 min read",
+    category: "Settlement Process"
+  },
+  {
+    slug: "car-accident-settlement-vs-lawsuit",
+    title: "Car Accident Settlement vs Going to Court: Which is Better?",
+    description: "Compare car accident settlements vs filing a lawsuit. Learn the pros, cons, costs, and timelines of resolving claims out of court versus going to trial.",
+    date: "June 25, 2026",
+    readTime: "8 min read",
+    category: "Litigation Guide"
+  }
+];
 ---
 
 <Layout 
-  title="Personal Injury Blog & Settlement Guides | FreeInjuryCalc"
-  description="Explore expert articles, step-by-step accident checklists, and comprehensive guides explaining how car accident settlements are calculated by insurance companies."
+  title="Car Accident Settlement Blog — Expert Guides 2026"
+  description="Free guides on car accident settlements, insurance claims, and personal injury compensation. Expert information for accident victims."
 >
   <Header />
 
@@ -20,16 +62,16 @@ import { blogPosts } from "../../data/blog";
           Knowledge Center
         </span>
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink mt-4 mb-4">
-          Settlement Guides & Legal Insights
+          Car Accident Settlement Blog — Expert Guides 2026
         </h1>
         <p class="text-sm sm:text-base text-body leading-relaxed">
-          Learn how insurance companies evaluate claims, understand complex state liability rules, and discover how to maximize your car accident injury settlement payout.
+          Learn how insurance companies evaluate claims, understand complex state liability rules, and discover how to negotiate the maximum compensation for your injury.
         </p>
       </div>
 
       <!-- Blog Grid -->
       <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {blogPosts.map((post) => (
+        {staticPosts.map((post) => (
           <article class="flex flex-col p-6 rounded-lg border border-hairline bg-canvas-soft hover:border-hairline-strong hover:bg-canvas transition-all duration-200 shadow-sm relative group">
             <!-- Category & Read Time -->
             <div class="flex items-center justify-between mb-4">

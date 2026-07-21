@@ -21,8 +21,6 @@ const {
 const sortedStates = Object.values(statesData)
   .filter((state) => !["ontario", "british-columbia", "alberta"].includes(state.slug))
   .sort((a, b) => a.name.localeCompare(b.name));
-
-const showAds = false;
 ---
 <div id="calculator" class="w-full max-w-5xl mx-auto border border-hairline bg-canvas rounded-xl shadow-sm transition-colors duration-200 overflow-hidden font-sans">
   {calculatorType === "workers-comp" && (
@@ -395,25 +393,19 @@ const showAds = false;
       </div>
 
       <!-- Google AdSense Results Unit -->
-      {showAds && (
-        <div class="adsense-unit border border-dashed border-hairline p-4 rounded-lg bg-canvas-soft flex flex-col items-center justify-center text-center mt-2 select-none">
-          <span class="text-[9px] font-semibold font-mono uppercase tracking-wider text-mute mb-2">Advertisement</span>
-          <div class="w-full flex items-center justify-center bg-canvas-soft-2 h-[90px] border border-hairline rounded relative">
-            <ins class="adsbygoogle"
-                 style="display:block; text-align:center; width:100%; height:90px;"
-                 data-ad-layout="in-article"
-                 data-ad-format="fluid"
-                 data-ad-client="ca-pub-XXXXXXXXXXXX"
-                 data-ad-slot="XXXXXXXXXX"></ins>
-            <script is:inline>
-                 (adsbygoogle = window.adsbygoogle || []).push({});
-            </script>
-            <div class="absolute inset-0 flex items-center justify-center text-[10px] text-mute font-mono pointer-events-none select-none">
-              AdSense In-Article Responsive Ad
-            </div>
-          </div>
-        </div>
-      )}
+      <div class="adsense-unit mt-4 pt-4 border-t border-hairline text-center">
+        <span class="text-[9px] font-semibold font-mono uppercase tracking-wider text-mute block mb-2">Advertisement</span>
+        <!-- AdSense ad will appear here after approval -->
+        <ins class="adsbygoogle"
+             style="display:block; text-align:center; width:100%; height:90px;"
+             data-ad-layout="in-article"
+             data-ad-format="fluid"
+             data-ad-client="ca-pub-XXXXXXXXXX"
+             data-ad-slot="XXXXXXXXXX"></ins>
+        <script is:inline>
+             (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
+      </div>
 
       <!-- AdSense Optimization Card -->
       <div class="adsense-card p-5 rounded-lg text-center shadow-sm transition-all duration-200 mt-2">

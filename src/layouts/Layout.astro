@@ -9,6 +9,7 @@ interface Props {
   ogImage?: string;
   stateName?: string;
   customFaqSchema?: any;
+  customArticleSchema?: any;
 }
 
 const {
@@ -17,6 +18,7 @@ const {
   ogImage = "/og-image.png",
   stateName,
   customFaqSchema,
+  customArticleSchema,
 } = Astro.props;
 
 let pathname = Astro.url.pathname;
@@ -71,7 +73,7 @@ const webPageSchema = {
   "name": title,
   "description": description,
   "url": canonicalURL.href,
-  "datePublished": "2024-01-01T00:00:00+00:00",
+  "datePublished": "2026-01-01T00:00:00+00:00",
   "dateModified": "2026-06-25T00:00:00+00:00"
 };
 
@@ -263,8 +265,7 @@ const breadcrumbSchema = {
       gtag('config', 'G-RHYP8T4517');
     </script>
     <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5157092754934409"
-     crossorigin="anonymous"></script>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXX" crossorigin="anonymous"></script>
     <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="shortcut icon" href="/favicon.ico" />
@@ -300,6 +301,7 @@ const breadcrumbSchema = {
     {websiteSchema && <script type="application/ld+json" set:html={JSON.stringify(websiteSchema)} />}
     {breadcrumbSchema && <script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />}
     {organizationSchema && <script type="application/ld+json" set:html={JSON.stringify(organizationSchema)} />}
+    {customArticleSchema && <script type="application/ld+json" set:html={JSON.stringify(customArticleSchema)} />}
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
