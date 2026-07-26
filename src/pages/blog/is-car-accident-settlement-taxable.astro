@@ -1,0 +1,356 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "Is a Car Accident Settlement Taxable? What You Need to Know in 2026",
+  "description": "Is your car accident settlement taxable? Find out which parts of your settlement are tax-free and which parts the IRS may tax — with clear examples and expert guidance.",
+  "image": "https://freeinjurycalc.com/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "FreeInjuryCalc",
+    "url": "https://freeinjurycalc.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FreeInjuryCalc",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://freeinjurycalc.com/logo.png"
+    }
+  },
+  "datePublished": "2026-07-26",
+  "dateModified": "2026-07-26",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://freeinjurycalc.com/blog/is-car-accident-settlement-taxable/"
+  }
+};
+---
+
+<Layout
+  title="Is a Car Accident Settlement Taxable? What You Need to Know in 2026"
+  description="Is your car accident settlement taxable? Find out which parts of your settlement are tax-free and which parts the IRS may tax — with clear examples and expert guidance."
+  customArticleSchema={articleSchema}
+>
+  <Header />
+
+  <main class="flex-grow bg-canvas transition-colors duration-200 py-16 md:py-24 animate-fade-in">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
+
+      <!-- Back Link -->
+      <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs text-mute hover:text-link transition-colors duration-150 mb-10 font-mono">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to blog
+      </a>
+
+      <!-- Article Header -->
+      <header class="border-b border-hairline pb-8 mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[10px] font-semibold tracking-wider uppercase text-link font-mono bg-link-bg-soft/20 dark:bg-link-bg-soft/5 px-2.5 py-0.5 rounded-full">
+            Tax Guide
+          </span>
+          <span class="text-[10px] text-mute font-mono">
+            Published: July 26, 2026 &bull; Last updated: July 26, 2026 &bull; 8 min read
+          </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink leading-tight mb-4">
+          Is a Car Accident Settlement Taxable? What You Need to Know in 2026
+        </h1>
+        <p class="text-xs text-body leading-relaxed mb-2">
+          By <strong>FreeInjuryCalc Editorial Team</strong> &bull; Reviewed by <strong>Sarah Jenkins, Esq.</strong>
+        </p>
+      </header>
+
+      <!-- Table of Contents -->
+      <nav class="p-5 border border-hairline bg-canvas-soft rounded-lg mb-10 text-xs">
+        <p class="font-bold text-ink mb-3 font-mono uppercase tracking-wider text-[10px]">Table of Contents</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-link">
+          <li><a href="#short-answer" class="hover:underline">Short Answer — Is It Taxable?</a></li>
+          <li><a href="#irs-rule" class="hover:underline">The IRS Rule Under Section 104</a></li>
+          <li><a href="#not-taxable" class="hover:underline">What Parts of a Settlement Are NOT Taxable</a></li>
+          <li><a href="#taxable" class="hover:underline">What Parts of a Settlement MAY Be Taxable</a></li>
+          <li><a href="#lost-wages" class="hover:underline">Special Case: Lost Wages and Tax</a></li>
+          <li><a href="#structured" class="hover:underline">Structured Settlements and Tax</a></li>
+          <li><a href="#reporting" class="hover:underline">How to Report (or Not Report) Your Settlement</a></li>
+          <li><a href="#attorney-fees" class="hover:underline">What About Attorney Fees?</a></li>
+          <li><a href="#faq" class="hover:underline">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <!-- Article Content -->
+      <article class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-body leading-relaxed space-y-6">
+
+        <p>
+          You have been through a car accident, dealt with insurance companies, and finally received your settlement check. The last thing you want is a surprise tax bill. So before you spend a dollar of that money, it is critical to understand which parts of your settlement the IRS considers taxable income — and which parts are completely tax-free.
+        </p>
+        <p>
+          The good news is that most car accident settlement money is not taxable. The federal tax code has a specific exclusion for personal injury compensation that protects the majority of what you receive. But there are important exceptions — and getting them wrong could cost you significantly.
+        </p>
+
+        <h2 id="short-answer" class="text-lg font-bold text-ink mt-8 mb-4">Short Answer — Is It Taxable?</h2>
+        <div class="overflow-x-auto my-4 border border-hairline rounded-lg bg-canvas text-xs">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-canvas-soft-2 border-b border-hairline font-mono text-ink">
+                <th class="p-3">Type of Compensation</th>
+                <th class="p-3">Taxable?</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Medical expense reimbursement (physical injuries)</td>
+                <td class="p-3 text-green-600 dark:text-green-400 font-semibold">Not taxable</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Pain and suffering (physical injury related)</td>
+                <td class="p-3 text-green-600 dark:text-green-400 font-semibold">Not taxable</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Lost wages — if tied to physical injury</td>
+                <td class="p-3 text-amber-600 dark:text-amber-400 font-semibold">Generally not taxable*</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Property damage reimbursement</td>
+                <td class="p-3 text-green-600 dark:text-green-400 font-semibold">Generally not taxable</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Punitive damages</td>
+                <td class="p-3 text-red-600 dark:text-red-400 font-semibold">Taxable</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Emotional distress NOT tied to physical injury</td>
+                <td class="p-3 text-red-600 dark:text-red-400 font-semibold">Taxable</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Interest on delayed settlement payment</td>
+                <td class="p-3 text-red-600 dark:text-red-400 font-semibold">Taxable</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="text-[10px] text-mute">*Lost wages connected to a physical injury are generally excluded under IRS Section 104, but this is an area of tax law nuance. Consult a CPA for your specific situation.</p>
+
+        <h2 id="irs-rule" class="text-lg font-bold text-ink mt-8 mb-4">The IRS Rule Under Section 104</h2>
+        <p>
+          The core federal tax rule governing personal injury settlements is found in <strong>Internal Revenue Code Section 104(a)(2)</strong>. This section states that gross income does not include:
+        </p>
+        <blockquote class="border-l-4 border-link pl-4 italic text-body my-4">
+          "The amount of any damages (other than punitive damages) received (whether by suit or agreement and whether as lump sums or as periodic payments) on account of personal physical injuries or physical sickness."
+        </blockquote>
+        <p>
+          The key word here is <strong>"physical."</strong> The exclusion applies specifically to compensation for physical injuries or physical sickness. Congress added this physical requirement to the tax code in 1996 — before that, compensation for purely emotional injuries was also excluded. Under current law, if your claim arises from a physical injury (which virtually all car accident claims do), the vast majority of your compensation is tax-free.
+        </p>
+
+        <h2 id="not-taxable" class="text-lg font-bold text-ink mt-8 mb-4">What Parts of a Settlement Are NOT Taxable</h2>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Medical Expense Reimbursement</h3>
+        <p>
+          Compensation for your medical bills — emergency room visits, surgery, physical therapy, specialist consultations, medications, and future medical care — is completely excluded from income under Section 104. You do not owe taxes on money that reimburses you for treating a physical injury. This applies whether your settlement was $5,000 or $500,000 in medical expenses.
+        </p>
+        <p>
+          <strong>Important nuance:</strong> If you previously deducted your medical expenses on a prior-year tax return (using the medical expense itemized deduction), and your settlement then reimburses you for those same expenses, you may need to report the reimbursement as income to the extent you received a prior tax benefit from the deduction. This is relatively rare for most accident victims but is worth discussing with your CPA.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Pain and Suffering (Physical Injury Related)</h3>
+        <p>
+          Compensation for pain and suffering that flows from a physical injury is tax-free. This includes both physical pain (the actual bodily discomfort of your injuries) and emotional distress that is a direct result of your physical injuries. So if you received $60,000 in pain and suffering damages because you suffered a herniated disc and chronic pain from a car accident, that $60,000 is excluded from your taxable income.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Property Damage Reimbursement</h3>
+        <p>
+          Money you receive to repair or replace your vehicle is generally not taxable, with one technical exception: if the insurance payment exceeds your vehicle's adjusted tax basis (essentially, what you paid for the car minus depreciation), the excess could theoretically be taxable as a gain. For most total-loss claims where the settlement is close to actual cash value, this is rarely a practical issue.
+        </p>
+
+        <h2 id="taxable" class="text-lg font-bold text-ink mt-8 mb-4">What Parts of a Settlement MAY Be Taxable</h2>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Punitive Damages</h3>
+        <p>
+          Punitive damages are specifically excluded from the Section 104 exclusion by statute. If you received punitive damages — which are awarded to punish particularly reckless or egregious conduct by the defendant, rather than to compensate you — those are fully taxable as ordinary income.
+        </p>
+        <p>
+          Most standard car accident settlements do not include punitive damages. They are rare and typically only awarded in cases involving extreme recklessness — such as drunk driving at extremely high blood alcohol levels, racing on public roads, or intentional conduct. If your settlement explicitly allocates any portion to punitive damages, set that money aside for taxes and consult your CPA.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Emotional Distress NOT Connected to Physical Injury</h3>
+        <p>
+          If any portion of your settlement compensates you for emotional distress that is <em>not</em> caused by or connected to a physical injury, that portion may be taxable. In practice, this is almost never a real issue for car accident victims because car accidents are physical events that cause physical injury — and the emotional distress almost always flows directly from that physical injury.
+        </p>
+        <p>
+          However, if you file a claim that includes a standalone emotional distress claim unconnected to physical injury (for example, purely PTSD from witnessing an accident without being physically injured yourself), that distinct emotional distress component could face different tax treatment.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Interest on Settlement Payments</h3>
+        <p>
+          If the insurance company delayed payment unreasonably and your settlement includes an interest component (or if you received a judgment with pre-judgment interest), that interest portion is taxable as ordinary income. The principal compensation for your injuries remains tax-free; only the interest element is taxable.
+        </p>
+
+        <h2 id="lost-wages" class="text-lg font-bold text-ink mt-8 mb-4">Special Case: Lost Wages and Tax</h2>
+        <p>
+          Lost wage compensation is one of the more nuanced areas of settlement taxation. Here is how it generally works:
+        </p>
+        <p>
+          Under IRS guidance, compensation for lost wages that is received as part of a physical injury settlement is generally excluded from income under Section 104 — because it is part of a package of damages "on account of" a physical injury. The IRS has historically treated the entire settlement package as covered by Section 104 as long as the underlying claim is for physical injuries.
+        </p>
+        <p>
+          However, if your employer paid you through a disability plan or workers' compensation program and then the settlement reimburses those specific payments, the tax treatment can become more complex. Employer-funded disability payments that were previously excluded from income, when reimbursed by a settlement, may require careful analysis.
+        </p>
+        <p>
+          The practical rule: if you received a lump-sum settlement from a liability insurer for a physical injury car accident, and the settlement includes lost wages, that portion is almost certainly excluded from income along with the rest of the settlement. But consult your CPA before filing your taxes.
+        </p>
+
+        <h2 id="structured" class="text-lg font-bold text-ink mt-8 mb-4">Structured Settlements and Tax</h2>
+        <p>
+          Many serious injury settlements are paid as <strong>structured settlements</strong> — installment payments over time rather than a single lump sum. Structured settlements for physical injury claims have a significant tax advantage: not only is the principal excluded, but the interest earned within the structured settlement annuity is also tax-free under Section 130.
+        </p>
+        <p>
+          This makes structured settlements financially superior to a lump sum for large physical injury awards, especially for young plaintiffs who will receive payments over many years. A $500,000 structured settlement paying out over 20 years is entirely tax-free; a $500,000 lump sum invested in the market would generate taxable investment income each year.
+        </p>
+
+        <h2 id="reporting" class="text-lg font-bold text-ink mt-8 mb-4">How to Report (or Not Report) Your Settlement</h2>
+        <p>
+          In most car accident cases, you do <strong>not</strong> need to report your settlement on your federal tax return, and you will not receive a 1099 form for the non-taxable portion. However:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Keep documentation:</strong> Keep your settlement agreement, demand letter, and all medical records in case the IRS ever questions why a large deposit appeared in your bank account. The documentation proves it was a personal injury settlement.</li>
+          <li><strong>Attorney fees:</strong> If your attorney fees were paid out of a settlement that is entirely tax-free, those fees are also treated as non-taxable. But see the section below for an important nuance.</li>
+          <li><strong>Taxable portions:</strong> If any portion of your settlement is taxable (punitive damages, interest), you should report it on Schedule 1 of your federal return as "Other Income." The payer may or may not issue a 1099 for these amounts.</li>
+          <li><strong>State taxes:</strong> Most states follow federal tax treatment for personal injury settlements, but a few states have different rules. Consult a local tax professional to confirm your state's treatment.</li>
+        </ul>
+
+        <h2 id="attorney-fees" class="text-lg font-bold text-ink mt-8 mb-4">What About Attorney Fees?</h2>
+        <p>
+          There is a technical tax issue with attorney fees in personal injury cases that was significantly resolved by the American Jobs Creation Act of 2004. Under current law, when you receive a personal injury settlement and your attorney takes 33% as a contingency fee, you are taxed only on the net amount you receive — not the gross amount before the fee is taken.
+        </p>
+        <p>
+          For fully tax-free physical injury settlements, this is not a concern because the entire gross amount is excluded anyway. The issue arises in cases where part of the settlement is taxable (like punitive damages): in those cases, the attorney fee allocated to the taxable portion can be deducted above the line under IRC Section 62(a)(20), preventing you from being taxed on money you never actually received.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-3 my-8">
+          <a href="/" class="inline-flex items-center justify-center gap-2 bg-link text-white font-semibold text-xs px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-150">
+            Calculate My Settlement Value →
+          </a>
+          <a href="/blog/how-car-accident-settlements-are-calculated/" class="inline-flex items-center justify-center gap-2 border border-hairline text-link text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-canvas-soft transition-colors duration-150">
+            How Settlements Are Calculated
+          </a>
+        </div>
+
+        <h2 id="faq" class="text-lg font-bold text-ink mt-8 mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4 my-6">
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Do I have to report my car accident settlement to the IRS?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              For a standard physical injury car accident settlement — which covers medical bills, pain and suffering, and lost wages — you generally do not need to report the settlement as income on your federal tax return. The money is excluded from gross income under IRC Section 104 and does not appear on your tax return. You should keep documentation of the settlement in your records, but there is nothing to declare. The only exceptions are taxable portions like punitive damages or interest, which should be reported if received.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Will the insurance company send me a 1099 for my settlement?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              For fully excludable physical injury settlements, the insurance company generally does not issue a Form 1099. However, some insurers issue 1099-MISC forms for settlement payments as a matter of practice, or for portions of the settlement that are clearly taxable (like punitive damages or interest). Receiving a 1099 does not necessarily mean you owe taxes — it means the payer reported a payment to the IRS. If you receive a 1099 for what you believe is a fully excludable settlement, consult a CPA who can help you correctly handle it on your return.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Does my settlement affect my eligibility for government benefits?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Possibly — and this is a critically important consideration that many settlement recipients overlook. Means-tested government programs like Medicaid and Supplemental Security Income (SSI) have strict asset limits. If you receive a lump-sum settlement that pushes your total assets above the program's threshold, you could lose your benefits until those assets are spent down. Structured settlements, Special Needs Trusts (SNTs), or ABLE accounts can often be used to receive settlement funds without jeopardizing benefits eligibility. Consult a special needs attorney or benefits planner before finalizing any settlement if you receive means-tested benefits.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Is a workers' comp settlement taxable?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Workers' compensation benefits — including lump-sum settlements — are generally excluded from federal income tax under IRC Section 104(a)(1), a different provision than the one covering personal injury lawsuits. You do not pay income tax on workers' comp benefits, including settlement amounts. However, if you receive both Social Security Disability Insurance (SSDI) and workers' comp simultaneously, your SSDI benefit may be reduced (offset), and that interaction can have tax implications.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Is a wrongful death settlement taxable to the family?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Wrongful death settlements are generally not taxable to the recipients. Damages compensating the estate or family members for the physical injuries suffered by the deceased, the family's loss of companionship, and similar damages are excluded from income under Section 104. However, punitive damages in wrongful death cases are taxable. Additionally, if the settlement includes compensation for the deceased's lost future earnings, the tax treatment can vary slightly depending on how the settlement is structured. A tax attorney familiar with wrongful death proceeds should be consulted for large settlements.
+            </p>
+          </details>
+        </div>
+
+        <p>
+          The bottom line for most car accident victims: your settlement is not taxable income. You keep what you receive and do not owe the IRS a percentage. However, there are meaningful exceptions — particularly for punitive damages and interest — and the interaction with medical expense deductions, government benefits, and lien reimbursements creates real complexity. When in doubt, a one-hour consultation with a CPA is a worthwhile investment to ensure you do not overpay taxes on money you have already earned the hard way.
+        </p>
+
+        <div class="mt-10 p-5 border border-hairline bg-canvas-soft-2 rounded-lg text-[10px] text-mute leading-relaxed">
+          <p class="font-bold text-ink mb-1 text-xs">Disclaimer</p>
+          <p>
+            The information provided in this article is for general informational and educational purposes only and does not constitute legal or tax advice. Tax laws are complex and change over time. Consult a licensed CPA, tax attorney, or financial advisor for advice specific to your situation. FreeInjuryCalc.com is not a law firm, tax firm, or financial advisory firm and does not provide legal, tax, or financial services.
+          </p>
+        </div>
+      </article>
+
+      <!-- Related Articles -->
+      <footer class="border-t border-hairline pt-10 mt-12">
+        <h3 class="text-base font-bold text-ink mb-6">Related Articles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/average-car-accident-settlement-by-state/" class="hover:text-link transition-colors duration-150">Average Settlement Amounts by State</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">See what accident victims in your state typically receive in settlements.</p>
+            </div>
+            <a href="/blog/average-car-accident-settlement-by-state/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/how-long-does-settlement-take/" class="hover:text-link transition-colors duration-150">How Long Does a Settlement Take?</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">Timelines from minor accidents to serious injuries — and what causes delays.</p>
+            </div>
+            <a href="/blog/how-long-does-settlement-take/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/car-accident-settlement-vs-lawsuit/" class="hover:text-link transition-colors duration-150">Settlement vs. Lawsuit</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">Pros, cons, costs, and timelines of settling vs. going to court.</p>
+            </div>
+            <a href="/blog/car-accident-settlement-vs-lawsuit/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>

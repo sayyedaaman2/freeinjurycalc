@@ -1,0 +1,405 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": "How Long After a Car Accident Can You Claim? Deadlines by State 2026",
+  "description": "How long after a car accident can you file a claim? Learn the statute of limitations for all 50 states, what tolling exceptions exist, and what happens if you miss the deadline.",
+  "image": "https://freeinjurycalc.com/og-image.jpg",
+  "author": {
+    "@type": "Organization",
+    "name": "FreeInjuryCalc",
+    "url": "https://freeinjurycalc.com"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "FreeInjuryCalc",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://freeinjurycalc.com/logo.png"
+    }
+  },
+  "datePublished": "2026-07-26",
+  "dateModified": "2026-07-26",
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://freeinjurycalc.com/blog/how-long-after-car-accident-can-you-claim/"
+  }
+};
+
+const states = [
+  { state: "Alabama", limit: "2 years", exception: "None for adults" },
+  { state: "Alaska", limit: "2 years", exception: "Minor victims tolled to age 18" },
+  { state: "Arizona", limit: "2 years", exception: "Discovery rule may apply" },
+  { state: "Arkansas", limit: "3 years", exception: "Minors tolled to age 18" },
+  { state: "California", limit: "2 years", exception: "Minors tolled; govt claims 6 months" },
+  { state: "Colorado", limit: "3 years", exception: "Govt claims 180 days notice" },
+  { state: "Connecticut", limit: "2 years", exception: "None standard" },
+  { state: "Delaware", limit: "2 years", exception: "Minor victims tolled to age 18" },
+  { state: "Florida", limit: "2 years", exception: "Minors tolled; govt claims 3 years" },
+  { state: "Georgia", limit: "2 years", exception: "Minors tolled to age 18" },
+  { state: "Hawaii", limit: "2 years", exception: "Govt claims 2-year limit" },
+  { state: "Idaho", limit: "2 years", exception: "Discovery rule may apply" },
+  { state: "Illinois", limit: "2 years", exception: "Govt claims 1 year" },
+  { state: "Indiana", limit: "2 years", exception: "Govt claims 270 days" },
+  { state: "Iowa", limit: "2 years", exception: "None standard" },
+  { state: "Kansas", limit: "2 years", exception: "Minors tolled" },
+  { state: "Kentucky", limit: "1 year", exception: "Minors tolled to age 18" },
+  { state: "Louisiana", limit: "1 year", exception: "Minors tolled to age 18" },
+  { state: "Maine", limit: "6 years", exception: "Longest in US" },
+  { state: "Maryland", limit: "3 years", exception: "Govt claims 1 year" },
+  { state: "Massachusetts", limit: "3 years", exception: "Discovery rule may apply" },
+  { state: "Michigan", limit: "3 years", exception: "Govt claims 6 months" },
+  { state: "Minnesota", limit: "2 years", exception: "Govt claims 180 days notice" },
+  { state: "Mississippi", limit: "3 years", exception: "None standard" },
+  { state: "Missouri", limit: "5 years", exception: "None standard" },
+  { state: "Montana", limit: "3 years", exception: "Minors tolled to age 18" },
+  { state: "Nebraska", limit: "4 years", exception: "None standard" },
+  { state: "Nevada", limit: "2 years", exception: "Govt claims 2 years" },
+  { state: "New Hampshire", limit: "3 years", exception: "None standard" },
+  { state: "New Jersey", limit: "2 years", exception: "Govt claims 90 days notice" },
+  { state: "New Mexico", limit: "3 years", exception: "Govt claims 2 years" },
+  { state: "New York", limit: "3 years", exception: "Govt claims 90 days notice" },
+  { state: "North Carolina", limit: "3 years", exception: "None standard" },
+  { state: "North Dakota", limit: "6 years", exception: "None standard" },
+  { state: "Ohio", limit: "2 years", exception: "Minors tolled" },
+  { state: "Oklahoma", limit: "2 years", exception: "None standard" },
+  { state: "Oregon", limit: "2 years", exception: "Govt claims 180 days notice" },
+  { state: "Pennsylvania", limit: "2 years", exception: "Discovery rule may apply" },
+  { state: "Rhode Island", limit: "3 years", exception: "None standard" },
+  { state: "South Carolina", limit: "3 years", exception: "Minors tolled" },
+  { state: "South Dakota", limit: "3 years", exception: "None standard" },
+  { state: "Tennessee", limit: "1 year", exception: "Minors tolled to age 18" },
+  { state: "Texas", limit: "2 years", exception: "Govt claims 6 months" },
+  { state: "Utah", limit: "4 years", exception: "Govt claims 1 year" },
+  { state: "Vermont", limit: "3 years", exception: "None standard" },
+  { state: "Virginia", limit: "2 years", exception: "Govt claims 6 months" },
+  { state: "Washington", limit: "3 years", exception: "Govt claims 3 years" },
+  { state: "West Virginia", limit: "2 years", exception: "None standard" },
+  { state: "Wisconsin", limit: "3 years", exception: "Minors tolled" },
+  { state: "Wyoming", limit: "4 years", exception: "None standard" },
+];
+---
+
+<Layout
+  title="How Long After a Car Accident Can You Claim? Deadlines by State 2026"
+  description="How long after a car accident can you file a claim? Learn the statute of limitations for all 50 states, what tolling exceptions exist, and what happens if you miss the deadline."
+  customArticleSchema={articleSchema}
+>
+  <Header />
+
+  <main class="flex-grow bg-canvas transition-colors duration-200 py-16 md:py-24 animate-fade-in">
+    <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 font-sans">
+
+      <!-- Back Link -->
+      <a href="/blog/" class="inline-flex items-center gap-1.5 text-xs text-mute hover:text-link transition-colors duration-150 mb-10 font-mono">
+        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Back to blog
+      </a>
+
+      <!-- Article Header -->
+      <header class="border-b border-hairline pb-8 mb-10">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="text-[10px] font-semibold tracking-wider uppercase text-link font-mono bg-link-bg-soft/20 dark:bg-link-bg-soft/5 px-2.5 py-0.5 rounded-full">
+            Legal Deadlines
+          </span>
+          <span class="text-[10px] text-mute font-mono">
+            Published: July 26, 2026 &bull; Last updated: July 26, 2026 &bull; 10 min read
+          </span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink leading-tight mb-4">
+          How Long After a Car Accident Can You Claim? State Deadlines 2026
+        </h1>
+        <p class="text-xs text-body leading-relaxed mb-2">
+          By <strong>FreeInjuryCalc Editorial Team</strong> &bull; Reviewed by <strong>Sarah Jenkins, Esq.</strong>
+        </p>
+      </header>
+
+      <!-- Table of Contents -->
+      <nav class="p-5 border border-hairline bg-canvas-soft rounded-lg mb-10 text-xs">
+        <p class="font-bold text-ink mb-3 font-mono uppercase tracking-wider text-[10px]">Table of Contents</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-link">
+          <li><a href="#insurance-vs-lawsuit" class="hover:underline">Insurance Claim vs. Lawsuit Deadlines</a></li>
+          <li><a href="#what-is-sol" class="hover:underline">What is the Statute of Limitations?</a></li>
+          <li><a href="#state-table" class="hover:underline">All 50 States: Statute of Limitations Table</a></li>
+          <li><a href="#government" class="hover:underline">Government Vehicle Claims — Critical Shorter Deadlines</a></li>
+          <li><a href="#tolling" class="hover:underline">Tolling Exceptions That Extend Your Deadline</a></li>
+          <li><a href="#miss-deadline" class="hover:underline">What Happens If You Miss the Deadline?</a></li>
+          <li><a href="#act-now" class="hover:underline">Why You Should Act Sooner, Not Later</a></li>
+          <li><a href="#faq" class="hover:underline">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
+      <!-- Article Content -->
+      <article class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-body leading-relaxed space-y-6">
+
+        <p>
+          One of the most devastating mistakes a car accident victim can make is waiting too long to file their claim. Unlike many legal matters where delays cause inconvenience, missing the deadline for a car accident claim can permanently and completely eliminate your right to any compensation — no matter how clear the other driver's fault is, no matter how severe your injuries, and no matter how large your medical bills.
+        </p>
+        <p>
+          This guide gives you the definitive breakdown of how long you have to file a claim in every state, explains the important exceptions that can extend or shorten your deadline, and helps you understand why acting promptly is always in your financial interest.
+        </p>
+
+        <h2 id="insurance-vs-lawsuit" class="text-lg font-bold text-ink mt-8 mb-4">Insurance Claim vs. Lawsuit Deadlines — Two Different Clocks</h2>
+        <p>
+          First, it is important to distinguish between two separate types of deadlines:
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Insurance Claim Reporting Deadlines</h3>
+        <p>
+          Most auto insurance policies require you to report accidents "promptly" or "within a reasonable time." Many policies specify a window — often 30 to 90 days — for initial reporting. Failing to report within the policy's required timeframe can give your own insurer grounds to deny coverage. Always report the accident to your own insurer within 24 to 48 hours, even if you do not yet plan to make a claim.
+        </p>
+        <p>
+          For the other driver's insurer, there is no strict reporting deadline — but the longer you wait, the more the insurer will argue that your injuries were not caused by the accident. Prompt reporting strengthens your claim.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Statute of Limitations — Lawsuit Filing Deadline</h3>
+        <p>
+          The <strong>statute of limitations</strong> is a state law that sets the absolute latest date by which a lawsuit must be filed in court. It is not a suggestion — it is a hard deadline enforced by law. If you do not file a lawsuit before the statute of limitations expires, the court will dismiss your case and the defendant wins automatically, regardless of the merits of your claim.
+        </p>
+        <p>
+          The statute of limitations starts running on the date of the accident in most cases (with important exceptions discussed below). It varies by state from as few as 1 year to as many as 6 years.
+        </p>
+
+        <div class="p-4 border border-hairline bg-canvas-soft-2 rounded-lg text-xs text-body my-4">
+          <p class="font-bold text-ink mb-2">⚠️ Critical Point: You Do NOT Need to File a Lawsuit to Settle</p>
+          <p>The statute of limitations only requires you to FILE A LAWSUIT before the deadline — not necessarily to complete a trial or accept a settlement. If you are still negotiating with the insurer as your deadline approaches, your attorney can file a protective lawsuit to preserve your rights while negotiations continue. Most cases filed this way still settle without ever going to trial.</p>
+        </div>
+
+        <h2 id="what-is-sol" class="text-lg font-bold text-ink mt-8 mb-4">What is the Statute of Limitations?</h2>
+        <p>
+          The statute of limitations is a state-enacted time limit on legal actions. For personal injury claims arising from car accidents, it defines how many years from the date of the accident you have to initiate court proceedings. The rationale for these deadlines is fairness — evidence degrades over time, witnesses forget details, and defendants deserve a reasonable point of finality.
+        </p>
+        <p>
+          The statute of limitations applies specifically to <em>filing a lawsuit</em>. You can still negotiate and settle an insurance claim after the limitations period — the insurer is not required to refuse your claim after the deadline. However, if negotiations break down after the statute has run, you have no leverage: you cannot threaten or file a lawsuit, and the insurer knows it. The statute of limitations is your power card in negotiation — once it expires, the insurer has no reason to treat your claim seriously.
+        </p>
+
+        <h2 id="state-table" class="text-lg font-bold text-ink mt-8 mb-4">All 50 States: Statute of Limitations Table</h2>
+        <p>
+          Here is the statute of limitations for personal injury claims (including car accidents) in all 50 US states, along with the most common exception to be aware of:
+        </p>
+        <div class="overflow-x-auto my-6 border border-hairline rounded-lg bg-canvas text-xs">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-canvas-soft-2 border-b border-hairline font-mono text-ink">
+                <th class="p-3">State</th>
+                <th class="p-3">Standard Limit</th>
+                <th class="p-3">Key Exception</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              {states.map((s) => (
+                <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                  <td class="p-3 font-semibold text-ink">{s.state}</td>
+                  <td class="p-3 font-mono">{s.limit}</td>
+                  <td class="p-3 text-mute text-[10px]">{s.exception}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        <h2 id="government" class="text-lg font-bold text-ink mt-8 mb-4">Government Vehicle Claims — Critical Shorter Deadlines</h2>
+        <p>
+          If your accident involved a government-owned vehicle — a city bus, county vehicle, state police car, US Postal Service truck, federal government vehicle, or any other publicly owned vehicle — the legal rules are dramatically different and the deadlines are <em>much shorter</em>.
+        </p>
+        <p>
+          Government entities enjoy sovereign immunity, which means they cannot be sued unless they have specifically consented to be sued under a claims act. To make a claim against a government entity, you must typically file a formal <strong>Notice of Claim</strong> (sometimes called a "tort claim notice") within a set window — often just 60 to 180 days from the date of the accident.
+        </p>
+        <p>
+          Missing this notice deadline can permanently bar your claim against the government even if the standard statute of limitations has not expired. This is one of the most commonly missed deadlines in personal injury law because victims do not realize a government vehicle was involved, or do not know the short notice period exists.
+        </p>
+        <p>
+          Examples of government claim notice periods:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>California:</strong> 6 months to file a government tort claim with the responsible agency</li>
+          <li><strong>New York:</strong> 90 days to file a Notice of Claim with the municipality</li>
+          <li><strong>New Jersey:</strong> 90 days for a Notice of Tort Claim</li>
+          <li><strong>Texas:</strong> 6 months for most government claims; some cities require 45 days</li>
+          <li><strong>Federal government (USPS, military, etc.):</strong> 2 years under the Federal Tort Claims Act, but must file an administrative claim first</li>
+        </ul>
+        <p>
+          If any government vehicle — at any level — was involved in your accident, consult a personal injury attorney immediately. Do not wait.
+        </p>
+
+        <h2 id="tolling" class="text-lg font-bold text-ink mt-8 mb-4">Tolling Exceptions That Can Extend Your Deadline</h2>
+        <p>
+          "Tolling" means the pause or suspension of the statute of limitations clock. Several circumstances can extend the deadline beyond the standard timeframe:
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Minor Victims (Under 18)</h3>
+        <p>
+          In most states, the statute of limitations does not begin running for a minor victim until they reach the age of majority (18 in most states). So if a 12-year-old is injured in a car accident, the state's 2-year limitations period typically does not start until their 18th birthday — giving them until age 20 to file. Parents can still file on behalf of a minor child before that.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Mental Incapacity</h3>
+        <p>
+          If a victim is legally incapacitated — in a coma, declared mentally incompetent, or otherwise unable to manage their legal affairs — the statute of limitations may be tolled during the period of incapacity in many states.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">The Discovery Rule</h3>
+        <p>
+          In some situations, an injury may not be immediately apparent — or the causal connection to the accident may not be known until later. The discovery rule tolls the statute of limitations until the victim knew, or reasonably should have known, that they had been injured and that the accident caused the injury. This is more commonly invoked in toxic exposure or medical malpractice cases than in standard car accidents, but it can apply when a brain injury or spinal condition is not diagnosed until weeks after the crash.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Defendant Concealment or Fraud</h3>
+        <p>
+          If the at-fault driver or their insurer actively concealed their identity or otherwise fraudulently prevented you from discovering your claim, some states toll the limitations period until the fraud is discovered.
+        </p>
+
+        <h2 id="miss-deadline" class="text-lg font-bold text-ink mt-8 mb-4">What Happens If You Miss the Deadline?</h2>
+        <p>
+          Missing the statute of limitations is one of the most severe and irreversible consequences in personal injury law. If you attempt to file a lawsuit after the deadline:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li>The defendant will file a motion to dismiss based on the statute of limitations</li>
+          <li>The court will grant the motion and dismiss your case with prejudice</li>
+          <li>"With prejudice" means it is permanent — you cannot refile</li>
+          <li>No amount of evidence, no severity of injury, and no clarity of fault will save a time-barred claim</li>
+          <li>Your attorney (if you had one) may be liable for legal malpractice</li>
+        </ul>
+        <p>
+          There is almost no exception to this outcome. Courts are extremely reluctant to excuse missed statutes of limitations, and equitable exceptions are narrowly applied. The deadline is real, and it is final.
+        </p>
+
+        <h2 id="act-now" class="text-lg font-bold text-ink mt-8 mb-4">Why You Should Act Sooner, Not Later</h2>
+        <p>
+          Beyond the legal deadline, acting promptly after a car accident protects your claim in multiple practical ways:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Evidence preservation:</strong> Traffic camera footage is typically overwritten within 30 to 60 days. Witnesses' memories fade. Skid marks, debris patterns, and vehicle positions change. Early investigation captures evidence that disappears.</li>
+          <li><strong>Medical documentation quality:</strong> Seeing a doctor immediately after the accident creates the most direct causal link between the crash and your injuries. Waiting weeks to seek treatment gives the insurer grounds to argue the injuries were pre-existing or unrelated.</li>
+          <li><strong>Insurance cooperation:</strong> Prompt reporting to both insurers starts the claims process and prevents policy defenses based on delayed notice.</li>
+          <li><strong>Negotiating leverage:</strong> The longer you wait, the more financial pressure builds. Insurance companies know that desperate, financially strained victims settle for less. Acting promptly keeps you in a stronger negotiating position.</li>
+        </ul>
+
+        <div class="flex flex-col sm:flex-row gap-3 my-8">
+          <a href="/" class="inline-flex items-center justify-center gap-2 bg-link text-white font-semibold text-xs px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-150">
+            Calculate My Settlement Value →
+          </a>
+          <a href="/blog/how-to-negotiate-car-accident-settlement/" class="inline-flex items-center justify-center gap-2 border border-hairline text-link text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-canvas-soft transition-colors duration-150">
+            Negotiation Guide
+          </a>
+          <a href="/blog/how-long-does-settlement-take/" class="inline-flex items-center justify-center gap-2 border border-hairline text-link text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-canvas-soft transition-colors duration-150">
+            Settlement Timeline Guide
+          </a>
+        </div>
+
+        <h2 id="faq" class="text-lg font-bold text-ink mt-8 mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4 my-6">
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Can I still settle after the statute of limitations expires?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Technically, yes — an insurance company can voluntarily pay a claim after the statute of limitations has expired. The insurer is not obligated to refuse your claim after the deadline. However, once the deadline passes, you have lost all legal leverage. The insurer now knows they can stall indefinitely without risk: you cannot credibly threaten to sue, and they can offer you nothing, knowing there is nothing you can do about it. Most insurers will simply refuse to engage at all once they know the deadline has passed.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Does the statute of limitations apply to my own insurance company?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              For Uninsured Motorist (UM) and Underinsured Motorist (UIM) claims against your own policy, the limitations period is typically the same as for personal injury claims — but your insurance contract may impose additional notice and filing requirements. Some policies require you to notify your insurer of a potential UM/UIM claim within a specific period (often 30 days to 1 year). Failure to meet contractual notice requirements can void coverage even if the statutory deadline has not passed. Read your policy carefully and notify your insurer promptly when you discover a UM/UIM situation.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              My injuries showed up weeks after the accident. Does the clock still start on the accident date?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              In most states, the statute of limitations starts on the date of the accident regardless of when you first experience symptoms. The discovery rule — which starts the clock when the injury is discovered — is an exception that most states apply narrowly. For standard car accident injuries, even delayed-onset ones like whiplash or TBI symptoms, courts generally hold that the plaintiff knew or should have known of the injury within days of the crash (especially if they sought medical care). Do not assume delayed symptoms give you additional time — consult an attorney immediately regardless of when your symptoms appeared.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              What if I was in an accident in a different state from where I live?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              The statute of limitations that applies is generally that of the state where the accident occurred — because that is where the "tort" happened. A conflict-of-laws analysis applies in some complex cases, but the default rule is the law of the accident state governs. So if you live in New York but were in an accident in Florida, Florida's 2-year statute of limitations generally applies, not New York's 3-year limit. Your attorney will handle this analysis, but always assume the shorter of the two states' limits as a safe guideline.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Can the at-fault driver's insurer extend the deadline for me?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              No — the statute of limitations is set by state law and cannot be extended by the insurance company. An insurer who tells you "don't worry, we'll work with you on time" is not extending your legal deadline. Some adjusters use this tactic to keep victims engaged in slow-moving negotiations until the statute expires — at which point they stop engaging entirely. Never rely on an insurer's goodwill when approaching the limitations period. File a protective lawsuit if negotiations are not complete and the deadline is approaching.
+            </p>
+          </details>
+        </div>
+
+        <p>
+          Time is the one thing in a personal injury claim you cannot get back. The statute of limitations is a firm, permanent wall that ends your legal options if you wait too long. Whether you plan to settle quickly or litigate for full value, acting promptly protects every option you have. Use our <a href="/" class="text-link hover:underline">free calculator</a> to understand your claim's value, review your state's deadline above, and do not let the clock run out.
+        </p>
+
+        <div class="mt-10 p-5 border border-hairline bg-canvas-soft-2 rounded-lg text-[10px] text-mute leading-relaxed">
+          <p class="font-bold text-ink mb-1 text-xs">Disclaimer</p>
+          <p>The information provided in this article is for general informational purposes only and does not constitute legal advice. Statute of limitations periods can be affected by many factors specific to your case. Consult a licensed personal injury attorney in your state immediately regarding your specific deadlines. FreeInjuryCalc.com is not a law firm and does not provide legal services.</p>
+        </div>
+      </article>
+
+      <!-- Related Articles -->
+      <footer class="border-t border-hairline pt-10 mt-12">
+        <h3 class="text-base font-bold text-ink mb-6">Related Articles</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/how-long-does-settlement-take/" class="hover:text-link transition-colors duration-150">How Long Does a Settlement Take?</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">Realistic settlement timelines from first offer to final check.</p>
+            </div>
+            <a href="/blog/how-long-does-settlement-take/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/do-i-need-a-lawyer-for-car-accident/" class="hover:text-link transition-colors duration-150">Do I Need a Lawyer?</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">When to hire an attorney vs. handle it yourself — with real cost math.</p>
+            </div>
+            <a href="/blog/do-i-need-a-lawyer-for-car-accident/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+          <div class="p-4 border border-hairline bg-canvas-soft rounded-lg flex flex-col justify-between">
+            <div>
+              <h4 class="text-xs font-bold text-ink mb-2">
+                <a href="/blog/car-accident-settlement-vs-lawsuit/" class="hover:text-link transition-colors duration-150">Settlement vs. Lawsuit</a>
+              </h4>
+              <p class="text-[10px] text-body leading-relaxed">When to settle, when to sue — with costs, timelines, and real statistics.</p>
+            </div>
+            <a href="/blog/car-accident-settlement-vs-lawsuit/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
+          </div>
+        </div>
+      </footer>
+
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
