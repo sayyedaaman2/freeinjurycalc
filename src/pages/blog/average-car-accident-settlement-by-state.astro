@@ -6,8 +6,8 @@ import Footer from "../../components/Footer.astro";
 const articleSchema = {
   "@context": "https://schema.org",
   "@type": "Article",
-  "headline": "Average Car Accident Settlement Amounts by State 2026",
-  "description": "Discover average car accident settlement amounts by state, why payout ranges vary by region, and review our complete 50-state settlement comparison table.",
+  "headline": "Average Car Accident Settlement Amounts in 2026 — By State & Injury Type",
+  "description": "What is the average car accident settlement in 2026? See real settlement amounts by state, injury type, and severity. Free calculator included.",
   "image": "https://freeinjurycalc.com/og-image.jpg",
   "author": {
     "@type": "Organization",
@@ -31,62 +31,62 @@ const articleSchema = {
 };
 
 const statesList = [
-  { name: "Alabama", slug: "alabama", range: "$15,000 - $65,000" },
-  { name: "Alaska", slug: "alaska", range: "$20,000 - $75,000" },
-  { name: "Arizona", slug: "arizona", range: "$18,000 - $70,000" },
-  { name: "Arkansas", slug: "arkansas", range: "$14,000 - $55,000" },
-  { name: "California", slug: "california", range: "$22,000 - $95,000" },
-  { name: "Colorado", slug: "colorado", range: "$19,000 - $75,000" },
-  { name: "Connecticut", slug: "connecticut", range: "$21,000 - $80,000" },
-  { name: "Delaware", slug: "delaware", range: "$20,000 - $78,000" },
-  { name: "Florida", slug: "florida", range: "$16,000 - $60,000" },
-  { name: "Georgia", slug: "georgia", range: "$18,000 - $72,000" },
-  { name: "Hawaii", slug: "hawaii", range: "$19,000 - $70,000" },
-  { name: "Idaho", slug: "idaho", range: "$15,000 - $60,000" },
-  { name: "Illinois", slug: "illinois", range: "$21,000 - $85,000" },
-  { name: "Indiana", slug: "indiana", range: "$16,000 - $68,000" },
-  { name: "Iowa", slug: "iowa", range: "$15,000 - $65,000" },
-  { name: "Kansas", slug: "kansas", range: "$15,000 - $62,000" },
-  { name: "Kentucky", slug: "kentucky", range: "$16,000 - $65,000" },
-  { name: "Louisiana", slug: "louisiana", range: "$18,000 - $70,000" },
-  { name: "Maine", slug: "maine", range: "$17,000 - $68,000" },
-  { name: "Maryland", slug: "maryland", range: "$20,000 - $80,000" },
-  { name: "Massachusetts", slug: "massachusetts", range: "$22,000 - $88,000" },
-  { name: "Michigan", slug: "michigan", range: "$18,000 - $75,000" },
-  { name: "Minnesota", slug: "minnesota", range: "$19,000 - $74,000" },
-  { name: "Mississippi", slug: "mississippi", range: "$13,000 - $52,000" },
-  { name: "Missouri", slug: "missouri", range: "$17,000 - $68,000" },
-  { name: "Montana", slug: "montana", range: "$15,000 - $60,000" },
-  { name: "Nebraska", slug: "nebraska", range: "$14,000 - $58,000" },
-  { name: "Nevada", slug: "nevada", range: "$20,000 - $82,000" },
-  { name: "New Hampshire", slug: "new-hampshire", range: "$18,000 - $72,000" },
-  { name: "New Jersey", slug: "new-jersey", range: "$22,000 - $90,000" },
-  { name: "New Mexico", slug: "new-mexico", range: "$16,000 - $64,000" },
-  { name: "New York", slug: "new-york", range: "$25,000 - $110,000" },
-  { name: "North Carolina", slug: "north-carolina", range: "$15,000 - $62,000" },
-  { name: "North Dakota", slug: "north-dakota", range: "$14,000 - $58,000" },
-  { name: "Ohio", slug: "ohio", range: "$17,000 - $70,000" },
-  { name: "Oklahoma", slug: "oklahoma", range: "$15,000 - $60,000" },
-  { name: "Oregon", slug: "oregon", range: "$18,000 - $75,000" },
-  { name: "Pennsylvania", slug: "pennsylvania", range: "$19,000 - $78,000" },
-  { name: "Rhode Island", slug: "rhode-island", range: "$20,000 - $76,000" },
-  { name: "South Carolina", slug: "south-carolina", range: "$16,000 - $66,000" },
-  { name: "South Dakota", slug: "south-dakota", range: "$14,000 - $56,000" },
-  { name: "Tennessee", slug: "tennessee", range: "$15,000 - $63,000" },
-  { name: "Texas", slug: "texas", range: "$20,000 - $85,000" },
-  { name: "Utah", slug: "utah", range: "$16,000 - $64,000" },
-  { name: "Vermont", slug: "vermont", range: "$18,000 - $70,000" },
-  { name: "Virginia", slug: "virginia", range: "$17,000 - $70,000" },
-  { name: "Washington", slug: "washington", range: "$20,000 - $84,000" },
-  { name: "West Virginia", slug: "west-virginia", range: "$15,000 - $62,000" },
-  { name: "Wisconsin", slug: "wisconsin", range: "$16,000 - $66,000" },
-  { name: "Wyoming", slug: "wyoming", range: "$15,000 - $60,000" }
+  { name: "Alabama", slug: "alabama", range: "$15,000 – $65,000" },
+  { name: "Alaska", slug: "alaska", range: "$20,000 – $75,000" },
+  { name: "Arizona", slug: "arizona", range: "$18,000 – $70,000" },
+  { name: "Arkansas", slug: "arkansas", range: "$14,000 – $55,000" },
+  { name: "California", slug: "california", range: "$22,000 – $95,000" },
+  { name: "Colorado", slug: "colorado", range: "$19,000 – $75,000" },
+  { name: "Connecticut", slug: "connecticut", range: "$21,000 – $80,000" },
+  { name: "Delaware", slug: "delaware", range: "$20,000 – $78,000" },
+  { name: "Florida", slug: "florida", range: "$16,000 – $60,000" },
+  { name: "Georgia", slug: "georgia", range: "$18,000 – $72,000" },
+  { name: "Hawaii", slug: "hawaii", range: "$19,000 – $70,000" },
+  { name: "Idaho", slug: "idaho", range: "$15,000 – $60,000" },
+  { name: "Illinois", slug: "illinois", range: "$21,000 – $85,000" },
+  { name: "Indiana", slug: "indiana", range: "$16,000 – $68,000" },
+  { name: "Iowa", slug: "iowa", range: "$15,000 – $65,000" },
+  { name: "Kansas", slug: "kansas", range: "$15,000 – $62,000" },
+  { name: "Kentucky", slug: "kentucky", range: "$16,000 – $65,000" },
+  { name: "Louisiana", slug: "louisiana", range: "$18,000 – $70,000" },
+  { name: "Maine", slug: "maine", range: "$17,000 – $68,000" },
+  { name: "Maryland", slug: "maryland", range: "$20,000 – $80,000" },
+  { name: "Massachusetts", slug: "massachusetts", range: "$22,000 – $88,000" },
+  { name: "Michigan", slug: "michigan", range: "$18,000 – $75,000" },
+  { name: "Minnesota", slug: "minnesota", range: "$19,000 – $74,000" },
+  { name: "Mississippi", slug: "mississippi", range: "$13,000 – $52,000" },
+  { name: "Missouri", slug: "missouri", range: "$17,000 – $68,000" },
+  { name: "Montana", slug: "montana", range: "$15,000 – $60,000" },
+  { name: "Nebraska", slug: "nebraska", range: "$14,000 – $58,000" },
+  { name: "Nevada", slug: "nevada", range: "$20,000 – $82,000" },
+  { name: "New Hampshire", slug: "new-hampshire", range: "$18,000 – $72,000" },
+  { name: "New Jersey", slug: "new-jersey", range: "$22,000 – $90,000" },
+  { name: "New Mexico", slug: "new-mexico", range: "$16,000 – $64,000" },
+  { name: "New York", slug: "new-york", range: "$25,000 – $110,000" },
+  { name: "North Carolina", slug: "north-carolina", range: "$15,000 – $62,000" },
+  { name: "North Dakota", slug: "north-dakota", range: "$14,000 – $58,000" },
+  { name: "Ohio", slug: "ohio", range: "$17,000 – $70,000" },
+  { name: "Oklahoma", slug: "oklahoma", range: "$15,000 – $60,000" },
+  { name: "Oregon", slug: "oregon", range: "$18,000 – $75,000" },
+  { name: "Pennsylvania", slug: "pennsylvania", range: "$19,000 – $78,000" },
+  { name: "Rhode Island", slug: "rhode-island", range: "$20,000 – $76,000" },
+  { name: "South Carolina", slug: "south-carolina", range: "$16,000 – $66,000" },
+  { name: "South Dakota", slug: "south-dakota", range: "$14,000 – $56,000" },
+  { name: "Tennessee", slug: "tennessee", range: "$15,000 – $63,000" },
+  { name: "Texas", slug: "texas", range: "$20,000 – $85,000" },
+  { name: "Utah", slug: "utah", range: "$16,000 – $64,000" },
+  { name: "Vermont", slug: "vermont", range: "$18,000 – $70,000" },
+  { name: "Virginia", slug: "virginia", range: "$17,000 – $70,000" },
+  { name: "Washington", slug: "washington", range: "$20,000 – $84,000" },
+  { name: "West Virginia", slug: "west-virginia", range: "$15,000 – $62,000" },
+  { name: "Wisconsin", slug: "wisconsin", range: "$16,000 – $66,000" },
+  { name: "Wyoming", slug: "wyoming", range: "$15,000 – $60,000" }
 ];
 ---
 
 <Layout 
-  title="Average Car Accident Settlement Amounts by State 2026"
-  description="Discover average car accident settlement amounts by state, why payout ranges vary by region, and review our complete 50-state settlement comparison table."
+  title="Average Car Accident Settlement Amounts in 2026 — By State & Injury Type"
+  description="What is the average car accident settlement in 2026? See real settlement amounts by state, injury type, and severity. Free calculator included."
   customArticleSchema={articleSchema}
 >
   <Header />
@@ -113,68 +113,201 @@ const statesList = [
           </span>
         </div>
         <h1 class="text-3xl sm:text-4xl md:text-5xl font-extrabold tracking-tight text-ink leading-tight mb-4">
-          Average Car Accident Settlement Amounts by State 2026
+          Average Car Accident Settlement Amounts in 2026
         </h1>
         <p class="text-xs text-body leading-relaxed mb-2">
           By <strong>FreeInjuryCalc Editorial Team</strong> &bull; Reviewed by <strong>Sarah Jenkins, Esq.</strong>
         </p>
       </header>
 
+      <!-- Table of Contents -->
+      <nav class="p-5 border border-hairline bg-canvas-soft rounded-lg mb-10 text-xs">
+        <p class="font-bold text-ink mb-3 font-mono uppercase tracking-wider text-[10px]">Table of Contents</p>
+        <ol class="list-decimal pl-5 space-y-1.5 text-link">
+          <li><a href="#national" class="hover:underline">National Average Car Accident Settlement</a></li>
+          <li><a href="#by-injury" class="hover:underline">Average Settlement by Injury Type</a></li>
+          <li><a href="#by-state" class="hover:underline">Average Settlement by State (Top 10 Highest)</a></li>
+          <li><a href="#variables" class="hover:underline">Why Your Settlement Could Be Higher or Lower</a></li>
+          <li><a href="#negotiation" class="hover:underline">The Difference Between Offered and Final Settlement</a></li>
+          <li><a href="#table" class="hover:underline">Full 50-State Average Settlement Table</a></li>
+          <li><a href="#calculator" class="hover:underline">Calculate Your Own Estimate</a></li>
+          <li><a href="#faq" class="hover:underline">Frequently Asked Questions</a></li>
+        </ol>
+      </nav>
+
       <!-- Article Content -->
       <article class="prose dark:prose-invert max-w-none text-xs sm:text-sm text-body leading-relaxed space-y-6">
+
+        <!-- Introduction -->
         <p>
-          If you are negotiating a personal injury claim after a vehicle collision, you are likely wondering what your case is worth. While no two accidents are identical, looking at average figures can provide a helpful starting point. According to data from the Insurance Information Institute (III), the national average car accident settlement in the United States typically falls in the range of <strong>$29,000 to $30,000</strong> for claims involving bodily injury. Property-damage-only claims are significantly lower, averaging around $4,500 to $5,000.
+          "What is the average car accident settlement?" It is one of the most Googled questions by accident victims — and one of the most misleading. The "average" number you find online often ranges from $20,000 to $30,000, but that figure tells you almost nothing about what <em>your</em> specific claim is worth.
         </p>
         <p>
-          However, using a national average is highly misleading. In practice, personal injury settlements vary dramatically depending on the state in which the accident occurred. A claim that settles for $15,000 in one state could fetch $45,000 in another. In this guide, we will analyze why settlements vary by state, explore the top 10 highest-paying states, compare no-fault vs. fault tort rules, and provide a full 50-state reference table.
+          The reality is that car accident settlements can range from a few thousand dollars for a minor fender-bender to several million dollars for catastrophic, life-altering injuries. Your settlement depends on your injuries, your state's laws, your insurance coverage, the quality of your documentation, and whether you have an attorney.
+        </p>
+        <p>
+          In this guide, we break down average settlement amounts by injury type and by state, explain what drives the numbers up or down, and show you exactly how to estimate the value of your own claim using our free calculator.
         </p>
 
-        <h2 class="text-lg font-bold text-ink mt-8 mb-4">1. Why Settlements Vary Dramatically by State</h2>
+        <h2 id="national" class="text-lg font-bold text-ink mt-8 mb-4">National Average Car Accident Settlement</h2>
         <p>
-          State lines act as legal boundaries that govern how insurance claims are evaluated. Here are the three primary reasons why location determines your settlement potential:
+          According to data from the Insurance Information Institute and industry claims data, the national average for car accident claims involving bodily injury falls roughly in the range of <strong>$20,000 to $30,000</strong> for minor injury claims. But this average is heavily skewed by the enormous volume of low-value, minor-injury claims that settle quickly for small amounts.
         </p>
-        <ul class="list-disc pl-6 mb-4 space-y-2">
-          <li><strong>Local Cost of Living & Medical Rates:</strong> Economic damages are the baseline of your claim. Medical costs, hospital day rates, and ambulance fees vary by region. A diagnostic MRI in New York City or San Francisco can cost triple what it does in rural Mississippi. Similarly, average hourly wages (which decide lost income calculations) are higher in metropolitan states.</li>
-          <li><strong>State Negligence Systems:</strong> The rules that govern shared responsibility differ. In pure comparative negligence states like California, you can recover damages even if you were mostly at fault. In contributory negligence states like Virginia, any shared responsibility (even 1%) completely bars recovery. This dramatically shifts the settlement leverage in favor of the insurer.</li>
-          <li><strong>Statutory Damage Caps:</strong> Some states place legislative limits on the amount of non-economic pain and suffering compensation a jury can award. For example, Maryland and Colorado impose caps on general damages, whereas other states like New York and Texas leave pain and suffering uncapped for standard auto accidents.</li>
-        </ul>
+        <p>
+          A more useful way to think about average settlements is by injury severity:
+        </p>
+        <div class="overflow-x-auto my-6 border border-hairline rounded-lg bg-canvas text-xs">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-canvas-soft-2 border-b border-hairline font-mono text-ink">
+                <th class="p-3">Injury Severity</th>
+                <th class="p-3">Typical Settlement Range</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-hairline">
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Minor injuries (soft tissue, minor whiplash)</td>
+                <td class="p-3 font-mono">$10,000 – $30,000</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Moderate injuries (fractures, disc injuries)</td>
+                <td class="p-3 font-mono">$50,000 – $150,000</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Serious injuries (surgery, permanent impairment)</td>
+                <td class="p-3 font-mono">$150,000 – $500,000+</td>
+              </tr>
+              <tr class="hover:bg-canvas-soft-2 transition-colors duration-150">
+                <td class="p-3 font-semibold text-ink">Catastrophic/fatal injuries</td>
+                <td class="p-3 font-mono">$500,000 – $5,000,000+</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          These are ranges, not guarantees. Two people with identical injuries can receive very different settlements based on their state, their fault percentage, their documentation, and the insurance limits involved.
+        </p>
 
-        <h2 class="text-lg font-bold text-ink mt-8 mb-4">2. Top 10 Highest Paying States for Settlements</h2>
+        <h2 id="by-injury" class="text-lg font-bold text-ink mt-8 mb-4">Average Settlement by Injury Type</h2>
         <p>
-          Certain states consistently produce higher average settlements due to a combination of high insurance minimums, generous negligence rules, uncapped pain and suffering, and higher medical costs. Here are the top 10 states:
+          Understanding average settlement ranges by injury type gives you a realistic benchmark for your situation. Here is a breakdown of common car accident injuries and their typical settlement values:
         </p>
-        <ol class="list-decimal pl-6 mb-4 space-y-2">
-          <li><strong>New York ($25,000 – $110,000 average range):</strong> High cost of living, high medical rates, a pure comparative negligence system, and very generous jury verdicts in urban centers.</li>
-          <li><strong>California ($22,000 – $95,000 average range):</strong> Pure comparative negligence allows recovery in almost all scenarios. Severe traffic congestion leads to complex multi-car collisions with high policy limits.</li>
-          <li><strong>New Jersey ($22,000 – $90,000 average range):</strong> High medical costs and dense population centers lead to higher-value injury claims.</li>
-          <li><strong>Massachusetts ($22,000 – $88,000 average range):</strong> High average wages and cost of medical treatment inflate the economic baseline.</li>
-          <li><strong>Connecticut ($21,000 – $80,000 average range):</strong> Robust minimum insurance standards and a supportive modified comparative negligence system.</li>
-          <li><strong>Illinois ($21,000 – $85,000 average range):</strong> Active court systems in Chicago and standard 51% bar comparative negligence allow healthy settlement ranges.</li>
-          <li><strong>Texas ($20,000 – $85,000 average range):</strong> Generous minimum liability limits ($30,000 per person) and a 51% modified comparative negligence bar.</li>
-          <li><strong>Delaware ($20,000 – $78,000 average range):</strong> Strong corporate and legal infrastructures lead to steady, high-value insurance resolutions.</li>
-          <li><strong>Washington ($20,000 – $84,000):</strong> Pure comparative fault rules and high regional medical costs.</li>
-          <li><strong>Maryland ($20,000 – $80,000):</strong> Though subject to pure contributory negligence, cases that clear liability yield high payouts due to high regional medical costs near Washington, D.C.</li>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Whiplash: $10,000 – $30,000</h3>
+        <p>
+          Whiplash is the most common car accident injury, especially in rear-end collisions. It involves the rapid forward-and-backward snapping of the neck that strains or tears the soft tissues of the cervical spine. Most whiplash cases resolve within 6 to 12 weeks with physical therapy and chiropractic care. Minor whiplash with complete recovery typically settles in the $10,000 to $15,000 range. More severe whiplash with disc involvement, nerve symptoms, or prolonged treatment can reach $20,000 to $35,000.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Broken Bones / Fractures: $30,000 – $100,000</h3>
+        <p>
+          Fractures are more serious than soft-tissue injuries because they are objectively documented on imaging and often require more intensive treatment — casting, surgery, or physical rehabilitation. A simple arm fracture with full recovery might settle for $30,000 to $45,000. A complex fracture requiring surgery, involving multiple bones, or resulting in lasting complications can easily reach $75,000 to $100,000 or more.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Back and Spine Injuries: $50,000 – $500,000</h3>
+        <p>
+          Back and spine injuries cover a wide spectrum — from muscle strains that resolve in weeks to herniated discs, spinal cord damage, or the need for spinal fusion surgery. Because the spine is central to all physical function, these injuries tend to produce the highest multipliers and longest treatment timelines. A herniated disc managed with conservative therapy might settle for $50,000 to $100,000. A disc injury requiring spinal fusion surgery often reaches $200,000 to $500,000 or more, especially when there is permanent loss of function.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Traumatic Brain Injury (TBI): $100,000 – $1,000,000+</h3>
+        <p>
+          Traumatic brain injuries — from mild concussions to severe, penetrating head trauma — are among the most complex and high-value personal injury claims. Even a "mild" TBI can cause lasting cognitive impairment, personality changes, chronic headaches, memory loss, and inability to work. Mild TBI claims often settle for $100,000 to $250,000. Moderate to severe TBIs with permanent cognitive or physical disability can reach $500,000 to several million dollars, particularly when future care costs and lost earning capacity are factored in.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Wrongful Death: $500,000 – $2,000,000+</h3>
+        <p>
+          When a car accident causes someone's death, surviving family members — typically a spouse, children, or parents — can file a wrongful death claim. These claims include economic damages (the deceased's lost future income, household services, and medical bills from the fatal injury) plus non-economic damages for the family's grief, loss of companionship, and emotional suffering. Wrongful death settlements vary enormously based on the victim's age, income, family situation, and policy limits, but most serious cases settle between $500,000 and $2 million or more.
+        </p>
+
+        <h2 id="by-state" class="text-lg font-bold text-ink mt-8 mb-4">Average Settlement by State: Top 10 Highest-Paying States</h2>
+        <p>
+          Your state is one of the biggest factors in your settlement value. Here is why — and which states consistently produce the highest settlements:
+        </p>
+
+        <ol class="list-decimal pl-6 mb-4 space-y-3">
+          <li>
+            <strong><a href="/new-york-car-accident-settlement-calculator/" class="text-link hover:underline">New York</a> ($25,000 – $110,000 average range):</strong> High cost of living, expensive urban medical rates, pure comparative negligence law, and famously plaintiff-friendly New York City juries all contribute to the highest average settlement values in the country.
+          </li>
+          <li>
+            <strong><a href="/california-car-accident-settlement-calculator/" class="text-link hover:underline">California</a> ($22,000 – $95,000 average range):</strong> Pure comparative negligence means recovery is possible in nearly any scenario. High traffic congestion, high medical costs, and high average wages all push values up.
+          </li>
+          <li>
+            <strong>New Jersey ($22,000 – $90,000 average range):</strong> Dense population, high medical costs, and robust minimum insurance requirements drive higher claim values.
+          </li>
+          <li>
+            <strong>Massachusetts ($22,000 – $88,000 average range):</strong> High average wages and high medical care costs in the Boston metro area create an expensive baseline for economic damages.
+          </li>
+          <li>
+            <strong><a href="/illinois-car-accident-settlement-calculator/" class="text-link hover:underline">Illinois</a> ($21,000 – $85,000 average range):</strong> The Chicago court system has a history of plaintiff-friendly verdicts that push insurers to settle higher out of court.
+          </li>
+          <li>
+            <strong><a href="/texas-car-accident-settlement-calculator/" class="text-link hover:underline">Texas</a> ($20,000 – $85,000 average range):</strong> Higher minimum liability limits ($30,000 per person), large geographic coverage area, and a modified comparative negligence system support strong settlement values.
+          </li>
+          <li>
+            <strong>Washington State ($20,000 – $84,000 average range):</strong> Pure comparative fault rules and high regional medical costs in the Seattle area support above-average settlements.
+          </li>
+          <li>
+            <strong>Nevada ($20,000 – $82,000 average range):</strong> Pure comparative negligence and the Las Vegas metro area's high traffic density and medical costs contribute to higher settlement values.
+          </li>
+          <li>
+            <strong>Connecticut ($21,000 – $80,000 average range):</strong> Strong minimum insurance standards and a favorable modified comparative negligence system.
+          </li>
+          <li>
+            <strong>Maryland ($20,000 – $80,000 average range):</strong> Despite having contributory negligence (which bars recovery if you share any fault), claims that are clearly the other driver's fault produce high payouts due to Washington D.C.-area medical rates.
+          </li>
         </ol>
 
-        <h2 class="text-lg font-bold text-ink mt-8 mb-4">3. How No-Fault vs. Fault Rules Affect Payouts</h2>
         <p>
-          Another major regional distinction is whether your state uses a <strong>no-fault</strong> or a <strong>fault (tort)</strong> auto insurance system:
+          Why do location and state laws matter so much? Three main reasons:
         </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Medical costs:</strong> An MRI that costs $800 in rural Mississippi can cost $2,500 in Manhattan. Higher medical bills = higher economic damages = higher multiplier base.</li>
+          <li><strong>Negligence law:</strong> Pure comparative negligence states give you recovery options even in partial-fault cases. Contributory negligence states can eliminate your claim entirely if you share any blame.</li>
+          <li><strong>Damage caps:</strong> Some states cap non-economic damages, while others do not. Uncapped states allow much higher pain and suffering awards.</li>
+        </ul>
+
+        <h2 id="variables" class="text-lg font-bold text-ink mt-8 mb-4">Why Your Settlement Could Be Higher or Lower Than Average</h2>
         <p>
-          In a **no-fault state** (such as Florida, New York, New Jersey, or Michigan), all drivers are required to carry Personal Injury Protection (PIP) insurance. Following a crash, your own PIP policy pays for your medical bills and lost wages, regardless of who caused the accident. You cannot file a lawsuit or seek pain and suffering damages from the at-fault driver unless your injuries meet a statutory "injury threshold" (often involving permanent impairment, severe scarring, or medical bills exceeding a specific dollar amount). Consequently, minor claims in no-fault states rarely result in third-party pain and suffering payouts.
-        </p>
-        <p>
-          In a **fault (tort) state** (such as Texas, Ohio, or California), the driver who caused the crash is responsible for all damages. You can seek compensation for both your medical bills and your pain and suffering directly from the at-fault driver's insurance policy from day one, without needing to clear a minimum injury severity threshold.
+          Averages are just starting points. Here are the key factors that push individual settlements above or below the typical range:
         </p>
 
-        <h2 class="text-lg font-bold text-ink mt-8 mb-4">4. Full 50-State Average Settlement Comparison Table</h2>
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Fault Percentage</h3>
         <p>
-          Below is a complete reference table showing the typical average settlement ranges for car accident claims involving minor-to-moderate injuries across all 50 US states. 
-        </p>
-        <p>
-          <em>Note: Catastrophic injuries involving permanent disability or surgery can exceed these ranges and reach six or seven figures in every state.</em>
+          If you were partly responsible for the accident, your settlement is reduced proportionally. A $60,000 claim where you are 25% at fault becomes a $45,000 recovery. In contributory negligence states (Virginia, Maryland, North Carolina, Alabama, D.C.), any shared fault can eliminate your claim entirely.
         </p>
 
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Insurance Limits</h3>
+        <p>
+          The at-fault driver's policy is your primary recovery source. If they have minimum coverage ($15,000 in California, $25,000 in Illinois), you may only be able to collect up to that amount no matter how severe your injuries are — unless you have Underinsured Motorist coverage on your own policy.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Quality of Medical Documentation</h3>
+        <p>
+          If your injuries are well-documented with objective imaging (MRIs, X-rays), consistent treatment records, and clear notes from your doctors about how the accident caused your condition, your settlement will trend toward the top of the range. Gaps in treatment, inconsistent complaints, or lack of objective findings will push it to the bottom — or give the insurer grounds to deny.
+        </p>
+
+        <h3 class="text-base font-bold text-ink mt-6 mb-2">Having an Attorney vs. Going It Alone</h3>
+        <p>
+          Research consistently shows that claimants represented by personal injury attorneys receive significantly higher gross settlements on average — often 3 to 4 times higher — than unrepresented claimants. Even after attorney fees of 33%, the net recovery is usually higher. Attorneys know how to build demand packages, argue for higher multipliers, and fight back when adjusters low-ball.
+        </p>
+
+        <h2 id="negotiation" class="text-lg font-bold text-ink mt-8 mb-4">The Difference Between the Offered and Final Settlement</h2>
+        <p>
+          The first offer you receive from an insurance company is almost always significantly below what your claim is worth. Insurance adjusters are trained to start low, hoping you will accept out of financial desperation or ignorance. Here is how the process typically unfolds:
+        </p>
+        <ul class="list-disc pl-6 mb-4 space-y-2">
+          <li><strong>Initial offer:</strong> Often 30% to 50% of the claim's fair value. This is the adjuster's opening move.</li>
+          <li><strong>Your counter-demand:</strong> You respond with a detailed demand letter outlining all your damages with supporting documentation.</li>
+          <li><strong>Back and forth:</strong> Most cases go through 2 to 4 rounds of offers and counter-offers before settling.</li>
+          <li><strong>Final settlement:</strong> The agreed-upon number, which should cover all your economic damages plus a fair pain and suffering component.</li>
+        </ul>
+        <p>
+          The key to negotiating effectively is knowing the fair value of your claim — which is exactly what our calculator helps you establish — so you can confidently reject low offers with documented justification.
+        </p>
+
+        <h2 id="table" class="text-lg font-bold text-ink mt-8 mb-4">Full 50-State Average Settlement Comparison Table</h2>
+        <p>
+          Below is a reference table of typical average settlement ranges for car accident claims involving minor-to-moderate injuries across all 50 states. Catastrophic or fatal injuries can exceed these ranges significantly in every state.
+        </p>
         <div class="overflow-x-auto my-6 border border-hairline rounded-lg bg-canvas text-xs">
           <table class="w-full text-left border-collapse">
             <thead>
@@ -199,6 +332,98 @@ const statesList = [
             </tbody>
           </table>
         </div>
+
+        <h2 id="calculator" class="text-lg font-bold text-ink mt-8 mb-4">Calculate Your Own Estimate</h2>
+        <p>
+          Knowing the average is helpful, but knowing the estimated value of <em>your specific claim</em> is far more valuable. Our free calculator takes your actual numbers — medical bills, lost wages, injury severity, fault percentage — and applies your state's specific negligence laws to generate a personalized estimate.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-3 my-6">
+          <a href="/" class="inline-flex items-center justify-center gap-2 bg-link text-white font-semibold text-xs px-5 py-2.5 rounded-lg hover:opacity-90 transition-opacity duration-150">
+            Use the Free Settlement Calculator →
+          </a>
+          <a href="/florida-car-accident-settlement-calculator/" class="inline-flex items-center justify-center gap-2 border border-hairline text-link text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-canvas-soft transition-colors duration-150">
+            Florida Calculator
+          </a>
+          <a href="/pennsylvania-car-accident-settlement-calculator/" class="inline-flex items-center justify-center gap-2 border border-hairline text-link text-xs font-semibold px-5 py-2.5 rounded-lg hover:bg-canvas-soft transition-colors duration-150">
+            Pennsylvania Calculator
+          </a>
+        </div>
+
+        <h2 id="faq" class="text-lg font-bold text-ink mt-8 mb-4">Frequently Asked Questions</h2>
+        <div class="space-y-4 my-6">
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              What is the average settlement for a rear-end collision?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Rear-end collisions are the most common type of car accident in the United States, and they typically cause whiplash and soft-tissue neck injuries. The average settlement for a straightforward rear-end collision with whiplash ranges from $10,000 to $25,000 for minor cases. If there are disc injuries, nerve symptoms, or the need for injections or surgery, settlements can range from $40,000 to $150,000 or more. Liability is almost always clear in rear-end collisions, which helps speed up the settlement process and supports higher multipliers.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Are car accident settlements taxable?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Generally, no. Under IRS Section 104, compensation received for physical injuries or physical sickness — including medical expense reimbursements and pain and suffering damages — is excluded from gross income and is not taxable. However, if any portion of your settlement represents punitive damages or compensation for emotional distress not connected to a physical injury, those portions may be taxable. Lost wage reimbursements can also be taxable in some cases. Consult a tax professional for advice specific to your situation.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              How much do lawyers take from car accident settlements?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Personal injury attorneys typically work on a contingency fee basis — meaning they only get paid if you win. The standard contingency fee is 33% (one-third) of the settlement if the case settles before a lawsuit is filed. If a lawsuit is filed, the fee often increases to 40%. If the case goes all the way to trial, some attorneys charge 45%. In addition, litigation expenses (expert witnesses, filing fees, deposition costs) are usually deducted from the settlement before the attorney calculates their fee. Always ask for a written fee agreement before hiring an attorney.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              Does having pre-existing injuries reduce my settlement?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              Having a pre-existing condition does not automatically disqualify you from recovering. The "eggshell plaintiff" doctrine in most states holds that a negligent driver is responsible for any harm they cause, even if a pre-existing condition made you more vulnerable to injury. However, the insurer will argue that some of your pain and limitations were pre-existing rather than caused by the accident. You must clearly document how the accident aggravated or worsened your prior condition. Your doctor's records and expert testimony are essential in these cases.
+            </p>
+          </details>
+
+          <details class="group p-4 border border-hairline bg-canvas rounded-lg transition-all duration-200">
+            <summary class="flex justify-between items-center font-semibold text-xs text-ink cursor-pointer list-none">
+              How do I know if a settlement offer is fair?
+              <span class="transition group-open:rotate-180 text-mute">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 9l-7 7-7-7" /></svg>
+              </span>
+            </summary>
+            <p class="text-xs text-body leading-relaxed mt-3">
+              A fair settlement fully compensates you for 100% of your economic losses (all medical bills plus future medical costs, all lost wages, all out-of-pocket expenses) plus a reasonable pain and suffering component based on your injury severity. Use our <a href="/" class="text-link hover:underline">free calculator</a> to estimate your claim's fair value, compare it to the offer, and use the difference as the basis for your counter-demand. If an insurer's offer doesn't cover your basic economic damages, it is almost certainly too low. Learn how settlements are calculated in our guide on <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline">how car accident settlements are calculated</a>.
+            </p>
+          </details>
+        </div>
+
+        <!-- Closing -->
+        <p>
+          Understanding average settlement amounts is a useful starting point, but the only number that truly matters is the one specific to your injuries, your state, and your circumstances. Use the information in this guide as context, use our calculator to personalize the estimate, and do not let an insurance company convince you that a low offer is all you deserve.
+        </p>
+
+        <!-- Disclaimer -->
+        <div class="mt-10 p-5 border border-hairline bg-canvas-soft-2 rounded-lg text-[10px] text-mute leading-relaxed">
+          <p class="font-bold text-ink mb-1 text-xs">Disclaimer</p>
+          <p>
+            The information provided in this article is for general informational purposes only and does not constitute legal advice. Settlement amounts vary significantly based on individual circumstances, state laws, and other factors. Consult a licensed personal injury attorney in your state for advice specific to your situation. FreeInjuryCalc.com is not a law firm and does not provide legal services.
+          </p>
+        </div>
       </article>
 
       <!-- Related Articles Section -->
@@ -213,7 +438,7 @@ const statesList = [
                 </a>
               </h4>
               <p class="text-[10px] text-body leading-relaxed">
-                Learn the formulas claims adjusters use to evaluate special and general damages.
+                Learn the exact formula: economic damages + pain multiplier − fault reduction.
               </p>
             </div>
             <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
@@ -226,7 +451,7 @@ const statesList = [
                 </a>
               </h4>
               <p class="text-[10px] text-body leading-relaxed">
-                Deep dive into non-economic damages, the multiplier vs per diem methods, and how to prove pain.
+                Understand the multiplier method, per diem method, and how to document your non-economic damages.
               </p>
             </div>
             <a href="/blog/what-is-pain-and-suffering/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
@@ -235,11 +460,11 @@ const statesList = [
             <div>
               <h4 class="text-xs font-bold text-ink mb-2">
                 <a href="/blog/how-long-does-settlement-take/" class="hover:text-link transition-colors duration-150">
-                  How Long Does a Car Accident Settlement Take in 2026?
+                  How Long Does a Car Accident Settlement Take?
                 </a>
               </h4>
               <p class="text-[10px] text-body leading-relaxed">
-                Step-by-step negotiation timeline and statutory deadlines in every US state.
+                From minor accident to serious injury — realistic timelines and what causes delays.
               </p>
             </div>
             <a href="/blog/how-long-does-settlement-take/" class="text-[10px] font-semibold text-link mt-4 block">Read Article &rarr;</a>
