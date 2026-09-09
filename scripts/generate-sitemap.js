@@ -18,14 +18,12 @@ function generateSitemap() {
   const specialMatches = [...specialFileContent.matchAll(/slug:\s*["']([^"']+)["']/g)];
   const specialSlugs = [...new Set(specialMatches.map(m => m[1]))];
 
-  // Define static blog slugs
-  const blogSlugs = [
-    'how-car-accident-settlements-are-calculated',
-    'average-car-accident-settlement-by-state',
-    'what-is-pain-and-suffering',
-    'how-long-does-settlement-take',
-    'car-accident-settlement-vs-lawsuit'
-  ];
+  // Auto-discover blog posts from src/pages/blog/*.astro so new articles
+  // are always included (previously a hardcoded list silently dropped them)
+  const blogDir = path.join(process.cwd(), 'src', 'pages', 'blog');
+  const blogSlugs = fs.readdirSync(blogDir)
+    .filter(f => f.endsWith('.astro') && f !== 'index.astro')
+    .map(f => f.replace(/\.astro$/, ''));
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
   xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';

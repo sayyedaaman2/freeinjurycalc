@@ -16,3 +16,33 @@ https://www.freeinjurycalc.com/* https://freeinjurycalc.com/:splat 301
 
 # Redirect Ontario to new Canada subdirectory
 /ontario-car-accident-settlement-calculator/ /canada/ontario-car-accident-settlement-calculator/ 301
+
+# Legacy legal/info pages (were soft meta-refresh 200s — now hard 301s)
+/about-us/ /about/ 301
+/contact-us/ /contact/ 301
+/terms-conditions/ /terms-of-service/ 301
+
+# Deleted blog posts — 301 to closest current equivalent so Google folds old URLs into live pages
+/blog/back-injury-settlement-value-and-compensation-guide/ /back-injury-settlement-calculator/ 301
+/blog/car-insurance-write-off-payout-calculator/ /florida-diminished-value-calculator/ 301
+/blog/commercial-truck-accident-settlement-payouts-18-wheeler-claims/ /truck-accident-settlement-calculator/ 301
+/blog/does-vermont-have-damage-caps-on-truck-accident-settlements/ /vermont-car-accident-settlement-calculator/ 301
+/blog/how-insurance-companies-calculate-pain-and-suffering/ /pain-and-suffering-calculator/ 301
+/blog/how-long-does-a-car-accident-settlement-take/ /blog/how-long-does-settlement-take/ 301
+/blog/how-to-avoid-low-ball-state-farm-settlement-offer/ /blog/how-to-negotiate-car-accident-settlement/ 301
+/blog/how-to-calculate-a-car-accident-settlement-in-canada/ /canada/ontario-car-accident-settlement-calculator/ 301
+/blog/how-to-cash-large-settlement-check-bank-rules-holds/ /blog/how-long-does-settlement-take/ 301
+/blog/how-to-use-a-personal-injury-calculator-to-value-your-claim/ /blog/how-car-accident-settlements-are-calculated/ 301
+/blog/is-a-car-accident-settlement-taxable/ /blog/is-car-accident-settlement-taxable/ 301
+/blog/motorcycle-accident-settlements-payouts-claims-risk-calculators/ /motorcycle-accident-settlement-calculator/ 301
+/blog/motorcycle-accident-settlement-valuing-bike-crash-injury-claims/ /motorcycle-accident-settlement-calculator/ 301
+/blog/neck-injury-settlement-compensation-for-cervical-spine-claims/ /neck-injury-settlement-calculator/ 301
+/blog/neck-whiplash-claims-calculating-your-injury-settlement/ /blog/whiplash-settlement-amounts/ 301
+/blog/new-york-workers-compensation-slu-body-part-chart/ /new-york-workers-comp-settlement-calculator/ 301
+/blog/personal-injury-examples-types-and-settlements/ /blog/how-car-accident-settlements-are-calculated/ 301
+/blog/personal-injury-settlement-taxes-financial-planning/ /blog/is-car-accident-settlement-taxable/ 301
+/blog/slip-and-fall-settlement-guide-premises-liability-claims/ /slip-and-fall-settlement-calculator/ 301
+/blog/understanding-car-accident-settlement-payouts-and-compensation/ /blog/how-car-accident-settlements-are-calculated/ 301
+/blog/understanding-comparative-vs-contributory-negligence/ /blog/how-is-fault-determined-car-accident/ 301
+/blog/what-to-do-immediately-after-a-car-accident/ /blog/what-to-do-after-car-accident/ 301
+/blog/workers-compensation-calculator-estimating-work-injury-benefits/ /workers-compensation-calculator/ 301

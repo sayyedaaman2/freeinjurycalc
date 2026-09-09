@@ -10,11 +10,8 @@ export default defineConfig({
   build: {
     inlineStylesheets: 'always'
   },
-  redirects: {
-    '/about-us/': '/about/',
-    '/contact-us/': '/contact/',
-    '/terms-conditions/': '/terms-of-service/',
-  },
+  // Legacy path redirects (/about-us/, etc.) live in public/_redirects as hard 301s
+  // instead of Astro's meta-refresh (soft 200) redirects, which Google flagged as duplicates.
   vite: {
     plugins: [tailwindcss()]
   }
