@@ -21,6 +21,9 @@ const {
   customArticleSchema,
 } = Astro.props;
 
+const siteOrigin = Astro.site ? Astro.site.origin : "https://freeinjurycalc.com";
+const absoluteOgImage = ogImage.startsWith('http') ? ogImage : `${siteOrigin}${ogImage}`;
+
 let pathname = Astro.url.pathname;
 if (pathname.endsWith('index.html')) {
   pathname = pathname.slice(0, -10);
@@ -136,7 +139,6 @@ const breadcrumbNames: Record<string, string> = {
   "new-york-workers-comp-settlement-calculator": "New York Workers' Comp Settlement Calculator",
 };
 
-const origin = Astro.site ? Astro.site.origin : "https://freeinjurycalc.com";
 const segments = pathname.split('/').filter(Boolean);
 
 const breadcrumbList = [
@@ -144,7 +146,7 @@ const breadcrumbList = [
     "@type": "ListItem",
     "position": 1,
     "name": "Home",
-    "item": `${origin}/`
+    "item": `${siteOrigin}/`
   }
 ];
 
@@ -160,13 +162,13 @@ if (segments.length > 0) {
           "@type": "ListItem",
           "position": 2,
           "name": "Canada",
-          "item": `${origin}/#state-laws`
+          "item": `${siteOrigin}/#state-laws`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": stateName.includes("Canada") ? `${stateName} Calculator` : `${stateName} (Canada) Calculator`,
-          "item": `${origin}${pathname}`
+          "item": `${siteOrigin}${pathname}`
         }
       );
     } else {
@@ -175,13 +177,13 @@ if (segments.length > 0) {
           "@type": "ListItem",
           "position": 2,
           "name": "State Calculators",
-          "item": `${origin}/#state-laws`
+          "item": `${siteOrigin}/#state-laws`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": `${stateName} Car Accident Settlement Calculator`,
-          "item": `${origin}/${firstSegment}/`
+          "item": `${siteOrigin}/${firstSegment}/`
         }
       );
     }
@@ -207,13 +209,13 @@ if (segments.length > 0) {
           "@type": "ListItem",
           "position": 2,
           "name": "Tools",
-          "item": `${origin}/#specialty-calculators`
+          "item": `${siteOrigin}/#specialty-calculators`
         },
         {
           "@type": "ListItem",
           "position": 3,
           "name": toolName,
-          "item": `${origin}/${firstSegment}/`
+          "item": `${siteOrigin}/${firstSegment}/`
         }
       );
     } else {
@@ -230,7 +232,7 @@ if (segments.length > 0) {
           "@type": "ListItem",
           "position": idx + 2,
           "name": name,
-          "item": `${origin}${currentPath}/`
+          "item": `${siteOrigin}${currentPath}/`
         });
       });
     }
@@ -308,14 +310,16 @@ const breadcrumbSchema = {
     <meta property="og:url" content={canonicalURL} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content={ogImage} />
+    <meta property="og:image" content={absoluteOgImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
     <meta property="twitter:url" content={canonicalURL} />
     <meta property="twitter:title" content={title} />
     <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={ogImage} />
+    <meta property="twitter:image" content={absoluteOgImage} />
 
 
     <!-- Blocking script to initialize theme before painting -->
