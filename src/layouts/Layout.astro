@@ -251,6 +251,13 @@ const breadcrumbSchema = {
   <head>
     <meta charset="UTF-8" />
     <meta name="p:domain_verify" content="32dacd721d5d2d4c55e6e57715fbc051"/>
+    <!-- Google Tag Manager -->
+    <script is:inline>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NXZQG3S9');</script>
+    <!-- End Google Tag Manager -->
     <script is:inline>
       if (window.location.hostname === 'www.freeinjurycalc.com') {
         window.location.replace('https://freeinjurycalc.com' + window.location.pathname + window.location.search + window.location.hash);
@@ -339,6 +346,10 @@ const breadcrumbSchema = {
     </script>
   </head>
   <body class="mesh-gradient min-h-screen flex flex-col bg-canvas-soft text-ink">
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZQG3S9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <slot />
   </body>
 </html>
