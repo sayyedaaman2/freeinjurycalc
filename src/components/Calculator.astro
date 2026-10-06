@@ -429,29 +429,47 @@ const sortedStates = Object.values(statesData)
 <!-- Client-side script database integration and controller -->
 <script define:vars={{ statesData, preselectedState, preselectedSeverity, preselectedMedBills, preselectedTab, calculatorType }}>
   document.addEventListener('DOMContentLoaded', () => {
-    // Debounced Google Analytics tracking helper
+    // GTM dataLayer push helper
+    function pushEvent(eventName, params) {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push({ event: eventName, ...params });
+    }
+
+    // Debounced calculation tracking (fires 2s after user stops changing inputs)
     let trackingTimeout = null;
     function queueAnalyticsTracking(data) {
-      if (trackingTimeout) {
-        clearTimeout(trackingTimeout);
-      }
+      if (trackingTimeout) clearTimeout(trackingTimeout);
       trackingTimeout = setTimeout(() => {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'calculator_calculation', {
-            'calculator_method': data.method,
-            'calculator_state': data.state,
-            'calculator_type': data.calculatorType,
-            'medical_bills': data.medicalBills,
-            'multiplier': data.multiplier,
-            'fault_percent': data.faultPct,
-            'net_settlement': data.netSettlement,
-            'range_low': data.rangeLow,
-            'range_high': data.rangeHigh,
-            'exceeds_policy_limit': data.exceedsLimit
+        pushEvent('calculator_calculation', {
+          calculator_method: data.method,
+          calculator_state: data.state,
+          calculator_type: data.calculatorType,
+          medical_bills: data.medicalBills,
+          multiplier: data.multiplier,
+          fault_percent: data.faultPct,
+          net_settlement: data.netSettlement,
+          range_low: data.rangeLow,
+          range_high: data.rangeHigh,
+          exceeds_policy_limit: data.exceedsLimit
+        });
+        // Fire result_generated only when there's a non-zero payout
+        if (data.netSettlement > 0) {
+          pushEvent('result_generated', {
+            calculator_type: data.calculatorType,
+            calculator_state: data.state,
+            net_settlement: data.netSettlement,
+            range_low: data.rangeLow,
+            range_high: data.rangeHigh
           });
         }
       }, 2000);
     }
+
+    // Track calculator opened (once per page load)
+    pushEvent('calculator_opened', {
+      calculator_type: calculatorType,
+      preselected_state: preselectedState || 'none'
+    });
 
     // Elements selectors
     const tabs = document.querySelectorAll('[data-tab]');
@@ -583,17 +601,15 @@ const sortedStates = Object.values(statesData)
       }
     }
 
-    // Tab switcher click handlers with GA tracking
+    // Tab switcher click handlers with GTM tracking
     tabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const tabName = tab.getAttribute('data-tab');
         switchTab(tabName);
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'calculator_tab_switch', {
-            'tab_name': tabName,
-            'calculator_type': calculatorType
-          });
-        }
+        pushEvent('calculator_tab_switch', {
+          tab_name: tabName,
+          calculator_type: calculatorType
+        });
       });
     });
 
@@ -601,28 +617,37 @@ const sortedStates = Object.values(statesData)
       switchTab(preselectedTab);
     }
 
-    // State Selector GA tracking
+    // State Selector GTM tracking
     if (stateSelector) {
       stateSelector.addEventListener('change', () => {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'calculator_state_select', {
-            'state_name': stateSelector.value,
-            'calculator_type': calculatorType
-          });
-        }
+        pushEvent('calculator_state_select', {
+          state_name: stateSelector.value,
+          calculator_type: calculatorType
+        });
       });
     }
 
-    // Sponsored CTA GA tracking
+    // Affiliate / consult CTA click tracking
     const sponsoredLink = document.querySelector('.adsense-card a[href="#consult-attorney"]');
     if (sponsoredLink) {
       sponsoredLink.addEventListener('click', () => {
-        if (typeof window.gtag === 'function') {
-          window.gtag('event', 'calculator_consult_click', {
-            'calculator_type': calculatorType,
-            'source_element': 'sponsored_card'
-          });
-        }
+        pushEvent('ad_link_clicked', {
+          calculator_type: calculatorType,
+          link_destination: 'consult_attorney',
+          source_element: 'sponsored_card'
+        });
+      });
+    }
+
+    // AdSense ad unit click tracking (fires when the ad iframe area is clicked)
+    const adUnit = document.querySelector('.adsense-unit');
+    if (adUnit) {
+      adUnit.addEventListener('click', () => {
+        pushEvent('ad_link_clicked', {
+          calculator_type: calculatorType,
+          link_destination: 'adsense_ad',
+          source_element: 'adsense_unit'
+        });
       });
     }
 
