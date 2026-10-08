@@ -264,9 +264,9 @@ export function spinFAQ1(stateName: string): string {
     `To compute a settlement in ${stateName}, insurance companies total your economic losses (medical treatment bills, chiropractic care, and lost wages) before adding a valuation for pain and suffering.`,
   ];
   const s2 = [
-    `Non-economic damages are usually estimated by multiplying your medical costs by a factor of 1.5x to 5x depending on severity.`,
-    `Pain and suffering damages are typically evaluated using a multiplier system, applying a factor from 1.5 to 5 to your total medical costs based on the severity of your injuries.`,
-    `Insurers commonly use a multiplier method, applying a factor of 1.5 to 5 times your medical expenses to calculate pain and suffering, depending on injury permanence.`,
+    `Non-economic damages are usually estimated by applying a severity multiplier to your medical costs based on injury severity.`,
+    `Pain and suffering damages are typically evaluated using a multiplier system, applying a severity factor to your total medical costs based on the severity of your injuries.`,
+    `Evaluation models commonly use a multiplier method, applying a severity factor to your medical expenses to calculate pain and suffering, depending on injury permanence.`,
   ];
   const s3 = [
     `The final settlement payout is then adjusted based on ${stateName}'s negligence laws, which reduce or bar compensation if you share fault for the crash.`,
@@ -421,7 +421,7 @@ export function spinEducationalCard(
     const texts = [
       `Insurance adjusters use medical bills as the baseline for economic damages. Consistent diagnostic testing, ambulance rides, and hospital records show that your injuries are legitimate, severe, and directly caused by the collision.`,
       `Settlements are calculated starting with your medical expenses. Detailed hospital bills, chiropractic records, and diagnostic scans establish objective proof of the accident's physical toll and link your injuries to the crash.`,
-      `Your medical records form the foundation of your insurance claim. Regular doctor visits, diagnostic imaging, and therapy records prevent insurers from arguing that your pain is pre-existing or minor.`,
+      `Your medical records form the foundation of your insurance claim. Regular doctor visits, diagnostic imaging, and therapy records help document physical injuries, clinical care, and treatment duration.`,
     ];
     return { title: pickOne(titles, rand), text: pickOne(texts, rand) };
   }
@@ -447,9 +447,9 @@ export function spinEducationalCard(
       `Non-Economic Valuations`,
     ];
     const texts = [
-      `Non-economic damages cover emotional distress, loss of life enjoyment, and physical pain. Typically estimated by multiplying medical expenses by 1.5 (minor injury) to 5.0 (catastrophic permanent injuries) depending on the severity of the case.`,
-      `Pain and suffering covers the subjective, human impact of an injury. Adjusters generally estimate this by multiplying your medical costs by a factor of 1.5x to 5x, depending on treatment length and pain levels.`,
-      `Your settlement can include compensation for physical discomfort and emotional distress. Insurers calculate this by applying a multiplier (typically 1.5 to 5) to your total medical bills based on injury severity.`,
+      `Non-economic damages cover emotional distress, loss of life enjoyment, and physical pain. In personal injury evaluation models, non-economic impacts are often estimated by applying an illustrative severity multiplier to medical expenses based on the nature and duration of recovery.`,
+      `Pain and suffering covers the subjective, human impact of an injury. Claim evaluation models often estimate non-economic damages using a multiplier applied to medical expenses depending on treatment length and recovery needs.`,
+      `Your settlement can include compensation for physical discomfort and emotional distress. Evaluation models estimate this by applying an illustrative severity multiplier to your total medical bills based on injury severity.`,
     ];
     return { title: pickOne(titles, rand), text: pickOne(texts, rand) };
   }
