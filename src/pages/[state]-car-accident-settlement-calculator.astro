@@ -123,6 +123,8 @@ const pageTitle = state === 'michigan'
   ? 'New Hampshire Car Accident Settlement Calculator | 51% Comparative Fault'
   : state === 'oklahoma'
   ? 'Oklahoma Car Accident Settlement Calculator | 51% Comparative Fault'
+  : state === 'pennsylvania'
+  ? 'Pennsylvania Car Accident Settlement Calculator | Full Tort vs. Limited Tort'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
@@ -133,6 +135,8 @@ const pageDescription = state === 'michigan'
   ? 'Calculate your estimated New Hampshire car accident settlement payout. Applies New Hampshire\'s 51% modified comparative fault rule (RSA 507:7-d), 3-year statute of limitations (RSA 508:4), and financial responsibility laws.'
   : state === 'oklahoma'
   ? 'Calculate your estimated Oklahoma car accident settlement payout. Applies Oklahoma\'s 51% modified comparative fault rule (23 O.S. § 13), 2-year statute of limitations (12 O.S. § 95), and 25/50/25 mandatory insurance laws.'
+  : state === 'pennsylvania'
+  ? 'Estimate a Pennsylvania car accident claim using the state\'s Full Tort and Limited Tort choices, comparative-fault rules, required medical benefits, and filing deadlines.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -171,7 +175,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -420,6 +424,46 @@ const customFaqSchema = {
                   Oklahoma Statutes Title 12 § 95 — 2-Year Statute of Limitations for Injury Torts
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury and property damage lawsuits arising from motor vehicle collisions.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'pennsylvania' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Pennsylvania Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.insurance.pa.gov/Coverage/auto/Pages/default.aspx" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Pennsylvania Insurance Department (PID) — Auto Insurance Guide & Coverage Overview
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official state overview of Pennsylvania's Motor Vehicle Financial Responsibility Law, Full vs. Limited Tort options, mandatory $5,000 First-Party Medical Benefits, and policy requirements.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=75&div=0&chpt=17&sctn=5&subsctn=0" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  75 Pa.C.S. § 1705 — Election of Tort Options (Full Tort & Limited Tort)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory provisions governing Full Tort vs. Limited Tort elections and statutory exceptions permitting pain and suffering recovery.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=75&div=0&chpt=17&sctn=11&subsctn=0" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  75 Pa.C.S. § 1711 — Required First-Party Medical Benefits ($5,000 PIP)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory mandate requiring all Pennsylvania automobile insurance policies to include a minimum of $5,000 in First-Party Medical Benefits.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=42&div=0&chpt=71&sctn=2&subsctn=0" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  42 Pa.C.S. § 7102 — Comparative Negligence Standard (51% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 51% modified comparative fault rule allowing recovery when plaintiff fault is 50% or less (reduced proportionally) and barring recovery at 51% or higher.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.state.pa.us/cfdocs/legis/LI/consCheck.cfm?txtType=HTM&ttl=42&div=0&chpt=55&sctn=24&subsctn=0" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  42 Pa.C.S. § 5524 — Two-Year Statute of Limitations for Injury Torts
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury, property damage, and wrongful death lawsuits in Pennsylvania courts.</span>
               </li>
             </ul>
           </div>

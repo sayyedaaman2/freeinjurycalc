@@ -59,6 +59,17 @@ export function generateInsuranceContent(
     return `Under Oklahoma's Financial Responsibility Law (47 O.S. § 7-601), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>25/50/25</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $25,000 for property damage). Liability insurance limits represent the maximum contractually obligated payment by the insurer, rather than a guaranteed settlement value. Furthermore, under <strong>36 O.S. § 3636</strong>, insurance companies are statutorily required to offer <strong>Uninsured/Underinsured Motorist (UM/UIM) coverage</strong> matching the policy's bodily injury liability limits. UM/UIM coverage protects you if struck by an uninsured or underinsured driver, and can only be excluded if the policyholder executes a signed <strong>written rejection</strong>.`;
   }
 
+  if (stateName === "Pennsylvania") {
+    return `Under Pennsylvania's Motor Vehicle Financial Responsibility Law (MVFRL, <strong>75 Pa.C.S. § 1705</strong>), Pennsylvania operates a <strong>Choice No-Fault</strong> system where policyholders elect between two tort options:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Full Tort Option:</strong> Preserves your unrestricted right to seek financial recovery for both economic losses (medical bills, wage loss) and non-economic damages (pain and suffering) from an at-fault driver.</li>
+      <li><strong>Limited Tort Option:</strong> Limits your ability to seek non-economic damages for pain and suffering <em>unless</em> your injury meets the statutory <strong>"serious injury"</strong> standard under <strong>75 Pa.C.S. § 1702</strong> (defined as death, permanent serious disfigurement, or serious impairment of body function) or an applicable statutory exception under § 1705 applies. Limited Tort does <em>not</em> restrict recovery for out-of-pocket economic losses.</li>
+      <li><strong>Statutory Exceptions to Limited Tort:</strong> Under § 1705(d), Limited Tort restrictions on pain and suffering damages do not apply if: (1) the at-fault driver is convicted of or accepts ARD for DUI under 75 Pa.C.S. § 3802; (2) the at-fault vehicle is registered in another state; (3) the injury was intentionally caused; (4) the injured person was an occupant of a non-owned commercial passenger vehicle; or (5) the at-fault vehicle owner failed to maintain required financial responsibility.</li>
+      <li><strong>Mandatory First-Party Medical Benefits ($5,000 PIP):</strong> Under <strong>75 Pa.C.S. § 1711</strong>, all Pennsylvania auto policies must carry a minimum of <strong>$5,000 in First-Party Medical Benefits</strong> to cover initial medical care regardless of fault. First-party PIP medical coverage is separate and distinct from a third-party liability settlement.</li>
+      <li><strong>Minimum Liability Limits (15/30/5):</strong> Under 75 Pa.C.S. § 1702 and § 1786, Pennsylvania requires minimum liability coverage of <strong>15/30/5</strong> ($15,000 per person / $30,000 per accident for bodily injury, and $5,000 for property damage). Under <strong>75 Pa.C.S. § 1731</strong>, insurers must offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching bodily injury limits unless rejected in writing using statutory waiver forms. Liability limits set coverage caps, not guaranteed settlement values.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -115,6 +126,17 @@ export function generateStatuteContent(
     </ul>`;
   }
 
+  if (stateName === "Pennsylvania") {
+    return `In Pennsylvania, car accident civil claims and legal filings are governed by statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>42 Pa.C.S. § 5524(2)</strong>, you have 2 years from the date of the collision to file a personal injury civil lawsuit against an at-fault driver.</li>
+      <li><strong>Property Damage Lawsuits (2 Years):</strong> Under <strong>42 Pa.C.S. § 5524(7)</strong>, claims for motor vehicle repair or property damage must also be filed within 2 years.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>42 Pa.C.S. § 5524(2)</strong>, wrongful death actions arising from a vehicle crash must be initiated within 2 years of the date of death.</li>
+      <li><strong>Government Entity Claims (6 Months Notice):</strong> Under <strong>42 Pa.C.S. § 5522(a)</strong>, if your claim involves a local government agency (Political Subdivision Tort Claims Act, 42 Pa.C.S. § 8541 et seq.) or a Commonwealth agency (Sovereign Immunity Act, 42 Pa.C.S. § 8521 et seq.), a formal written notice of claim must be served within <strong>6 months</strong> of the injury. Statutory damages caps apply to government defendants ($250,000 per occurrence for Commonwealth entities under 42 Pa.C.S. § 8528; $500,000 aggregate cap for local political subdivisions under 42 Pa.C.S. § 8553), which are separate and distinct from private driver claims.</li>
+    </ul>
+    Applicable deadlines depend on the specific facts of your crash, and readers should consult qualified Pennsylvania legal counsel regarding their specific claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -143,6 +165,10 @@ export function generateDamageCapContent(
 
   if (stateName === "Oklahoma") {
     return `Under Oklahoma law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. In <em>Beason v. I.E. Miller Services, Inc.</em> (2019 OK 28), the Oklahoma Supreme Court declared the statutory non-economic damages cap (23 O.S. § 61.2) unconstitutional. Non-economic damages are evaluated based on injury severity, treatment duration, diagnostic proof, and lifestyle impact. Multipliers used in software calculators serve as educational modeling tools rather than legal rules.`;
+  }
+
+  if (stateName === "Pennsylvania") {
+    return `Under the Pennsylvania Constitution (<strong>Art. III, § 18</strong>), the General Assembly is prohibited from limiting the amount of damages recovered for injuries resulting in death or for injuries to person or property in claims against private individuals. For claims against private motorists, Pennsylvania imposes no statutory dollar caps on economic or non-economic damages. However, for policyholders who selected Limited Tort, non-economic damages (pain and suffering) are barred unless the injury satisfies the <strong>75 Pa.C.S. § 1702</strong> "serious injury" threshold (death, serious impairment of body function, or permanent serious disfigurement) or a § 1705 statutory exception. Statutory damages caps do apply to government defendants ($250,000 per occurrence for state Commonwealth entities under 42 Pa.C.S. § 8528, and $500,000 total aggregate limit for local political subdivisions under 42 Pa.C.S. § 8553). Mathematical multipliers in software calculators serve as educational modeling tools rather than legal formulas or statutory guarantees.`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -219,6 +245,20 @@ export function generateSettlementExample(
       <li><strong>51% Bar Rule:</strong> In a single-defendant crash, if the claimant's negligence is greater than the defendant's (51% or higher), recovery is completely barred ($0).</li>
     </ul>
     This illustrative framework models potential recovery when negotiating with an insurer or filing in the ${courtName}. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "pennsylvania") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Pennsylvania</strong> under state Choice No-Fault and comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>First-Party Medical Benefits (75 Pa.C.S. § 1711):</strong> Your own insurer pays the first $5,000 in medical bills under mandatory PIP coverage regardless of who caused the crash.</li>
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost wages ($5,000) equal $20,000 in total economic losses.</li>
+      <li><strong>Pain and Suffering (Full Tort vs. Limited Tort):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Pain and suffering damages</a> are estimated at $37,500 using a 2.5x multiplier for severe <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Under Full Tort (or under Limited Tort if the injury meets the 75 Pa.C.S. § 1702 "serious injury" threshold or a § 1705 exception), non-economic damages are recoverable.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under 42 Pa.C.S. § 7102, because the claimant's fault (20%) is 50% or less, recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant's negligence is 51% or greater, third-party recovery is completely barred ($0).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
   }
 
@@ -401,6 +441,43 @@ export function generateFAQs(
       {
         question: "Does an insurance policy limit determine my settlement value?",
         answer: "No. An insurance policy limit represents the maximum amount the insurer is contractually obligated to pay under that policy. It does not guarantee a settlement payout of that amount, nor does it limit the total proven damages you may be legally owed by an at-fault driver."
+      }
+    ];
+  }
+
+  if (stateName === "Pennsylvania") {
+    return [
+      {
+        question: "What is the difference between Full Tort and Limited Tort in Pennsylvania?",
+        answer: "Under Pennsylvania's Motor Vehicle Financial Responsibility Law (75 Pa.C.S. § 1705), Full Tort coverage allows you to seek compensation for both economic losses (medical bills, lost wages) and non-economic damages (pain and suffering) without restriction after an accident. Limited Tort limits your ability to recover non-economic pain and suffering damages unless your injury satisfies the statutory 'serious injury' standard under 75 Pa.C.S. § 1702 or a statutory exception applies. Limited Tort does not restrict your right to recover out-of-pocket economic losses."
+      },
+      {
+        question: "What qualifies as a 'serious injury' under Pennsylvania law?",
+        answer: "Under 75 Pa.C.S. § 1702, a 'serious injury' is defined as a personal injury resulting in death, permanent serious disfigurement, or serious impairment of body function. If you selected Limited Tort, meeting this threshold or qualifying for a statutory exception under § 1705 (such as an at-fault driver convicted of DUI under § 3802, an out-of-state registered vehicle, or being an occupant of a non-owned commercial vehicle) allows you to seek pain and suffering compensation. Software calculators do not make legal determinations as to whether an injury is serious."
+      },
+      {
+        question: "How does 51% modified comparative fault work in Pennsylvania?",
+        answer: "Under 42 Pa.C.S. § 7102, Pennsylvania follows a 51% modified comparative fault rule. You can recover compensation from an at-fault driver as long as your share of fault is <strong>50% or less</strong>. Your total award is reduced in direct proportion to your percentage of fault (for example, if damages total $50,000 and you are 20% at fault, your payout is $40,000). If you are found <strong>51% or more at fault</strong>, recovery is completely barred."
+      },
+      {
+        question: "What does Pennsylvania's mandatory $5,000 First-Party Medical Benefit cover?",
+        answer: "Under 75 Pa.C.S. § 1711, all auto insurance policies issued in Pennsylvania must include a minimum of <strong>$5,000 in First-Party Medical Benefits</strong> (PIP). This coverage pays your initial medical bills after a crash regardless of who was at fault. It is separate and distinct from a third-party liability claim against an at-fault driver."
+      },
+      {
+        question: "What are Pennsylvania's minimum mandatory auto liability limits?",
+        answer: "Under 75 Pa.C.S. § 1702 and § 1786, Pennsylvania requires minimum bodily injury and property damage liability limits of <strong>15/30/5</strong> ($15,000 bodily injury per person, $30,000 bodily injury total per accident, and $5,000 property damage). These liability limits represent maximum policy coverage limits rather than guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage mandatory in Pennsylvania?",
+        answer: "Under 75 Pa.C.S. § 1731, insurance companies are required to offer Uninsured and Underinsured Motorist (UM/UIM) coverage matching your bodily injury liability limits. UM/UIM coverage protects you if you are struck by a driver who lacks insurance or carries insufficient policy limits. Coverage can only be excluded if the policyholder executes specific signed statutory <strong>written rejection forms</strong>."
+      },
+      {
+        question: "What are the deadlines to file a car accident claim in Pennsylvania?",
+        answer: "Under <strong>42 Pa.C.S. § 5524</strong>, Pennsylvania provides a <strong>2-year statute of limitations</strong> for filing personal injury, property damage, and wrongful death civil lawsuits. However, under <strong>42 Pa.C.S. § 5522(a)</strong>, claims involving a Commonwealth or local municipal government entity require formal written notice of claim within <strong>6 months</strong> of the injury. Deadlines depend on specific facts, and individuals should consult qualified legal counsel."
+      },
+      {
+        question: "Does an auto insurance policy limit determine my total settlement value?",
+        answer: "No. An insurance policy limit represents the contractual cap on the insurer's liability for that policy. It does not guarantee a settlement payout equal to that limit, nor does it restrict the total value of proven damages legally owed by an at-fault driver."
       }
     ];
   }

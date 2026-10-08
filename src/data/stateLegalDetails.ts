@@ -313,12 +313,12 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     legalAuthority: "Oregon's modified comparative negligence 51% bar."
   },
   pennsylvania: {
-    statuteRef: "42 Pa. Cons. Statutes § 7102",
+    statuteRef: "42 Pa.C.S. § 7102 (51% Comparative Fault) & 75 Pa.C.S. § 1705 (MVFRL Choice No-Fault)",
     minInsurance: "15/30/5",
     majorCity: "Philadelphia",
     courtName: "Pennsylvania Court of Common Pleas",
     govDeadline: "6 months",
-    legalAuthority: "Pennsylvania's choice no-fault PIP system and 51% modified comparative fault bar."
+    legalAuthority: "Pennsylvania's Choice No-Fault PIP system (75 Pa.C.S. § 1705) and 51% modified comparative fault bar (42 Pa.C.S. § 7102)."
   },
   "rhode-island": {
     statuteRef: "General Laws of Rhode Island § 9-20-4",

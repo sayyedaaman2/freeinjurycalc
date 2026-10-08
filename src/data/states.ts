@@ -518,7 +518,7 @@ export const statesData: Record<string, StateLaw> = {
     damageCap: null,
     damageCapExplanation: null,
     statuteOfLimitations: 2,
-    explanation: "Pennsylvania is a choice no-fault state. If you selected Limited Tort on your insurance, you cannot sue for pain and suffering unless your injury is deemed 'serious' (verbal threshold). Pennsylvania uses the 51% modified comparative negligence bar."
+    explanation: "Pennsylvania operates under a Choice No-Fault auto insurance system (75 Pa.C.S. § 1705) and a 51% modified comparative fault standard (42 Pa.C.S. § 7102). Policyholders select between Full Tort and Limited Tort options. Limited Tort limits non-economic pain and suffering recovery unless the injury qualifies as a 'serious injury' under 75 Pa.C.S. § 1702 or a statutory exception applies. All Pennsylvania policies include mandatory $5,000 First-Party Medical Benefits (75 Pa.C.S. § 1711), and injury lawsuits must be filed within 2 years (42 Pa.C.S. § 5524)."
   },
   "rhode-island": {
     name: "Rhode Island",
