@@ -115,8 +115,13 @@ const settlementExampleContent = generateSettlementExample(state, stateInfo.name
 const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.statuteOfLimitations, stateInfo.damageCap, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.statuteRef, stateDetails.courtName);
 
 // Custom page title & description for maximum SEO relevance
-const pageTitle = `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
-const pageDescription = `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
+const pageTitle = state === 'michigan'
+  ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP Estimator'
+  : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
+
+const pageDescription = state === 'michigan'
+  ? 'Calculate your estimated Michigan auto accident settlement under No-Fault PIP rules and MCL § 500.3135 serious impairment thresholds. Free educational estimator.'
+  : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
 const customFaqSchema = {
@@ -154,7 +159,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {stateInfo.name} Car Accident Settlement Calculator.
+          {state === 'michigan' ? 'Michigan Car Accident Settlement Calculator' : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -247,6 +252,46 @@ const customFaqSchema = {
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of {stateInfo.name} Car Accident Claims</h3>
           <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
+
+        {state === 'michigan' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Michigan Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.michigan.gov/difs/consumers/auto-insurance/pip-requirements" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Michigan DIFS — Personal Injury Protection (PIP) Medical Coverage Options
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official Michigan Department of Insurance & Financial Services overview of the 6 PIP medical coverage options under PA 21 of 2019.</span>
+              </li>
+              <li>
+                <a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-500-3009" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Michigan Compiled Laws § 500.3009 — Residual Bodily Injury Liability Limits
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory $250,000/$500,000 default Bodily Injury liability limits and $50,000/$100,000 elective minimum opt-down requirements.</span>
+              </li>
+              <li>
+                <a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-500-3135" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Michigan Compiled Laws § 500.3135 — Tort Liability & Serious Impairment Threshold
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 3-part test for serious impairment of body function, 51% comparative fault bar, and $3,000 Mini-Tort limit under subsection (3)(e).</span>
+              </li>
+              <li>
+                <a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-500-3145" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Michigan Compiled Laws § 500.3145 — PIP Claim Notice & One-Year-Back Rule
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 1-year written notice requirement and restriction on recovering unpaid PIP benefits incurred more than 1 year prior to lawsuit.</span>
+              </li>
+              <li>
+                <a href="https://www.legislature.mi.gov/Laws/MCL?objectName=mcl-600-5805" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Michigan Compiled Laws § 600.5805 — Statute of Limitations for Injury Tort Actions
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 3-year period of limitations for third-party personal injury tort actions against an at-fault driver.</span>
+              </li>
+            </ul>
+          </div>
+        )}
 
         <!-- State-Specific FAQ Accordion -->
         <div class="mt-12 mb-12 border-t border-hairline pt-12">

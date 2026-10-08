@@ -304,13 +304,13 @@ export const statesData: Record<string, StateLaw> = {
     slug: "michigan",
     negligenceRule: "modified_51",
     noFault: true,
-    pipLimit: 250000, // choice of limits up to unlimited
+    pipLimit: 250000, // Elective PIP medical choice level (options range from $50k to Unlimited)
     verbalThreshold: true,
     monetaryThreshold: null,
     damageCap: null,
     damageCapExplanation: null,
     statuteOfLimitations: 3,
-    explanation: "Michigan is a strict no-fault state with high PIP requirements. You cannot sue the other driver for pain and suffering unless your injuries meet the 'serious impairment of body function' verbal threshold. Michigan applies the 51% modified comparative negligence bar."
+    explanation: "Michigan operates under a No-Fault auto insurance system where your own PIP policy pays medical expenses up to your selected PIP medical choice level (options range from $50,000 to Unlimited) plus 85% of lost income for up to 3 years. You cannot recover pain and suffering damages from an at-fault driver unless your injury satisfies the statutory 'serious impairment of body function' threshold under MCL § 500.3135. Michigan enforces the 51% modified comparative negligence bar for third-party tort claims."
   },
   minnesota: {
     name: "Minnesota",

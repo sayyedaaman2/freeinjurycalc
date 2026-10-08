@@ -43,6 +43,10 @@ export function generateInsuranceContent(
   monetaryThreshold: number | null,
   minInsurance: string
 ): string {
+  if (stateName === "Michigan") {
+    return `Under Michigan's No-Fault auto insurance system (updated under PA 21 of 2019), your first line of recovery is your own Personal Injury Protection (PIP) medical coverage, regardless of who caused the crash. Drivers select from <strong>6 PIP medical coverage levels</strong>: (1) Unlimited coverage (statutory default), (2) $500,000 cap, (3) $250,000 cap, (4) $250,000 with PIP medical exclusion for qualified health coverage, (5) $50,000 cap (Medicaid enrollees only), or (6) PIP medical opt-out (eligible Medicare Parts A & B beneficiaries). PIP also provides wage loss replacement for 85% of gross income for up to 3 years. For third-party residual liability when suing an at-fault driver, Michigan policyholders maintain Bodily Injury (BI) coverage set at a default limit of <strong>$250,000 per person / $500,000 per accident</strong> (governed by MCL § 500.3009), with an elective statutory minimum opt-down of <strong>$50,000 / $100,000</strong> upon signing a DIFS waiver.`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -61,6 +65,15 @@ export function generateStatuteContent(
   statuteOfLimitations: number,
   govDeadline: string
 ): string {
+  if (stateName === "Michigan") {
+    return `In Michigan, auto accident legal claims are governed by two distinct statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Third-Party Tort Lawsuits (3 Years):</strong> Under <strong>MCL § 600.5805(2)</strong>, you have 3 years from the date of the accident to file a civil lawsuit against an at-fault driver for excess economic damages and noneconomic pain and suffering.</li>
+      <li><strong>First-Party PIP Insurance Claims (1 Year):</strong> Under <strong>MCL § 500.3145</strong>, you must give formal written notice of injury to your PIP insurance carrier within <strong>1 year</strong> of the accident. Additionally, the "one-year-back rule" restricts legal recovery of unpaid PIP benefits to expenses incurred within 1 year prior to filing suit.</li>
+      <li><strong>Government Claims (6 Months):</strong> If your accident involves a public transit vehicle or government agency, an administrative notice of claim must be submitted within 6 months.</li>
+    </ul>`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -69,6 +82,16 @@ export function generateDamageCapContent(
   cap: number | null,
   damageCapExplanation: string | null
 ): string {
+  if (stateName === "Michigan") {
+    return `For third-party motor vehicle claims in Michigan, there are no statutory dollar caps on noneconomic damages (pain and suffering). However, under <strong>MCL § 500.3135(1) & (5)</strong>, recovery for pain and suffering is restricted by a strict statutory verbal threshold. To recover noneconomic damages from an at-fault driver, an injured victim must establish a <strong>"serious impairment of body function,"</strong> defined by a 3-part test:
+    <ol class="list-decimal pl-5 space-y-1 my-2">
+      <li><strong>Objectively Manifested:</strong> The impairment must be observable or perceivable from actual symptoms by a medical professional (verified via clinical testing, MRIs, X-rays, or physician findings).</li>
+      <li><strong>Important Body Function:</strong> The impairment must involve a body function of great value, significance, or consequence to the specific individual.</li>
+      <li><strong>Affects General Ability to Lead Normal Life:</strong> The impairment must influence the person's capacity to live in their normal, pre-accident manner.</li>
+    </ol>
+    Pain and suffering multipliers are not established by statute; general damages are evaluated on a case-by-case basis only after this statutory threshold is satisfied.`;
+  }
+
   if (cap !== null && damageCapExplanation) {
     return damageCapExplanation;
   }
@@ -95,6 +118,18 @@ export function generateSettlementExample(
 ): string {
   let explanation = "";
   
+  if (stateSlug === "michigan") {
+    explanation = `Let's look at how a claim is evaluated in <strong>${majorCity}, Michigan</strong> under state No-Fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>First-Party PIP Recovery (Your Insurer):</strong> Pays 100% of allowable medical expenses up to your selected PIP choice level (e.g. $250,000 or Unlimited) plus 85% of lost wages for up to 3 years, regardless of fault.</li>
+      <li><strong>Third-Party Tort Claim (At-Fault Driver):</strong> If medical bills exceed your PIP limit or if you suffer a qualifying <em>serious impairment of body function</em> under MCL § 500.3135, you may claim noneconomic pain and suffering from the at-fault driver's Bodily Injury policy ($250k/$500k default).</li>
+      <li><strong>51% Modified Comparative Fault:</strong> If you are found 10% at fault for the crash, any third-party tort recovery is reduced by 10%. If you are 51% or more at fault, third-party noneconomic recovery is barred.</li>
+      <li><strong>Michigan Mini-Tort ($3,000 Cap):</strong> Out-of-pocket damage to your motor vehicle (such as your collision deductible) can be claimed from the at-fault driver up to the statutory limit of <strong>$3,000</strong> under MCL § 500.3135(3)(e).</li>
+    </ul>
+    This illustrative framework demonstrates how First-Party PIP benefits operate alongside Third-Party tort claims in the ${courtName}.`;
+    return explanation;
+  }
+
   // Custom math for the state page to show localized calculation
   let medicalBills = 15000;
   let lostWages = 5000;
@@ -163,6 +198,39 @@ export function generateFAQs(
   statuteRef: string,
   courtName: string
 ): Array<{ question: string; answer: string }> {
+  if (stateName === "Michigan") {
+    return [
+      {
+        question: "How are auto accident claims evaluated in Michigan?",
+        answer: "Michigan auto accident recovery operates under a two-part system. First-party Personal Injury Protection (PIP) pays your allowable medical expenses (up to your chosen PIP choice level: $50k, $250k, $500k, or Unlimited) and 85% of lost wages for up to 3 years, regardless of fault. A third-party tort claim against the at-fault driver for noneconomic pain and suffering is permitted only if your injury satisfies the statutory 'serious impairment of body function' threshold under MCL § 500.3135. Pain and suffering multipliers are not fixed by law and apply only after meeting this threshold."
+      },
+      {
+        question: "What are the 6 PIP medical coverage options in Michigan?",
+        answer: "Under the 2019 Michigan Auto Insurance Reform (PA 21), policyholders can choose from 6 PIP medical coverage levels: (1) Unlimited PIP medical coverage (statutory default), (2) $500,000 limit, (3) $250,000 limit, (4) $250,000 limit with PIP medical exclusion for qualified health coverage, (5) $50,000 limit (available to Medicaid enrollees only), or (6) PIP medical opt-out (available to eligible Medicare Parts A & B beneficiaries)."
+      },
+      {
+        question: "What is Michigan's 'serious impairment of body function' threshold?",
+        answer: "Under MCL § 500.3135(5), to sue an at-fault driver for noneconomic pain and suffering, your injury must satisfy a 3-part test: (1) it must be <strong>objectively manifested</strong> (perceivable by medical symptoms verified via medical testing or physician evaluation), (2) it must impair an <strong>important body function</strong>, and (3) it must <strong>affect your general ability to lead your normal life</strong>."
+      },
+      {
+        question: "What is the Michigan Mini-Tort limit for vehicle property damage?",
+        answer: "Under MCL § 500.3135(3)(e), you can recover up to <strong>$3,000</strong> from an at-fault driver for out-of-pocket vehicle property damage (such as your collision deductible), provided you are 50% or less at fault. Mini-Tort covers vehicle damage not otherwise reimbursed by insurance, but does not cover medical bills or general personal items."
+      },
+      {
+        question: "What is the difference between Michigan's 3-year and 1-year deadlines?",
+        answer: "Under MCL § 600.5805(2), you have <strong>3 years</strong> from the date of the collision to file a third-party tort lawsuit against an at-fault driver. However, under MCL § 500.3145, first-party PIP claims for medical and wage benefits from your own insurer require written notice within <strong>1 year</strong> of the crash, and the 'one-year-back rule' restricts legal recovery to expenses incurred within 1 year prior to filing a lawsuit."
+      },
+      {
+        question: "What happens if I share fault for an accident in Michigan?",
+        answer: "First-party PIP medical and wage benefits are paid by your own insurer regardless of fault. For third-party tort claims against an at-fault driver, Michigan applies a <strong>51% modified comparative negligence bar</strong> (MCL § 500.3135(2)(b)). If you are 50% or less at fault, your noneconomic damages are reduced by your percentage of fault. If you are 51% or more at fault, third-party noneconomic recovery is completely barred."
+      },
+      {
+        question: "What bodily injury liability limits apply if I sue an at-fault driver in Michigan?",
+        answer: "Under MCL § 500.3009, Michigan auto policies carry a default Bodily Injury (BI) liability limit of <strong>$250,000 per person / $500,000 per accident</strong>. Drivers may opt down to lower limits by signing a DIFS waiver, but the absolute statutory minimum limit permitted is <strong>$50,000 / $100,000</strong>."
+      }
+    ];
+  }
+
   const faqs = [
     {
       question: `How is a car accident settlement calculated in ${stateName}?`,

@@ -185,12 +185,12 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     legalAuthority: "Massachusetts's Personal Injury Protection (PIP) system and 51% bar."
   },
   michigan: {
-    statuteRef: "Michigan Compiled Laws § 500.3135",
-    minInsurance: "250k choice",
+    statuteRef: "MCL § 500.3135 & MCL § 500.3009",
+    minInsurance: "250k/500k (50k/100k opt-down)",
     majorCity: "Detroit",
     courtName: "Michigan Circuit Court",
     govDeadline: "6 months",
-    legalAuthority: "Michigan's no-fault PIP coverage and serious impairment verbal threshold."
+    legalAuthority: "Michigan No-Fault PIP framework, MCL § 500.3135 serious impairment threshold, and 51% modified comparative fault bar."
   },
   minnesota: {
     statuteRef: "Minnesota Statutes § 604.01",
