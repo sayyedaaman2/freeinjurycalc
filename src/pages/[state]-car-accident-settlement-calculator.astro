@@ -117,10 +117,14 @@ const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.st
 // Custom page title & description for maximum SEO relevance
 const pageTitle = state === 'michigan'
   ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP Estimator'
+  : state === 'missouri'
+  ? 'Missouri Car Accident Settlement Calculator | Pure Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
   ? 'Calculate your estimated Michigan auto accident settlement under No-Fault PIP rules and MCL § 500.3135 serious impairment thresholds. Free educational estimator.'
+  : state === 'missouri'
+  ? 'Calculate your estimated Missouri auto accident settlement under pure comparative fault rules (RSMo § 537.765) and 5-year statute of limitations (RSMo § 516.120). Free educational estimator.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -159,7 +163,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {state === 'michigan' ? 'Michigan Car Accident Settlement Calculator' : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'michigan' || state === 'missouri') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -288,6 +292,46 @@ const customFaqSchema = {
                   Michigan Compiled Laws § 600.5805 — Statute of Limitations for Injury Tort Actions
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 3-year period of limitations for third-party personal injury tort actions against an at-fault driver.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'missouri' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Missouri Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://dor.mo.gov/driver-license/insurance/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Missouri Department of Revenue (DOR) — Motor Vehicle Financial Responsibility Requirements
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official Missouri DOR requirements for 25/50/25 liability insurance and mandatory Uninsured Motorist (UM) coverage.</span>
+              </li>
+              <li>
+                <a href="https://revisor.mo.gov/main/OneSection.aspx?section=537.765" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Missouri Revised Statutes § 537.765 — Pure Comparative Fault Standard
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory codification of pure comparative fault doctrine established in Gustafson v. Benda, allowing damage recovery diminished by fault percentage.</span>
+              </li>
+              <li>
+                <a href="https://revisor.mo.gov/main/OneSection.aspx?section=379.203" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Missouri Revised Statutes § 379.203 — Mandatory Uninsured Motorist Coverage
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory requirement mandating minimum $25,000/$50,000 Uninsured Motorist (UM) coverage on all Missouri automobile policies.</span>
+              </li>
+              <li>
+                <a href="https://revisor.mo.gov/main/OneSection.aspx?section=516.120" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Missouri Revised Statutes § 516.120 — 5-Year Statute of Limitations for Injury Torts
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 5-year period of limitations for filing personal injury lawsuits arising from motor vehicle collisions.</span>
+              </li>
+              <li>
+                <a href="https://revisor.mo.gov/main/OneSection.aspx?section=537.100" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Missouri Revised Statutes § 537.100 — 3-Year Wrongful Death Statute of Limitations
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 3-year deadline for bringing wrongful death claims resulting from motor vehicle accidents.</span>
               </li>
             </ul>
           </div>

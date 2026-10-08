@@ -209,12 +209,12 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     legalAuthority: "Mississippi's pure comparative fault system."
   },
   missouri: {
-    statuteRef: "Missouri Revised Statutes § 537.765",
-    minInsurance: "25/50/25",
+    statuteRef: "RSMo § 537.765 & RSMo § 516.120",
+    minInsurance: "25/50/25 (plus mandatory 25/50 UM)",
     majorCity: "Kansas City",
     courtName: "Missouri Circuit Court",
     govDeadline: "90 days",
-    legalAuthority: "Missouri's pure comparative fault standard and generous 5-year timeline."
+    legalAuthority: "Missouri pure comparative fault (Gustafson v. Benda, RSMo § 537.765), mandatory Uninsured Motorist coverage (RSMo § 379.203), and 5-year SOL (RSMo § 516.120)."
   },
   montana: {
     statuteRef: "Montana Code Annotated § 27-1-702",

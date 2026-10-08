@@ -349,7 +349,7 @@ export const statesData: Record<string, StateLaw> = {
     damageCap: null,
     damageCapExplanation: null,
     statuteOfLimitations: 5,
-    explanation: "Missouri is a pure comparative negligence state. Even if you are mostly to blame for the crash, you can still recover partial damages. Missouri has a generous 5-year statute of limitations for personal injury claims."
+    explanation: "Missouri operates under a pure comparative fault doctrine established in Gustafson v. Benda and codified in RSMo § 537.765. Injured parties can recover damages even if up to 99% at fault, with total recovery reduced by their exact percentage of liability. Missouri provides a 5-year statute of limitations for personal injury tort claims under RSMo § 516.120(4)."
   },
   montana: {
     name: "Montana",

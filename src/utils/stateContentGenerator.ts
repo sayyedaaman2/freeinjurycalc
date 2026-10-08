@@ -47,6 +47,10 @@ export function generateInsuranceContent(
     return `Under Michigan's No-Fault auto insurance system (updated under PA 21 of 2019), your first line of recovery is your own Personal Injury Protection (PIP) medical coverage, regardless of who caused the crash. Drivers select from <strong>6 PIP medical coverage levels</strong>: (1) Unlimited coverage (statutory default), (2) $500,000 cap, (3) $250,000 cap, (4) $250,000 with PIP medical exclusion for qualified health coverage, (5) $50,000 cap (Medicaid enrollees only), or (6) PIP medical opt-out (eligible Medicare Parts A & B beneficiaries). PIP also provides wage loss replacement for 85% of gross income for up to 3 years. For third-party residual liability when suing an at-fault driver, Michigan policyholders maintain Bodily Injury (BI) coverage set at a default limit of <strong>$250,000 per person / $500,000 per accident</strong> (governed by MCL § 500.3009), with an elective statutory minimum opt-down of <strong>$50,000 / $100,000</strong> upon signing a DIFS waiver.`;
   }
 
+  if (stateName === "Missouri") {
+    return `Under Missouri motor vehicle financial responsibility laws (RSMo § 303.026), every driver must maintain minimum liability insurance set at <strong>25/50/25</strong> ($25,000 per person / $50,000 per accident for Bodily Injury Liability, and $25,000 for Property Damage Liability). Additionally, under <strong>RSMo § 379.203</strong>, Missouri strictly mandates that all policies include <strong>Uninsured Motorist (UM) coverage</strong> of at least $25,000 per person / $50,000 per accident to protect you if struck by an uninsured or hit-and-run driver. Unlike mandatory UM coverage, Underinsured Motorist (UIM) coverage is optional in Missouri. Liability limits set the maximum amount an insurance carrier is obligated to pay under a policy, rather than guaranteeing a specific payout.`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -74,6 +78,15 @@ export function generateStatuteContent(
     </ul>`;
   }
 
+  if (stateName === "Missouri") {
+    return `In Missouri, auto accident legal claims are governed by statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Tort Lawsuits (5 Years):</strong> Under <strong>RSMo § 516.120(4)</strong>, Missouri provides a 5-year statute of limitations to file a civil lawsuit for personal injury car accident claims—one of the longest in the United States.</li>
+      <li><strong>Wrongful Death Lawsuits (3 Years):</strong> Under <strong>RSMo § 537.100</strong>, claims for wrongful death resulting from a motor vehicle crash must be filed within 3 years of the date of death.</li>
+      <li><strong>Municipal Entity Notice (90 Days):</strong> If your accident involves a municipality or city government agency (such as a city bus or public road defect in Kansas City or St. Louis), a formal written notice of claim must be served within 90 days under <strong>RSMo § 82.210</strong> before initiating litigation.</li>
+    </ul>`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -90,6 +103,10 @@ export function generateDamageCapContent(
       <li><strong>Affects General Ability to Lead Normal Life:</strong> The impairment must influence the person's capacity to live in their normal, pre-accident manner.</li>
     </ol>
     Pain and suffering multipliers are not established by statute; general damages are evaluated on a case-by-case basis only after this statutory threshold is satisfied.`;
+  }
+
+  if (stateName === "Missouri") {
+    return `Under Missouri law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. Under the Missouri Constitution (Art. I, § 22) and Missouri Supreme Court precedent (such as <em>Watts v. Lester E. Cox Medical Centers</em>), determining non-economic damages is a constitutional jury function. Non-economic loss is evaluated based on severity of injury, treatment history, and impact on daily living. Illustrative multipliers are tools for calculation models rather than statutory mandates.`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -127,6 +144,19 @@ export function generateSettlementExample(
       <li><strong>Michigan Mini-Tort ($3,000 Cap):</strong> Out-of-pocket damage to your motor vehicle (such as your collision deductible) can be claimed from the at-fault driver up to the statutory limit of <strong>$3,000</strong> under MCL § 500.3135(3)(e).</li>
     </ul>
     This illustrative framework demonstrates how First-Party PIP benefits operate alongside Third-Party tort claims in the ${courtName}.`;
+    return explanation;
+  }
+
+  if (stateSlug === "missouri") {
+    explanation = `Let's look at a localized settlement example in <strong>${majorCity}, Missouri</strong> under state comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Medical treatment ($15,000) and lost income ($5,000) equal $20,000 in documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> General damages estimated at $37,500 based on injury severity and daily impact.</li>
+      <li><strong>Gross Calculated Value:</strong> $20,000 + $37,500 = $57,500 gross total.</li>
+      <li><strong>Pure Comparative Fault Adjustment (20% Fault):</strong> Under Missouri's pure comparative fault rule (<em>Gustafson v. Benda</em> & RSMo § 537.765), if the claimant is found 20% responsible, the payout is reduced by 20% (-$11,500), producing an estimated net settlement of <strong>$46,000</strong>.</li>
+      <li><strong>Pure Comparative Fault Principle:</strong> Even if a driver is 80% responsible for a crash, Missouri law permits recovering 20% of their total proven damages from the other negligent party.</li>
+    </ul>
+    This illustrative framework models potential recovery when presenting a demand to an insurer or filing in the ${courtName}.`;
     return explanation;
   }
 
@@ -221,12 +251,36 @@ export function generateFAQs(
         answer: "Under MCL § 600.5805(2), you have <strong>3 years</strong> from the date of the collision to file a third-party tort lawsuit against an at-fault driver. However, under MCL § 500.3145, first-party PIP claims for medical and wage benefits from your own insurer require written notice within <strong>1 year</strong> of the crash, and the 'one-year-back rule' restricts legal recovery to expenses incurred within 1 year prior to filing a lawsuit."
       },
       {
-        question: "What happens if I share fault for an accident in Michigan?",
-        answer: "First-party PIP medical and wage benefits are paid by your own insurer regardless of fault. For third-party tort claims against an at-fault driver, Michigan applies a <strong>51% modified comparative negligence bar</strong> (MCL § 500.3135(2)(b)). If you are 50% or less at fault, your noneconomic damages are reduced by your percentage of fault. If you are 51% or more at fault, third-party noneconomic recovery is completely barred."
-      },
-      {
         question: "What bodily injury liability limits apply if I sue an at-fault driver in Michigan?",
         answer: "Under MCL § 500.3009, Michigan auto policies carry a default Bodily Injury (BI) liability limit of <strong>$250,000 per person / $500,000 per accident</strong>. Drivers may opt down to lower limits by signing a DIFS waiver, but the absolute statutory minimum limit permitted is <strong>$50,000 / $100,000</strong>."
+      }
+    ];
+  }
+  if (stateName === "Missouri") {
+    return [
+      {
+        question: "How are car accident settlements evaluated in Missouri?",
+        answer: "Missouri auto accident claims combine documented economic losses (medical expenses and lost income) with non-economic damages (pain and suffering), adjusted for pure comparative fault. Pain and suffering multipliers are illustrative calculation estimates rather than statutory rules. Under Missouri's pure comparative fault doctrine (RSMo § 537.765), your settlement is reduced by your exact percentage of responsibility."
+      },
+      {
+        question: "How does Missouri's pure comparative fault rule work?",
+        answer: "Under Missouri's pure comparative fault doctrine established in Gustafson v. Benda and codified in RSMo § 537.765, you can recover damages even if you were mostly responsible for the collision (up to 99% at fault). Your final recovery is reduced in direct proportion to your share of fault. For example, if your total damages are $100,000 and you are 20% at fault, you collect $80,000."
+      },
+      {
+        question: "What are Missouri's mandatory auto insurance requirements?",
+        answer: "Under RSMo § 303.026 and RSMo § 379.203, Missouri drivers must carry minimum liability coverage of <strong>25/50/25</strong> ($25,000 per person / $50,000 per accident for Bodily Injury Liability, and $25,000 for Property Damage Liability) plus mandatory <strong>Uninsured Motorist (UM) coverage</strong> of $25,000 per person / $50,000 per accident. Underinsured Motorist (UIM) coverage is optional."
+      },
+      {
+        question: "How long do I have to file a car accident lawsuit in Missouri?",
+        answer: "Under RSMo § 516.120(4), Missouri provides a <strong>5-year statute of limitations</strong> for personal injury car accident lawsuits—one of the longest deadlines in the nation. However, wrongful death lawsuits must be filed within <strong>3 years</strong> under RSMo § 537.100, and claims against municipal government entities require formal written notice within 90 days under RSMo § 82.210."
+      },
+      {
+        question: "Does Missouri place statutory caps on pain and suffering damages?",
+        answer: "No. Missouri does not impose statutory caps on pain and suffering or general non-economic damages for standard passenger vehicle auto accident claims. Determining non-economic damages is a core fact-finding function protected under the right to trial by jury in Article I, Section 22 of the Missouri Constitution."
+      },
+      {
+        question: "What is the difference between Uninsured (UM) and Underinsured (UIM) coverage in Missouri?",
+        answer: "Uninsured Motorist (UM) coverage ($25k/$50k) is mandatory under RSMo § 379.203 and covers your injuries if you are struck by a driver with no auto insurance or a hit-and-run vehicle. Underinsured Motorist (UIM) coverage is optional in Missouri and pays excess damages if the at-fault driver has insurance but their liability policy limit is too low to cover your full damages."
       }
     ];
   }
