@@ -6,7 +6,7 @@ interface Props {
   preselectedSeverity?: string;
   preselectedMedBills?: number;
   preselectedTab?: 'quick' | 'detailed';
-  calculatorType?: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering';
+  calculatorType?: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering' | 'whiplash';
 }
 
 const {
@@ -30,6 +30,16 @@ const sortedStates = Object.values(statesData)
       </svg>
       <div>
         <span class="font-bold">Workers' Compensation Mode:</span> Workers' comp is a no-fault statutory system. Enter the wage-replacement percentage applicable to your state and benefit type. Rules and weekly benefit caps vary by jurisdiction. Pain & suffering and property damage are excluded from this calculator because this tool models statutory workers' compensation benefits rather than separate personal injury or property-damage claims.
+      </div>
+    </div>
+  )}
+  {calculatorType === "whiplash" && (
+    <div class="p-4 bg-violet/10 text-ink text-xs border-b border-hairline flex items-start gap-2.5">
+      <svg class="w-5 h-5 text-violet shrink-0 mt-0.5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+      </svg>
+      <div>
+        <span class="font-bold">Whiplash & Soft-Tissue Mode:</span> Estimates illustrative claim values using medical expenses, lost income, and an illustrative severity multiplier. Property damage input has been disabled to focus on bodily injury damages.
       </div>
     </div>
   )}
@@ -433,17 +443,11 @@ const sortedStates = Object.values(statesData)
         </script>
       </div>
 
-      <!-- AdSense Optimization Card -->
-      <div class="adsense-card p-5 rounded-lg text-center shadow-sm transition-all duration-200 mt-2">
-        <span class="text-[9px] font-semibold font-mono uppercase tracking-wider text-mute block mb-1">Sponsored Evaluation</span>
-        <a 
-          href="#consult-attorney" 
-          class="text-xs font-semibold text-link hover:underline block mb-2 leading-snug"
-        >
-          Need to secure this payout? Get a Free Legal Consultation in your state.
-        </a>
-        <p class="text-[10px] text-mute leading-relaxed font-sans">
-          Insurance adjusters frequently offer low settlements to unrepresented claimants. Get a local lawyer to maximize your claim.
+      <!-- Informational Disclaimer Card -->
+      <div class="p-4 rounded-lg bg-canvas-soft border border-hairline text-center shadow-sm mt-2">
+        <span class="text-[9px] font-semibold font-mono uppercase tracking-wider text-mute block mb-1">Educational Estimator</span>
+        <p class="text-[11px] text-mute leading-relaxed font-sans">
+          This calculator provides illustrative mathematical estimates for educational purposes. Actual insurance valuations depend on evidence, medical documentation, policy terms, and applicable state law.
         </p>
       </div>
 
@@ -604,6 +608,15 @@ const sortedStates = Object.values(statesData)
         if (detailFaultVal) detailFaultVal.textContent = '0%';
         detailFault.style.opacity = '0.6';
         detailFault.style.cursor = 'not-allowed';
+      }
+    }
+
+    if (calculatorType === 'whiplash') {
+      if (detailProperty) {
+        detailProperty.value = "0";
+        detailProperty.disabled = true;
+        detailProperty.style.opacity = '0.6';
+        detailProperty.style.cursor = 'not-allowed';
       }
     }
 
@@ -877,6 +890,33 @@ const sortedStates = Object.values(statesData)
         }
       }
 
+      // Whiplash / Soft-Tissue Overrides
+      if (calculatorType === 'whiplash') {
+        property = 0;
+        economicLosses = medicalBills + wages;
+        painSuffering = medicalBills * multiplier;
+        grossSettlement = economicLosses + painSuffering;
+
+        if (isBarred) {
+          netSettlement = 0;
+          faultReduction = grossSettlement;
+        } else {
+          faultReduction = grossSettlement * (faultPct / 100);
+          netSettlement = grossSettlement - faultReduction;
+        }
+
+        let bodilyInjuryPart = netSettlement;
+        if (bodilyInjuryPart > policyLimit) {
+          exceedsLimit = true;
+          cappedLimit = policyLimit;
+        } else {
+          exceedsLimit = false;
+          cappedLimit = netSettlement;
+        }
+
+        finalCalculated = exceedsLimit ? cappedLimit : netSettlement;
+      }
+
       // Workers' Comp Overrides
       if (calculatorType === 'workers-comp') {
         let hasValidWageRate = false;
@@ -906,6 +946,9 @@ const sortedStates = Object.values(statesData)
         } else {
           stateAlertBox.innerHTML = `<strong>Wage Replacement Rate Required:</strong> Enter the wage-replacement percentage applicable to your state and benefit type above to calculate lost wage replacement. Currently displaying medical expenses only (${formatUSD(medicalBills)}). Pain & suffering and property damage are excluded.`;
         }
+      } else if (calculatorType === 'whiplash') {
+        stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
+        stateAlertBox.innerHTML = `<strong>Whiplash Claim Mode:</strong> Calculated base equals economic losses (medical bills + lost income) plus non-economic component (medical bills × illustrative severity multiplier). Property damage is excluded from this whiplash valuation model.`;
       } else if (isBarred) {
         stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
         stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;

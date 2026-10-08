@@ -8,7 +8,7 @@ export interface SpecialCalculator {
   presetSeverity: string;
   presetMedBills: number;
   presetTab: 'quick' | 'detailed';
-  calculatorType: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering';
+  calculatorType: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering' | 'whiplash';
   aboutHeading1: string;
   aboutContent1: string;
   aboutHeading2: string;
@@ -18,6 +18,7 @@ export interface SpecialCalculator {
   workedExamples: string;
   legalBackground: string;
   sources?: Array<{ title: string; url: string }>;
+  faqs?: Array<{ question: string; answer: string }>;
 }
 
 export const specialCalculators: Record<string, SpecialCalculator> = {
@@ -31,14 +32,14 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
     presetSeverity: "1.5",
     presetMedBills: 3500,
     presetTab: "quick",
-    calculatorType: "car-accident",
+    calculatorType: "whiplash",
     aboutHeading1: "How a Whiplash Settlement Estimate Is Calculated",
     aboutContent1: "Evaluating a whiplash claim after a motor vehicle collision involves analyzing both quantifiable economic losses and non-monetary impacts on an individual's well-being. In personal injury evaluation, claim figures are broadly categorized into economic damages and non-economic damages. Economic damages represent concrete monetary expenses backed by documentation. These typically include medical bills for emergency room evaluation, diagnostic imaging, physical therapy sessions, physician visits, prescription medications, and verified lost income from missed work hours. Non-economic damages, commonly referred to as pain and suffering, address physical discomfort, emotional strain, reduced quality of life, and functional physical limitations resulting from cervical neck strain. Because pain and suffering does not come with a standard itemized bill, negotiators examine factors such as symptom duration, total medical care costs, and overall daily life disruption when assessing non-economic impact. Crucially, there is no single formula, statutory mandate, or universal insurance multiplier required by law to determine every settlement. Payouts are negotiated individually based on evidence, medical documentation, available insurance limits, and state fault rules. The calculator on this website uses an educational calculation model to show how inputs mathematically interact, providing a reference rather than predicting a real-world award.",
     aboutHeading2: "What Can Affect the Value of a Whiplash Claim?",
     aboutContent2: "The financial valuation of an injury claim depends on a complex combination of medical, legal, and practical variables. First, clear medical records detailing clinical evaluation, diagnosis, and prescribed care establish a documented link between an accident and reported symptoms. Unexplained treatment gaps can lead insurance adjusters to question injury severity or causation. Second, symptom duration and functional impact heavily influence non-economic evaluations. A minor strain that resolves in weeks generally yields lower non-economic figures than a severe injury causing persistent pain or mobility limits. If your neck trauma involves structural spinal damage or disc bulges, consult our dedicated <a href=\"/neck-injury-settlement-calculator/\" class=\"text-link hover:underline\">neck injury calculator</a>. Third, legal principles determine whether shared responsibility reduces or bars recovery based on state jurisdiction. Pre-existing neck conditions also require medical evidence to distinguish past issues from new or aggravated symptoms. Finally, available insurance coverage can affect how much compensation may be practically available from a particular policy. To understand how damages and multipliers are structured across different types of claims, read our guide on <a href=\"/blog/how-car-accident-settlements-are-calculated/\" class=\"text-link hover:underline\">how car accident settlements are calculated</a>, or explore our general <a href=\"/\" class=\"text-link hover:underline\">car accident settlement calculator</a> and <a href=\"/pain-and-suffering-calculator/\" class=\"text-link hover:underline\">pain and suffering calculator</a>.",
     formulaExplanation: `
       <p>This calculator uses an illustrative multiplier-based model to help users understand how different inputs can affect an estimate. There is no single formula required by law for calculating every whiplash claim.</p>
-      <p>The mathematical model used in this tool combines documented economic losses (medical expenses, lost wages, property damage) with an illustrative multiplier applied to medical expenses to model pain and suffering:</p>
+      <p>The mathematical model used in this tool combines documented economic losses (medical expenses, lost wages) with an illustrative multiplier applied to medical expenses to model pain and suffering:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
         Calculated Base = Economic Losses + (Medical Expenses &times; Illustrative Multiplier)
       </div>
