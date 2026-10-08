@@ -17,102 +17,150 @@ export interface SpecialCalculator {
   inputsExplanation: string;
   workedExamples: string;
   legalBackground: string;
-  faqs: Array<{ question: string; answer: string }>;
+  sources?: Array<{ title: string; url: string }>;
 }
 
 export const specialCalculators: Record<string, SpecialCalculator> = {
   "whiplash": {
     slug: "whiplash-settlement-calculator",
-    title: "Whiplash Compensation Calculator | Whiplash Settlement & Payout",
-    description: "Use our free whiplash calculator to estimate your whiplash settlement value. Learn about neck whiplash claims, whiplash damages, payouts, and compensation.",
-    h1: "Whiplash Compensation Calculator.",
-    intro: "Calculate a realistic whiplash payout and estimate your whiplash injury claim value. Adjusts for whiplash damages and neck strain using our whiplash compensation calculator.",
-    subtitle: "Soft Tissue & Whiplash Settlement Valuation",
+    title: "Whiplash Settlement Calculator — Estimate Your Claim",
+    description: "Use this free whiplash settlement calculator to create an illustrative claim estimate based on medical expenses, lost income, pain and suffering, and other factors. Learn how whiplash claims are commonly evaluated and why actual results vary.",
+    h1: "Whiplash Settlement Calculator",
+    intro: "Estimate an illustrative whiplash claim value using your medical expenses, lost income, and other claim information. This calculator is for educational purposes and does not predict what an insurer or court will pay.",
+    subtitle: "Whiplash & Soft-Tissue Claim Evaluation",
     presetSeverity: "1.5",
     presetMedBills: 3500,
     presetTab: "quick",
     calculatorType: "car-accident",
-    aboutHeading1: "Filing a Neck Whiplash Claim for Whiplash Compensation",
-    aboutContent1: "When you file a neck whiplash claim, calculating the whiplash damages is key. A whiplash injury claim requires medical bills and treatment history to calculate your total whiplash compensation. Using our whiplash calculator helps you see how insurance adjusters weigh soft tissue neck strain and determine a fair whiplash value.",
-    aboutHeading2: "Estimating Whiplash Settlement & Whiplash Payout Value",
-    aboutContent2: "What is the average whiplash payout? For minor neck injury claims, a whiplash settlement typically ranges between $3,000 and $10,000. For severe cervical damage, our neck injury calculator estimates a much higher whiplash value. The whiplash compensation calculator processes medical expenses and diagnostic bills to establish the injury value.",
+    aboutHeading1: "How a Whiplash Settlement Estimate Is Calculated",
+    aboutContent1: "Evaluating a whiplash claim after a motor vehicle collision involves analyzing both quantifiable economic losses and non-monetary impacts on an individual's well-being. In personal injury evaluation, claim figures are broadly categorized into economic damages and non-economic damages. Economic damages represent concrete monetary expenses backed by documentation. These typically include medical bills for emergency room evaluation, diagnostic imaging, physical therapy sessions, physician visits, prescription medications, and verified lost income from missed work hours. Non-economic damages, commonly referred to as pain and suffering, address physical discomfort, emotional strain, reduced quality of life, and functional physical limitations resulting from cervical neck strain. Because pain and suffering does not come with a standard itemized bill, negotiators examine factors such as symptom duration, total medical care costs, and overall daily life disruption when assessing non-economic impact. Crucially, there is no single formula, statutory mandate, or universal insurance multiplier required by law to determine every settlement. Payouts are negotiated individually based on evidence, medical documentation, available insurance limits, and state fault rules. The calculator on this website uses an educational calculation model to show how inputs mathematically interact, providing a reference rather than predicting a real-world award.",
+    aboutHeading2: "What Can Affect the Value of a Whiplash Claim?",
+    aboutContent2: "The financial valuation of an injury claim depends on a complex combination of medical, legal, and practical variables. First, clear medical records detailing clinical evaluation, diagnosis, and prescribed care establish a documented link between an accident and reported symptoms. Unexplained treatment gaps can lead insurance adjusters to question injury severity or causation. Second, symptom duration and functional impact heavily influence non-economic evaluations. A minor strain that resolves in weeks generally yields lower non-economic figures than a severe injury causing persistent pain or mobility limits. If your neck trauma involves structural spinal damage or disc bulges, consult our dedicated <a href=\"/neck-injury-settlement-calculator/\" class=\"text-link hover:underline\">neck injury calculator</a>. Third, legal principles determine whether shared responsibility reduces or bars recovery based on state jurisdiction. Pre-existing neck conditions also require medical evidence to distinguish past issues from new or aggravated symptoms. Finally, available insurance coverage can affect how much compensation may be practically available from a particular policy. To understand how damages and multipliers are structured across different types of claims, read our guide on <a href=\"/blog/how-car-accident-settlements-are-calculated/\" class=\"text-link hover:underline\">how car accident settlements are calculated</a>, or explore our general <a href=\"/\" class=\"text-link hover:underline\">car accident settlement calculator</a> and <a href=\"/pain-and-suffering-calculator/\" class=\"text-link hover:underline\">pain and suffering calculator</a>.",
     formulaExplanation: `
-      <p>Insurance companies evaluate whiplash claims using the standard <strong>Special Damages + General Damages</strong> formula. Whiplash is primarily a soft-tissue injury (cervical acceleration-deceleration syndrome) affecting muscles, ligaments, and tendons in the neck.</p>
-      <p>The standard formula is calculated as follows:</p>
+      <p>This calculator uses an illustrative multiplier-based model to help users understand how different inputs can affect an estimate. There is no single formula required by law for calculating every whiplash claim.</p>
+      <p>The mathematical model used in this tool combines documented economic losses (medical expenses, lost wages, property damage) with an illustrative multiplier applied to medical expenses to model pain and suffering:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
-        Total Whiplash Value = Economic Losses + (Medical Bills &times; Pain Multiplier)
+        Calculated Base = Economic Losses + (Medical Expenses &times; Illustrative Multiplier)
       </div>
-      <p>For whiplash injuries, because they are classified as soft-tissue trauma, insurance adjusters typically restrict the pain and suffering multiplier to <strong>1.5x to 2.5x</strong>. However, if diagnostic imaging (such as an MRI) shows structural cervical damage like a disc bulge, nerve impingement, or facet joint trauma, the multiplier can rise to <strong>3.0x or higher</strong>.</p>
+      <p>The calculated result is strictly an illustrative mathematical estimate. Actual outcomes can differ substantially based on liability determination, quality of evidence, documented damages, available insurance coverage, applicable law, and other case-specific factors.</p>
+      <p><strong>Hypothetical Mathematical Example:</strong></p>
+      <ul class="list-disc pl-5 space-y-1 my-2">
+        <li>Medical expenses: $3,000</li>
+        <li>Lost income: $800</li>
+        <li>Illustrative multiplier: 1.5x</li>
+        <li>Illustrative non-economic component: $3,000 &times; 1.5 = $4,500</li>
+        <li>Calculated base estimate: $3,000 + $800 + $4,500 = $8,300</li>
+      </ul>
+      <p class="text-xs text-mute mt-2"><em>Note: This is a hypothetical mathematical example to demonstrate the calculation model, NOT a prediction or guarantee of an actual settlement outcome.</em></p>
     `,
     inputsExplanation: `
-      <p>To compute an accurate whiplash compensation estimate, you must understand how each input field affects your net settlement value:</p>
+      <p>To use the calculator effectively, here is how each input field functions within the illustrative model:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Medical Bills:</strong> The total cost of all diagnostics, chiropractic adjustments, physical therapy sessions, pain medications, and specialist visits. This is the numerical baseline for your general damages.</li>
-        <li><strong>Lost Wages:</strong> Documented income you lost because you could not work while recovering from neck pain. Unlike medical bills, lost wages are added dollar-for-dollar and are not multiplied by the pain factor.</li>
-        <li><strong>Injury Multiplier:</strong> A rating of your pain and suffering. For minor stiffness, a 1.5x factor is standard. For cervical radiculopathy (shooting nerve pain), a 2.5x to 3.5x factor is appropriate.</li>
-        <li><strong>Fault Percentage:</strong> Under comparative negligence laws, any fault you share for the crash will reduce your payout directly.</li>
+        <li><strong>Medical Expenses:</strong> Actual documented medical costs incurred for emergency care, diagnostic tests, doctor visits, physical therapy, and medications related to the injury.</li>
+        <li><strong>Lost Income:</strong> Income actually lost due to missed work hours or temporary inability to work following the injury, supported by employer verification or wage documentation.</li>
+        <li><strong>Illustrative Multiplier:</strong> A numerical factor used in this tool to model potential non-economic damages (pain and suffering). This multiplier is an estimation tool for educational modeling and is not a fixed legal standard.</li>
+        <li><strong>Fault Percentage:</strong> Responsibility for an accident can adjust financial recovery in jurisdictions where comparative or contributory fault rules apply. The precise legal effect varies by state.</li>
+        <li><strong>Insurance Policy Limits:</strong> Available insurance coverage can affect how much compensation may be practically available from a particular policy. Claims can involve additional coverage or parties depending on circumstances and applicable law.</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are three realistic worked scenarios for whiplash payouts:</p>
+      <p>The following three scenarios demonstrate how the calculator's mathematical model evaluates different hypothetical input values:</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Minor Soft-Tissue Whiplash</strong>
-          <p>You suffer a neck strain requiring 6 weeks of chiropractic treatment. You carry 0% fault.</p>
+          <strong class="text-ink block mb-1">Scenario 1: Minor Symptoms (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>This is a hypothetical mathematical example, not a prediction of an actual settlement.</em></p>
+          <p>An individual incurs minor neck strain requiring brief medical evaluation and short-term care, with no shared fault.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Expenses: $3,000 (chiropractor, x-rays, muscle relaxers)</li>
-            <li>Lost Income: $800 (4 missed workdays)</li>
-            <li>Pain Multiplier: 1.5x (minor neck stiffness)</li>
-            <li>Pain & Suffering Valuation: $3,000 &times; 1.5 = $4,500</li>
-            <li>Gross Claim Value: $3,000 + $800 + $4,500 = $8,300</li>
-            <li><strong>Final Net Settlement check: $8,300</strong></li>
+            <li>Medical Expenses: $2,500</li>
+            <li>Lost Income: $500</li>
+            <li>Illustrative Multiplier: 1.5x</li>
+            <li>Illustrative Non-Economic Component: $2,500 &times; 1.5 = $3,750</li>
+            <li>Calculated Base Estimate: $2,500 + $500 + $3,750 = $6,750</li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Moderate Cervical Strain with Treatment Gaps</strong>
-          <p>You suffer moderate whiplash. However, you waited 3 weeks to see a doctor. The insurer alleges 10% shared fault for a delayed reaction.</p>
+          <strong class="text-ink block mb-1">Scenario 2: Extended Treatment Duration (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>This is a hypothetical mathematical example, not a prediction of an actual settlement.</em></p>
+          <p>An individual undergoes several months of physical therapy and ongoing medical follow-ups, resulting in higher medical costs and lost wages.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Expenses: $6,500 (ER visit, physical therapy)</li>
-            <li>Lost Income: $1,500 (2 weeks missed work)</li>
-            <li>Pain Multiplier: 2.0x</li>
-            <li>Pain & Suffering Valuation: $6,500 &times; 2.0 = $13,000</li>
-            <li>Gross Claim Value: $6,500 + $1,500 + $13,000 = $21,000</li>
-            <li>10% Fault Reduction: -$2,100</li>
-            <li><strong>Final Net Settlement check: $18,900</strong></li>
+            <li>Medical Expenses: $7,000</li>
+            <li>Lost Income: $2,000</li>
+            <li>Illustrative Multiplier: 2.0x</li>
+            <li>Illustrative Non-Economic Component: $7,000 &times; 2.0 = $14,000</li>
+            <li>Calculated Base Estimate: $7,000 + $2,000 + $14,000 = $23,000</li>
+          </ul>
+        </div>
+
+        <div class="p-4 border border-hairline bg-canvas rounded">
+          <strong class="text-ink block mb-1">Scenario 3: Shared Fault Reduction (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>This is a hypothetical mathematical example, not a prediction of an actual settlement.</em></p>
+          <p>An individual incurs medical care and lost wages, but is evaluated to hold 20% shared fault in a comparative negligence jurisdiction.</p>
+          <ul class="list-disc pl-5 mt-2 space-y-1">
+            <li>Medical Expenses: $5,000</li>
+            <li>Lost Income: $1,200</li>
+            <li>Illustrative Multiplier: 2.0x</li>
+            <li>Unadjusted Gross: $5,000 + $1,200 + ($5,000 &times; 2.0) = $16,200</li>
+            <li>Illustrative 20% Fault Adjustment: -$3,240</li>
+            <li>Adjusted Net Base Estimate: $12,960</li>
           </ul>
         </div>
       </div>
     `,
     legalBackground: `
-      <p>Securing whiplash compensation in a personal injury lawsuit requires overcoming the "invisible injury" hurdle. Because muscles and ligaments do not show up on standard X-rays, insurance claims adjusters routinely argue that whiplash victims are exaggerating their pain.</p>
-      <p>To combat this, your treatment records must show a consistent schedule of medical visits without significant gaps. If you wait more than 72 hours after the collision to seek medical attention, the insurer will likely flag your file and reduce their initial offer.</p>
+      <p>Understanding the medical and legal context of whiplash claims is important when evaluating any claim estimate:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Symptoms and Medical Evaluation:</strong> Whiplash is a neck injury resulting from rapid back-and-forth movement. Symptoms may include neck pain, stiffness, restricted range of motion, headaches, shoulder pain, or dizziness. Recovery times and symptom intensity vary considerably among individuals.</li>
+        <li><strong>Onset of Symptoms:</strong> Physical symptoms do not always appear immediately following an accident and may develop over subsequent hours or days. Anyone experiencing symptoms should seek medical evaluation from a qualified healthcare professional. Medical care should always prioritize health and clinical recovery rather than legal claim strategy.</li>
+        <li><strong>Timing of Medical Care:</strong> While prompt medical assessment ensures proper care and establishes documentation, there is no universal '72-hour rule' that automatically invalidates or reduces a claim. However, delays in medical care may lead insurance adjusters to inquire about causation.</li>
+        <li><strong>Pre-Existing Conditions:</strong> Prior neck injuries, spinal degeneration, or pre-existing health conditions can complicate legal questions regarding causation and damages, requiring clear medical documentation to differentiate new injury effects.</li>
+        <li><strong>Jurisdiction and Insurance Limits:</strong> Applicable personal injury laws, fault systems (such as comparative or contributory negligence), and statutory deadlines vary by state or region. Available insurance coverage can affect how much compensation may be practically available from a particular policy.</li>
+        <li><strong>Educational Limitations:</strong> Online calculation tools cannot assess fault, evaluate evidence credibility, interpret policy language, or predict insurance settlement offers or judicial awards.</li>
+      </ul>
     `,
     faqs: [
       {
-        question: "How does a whiplash calculator determine my whiplash value?",
-        answer: "Our whiplash calculator adds up your economic losses and applies a multiplier to estimate whiplash damages. This is the standard method used to evaluate whiplash compensation in a personal injury lawsuit."
+        question: "How does a whiplash settlement calculator work?",
+        answer: "The calculator combines documented financial expenses (such as medical bills and lost wages) with an illustrative severity multiplier to estimate a potential non-economic component. This provides an educational estimate of how different factors influence a claim valuation model."
       },
       {
-        question: "What is the average whiplash payout for a whiplash injury claim?",
-        answer: "The typical whiplash payout for a minor neck whiplash claim is between $3,000 and $10,000. A whiplash settlement can exceed $25,000 if the neck injury involves severe nerve impingement."
+        question: "Is there a standard settlement amount for whiplash?",
+        answer: "No. There is no universal or standard settlement amount. Compensation depends on individual factors including medical expense totals, recovery duration, symptom severity, available insurance limits, fault determination, and state jurisdiction."
       },
       {
-        question: "How do you use a neck injury calculator to estimate whiplash damages?",
-        answer: "A neck injury calculator uses your total medical costs (like physical therapy and chiropractic care) and multiplier rules to estimate the final whiplash compensation calculator range."
+        question: "What expenses can affect a whiplash claim?",
+        answer: "Economic damages typically include costs for emergency room care, diagnostic imaging, physical therapy, physician visits, prescription drugs, and verified lost wages resulting from time away from work."
       },
       {
-        question: "What if I have pre-existing neck pain or arthritis?",
-        answer: "Under the 'Eggshell Skull Rule,' the negligent driver is responsible for any aggravation of a pre-existing condition. However, insurers will try to blame your pain entirely on pre-existing issues to lower your payout."
+        question: "Does medical treatment affect a whiplash claim?",
+        answer: "Medical treatment provides both clinical care for recovery and documentation of the injury. Clear medical records detailing diagnoses, treatment plans, and doctor evaluations help substantiate the nature and timeline of the reported symptoms."
       },
       {
-        question: "Does a whiplash claim require an MRI?",
-        answer: "Minor whiplash claims can settle with just chiropractic notes. However, to secure a higher multiplier (above 2.5x), an MRI showing a disc protrusion or nerve compression is highly recommended."
+        question: "Can I have a whiplash injury even if my vehicle has little visible damage?",
+        answer: "Yes. Physical injury depends on the forces exerted on the human body during an impact, which do not always correlate directly with cosmetic vehicle damage. Medical evaluation establishes physical injury status regardless of vehicle appearance."
       },
       {
-        question: "Can I file a whiplash claim if my vehicle has minimal damage?",
-        answer: "Yes. However, insurers frequently argue that low-impact collisions cannot cause physical injury. You will need strong medical documentation showing immediate cervical symptoms to overcome this defense."
+        question: "Can a pre-existing neck condition affect a claim?",
+        answer: "Yes. Pre-existing conditions can complicate claims because insurers may evaluate whether current symptoms stem from the prior condition or the recent accident. Medical documentation is key to distinguishing new or aggravated injuries."
+      },
+      {
+        question: "Does fault affect a whiplash settlement?",
+        answer: "Yes. Under comparative or contributory negligence laws in many jurisdictions, sharing responsibility for an accident can reduce or eliminate financial recovery, depending on state law."
+      },
+      {
+        question: "Why can two people with similar injuries receive different settlement results?",
+        answer: "Differences in medical treatment duration, wage loss amounts, insurance policy caps, fault allocations, evidence quality, and regional legal rules cause settlement outcomes to vary even for similar reported injuries."
+      }
+    ],
+    sources: [
+      {
+        title: "MedlinePlus (NIH / U.S. National Library of Medicine) — Neck Injuries & Disorders",
+        url: "https://medlineplus.gov/neckinjuriesanddisorders.html"
+      },
+      {
+        title: "Centers for Disease Control and Prevention (CDC) — Transportation Safety",
+        url: "https://www.cdc.gov/transportation-safety/"
       }
     ]
   },
@@ -682,92 +730,123 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "workers-compensation": {
     slug: "workers-compensation-calculator",
-    title: "Workers' Compensation Calculator | Workers Comp Payout",
-    description: "Estimate your workers comp benefits. Use our work injury calculator to estimate your workers compensation claim value and workplace injury compensation.",
-    h1: "Workers' Compensation Calculator.",
-    intro: "Calculate your workers compensation estimate and workers comp benefits. Our workers comp calculator helps estimate your potential work accident settlement.",
-    subtitle: "Statutory Workers' Comp Benefit Valuation",
+    title: "Workers' Compensation Calculator — Estimate Your Benefits",
+    description: "Use this free workers' compensation calculator to create an illustrative estimate based on medical expenses and your state's wage replacement percentage. Learn how workers' comp claims work and why state laws vary.",
+    h1: "Workers' Compensation Calculator",
+    intro: "Estimate an illustrative workers' compensation benefit using your medical expenses and lost wages. This calculator is for educational purposes and is not an official government calculation.",
+    subtitle: "No-Fault Statutory Benefit Estimation",
     presetSeverity: "2.5",
     presetMedBills: 20000,
     presetTab: "detailed",
     calculatorType: "workers-comp",
-    aboutHeading1: "Filing a Workers Compensation Claim & Work Injury Claim",
-    aboutContent1: "Pursuing a workers compensation claim is different from a personal injury claim. A work injury claim is a no-fault system, meaning you do not need to prove employer negligence to qualify for workplace injury compensation. Our work injury calculator helps you estimate your weekly lost wage benefits and medical coverage targets.",
-    aboutHeading2: "How a Workers Comp Calculator Estimates Benefits & Settlements",
-    aboutContent2: "A typical workers compensation payout covers 100% of medical bills and 2/3 of your average weekly wage. Our workers comp calculator generates a workers compensation estimate based on your state's statutory limits. If you suffer a permanent impairment, it also estimates a potential work accident settlement based on your disability rating.",
+    aboutHeading1: "How Workers' Compensation Benefit Estimates Work",
+    aboutContent1: "Workers' compensation is a statutory, no-fault system designed to provide medical care and wage replacement to employees injured on the job. Unlike personal injury lawsuits, workers' compensation does not require proving employer fault or negligence to qualify for benefits. Under state workers' compensation rules across U.S. jurisdictions, benefits fall into two main categories: medical coverage for 100% of authorized medical treatments, and disability wage benefits to partially replace lost earnings while an employee is unable to work. Wage replacement rates and weekly maximum benefit caps vary by state jurisdiction and benefit classification (such as Temporary Total Disability). While two-thirds (66.67%) of gross average weekly wages is sometimes cited as a common statutory example in legal literature, actual statutory percentages and weekly caps depend on state law. Property damage is excluded from this workers' compensation calculator because this tool models statutory workers' compensation benefits rather than separate property-damage claims. General pain and suffering is likewise excluded under no-fault statutory law. The calculator on this site uses an educational mathematical model where users enter the wage replacement percentage applicable to their state jurisdiction.",
+    aboutHeading2: "Key Factors That Affect Workers' Compensation Claims",
+    aboutContent2: "The financial benefits received in a workers' compensation claim depend on several case-specific variables and state statutory guidelines. First, wage replacement calculations rely on documented pre-injury earnings (Average Weekly Wage), which are subject to state statutory maximum weekly caps. Second, medical benefits require care from authorized healthcare providers, with consistent medical documentation linking the injury to job duties. Third, benefit duration and rates depend on whether a disability is classified as Temporary Total Disability (TTD), Temporary Partial Disability (TPD), or Permanent Partial Disability (PPD) after reaching Maximum Medical Improvement (MMI). Each state operates its own workers' compensation system with unique statutory rates and dispute processes. For specific regional rules, explore our state-specific guides such as the <a href=\"/new-york-workers-comp-settlement-calculator/\" class=\"text-link hover:underline\">New York Workers' Comp Settlement Calculator</a>, or compare third-party injury claims using our general <a href=\"/\" class=\"text-link hover:underline\">car accident settlement calculator</a>, <a href=\"/slip-and-fall-settlement-calculator/\" class=\"text-link hover:underline\">premises liability calculator</a>, and <a href=\"/pain-and-suffering-calculator/\" class=\"text-link hover:underline\">pain and suffering calculator</a>.",
     formulaExplanation: `
-      <p>Workers' Compensation is a statutory, no-fault system. Because fault does not apply, <strong>pain and suffering damages are completely excluded</strong>. You cannot claim general damages for emotional distress.</p>
-      <p>Instead, compensation is calculated using three statutory benefit categories:</p>
-      <ul class="list-disc pl-5 my-3 space-y-1">
-        <li><strong>Medical Coverage:</strong> Covers 100% of all authorized medical treatment.</li>
-        <li><strong>Temporary Total Disability (TTD):</strong> Paid while you are unable to work, calculated as <strong>2/3 (66.67%) of your Average Weekly Wage (AWW)</strong>, subject to state maximum weekly caps.</li>
-        <li><strong>Permanent Partial Disability (PPD):</strong> Paid if you sustain a permanent impairment, calculated based on state-specific scheduled loss charts for body parts.</li>
+      <p>This calculator uses an educational mathematical model based on medical expenses and a user-adjustable wage replacement percentage. It is an educational tool and not an official government benefit calculation.</p>
+      <p>Pain & suffering is excluded under statutory no-fault laws. Property damage is excluded from this workers' compensation calculator because this tool models workers' compensation benefits rather than separate property-damage claims. The mathematical model calculates an illustrative estimate using the following formula:</p>
+      <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
+        Calculated Base = Medical Expenses + (Lost Wages &times; Wage Replacement Rate %)
+      </div>
+      <p>The calculated result is strictly an illustrative mathematical estimate. Actual statutory benefit entitlement depends on state law, official weekly benefit caps, authorized medical care, disability classifications (TTD/TPD/PPD), and official administrative board determinations.</p>
+      <p><strong>Hypothetical Mathematical Example (Using an Illustrative 66.67% Example Rate):</strong></p>
+      <ul class="list-disc pl-5 space-y-1 my-2">
+        <li>Medical expenses: $15,000 (100% covered in model)</li>
+        <li>Documented lost wages: $6,000</li>
+        <li>Wage replacement rate (66.67% hypothetical example rate): $6,000 &times; 0.6667 = $4,000</li>
+        <li>Pain and suffering: $0 (Excluded under no-fault workers' comp)</li>
+        <li>Property damage: $0 (Excluded from workers' comp benefit model)</li>
+        <li>Fault deduction: $0 (No-fault system)</li>
+        <li>Calculated base estimate: $15,000 + $4,000 = $19,000</li>
       </ul>
+      <p class="text-xs text-mute mt-2"><em>Note: This is a hypothetical mathematical example to demonstrate the calculation model, NOT an official determination of actual statutory benefits.</em></p>
     `,
     inputsExplanation: `
-      <p>Each input in the workers' comp model is statutory:</p>
+      <p>Understanding how inputs function within the workers' compensation calculation model:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Average Weekly Wage (AWW):</strong> Your gross weekly earnings before the accident. Determines your TTD weekly rate.</li>
-        <li><strong>Impairment Rating:</strong> The percentage of permanent functional loss certified by your doctor, which dictates your PPD lump-sum settlement.</li>
-        <li><strong>Prior Payments:</strong> Deducted from any final lump sum.</li>
+        <li><strong>Medical Expenses:</strong> Documented medical costs incurred for authorized emergency evaluation, diagnostic tests, surgeries, physical therapy, and medications related to the work injury.</li>
+        <li><strong>Lost Wages:</strong> Verified gross earnings lost due to time away from work while recovering.</li>
+        <li><strong>Wage Replacement Rate (%):</strong> Explicit user input. Enter the wage-replacement percentage applicable to your state and benefit type. Rules vary by jurisdiction.</li>
+        <li><strong>Pain & Suffering:</strong> Automatically set to $0 because statutory workers' compensation systems do not pay general damages for emotional pain and suffering.</li>
+        <li><strong>Property Damage:</strong> Excluded from this workers' compensation calculator because this tool models workers' compensation statutory benefits rather than separate property-damage claims.</li>
+        <li><strong>Fault / Negligence:</strong> Automatically set to 0% because workers' compensation is a no-fault system where fault does not reduce or bar statutory benefits.</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are two worked examples of workers' comp benefit calculations:</p>
+      <p>The following hypothetical scenarios demonstrate how the mathematical model evaluates different input values:</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Temporary Total Disability (TTD) Payout</strong>
-          <p>You miss 12 weeks of work due to a shoulder injury. Your AWW is $1,200. You carry 0% fault (fault is irrelevant).</p>
+          <strong class="text-ink block mb-1">Scenario 1: Temporary Disability & Medical Care (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>This is a hypothetical mathematical example, not a prediction of actual benefits.</em></p>
+          <p>An employee sustains a work-related injury requiring medical care and 8 weeks of missed work.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Expenses: Covered 100% directly by insurer</li>
-            <li>Weekly TTD Benefit Rate: $1,200 &times; (2/3) = $800 / week</li>
-            <li>TTD Payout Duration: 12 weeks</li>
-            <li>Total Temporary Benefits Received: $800 &times; 12 = $9,600</li>
-            <li><strong>Final Wage Replacement Check: $9,600</strong></li>
+            <li>Medical Expenses: $8,000</li>
+            <li>Documented Lost Wages: $4,500</li>
+            <li>Wage Replacement Rate (66.67% Hypothetical Example): $4,500 &times; 0.6667 = $3,000</li>
+            <li>Pain & Suffering: $0</li>
+            <li>Calculated Base Estimate: $8,000 + $3,000 = $11,000</li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Permanent Partial Disability (PPD) Settlement</strong>
-          <p>You sustain a permanent knee impairment. The physician assigns a 10% permanent rating. The state's scheduled value for a leg is 288 weeks. AWW is $900.</p>
+          <strong class="text-ink block mb-1">Scenario 2: Extended Medical Care & Recovery (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>This is a hypothetical mathematical example, not a prediction of actual benefits.</em></p>
+          <p>An employee requires extensive physical therapy and loses several months of income following a workplace accident.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Knee Max Statutory Weeks: 288 Weeks</li>
-            <li>Awarded Weeks: 288 &times; 10% = 28.8 Weeks</li>
-            <li>Weekly Compensation Rate: $900 &times; (2/3) = $600 / week</li>
-            <li>Gross PPD Award: 28.8 weeks &times; $600 = $17,280</li>
-            <li><strong>Net PPD Settlement: $17,280 (excluding prior TTD checks if statutory laws allow)</strong></li>
+            <li>Medical Expenses: $25,000</li>
+            <li>Documented Lost Wages: $12,000</li>
+            <li>Wage Replacement Rate (66.67% Hypothetical Example): $12,000 &times; 0.6667 = $8,000</li>
+            <li>Pain & Suffering: $0</li>
+            <li>Calculated Base Estimate: $25,000 + $8,000 = $33,000</li>
           </ul>
         </div>
       </div>
     `,
     legalBackground: `
-      <p>Under the workers' comp system, you give up your right to sue your employer for negligence in exchange for guaranteed no-fault benefits. However, if a third-party (such as a contractor or equipment manufacturer) caused your work injury, you may file a separate third-party personal injury lawsuit to seek pain and suffering damages.</p>
+      <p>Important legal and administrative context regarding workers' compensation claims:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>No-Fault Trade-off:</strong> Workers' compensation laws provide no-fault medical and wage benefits in exchange for relinquishing the right to sue employers for ordinary negligence.</li>
+        <li><strong>Third-Party Claims:</strong> If a third party (such as an outside contractor or equipment manufacturer) caused the workplace injury, an injured worker may be eligible to file a separate third-party personal injury claim, which may allow recovery for pain and suffering. Compare third-party claims using our <a href="/slip-and-fall-settlement-calculator/" class="text-link hover:underline">premises liability calculator</a> or <a href="/pain-and-suffering-calculator/" class="text-link hover:underline">pain and suffering calculator</a>.</li>
+        <li><strong>State Variation & Statutory Caps:</strong> Benefit rates, weekly caps, treatment guidelines, and lump-sum settlement rules vary significantly by state jurisdiction.</li>
+        <li><strong>Official Administrative System:</strong> Benefit determinations are managed by state workers' compensation boards or commissions. Online calculators are educational tools and cannot issue official decisions.</li>
+      </ul>
     `,
     faqs: [
       {
-        question: "How does a workers compensation calculator calculate my benefits?",
-        answer: "Our workers compensation calculator evaluates your pre-injury wages to estimate the weekly workers comp benefits. It also uses your medical treatment costs to project a total workers compensation estimate."
+        question: "How does a workers' compensation calculator estimate benefits?",
+        answer: "The calculator sums documented medical expenses with a user-entered percentage of lost wages to model statutory benefit estimates. If no percentage is entered, the tool calculates medical expenses only until a rate is provided."
       },
       {
-        question: "What is the average work accident settlement or workers compensation payout?",
-        answer: "A work accident settlement or workers compensation payout depends on the severity of the injury and any permanent disability. A work injury calculator can estimate these scheduled benefits."
+        question: "Does workers' compensation pay for pain and suffering or property damage?",
+        answer: "No. Statutory workers' compensation systems exclude general pain and suffering damages. Property damage is excluded from this workers' compensation calculator because this tool models workers' compensation benefits rather than separate property-damage claims."
       },
       {
-        question: "What does workplace injury compensation cover in a work injury claim?",
-        answer: "Workplace injury compensation covers all authorized medical treatment, prescription costs, and wage replacement checks. These are the core statutory benefits in a workers compensation claim."
+        question: "How is wage replacement calculated under workers' comp?",
+        answer: "Wage replacement benefits vary by state jurisdiction, disability classification (such as Temporary Total Disability), and statutory weekly maximum caps. Enter the wage-replacement percentage applicable to your state and benefit type into the calculator."
       },
       {
-        question: "Can I choose my own doctor under workers' comp?",
-        answer: "In many states, the employer or their insurer has the right to select the treating medical provider for the first 30 to 90 days of the claim."
+        question: "Is 66.67% a universal workers' compensation wage replacement rate?",
+        answer: "No. Wage replacement percentages and weekly maximum caps vary by jurisdiction and benefit type. The calculator starts blank and requires you to enter your jurisdiction's applicable percentage."
       },
       {
-        question: "What is Maximum Medical Improvement (MMI)?",
-        answer: "MMI is the point at which your injury has stabilized and further treatment will not improve your condition. At this stage, your doctor will evaluate you for a permanent disability rating."
+        question: "Are workers' compensation benefit estimates guaranteed?",
+        answer: "No. Benefit amounts depend on official state guidelines, medical authorizations, disability classifications, and administrative decisions."
       },
       {
-        question: "Can I be fired for filing a workers' comp claim?",
-        answer: "No. It is illegal for employers to retaliate against workers for filing a claim. However, you can be laid off for general business reasons if your position is eliminated."
+        question: "Can state rules affect my workers' compensation claim?",
+        answer: "Yes. Every state establishes its own workers' compensation laws, maximum weekly benefit limits, physician choice rules, and claim dispute procedures."
+      }
+    ],
+    sources: [
+      {
+        title: "U.S. Department of Labor (DOL) — Workers' Compensation Overview",
+        url: "https://www.dol.gov/general/topic/workcomp"
+      },
+      {
+        title: "U.S. Department of Labor (DOL) — Office of Workers' Compensation Programs (OWCP)",
+        url: "https://www.dol.gov/agencies/owcp"
       }
     ]
   },

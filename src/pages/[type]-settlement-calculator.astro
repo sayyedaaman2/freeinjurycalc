@@ -114,9 +114,35 @@ const { type } = Astro.params;
         <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.workedExamples} />
 
         <h2 class="text-2xl font-bold tracking-tight text-ink mb-6">
-          Legal & Practical Background Context
+          Important Medical & Legal Considerations
         </h2>
         <div class="text-xs text-body leading-relaxed mb-10 space-y-4" set:html={data.legalBackground} />
+
+        <!-- Sources & References Section -->
+        {data.sources && data.sources.length > 0 && (
+          <div class="mt-10 pt-8 border-t border-hairline">
+            <h3 class="text-xl font-bold text-ink mb-4">
+              Sources & References
+            </h3>
+            <ul class="space-y-2 text-xs">
+              {data.sources.map((source) => (
+                <li class="flex items-center gap-2">
+                  <svg class="w-3.5 h-3.5 text-link shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                  </svg>
+                  <a 
+                    href={source.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer" 
+                    class="text-link hover:underline font-mono"
+                  >
+                    {source.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
 
         <!-- Accordion FAQs -->
         <div class="mt-12 mb-12 border-t border-hairline pt-12">
@@ -140,26 +166,17 @@ const { type } = Astro.params;
           </div>
         </div>
 
-        <!-- Lead Capture Mock Consultation -->
+        <!-- Neutral Educational Legal Guidance Callout -->
         <div id="consult-attorney" class="p-8 border border-hairline bg-canvas rounded-lg text-center shadow-sm relative overflow-hidden">
           <div class="absolute inset-0 bg-radial-gradient from-link/5 to-transparent pointer-events-none"></div>
           <span class="text-xs font-semibold uppercase tracking-wider text-link font-mono bg-link-bg-soft/30 dark:bg-link-bg-soft/10 px-3 py-1 rounded-full">
-            Legal Evaluation
+            Legal Guidance
           </span>
           <h3 class="text-xl font-semibold text-ink mt-4 mb-2">
-            Speak to a Personal Injury Attorney
+            Consider Professional Legal Advice
           </h3>
           <p class="text-xs text-body max-w-lg mx-auto leading-relaxed mb-6">
-            Valuing an injury claim requires careful assessment of liability, medical records, and insurance coverage. Talk to a verified local lawyer to get an accurate evaluation and protect your rights.
-          </p>
-          <a 
-            href="#consult-attorney" 
-            class="inline-block px-5 py-2.5 bg-link hover:bg-link-hover text-canvas font-medium text-xs rounded transition-colors duration-150 font-mono cursor-pointer"
-          >
-            Get a Free Legal Case Review.
-          </a>
-          <p class="text-[10px] text-mute leading-relaxed font-sans mt-3">
-            Insurance adjusters frequently offer low settlements to unrepresented claimants. Get a local lawyer to maximize your claim.
+            If you have questions about liability, insurance coverage, filing deadlines, or your legal rights, consider speaking with a qualified attorney licensed in your jurisdiction.
           </p>
         </div>
 

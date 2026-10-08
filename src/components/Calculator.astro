@@ -29,7 +29,7 @@ const sortedStates = Object.values(statesData)
         <path stroke-linecap="round" stroke-linejoin="round" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
       </svg>
       <div>
-        <span class="font-bold">Workers' Compensation Mode:</span> Workers' comp is a no-fault system. It covers 100% of your medical bills and replaces 2/3 of your lost wages, but does <strong>not</strong> pay for pain & suffering. Negligence/fault options have been disabled as they do not apply.
+        <span class="font-bold">Workers' Compensation Mode:</span> Workers' comp is a no-fault statutory system. Enter the wage-replacement percentage applicable to your state and benefit type. Rules and weekly benefit caps vary by jurisdiction. Pain & suffering and property damage are excluded from this calculator because this tool models statutory workers' compensation benefits rather than separate personal injury or property-damage claims.
       </div>
     </div>
   )}
@@ -78,6 +78,32 @@ const sortedStates = Object.values(statesData)
           )}
         </select>
       </div>
+
+      {calculatorType === 'workers-comp' && (
+        <div id="wc-rate-input-container" class="p-4 bg-canvas-soft-2 border border-hairline rounded-lg flex flex-col gap-2">
+          <div class="flex items-center justify-between">
+            <label for="wc-wage-rate" class="block text-[11px] font-semibold uppercase tracking-wider font-mono text-mute">
+              Wage Replacement Rate (%)
+            </label>
+            <span id="wc-wage-rate-val" class="text-xs font-semibold font-mono text-ink bg-canvas border border-hairline px-2 py-0.5 rounded">
+              Enter %
+            </span>
+          </div>
+          <input 
+            type="number" 
+            id="wc-wage-rate" 
+            value="" 
+            min="0" 
+            max="100" 
+            step="0.1" 
+            class="w-full h-10 px-3 bg-canvas border border-hairline text-ink rounded-md text-sm focus:outline-none focus:border-primary transition-all font-mono"
+            placeholder="Enter percentage e.g. 66.67"
+          />
+          <p class="text-[11px] text-mute leading-snug">
+            Enter the wage-replacement percentage applicable to your state and benefit type. Rules vary by jurisdiction.
+          </p>
+        </div>
+      )}
 
       <!-- TAB 1: Quick Estimate Form -->
       <div id="panel-quick" class="tab-panel flex flex-col gap-6">
@@ -559,6 +585,12 @@ const sortedStates = Object.values(statesData)
         detailMultiplier.style.opacity = '0.6';
         detailMultiplier.style.cursor = 'not-allowed';
       }
+      if (detailProperty) {
+        detailProperty.value = "0";
+        detailProperty.disabled = true;
+        detailProperty.style.opacity = '0.6';
+        detailProperty.style.cursor = 'not-allowed';
+      }
       if (quickFault) {
         quickFault.disabled = true;
         quickFault.value = 0;
@@ -682,11 +714,27 @@ const sortedStates = Object.values(statesData)
       calculate();
     });
 
+    // Workers' comp rate input
+    const wcWageRateInput = document.getElementById('wc-wage-rate') as HTMLInputElement;
+    const wcWageRateVal = document.getElementById('wc-wage-rate-val');
+
+    if (wcWageRateInput && wcWageRateVal) {
+      wcWageRateInput.addEventListener('input', () => {
+        const rawVal = wcWageRateInput.value.trim();
+        if (rawVal === '') {
+          wcWageRateVal.textContent = 'Enter %';
+        } else {
+          wcWageRateVal.textContent = `${rawVal}%`;
+        }
+      });
+    }
+
     // Trigger calculation on input events
     const allInputs = [
       stateSelector, quickInjury, quickBills, quickFault,
       detailMedPast, detailMedFuture, detailWagePast, detailWageFuture,
-      detailProperty, detailPolicyLimit, detailMultiplier, detailFault
+      detailProperty, detailPolicyLimit, detailMultiplier, detailFault,
+      wcWageRateInput
     ];
     
     allInputs.forEach(input => {
@@ -831,7 +879,18 @@ const sortedStates = Object.values(statesData)
 
       // Workers' Comp Overrides
       if (calculatorType === 'workers-comp') {
-        economicLosses = medicalBills + (wages * 0.6667) + property;
+        let hasValidWageRate = false;
+        let wageRatePct = 0;
+        if (wcWageRateInput && wcWageRateInput.value.trim() !== '') {
+          const parsedRate = parseFloat(wcWageRateInput.value);
+          if (!isNaN(parsedRate) && parsedRate >= 0 && parsedRate <= 100) {
+            wageRatePct = parsedRate;
+            hasValidWageRate = true;
+          }
+        }
+
+        const wageReplacement = hasValidWageRate ? (wages * (wageRatePct / 100)) : 0;
+        economicLosses = medicalBills + wageReplacement;
         painSuffering = 0;
         grossSettlement = economicLosses;
         faultReduction = 0;
@@ -840,12 +899,13 @@ const sortedStates = Object.values(statesData)
         isBarred = false;
         isPipAlert = false;
         exceedsLimit = false;
-      }
-      
-      // Manage Alerts Display
-      if (calculatorType === 'workers-comp') {
+
         stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
-        stateAlertBox.innerHTML = `<strong>Workers' Compensation rules apply:</strong> Compensation covers 100% of medical expenses and 66.67% of lost wages. Pain & suffering is not paid. Fault does not bar or reduce recovery.`;
+        if (hasValidWageRate) {
+          stateAlertBox.innerHTML = `<strong>Workers' Compensation Mode:</strong> Calculation models 100% of approved medical bills plus <strong>${wageRatePct}%</strong> of lost wages (user-entered rate). Actual statutory benefits vary by state, weekly benefit caps, and disability classification. Pain & suffering and property damage are excluded from this calculator because this tool models statutory workers' compensation benefits rather than separate personal injury or property-damage claims.`;
+        } else {
+          stateAlertBox.innerHTML = `<strong>Wage Replacement Rate Required:</strong> Enter the wage-replacement percentage applicable to your state and benefit type above to calculate lost wage replacement. Currently displaying medical expenses only (${formatUSD(medicalBills)}). Pain & suffering and property damage are excluded.`;
+        }
       } else if (isBarred) {
         stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
         stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;
