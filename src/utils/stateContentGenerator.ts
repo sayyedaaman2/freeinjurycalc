@@ -55,6 +55,10 @@ export function generateInsuranceContent(
     return `New Hampshire is unique in that it does not generally require every driver to purchase auto liability insurance under its <strong>Financial Responsibility Law (RSA 264:3)</strong>. However, drivers are legally required to prove financial responsibility if involved in an at-fault accident or convicted of certain serious driving violations. When an auto liability policy is purchased, New Hampshire law (RSA 264:25) requires minimum policy limits of <strong>25/50/25</strong> ($25,000 per person / $50,000 per accident for Bodily Injury Liability, and $25,000 for Property Damage Liability). Furthermore, under <strong>RSA 264:16</strong>, all auto policies issued in NH must include a minimum of <strong>$1,000 in Medical Payments (MedPay)</strong> coverage. Under <strong>RSA 264:15</strong>, policies must also include <strong>Uninsured/Underinsured Motorist (UM/UIM) coverage</strong> matching the policy's bodily injury liability limits. Policy limits set maximum carrier liability rather than guaranteeing a settlement payout.`;
   }
 
+  if (stateName === "Oklahoma") {
+    return `Under Oklahoma's Financial Responsibility Law (47 O.S. § 7-601), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>25/50/25</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $25,000 for property damage). Liability insurance limits represent the maximum contractually obligated payment by the insurer, rather than a guaranteed settlement value. Furthermore, under <strong>36 O.S. § 3636</strong>, insurance companies are statutorily required to offer <strong>Uninsured/Underinsured Motorist (UM/UIM) coverage</strong> matching the policy's bodily injury liability limits. UM/UIM coverage protects you if struck by an uninsured or underinsured driver, and can only be excluded if the policyholder executes a signed <strong>written rejection</strong>.`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -101,6 +105,16 @@ export function generateStatuteContent(
     </ul>`;
   }
 
+  if (stateName === "Oklahoma") {
+    return `In Oklahoma, car accident civil claims are governed by statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>12 O.S. § 95(A)(3)</strong>, you have 2 years from the date of the collision to file a personal injury lawsuit against an at-fault driver.</li>
+      <li><strong>Property Damage Lawsuits (2 Years):</strong> Under <strong>12 O.S. § 95(A)(3)</strong>, claims for vehicle or property damage must also be filed within 2 years.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>12 O.S. § 1053</strong>, wrongful death claims arising from a motor vehicle crash must be initiated within 2 years of the date of death.</li>
+      <li><strong>Governmental Entity Claims (1 Year):</strong> Under the Oklahoma Governmental Tort Claims Act (<strong>51 O.S. § 156</strong>), if your claim involves a state, county, or municipal government entity (such as a city bus or government vehicle), a formal written notice of claim must be filed within <strong>1 year</strong> of the loss before bringing a lawsuit.</li>
+    </ul>`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -125,6 +139,10 @@ export function generateDamageCapContent(
 
   if (stateName === "New Hampshire") {
     return `Under New Hampshire law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. Following landmark decisions by the New Hampshire Supreme Court (such as <em>Carson v. Maurer</em> and <em>Brannigan v. Usitalo</em>), statutory damage caps on personal injury torts were declared unconstitutional. Non-economic damages are evaluated based on injury severity, diagnostic evidence, medical treatment history, and impact on daily living. Illustrative calculation multipliers serve as modeling tools rather than statutory rules.`;
+  }
+
+  if (stateName === "Oklahoma") {
+    return `Under Oklahoma law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. In <em>Beason v. I.E. Miller Services, Inc.</em> (2019 OK 28), the Oklahoma Supreme Court declared the statutory non-economic damages cap (23 O.S. § 61.2) unconstitutional. Non-economic damages are evaluated based on injury severity, treatment duration, diagnostic proof, and lifestyle impact. Multipliers used in software calculators serve as educational modeling tools rather than legal rules.`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -188,6 +206,19 @@ export function generateSettlementExample(
       <li><strong>51% Bar Rule:</strong> If the claimant were found 51% or more at fault for the accident, recovery would be completely barred ($0).</li>
     </ul>
     This illustrative framework models potential recovery when presenting a claim to an insurer or filing in the ${courtName}.`;
+    return explanation;
+  }
+
+  if (stateSlug === "oklahoma") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Oklahoma</strong> under state comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Medical treatment ($15,000) and lost income ($5,000) equal $20,000 in documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Pain and suffering damages</a> estimated at $37,500 using a 2.5x multiplier of medical bills for severe <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>.</li>
+      <li><strong>Gross Calculated Value:</strong> $20,000 + $37,500 = $57,500 gross total.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under 23 O.S. § 13, because the claimant's fault (20%) is 50% or less, they remain eligible for recovery. The gross estimate is reduced by 20% (-$11,500), resulting in an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
+      <li><strong>51% Bar Rule:</strong> In a single-defendant crash, if the claimant's negligence is greater than the defendant's (51% or higher), recovery is completely barred ($0).</li>
+    </ul>
+    This illustrative framework models potential recovery when negotiating with an insurer or filing in the ${courtName}. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
   }
 
@@ -341,6 +372,35 @@ export function generateFAQs(
       {
         question: "What is the importance of Uninsured Motorist (UM) coverage in New Hampshire?",
         answer: "Because auto insurance is optional for drivers in New Hampshire, Uninsured Motorist (UM/UIM) coverage on your own policy is vital. Under RSA 264:15, if you purchase auto insurance in New Hampshire, UM/UIM coverage is mandatory and matches your liability limits, protecting you if you are struck by an uninsured driver."
+      }
+    ];
+  }
+
+  if (stateName === "Oklahoma") {
+    return [
+      {
+        question: "How does comparative fault work in Oklahoma car accidents?",
+        answer: "Under 23 O.S. § 13, Oklahoma enforces a 51% modified comparative fault rule. In a standard single-defendant case, you can recover financial compensation as long as your responsibility is 50% or less (not greater than the defendant's negligence). Your final recovery is reduced in proportion to your fault share. If your fault is 51% or higher, recovery is barred."
+      },
+      {
+        question: "What are Oklahoma's minimum auto insurance limits?",
+        answer: "Under 47 O.S. § 7-601, Oklahoma drivers must carry minimum liability coverage of <strong>25/50/25</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $25,000 for property damage). These limits represent maximum carrier liability obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "What is UM/UIM coverage in Oklahoma?",
+        answer: "Under 36 O.S. § 3636, Oklahoma law requires insurance carriers to offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching your bodily injury liability limits. UM/UIM coverage pays for your damages if struck by a driver who lacks insurance or carries insufficient liability limits. Coverage can only be excluded if you execute a signed <strong>written rejection</strong>."
+      },
+      {
+        question: "How long do I have to file a car accident injury claim in Oklahoma?",
+        answer: "Under 12 O.S. § 95(A)(3), Oklahoma provides a <strong>2-year statute of limitations</strong> for personal injury and property damage car accident lawsuits. Wrongful death claims must also be filed within 2 years under 12 O.S. § 1053. Claims against state, county, or municipal government entities require a formal written claim notice within <strong>1 year</strong> under the Governmental Tort Claims Act (51 O.S. § 156)."
+      },
+      {
+        question: "Does Oklahoma have a cap on pain and suffering damages?",
+        answer: "No. In Beason v. I.E. Miller Services, Inc. (2019 OK 28), the Oklahoma Supreme Court declared the statutory non-economic damages cap (23 O.S. § 61.2) unconstitutional. There are no statutory dollar caps on general non-economic damages for ordinary passenger vehicle personal injury claims."
+      },
+      {
+        question: "Does an insurance policy limit determine my settlement value?",
+        answer: "No. An insurance policy limit represents the maximum amount the insurer is contractually obligated to pay under that policy. It does not guarantee a settlement payout of that amount, nor does it limit the total proven damages you may be legally owed by an at-fault driver."
       }
     ];
   }

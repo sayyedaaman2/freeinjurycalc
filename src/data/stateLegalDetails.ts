@@ -297,12 +297,12 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     legalAuthority: "Ohio's modified comparative negligence 51% bar."
   },
   oklahoma: {
-    statuteRef: "Oklahoma Statutes Title 23 § 13",
-    minInsurance: "25/50/25",
+    statuteRef: "23 O.S. § 13",
+    minInsurance: "25/50/25 (plus statutory UM/UIM offer under 36 O.S. § 3636)",
     majorCity: "Oklahoma City",
     courtName: "Oklahoma District Court",
-    govDeadline: "1 year",
-    legalAuthority: "Oklahoma's modified comparative negligence 51% bar."
+    govDeadline: "1 year (GTCA)",
+    legalAuthority: "23 O.S. § 13 (51% modified comparative fault) & 47 O.S. § 7-601 (Mandatory Financial Responsibility)."
   },
   oregon: {
     statuteRef: "Oregon Revised Statutes § 31.600",

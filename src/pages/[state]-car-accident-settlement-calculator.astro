@@ -121,6 +121,8 @@ const pageTitle = state === 'michigan'
   ? 'Missouri Car Accident Settlement Calculator | Pure Comparative Fault'
   : state === 'new-hampshire'
   ? 'New Hampshire Car Accident Settlement Calculator | 51% Comparative Fault'
+  : state === 'oklahoma'
+  ? 'Oklahoma Car Accident Settlement Calculator | 51% Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
@@ -129,6 +131,8 @@ const pageDescription = state === 'michigan'
   ? 'Calculate your estimated Missouri auto accident settlement under pure comparative fault rules (RSMo § 537.765) and 5-year statute of limitations (RSMo § 516.120). Free educational estimator.'
   : state === 'new-hampshire'
   ? 'Calculate your estimated New Hampshire car accident settlement payout. Applies New Hampshire\'s 51% modified comparative fault rule (RSA 507:7-d), 3-year statute of limitations (RSA 508:4), and financial responsibility laws.'
+  : state === 'oklahoma'
+  ? 'Calculate your estimated Oklahoma car accident settlement payout. Applies Oklahoma\'s 51% modified comparative fault rule (23 O.S. § 13), 2-year statute of limitations (12 O.S. § 95), and 25/50/25 mandatory insurance laws.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -167,7 +171,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -376,6 +380,46 @@ const customFaqSchema = {
                   New Hampshire RSA § 507-B:7 — Municipal & Governmental Notice Requirements
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 60-day written notice requirement by registered mail for claims against city, town, or municipal government entities.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'oklahoma' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Oklahoma Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.oid.ok.gov/consumers/auto-insurance/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Oklahoma Insurance Department (OID) — Auto Insurance Requirements
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official state guidance on mandatory 25/50/25 liability insurance limits, coverage protections, and policy options.</span>
+              </li>
+              <li>
+                <a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=73539" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Oklahoma Statutes Title 23 § 13 — Comparative Negligence Standard
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 51% modified comparative fault rule allowing recovery when claimant negligence is 50% or less and barring recovery when fault is greater than defendant negligence.</span>
+              </li>
+              <li>
+                <a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=439369" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Oklahoma Statutes Title 47 § 7-601 — Mandatory Liability Insurance Limits
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory financial responsibility requirement establishing mandatory 25/50/25 bodily injury and property damage policy limits.</span>
+              </li>
+              <li>
+                <a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=86064" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Oklahoma Statutes Title 36 § 3636 — Uninsured Motorist Coverage & Written Rejection
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory requirement mandating UM/UIM coverage offer matching liability limits unless rejected by the policyholder in writing.</span>
+              </li>
+              <li>
+                <a href="https://www.oscn.net/applications/oscn/DeliverDocument.asp?CiteID=68051" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Oklahoma Statutes Title 12 § 95 — 2-Year Statute of Limitations for Injury Torts
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury and property damage lawsuits arising from motor vehicle collisions.</span>
               </li>
             </ul>
           </div>

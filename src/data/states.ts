@@ -492,7 +492,7 @@ export const statesData: Record<string, StateLaw> = {
     damageCap: null,
     damageCapExplanation: null,
     statuteOfLimitations: 2,
-    explanation: "Oklahoma follows the 51% modified comparative negligence bar. You must be 50% or less at fault to recover compensation from the other party."
+    explanation: "Oklahoma operates under a 51% modified comparative negligence rule (23 O.S. § 13), allowing recovery if your fault is 50% or less (reduced by your percentage of fault), while barring recovery if your fault is greater than the defendant's (51% or higher). Personal injury claims are subject to a 2-year statute of limitations (12 O.S. § 95)."
   },
   oregon: {
     name: "Oregon",
