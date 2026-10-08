@@ -8,7 +8,7 @@ export interface SpecialCalculator {
   presetSeverity: string;
   presetMedBills: number;
   presetTab: 'quick' | 'detailed';
-  calculatorType: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering' | 'whiplash';
+  calculatorType: 'car-accident' | 'slip-and-fall' | 'workers-comp' | 'pain-suffering' | 'whiplash' | 'truck-accident';
   aboutHeading1: string;
   aboutContent1: string;
   aboutHeading2: string;
@@ -537,93 +537,111 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "truck-accident": {
     slug: "truck-accident-settlement-calculator",
-    title: "Truck Accident Calculator | Commercial Truck Accident Settlement",
-    description: "Calculate your commercial truck claim and 18 wheeler settlement. Get semi truck settlement and truck crash settlement value estimates instantly.",
-    h1: "Commercial Truck Accident Settlement Calculator.",
-    intro: "Calculate your truck injury compensation and truck accident claim value. Use our truck compensation calculator to estimate your 18 wheeler or semi truck settlement.",
+    title: "Truck Accident Settlement Calculator | Commercial Claim Estimator",
+    description: "Calculate an illustrative commercial truck accident settlement estimate using medical expenses, lost wages, and property damage. Learn how commercial claim factors and liability rules apply.",
+    h1: "Truck Accident Settlement Calculator",
+    intro: "Estimate an illustrative commercial truck accident settlement using your medical expenses, lost income, property damage, and claim details. This tool provides an educational reference model and does not predict actual insurance or court payouts.",
     subtitle: "Commercial Truck Settlement Valuation",
     presetSeverity: "4.0",
     presetMedBills: 65000,
     presetTab: "detailed",
-    calculatorType: "car-accident",
-    aboutHeading1: "Valuing a Commercial Truck Claim & 18 Wheeler Settlement",
-    aboutContent1: "Filing a commercial truck claim or a truck accident claim is complex due to federal motor carrier safety regulations. Commercial policies often have million-dollar limits, which means a semi truck settlement or an 18 wheeler settlement is rarely limited by insurance caps. Using our truck injury calculator, you can evaluate your truck injury compensation based on commercial insurance standards.",
-    aboutHeading2: "How our Truck Accident Calculator Estimates a Settlement",
-    aboutContent2: "A typical truck crash settlement is significantly larger than passenger car claims due to catastrophic physical damage. Our truck accident calculator uses your medical records and financial losses to determine a realistic truck accident settlement range. The truck compensation calculator applies appropriate multipliers for commercial vehicle crashes.",
+    calculatorType: "truck-accident",
+    aboutHeading1: "Why Commercial Truck Claims Involve Complex Liability",
+    aboutContent1: "Commercial motor vehicle collisions differ significantly from standard passenger car accidents due to federal regulations, corporate involvement, and complex liability structures. Unlike personal auto claims that primarily involve two drivers, a commercial truck claim can involve multiple responsible parties. These can include the commercial driver (for operational negligence or hours-of-service violations), the motor carrier (for negligent hiring, supervision, or maintenance), cargo loading contractors (for improperly secured loads), or equipment manufacturers (for mechanical failures). Federal Motor Carrier Safety Administration (FMCSA 49 CFR Part 387) regulations require interstate motor carriers to maintain minimum financial responsibility limits starting at $750,000 for non-hazardous freight and up to $5,000,000 for hazardous materials.",
+    aboutHeading2: "How a Commercial Truck Settlement Estimate Is Calculated",
+    aboutContent2: "Determining the financial valuation of a commercial truck claim involves analyzing itemized economic damages alongside documented non-economic impacts. Economic damages cover verifiable financial losses such as emergency medical treatment, surgical procedures, ongoing physical rehabilitation, past lost income, future earning capacity reduction, and vehicle replacement or repair costs. Non-economic damages address physical pain, emotional distress, functional physical impairment, and diminished quality of life. In personal injury evaluation, non-economic damages are often modeled by applying an illustrative severity multiplier to medical expenses. However, no single legal formula or insurance multiplier automatically dictates what a carrier or jury will award. Actual settlement negotiations depend on evidence quality, documented liability, verified economic losses, policy coverage terms, and state negligence rules.",
     formulaExplanation: `
-      <p>Commercial truck crashes involve heavy vehicles (up to 80,000 lbs), resulting in severe injuries. Payouts are rarely constrained by the policy limit because federal safety regulations mandate commercial coverage limits of <strong>$750,000 to $5,000,000+</strong>.</p>
+      <p>This commercial truck calculator uses an illustrative mathematical model combining documented economic losses with a severity multiplier applied to medical expenses:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
-        Commercial Truck Settlement = Economic Damages + (Medical Bills &times; Multiplier)
+        Calculated Base = (Medical Expenses + Lost Income + Property Damage) + (Medical Expenses &times; Multiplier)
       </div>
-      <p>Due to the catastrophic nature of these injuries, pain multipliers are regularly set at <strong>3.5x to 5.0x</strong>. The truck accident calculator factors in extensive future treatment plans and lifetime lost earning capacity.</p>
+      <p>The calculated figure is strictly an illustrative reference model. Actual insurance settlements depend on proved liability, verified medical records, lost wage documentation, property repair bills, available policy limits, state fault laws, and case-specific evidence. To compare how different injury types and claim models structure damages, explore our general <a href="/" class="text-link hover:underline">car accident settlement calculator</a>, our <a href="/pain-and-suffering-calculator/" class="text-link hover:underline">pain and suffering calculator</a>, or our dedicated <a href="/back-injury-settlement-calculator/" class="text-link hover:underline">back injury settlement calculator</a>.</p>
     `,
     inputsExplanation: `
-      <p>The input fields must reflect commercial litigation realities:</p>
+      <p>Understanding the core inputs used in the commercial truck calculator:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Medical Bills:</strong> Direct costs for surgery, long-term rehab, or hardware implants.</li>
-        <li><strong>Future Lost Earnings:</strong> Commercial crashes often result in permanent disability. Calculating future earning capacity loss is critical.</li>
-        <li><strong>Policy Limits:</strong> Commercial policies have very high caps, allowing for maximum recovery.</li>
+        <li><strong>Medical Expenses:</strong> Itemized costs for past care, hospitalization, surgeries, and estimated future medical treatment.</li>
+        <li><strong>Lost Income & Earning Capacity:</strong> Past wages missed during recovery plus documented long-term reductions in future earning potential.</li>
+        <li><strong>Property Damage:</strong> Verified repair estimates or actual cash value of vehicle loss.</li>
+        <li><strong>Severity Multiplier:</strong> An illustrative factor reflecting injury severity, recovery duration, and daily disruption.</li>
+        <li><strong>Share of Fault:</strong> Reduction applied according to applicable state comparative or contributory negligence laws.</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are two worked examples of commercial truck settlements:</p>
+      <p>The following examples illustrate how the mathematical model functions under different claim scenarios:</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Herniated Discs requiring Surgery from Semi Rear-End</strong>
-          <p>A semi-truck rear-ends your passenger vehicle at a red light. You require cervical discectomy surgery. Fault is 0%.</p>
+          <strong class="text-ink block mb-1">Scenario A: Surgical Cervical Discectomy (0% Fault)</strong>
+          <p>A driver is rear-ended by a tractor-trailer at an intersection. The driver requires cervical discectomy surgery. Comparative fault is 0%.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
             <li>Medical Expenses: $95,000</li>
-            <li>Lost Wages: $18,000</li>
-            <li>Pain Multiplier: 4.2x (surgical fusion)</li>
-            <li>Pain & Suffering Valuation: $95,000 &times; 4.2 = $399,000</li>
-            <li>Gross Claim Value: $95,000 + $18,000 + $399,000 = $512,000</li>
-            <li><strong>Final Settlement Check: $512,000</strong></li>
+            <li>Lost Income: $18,000</li>
+            <li>Property Damage: $15,000</li>
+            <li>Illustrative Multiplier: 4.0x</li>
+            <li>Pain & Suffering Valuation: $95,000 &times; 4.0 = $380,000</li>
+            <li>Economic Losses: $95,000 + $18,000 + $15,000 = $128,000</li>
+            <li><strong>Illustrative Mathematical Estimate: $508,000</strong></li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Multiple Orthopedic Fractures (Shared Fault)</strong>
-          <p>An 18-wheeler changes lanes into your car. You suffer a fractured pelvis and shoulder. The insurer alleges 10% fault because you were in the truck's blind spot.</p>
+          <strong class="text-ink block mb-1">Scenario B: Multiple Orthopedic Fractures (10% Shared Fault)</strong>
+          <p>A commercial truck changes lanes into a passenger vehicle. The claimant suffers orthopedic fractures. State comparative fault is assessed at 10%.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
             <li>Medical Expenses: $135,000</li>
-            <li>Lost Wages: $24,000</li>
-            <li>Pain Multiplier: 4.5x (multiple bone fractures)</li>
+            <li>Lost Income: $24,000</li>
+            <li>Property Damage: $18,000</li>
+            <li>Illustrative Multiplier: 4.5x</li>
             <li>Pain & Suffering Valuation: $135,000 &times; 4.5 = $607,500</li>
-            <li>Gross Claim Value: $159,000 + $607,500 = $766,500</li>
-            <li>10% Fault Reduction: -$76,650</li>
-            <li><strong>Final Settlement Check: $689,850</strong></li>
+            <li>Gross Calculated Value: ($135,000 + $24,000 + $18,000) + $607,500 = $784,500</li>
+            <li>10% Fault Reduction: -$78,450</li>
+            <li><strong>Illustrative Mathematical Estimate: $706,050</strong></li>
           </ul>
         </div>
       </div>
     `,
     legalBackground: `
-      <p>Commercial truck claims involve multiple potential defendants, including the truck driver, the motor carrier, the shipping client, and the maintenance contractor. Trucking regulations mandate the collection of driver logbooks and black box telematics data to verify safety violations like driving over the hours-of-service limit.</p>
+      <p>Commercial vehicle litigation involves distinct evidentiary standards. Investigating a commercial crash often includes retrieving Electronic Control Module (ECM) telematics data, driver electronic logging device (ELD) records, driver qualification files, and carrier inspection logs. Because liability can span multiple entity relationships, early evidence preservation is a standard aspect of commercial claim analysis. Read our guide on <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline">how car accident settlements are calculated</a> for additional detail on insurance evaluation methods.</p>
     `,
+    sources: [
+      {
+        title: "FMCSA — 49 CFR Part 387 Minimum Levels of Financial Responsibility for Motor Carriers",
+        url: "https://www.fmcsa.dot.gov/regulations/title49/part/387"
+      },
+      {
+        title: "FMCSA — Large Truck and Bus Crash Facts Data & Statistics",
+        url: "https://www.fmcsa.dot.gov/safety/data-and-statistics/large-truck-and-bus-crash-facts"
+      },
+      {
+        title: "Electronic Code of Federal Regulations — Title 49 Part 387",
+        url: "https://www.ecfr.gov/current/title-49/subtitle-B/chapter-III/subchapter-B/part-387"
+      }
+    ],
     faqs: [
       {
-        question: "How does a truck accident calculator determine my semi truck settlement?",
-        answer: "Our truck accident calculator evaluates your medical bills, lost wages, and future treatment costs to estimate a truck crash settlement. The truck injury calculator uses standard commercial multipliers to value the claim."
+        question: "How does a commercial truck accident calculator estimate a claim?",
+        answer: "The calculator applies an illustrative mathematical model combining documented economic losses (medical expenses, lost income, property damage) with a severity multiplier. It provides an educational reference rather than predicting actual insurance settlements."
       },
       {
-        question: "What is the average payout for an 18 wheeler settlement?",
-        answer: "A typical 18 wheeler settlement ranges from $100,000 to over $500,000. Cases involving severe permanent injuries can reach seven-figure truck injury compensation, as modeled by our truck compensation calculator."
+        question: "What factors influence a commercial truck accident settlement?",
+        answer: "Key factors include the extent of documented medical treatment, verified wage loss, permanent functional impairment, liability determination, available commercial insurance policy limits, and state comparative negligence rules."
       },
       {
-        question: "What is the first step in filing a commercial truck claim?",
-        answer: "The first step in a commercial truck claim or truck accident claim is securing evidence like the truck’s logbooks, black box data, and driver safety reports, which establishes liability for the truck crash settlement."
+        question: "Who can be held liable in a commercial truck collision?",
+        answer: "Depending on the facts, potential liable parties may include the commercial driver, the motor carrier employer, third-party cargo loading contractors, or vehicle equipment manufacturers."
       },
       {
-        question: "Why are truck accident settlements larger than car accidents?",
-        answer: "Due to the size disparity, trucks cause more severe injuries, resulting in higher medical costs. Additionally, commercial vehicles carry much larger insurance policies."
+        question: "Why do commercial truck claims involve higher insurance policy limits?",
+        answer: "Federal regulations (such as FMCSA 49 CFR Part 387) mandate that interstate motor carriers maintain minimum public liability coverage starting at $750,000 for general freight and higher limits for specialized cargo."
       },
       {
-        question: "Who can be held liable in a commercial truck crash?",
-        answer: "Liable parties can include the driver (negligence), the carrier (negligent hiring or training), the loading dock (unbalanced cargo), or the truck manufacturer."
+        question: "What evidence is commonly analyzed in commercial truck accident claims?",
+        answer: "Evidence typically includes Electronic Control Module (ECM) telematics data, driver electronic logging device (ELD) records, carrier hiring and training files, vehicle inspection logs, and accident scene physical evidence."
       },
       {
-        question: "What data is collected from a truck's 'black box'?",
-        answer: "The Electronic Control Module (ECM) records speed, brake status, steering angles, and throttle patterns right before the crash, providing vital neutral evidence."
+        question: "How does share of fault affect a commercial truck settlement estimate?",
+        answer: "Under state comparative negligence laws, an estimate is reduced in proportion to the claimant's assigned fault percentage. In strict contributory negligence states, any fault may bar recovery entirely."
       }
     ]
   },
