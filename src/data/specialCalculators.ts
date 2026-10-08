@@ -351,93 +351,108 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "slip-and-fall": {
     slug: "slip-and-fall-settlement-calculator",
-    title: "Slip and Fall Calculator | Slip and Fall Settlement Payouts",
-    description: "Calculate your slip and fall settlement value. Check fall compensation for a slip and fall claim, premises liability claim, or trip and fall claim.",
-    h1: "Slip & Fall Settlement Calculator.",
-    intro: "Estimate your fall accident settlement and slip injury compensation. Use our slip and fall calculator to value your premises liability claim and trip and fall claim.",
-    subtitle: "Slip, Trip, and Fall Liability Valuation",
+    title: "Slip and Fall Settlement Calculator | Premises Liability Estimator",
+    description: "Calculate an illustrative slip and fall settlement estimate using medical expenses, lost wages, and comparative fault. Learn how premises liability, notice, and state laws apply.",
+    h1: "Slip and Fall Settlement Calculator",
+    intro: "Estimate an illustrative slip and fall settlement using your medical expenses, lost income, claim details, and state fault rules. This tool provides an educational reference model and does not predict actual insurance or court payouts.",
+    subtitle: "Premises Liability Settlement Valuation",
     presetSeverity: "2.5",
     presetMedBills: 12000,
     presetTab: "detailed",
     calculatorType: "slip-and-fall",
-    aboutHeading1: "Filing a Slip and Fall Claim for Premises Liability",
-    aboutContent1: "To succeed in a slip and fall claim or premises liability claim, you must prove the property owner was negligent. Whether it is a slip injury or a trip and fall claim, proving liability is essential for securing slip injury compensation. Our slip injury calculator helps you estimate the base economic damages and calculate a fair fall accident settlement.",
-    aboutHeading2: "How a Fall Injury Calculator Determines Fall Compensation",
-    aboutContent2: "A typical slip and fall settlement ranges from $15,000 to $45,000. Our fall injury calculator analyzes medical expenses and lost wages to evaluate fall compensation. Using a slip and fall calculator allows you to factor in comparative negligence, which frequently reduces compensation if the victim was partially at fault.",
+    aboutHeading1: "Understanding Premises Liability & Property Owner Duty of Care",
+    aboutContent1: "Premises liability law establishes that property owners and occupiers have a legal duty to maintain reasonably safe conditions for lawful visitors. To recover damages in a slip and fall claim, you must demonstrate that a hazardous condition existed—such as accumulated ice, liquid spills, uneven flooring, or inadequate lighting—and that the property owner breached their duty of care. Unlike motor vehicle collisions where driver actions are often recorded by traffic telemetry, premises claims rely on establishing how long the hazard was present and whether the owner took reasonable steps to discover and remedy it.",
+    aboutHeading2: "Actual Notice vs. Constructive Notice & Claim Evidence",
+    aboutContent2: "Proving liability requires showing that the property owner had actual or constructive notice of the dangerous condition. Actual notice means the owner or employees directly created or knew about the hazard. Constructive notice means the hazard existed for a sufficient length of time that a reasonable inspection would have uncovered it. Essential evidence in premises liability claims includes scene photographs, official incident reports, surveillance video footage, inspection and cleaning logs, and witness statements. In addition, state comparative negligence rules evaluate whether the injured party shares fault, such as failing to observe visible warning signs or walking in restricted areas.",
     formulaExplanation: `
-      <p>Premises liability claims use the standard economic ledger and pain multipliers. However, slip and fall cases are heavily affected by liability risks. Proving a property owner knew about a hazard is more difficult than proving fault in a rear-end car collision.</p>
+      <p>This calculator uses an illustrative mathematical model combining documented economic losses with a severity multiplier applied to medical expenses:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
-        Net Slip & Fall Settlement = [Economic Losses + (Med Bills &times; Multiplier)] &times; (100% - Comparative Fault)
+        Calculated Base = [(Medical Expenses + Lost Income) + (Medical Expenses &times; Multiplier)] &times; (100% - Fault %)
       </div>
-      <p>Because property owners regularly argue that the hazard was 'open and obvious' or that the victim failed to look where they were walking, slip and fall calculations are frequently adjusted for <strong>10% to 40% comparative negligence</strong>.</p>
+      <p>The calculated figure is strictly an illustrative reference model. Actual insurance settlements or jury verdicts depend on proved liability, evidence of notice, documented medical treatment, verified lost wages, comparative fault ratings, available insurance coverage, and applicable state law. To compare how different injury types and claim models structure damages, explore our general <a href="/" class="text-link hover:underline">car accident settlement calculator</a>, our <a href="/pain-and-suffering-calculator/" class="text-link hover:underline">pain and suffering calculator</a>, or our dedicated <a href="/back-injury-settlement-calculator/" class="text-link hover:underline">back injury settlement calculator</a>.</p>
     `,
     inputsExplanation: `
-      <p>Inputs must be evaluated with premises liability standards in mind:</p>
+      <p>Understanding the core inputs used in the premises liability calculator:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Medical Bills:</strong> Direct costs for treating fractures, head trauma from falling on hard surfaces, or torn ligaments.</li>
-        <li><strong>Multiplier:</strong> Typically 1.5x to 3.5x. Higher multipliers are used for fractures requiring plates or screws.</li>
-        <li><strong>Comparative Fault:</strong> Set to 0% if the hazard was completely hidden. Set to 20% or 30% if you were carrying items or walking in an area marked with caution signs.</li>
+        <li><strong>Medical Expenses:</strong> Itemized costs for past emergency care, imaging, physical therapy, and estimated future medical treatment.</li>
+        <li><strong>Lost Income:</strong> Documented wages missed during recovery plus long-term earning capacity reductions.</li>
+        <li><strong>Severity Multiplier:</strong> An illustrative factor reflecting injury severity, recovery duration, and pain levels.</li>
+        <li><strong>Comparative Fault (%):</strong> Share of liability assigned to the claimant under applicable state comparative negligence laws.</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are two worked examples of slip and fall settlements:</p>
+      <p>The following examples illustrate how the mathematical model functions under different premises liability scenarios:</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Broken Wrist from Wet Grocery Floor</strong>
-          <p>You slip on water near a produce aisle. Grocery store records show they knew about the leak but did not clean it. You carry 0% fault.</p>
+          <strong class="text-ink block mb-1">Scenario A: Wrist Fracture from Uncleaned Spill (0% Fault)</strong>
+          <p>A customer slips on an uncleaned liquid spill in a store aisle. Maintenance records show the spill was reported 45 minutes prior without warning markers. Comparative fault is 0%.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Bills (Past + Future): $14,000</li>
-            <li>Lost Wages: $2,500</li>
-            <li>Pain Multiplier: 2.5x (fracture requiring brace)</li>
-            <li>Pain & Suffering: $14,000 &times; 2.5 = $35,000</li>
-            <li>Gross Value: $14,000 + $2,500 + $35,000 = $51,500</li>
-            <li><strong>Final Settlement check: $51,500</strong></li>
+            <li>Medical Expenses: $14,000</li>
+            <li>Lost Income: $2,500</li>
+            <li>Illustrative Multiplier: 2.5x</li>
+            <li>Pain & Suffering Valuation: $14,000 &times; 2.5 = $35,000</li>
+            <li>Economic Losses: $14,000 + $2,500 = $16,500</li>
+            <li><strong>Illustrative Mathematical Estimate: $51,500</strong></li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Slip on Icy Sidewalk (Shared Fault)</strong>
-          <p>You slip on ice outside a retail store. The store claims the ice melted and refroze recently. The insurer alleges 25% comparative fault for not wearing slip-resistant footwear.</p>
+          <strong class="text-ink block mb-1">Scenario B: Ankle Ligament Tear on Icy Walkway (25% Shared Fault)</strong>
+          <p>A pedestrian slips on untreated ice outside a commercial entrance. State comparative fault rules assess 25% fault because warning signs were partially visible.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Bills (Past + Future): $22,000</li>
-            <li>Lost Wages: $6,000</li>
-            <li>Pain Multiplier: 3.0x</li>
-            <li>Pain & Suffering: $22,000 &times; 3.0 = $66,000</li>
-            <li>Gross Value: $28,000 + $66,000 = $94,000</li>
+            <li>Medical Expenses: $22,000</li>
+            <li>Lost Income: $6,000</li>
+            <li>Illustrative Multiplier: 3.0x</li>
+            <li>Pain & Suffering Valuation: $22,000 &times; 3.0 = $66,000</li>
+            <li>Gross Calculated Value: ($22,000 + $6,000) + $66,000 = $94,000</li>
             <li>25% Fault Deduction: -$23,500</li>
-            <li><strong>Final Settlement check: $70,500</strong></li>
+            <li><strong>Illustrative Mathematical Estimate: $70,500</strong></li>
           </ul>
         </div>
       </div>
     `,
     legalBackground: `
-      <p>Under premises liability law, you must prove that the property owner had actual or constructive notice of the hazard. Constructive notice means the hazard existed for a long enough time that a reasonable owner should have discovered and removed it. Collecting immediate photographs of the hazard and obtaining witness statements is critical to proving your claim.</p>
+      <p>Premises liability claims require proving that a property owner or occupier failed to maintain reasonable safety standards. Investigating a slip and fall crash involves securing surveillance footage before overwritten, requesting property maintenance records, reviewing incident logs, and assessing whether comparative fault rules reduce recovery. Read our guide on <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline">how car accident settlements are calculated</a> for additional detail on insurance evaluation principles.</p>
     `,
+    sources: [
+      {
+        title: "Legal Information Institute (LII) — Negligence Overview",
+        url: "https://www.law.cornell.edu/wex/negligence"
+      },
+      {
+        title: "Legal Information Institute (LII) — Comparative Negligence Rules",
+        url: "https://www.law.cornell.edu/wex/comparative_negligence"
+      },
+      {
+        title: "Legal Information Institute (LII) — Personal Injury Damages Definition",
+        url: "https://www.law.cornell.edu/wex/damages"
+      }
+    ],
     faqs: [
       {
-        question: "How does a slip and fall calculator estimate fall compensation?",
-        answer: "Our slip and fall calculator adds up your medical bills and lost wages, applying a multiplier to estimate non-economic damages. The resulting figure is your estimated slip and fall settlement or trip and fall claim value."
+        question: "How does a slip and fall calculator estimate a claim?",
+        answer: "The calculator applies an illustrative mathematical model combining documented economic losses (medical bills and lost wages) with a severity multiplier, adjusted for assigned comparative fault. It provides an educational reference rather than predicting actual insurance or court payouts."
       },
       {
-        question: "What is the average payout for a fall accident settlement?",
-        answer: "The average fall accident settlement is between $15,000 and $45,000. Severe cases involving fractures or head trauma can achieve fall compensation exceeding $100,000, as calculated by our fall injury calculator."
+        question: "What factors influence a premises liability settlement?",
+        answer: "Key factors include proving property owner negligence, establishing actual or constructive notice of the hazard, documenting medical care, verifying lost wages, applying state comparative fault rules, and verifying policy limits."
       },
       {
-        question: "How do you prove a premises liability claim using a slip injury calculator?",
-        answer: "While a slip injury calculator or slip injury calculator tool estimates the financial value, proving the premises liability claim requires photos of the hazard, accident reports, and witness details."
+        question: "What is the difference between actual notice and constructive notice?",
+        answer: "Actual notice means the property owner or staff knew directly about the hazardous condition. Constructive notice means the hazard existed long enough that a reasonable inspection should have discovered it."
       },
       {
-        question: "What does 'constructive notice' mean in a premises claim?",
-        answer: "Constructive notice means the property owner should have known about the hazard because it was present for a reasonable period, even if they did not have actual knowledge of it."
+        question: "What evidence is essential in a slip and fall claim?",
+        answer: "Key evidence includes immediate photos of the hazardous condition, official incident reports, surveillance camera video, maintenance and inspection logs, medical diagnostic records, and witness statements."
       },
       {
-        question: "Does the grocery store have to pay my medical bills immediately?",
-        answer: "No. Unlike auto accidents where medical payments coverage can pay bills as you treat, premises owners rarely pay medical costs until a final liability settlement is signed."
+        question: "Does a property owner's insurance pay medical bills immediately?",
+        answer: "Generally no. Unlike auto accidents with MedPay coverage, commercial property liability insurers usually evaluate total damages and pay in a final negotiated settlement after liability and medical documentation are established."
       },
       {
-        question: "Can I sue if I slipped in a private residence?",
-        answer: "Yes, if the homeowner's negligence caused the hazard (e.g. loose handrail). Homeowner's insurance policies typically cover these claims."
+        question: "Can I file a claim if a slip and fall occurred at a private residence?",
+        answer: "Yes, if the homeowner's negligence caused or permitted the hazardous condition (such as broken steps or unlit walkways). Homeowner insurance liability policies typically cover such claims subject to policy terms."
       }
     ]
   },

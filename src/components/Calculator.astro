@@ -356,7 +356,7 @@ const sortedStates = Object.values(statesData)
       <!-- Big Value Callout -->
       <div class="text-center lg:text-left">
         <span id="output-callout-label" class="text-[10px] font-mono uppercase tracking-wider text-mute block mb-1">
-          {(calculatorType === 'whiplash' || calculatorType === 'truck-accident') ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range'}
+          {(calculatorType === 'whiplash' || calculatorType === 'truck-accident' || calculatorType === 'slip-and-fall') ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range'}
         </span>
         <div id="output-range" class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight font-sans transition-all duration-200">
           $0
@@ -612,7 +612,7 @@ const sortedStates = Object.values(statesData)
       }
     }
 
-    if (calculatorType === 'whiplash') {
+    if (calculatorType === 'whiplash' || calculatorType === 'slip-and-fall') {
       if (detailProperty) {
         detailProperty.value = "0";
         detailProperty.disabled = true;
@@ -902,7 +902,7 @@ const sortedStates = Object.values(statesData)
       }
 
       // Whiplash / Soft-Tissue Overrides
-      if (calculatorType === 'whiplash') {
+      if (calculatorType === 'whiplash' || calculatorType === 'slip-and-fall') {
         property = 0;
         economicLosses = medicalBills + wages;
         painSuffering = medicalBills * multiplier;
@@ -999,7 +999,7 @@ const sortedStates = Object.values(statesData)
       if (ledgerNet) ledgerNet.textContent = formatUSD(finalCalculated);
       
       if (outputCalloutLabel) {
-        outputCalloutLabel.textContent = (calculatorType === 'whiplash' || calculatorType === 'truck-accident') ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range';
+        outputCalloutLabel.textContent = (calculatorType === 'whiplash' || calculatorType === 'truck-accident' || calculatorType === 'slip-and-fall') ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range';
       }
 
       // Big payout range / single estimate
@@ -1009,7 +1009,7 @@ const sortedStates = Object.values(statesData)
       if (outputRange) {
         if (finalCalculated === 0) {
           outputRange.textContent = "$0";
-        } else if (calculatorType === 'whiplash' || calculatorType === 'truck-accident') {
+        } else if (calculatorType === 'whiplash' || calculatorType === 'truck-accident' || calculatorType === 'slip-and-fall') {
           outputRange.textContent = formatUSD(finalCalculated);
         } else {
           outputRange.textContent = `${formatUSD(lowEnd)} - ${formatUSD(highEnd)}`;
