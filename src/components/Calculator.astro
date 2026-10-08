@@ -355,8 +355,8 @@ const sortedStates = Object.values(statesData)
       
       <!-- Big Value Callout -->
       <div class="text-center lg:text-left">
-        <span class="text-[10px] font-mono uppercase tracking-wider text-mute block mb-1">
-          Estimated Payout Range
+        <span id="output-callout-label" class="text-[10px] font-mono uppercase tracking-wider text-mute block mb-1">
+          {calculatorType === 'whiplash' ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range'}
         </span>
         <div id="output-range" class="text-3xl sm:text-4xl font-semibold text-ink tracking-tight font-sans transition-all duration-200">
           $0
@@ -458,7 +458,7 @@ const sortedStates = Object.values(statesData)
 
 <!-- Client-side script database integration and controller -->
 <script define:vars={{ statesData, preselectedState, preselectedSeverity, preselectedMedBills, preselectedTab, calculatorType }}>
-  document.addEventListener('DOMContentLoaded', () => {
+  function initCalculator() {
     // GTM dataLayer push helper
     function pushEvent(eventName, params) {
       window.dataLayer = window.dataLayer || [];
@@ -525,6 +525,7 @@ const sortedStates = Object.values(statesData)
     const detailFaultVal = document.getElementById('detail-fault-val');
     
     // Outputs
+    const outputCalloutLabel = document.getElementById('output-callout-label');
     const outputRange = document.getElementById('output-range');
     const ledgerEco = document.getElementById('ledger-eco');
     const ledgerPain = document.getElementById('ledger-pain');
@@ -706,29 +707,37 @@ const sortedStates = Object.values(statesData)
     }
 
     // Sync sliders values
-    quickFault.addEventListener('input', () => {
-      quickFaultVal.textContent = `${quickFault.value}%`;
-      // Sync detailed fault slider just in case
-      detailFault.value = quickFault.value;
-      detailFaultVal.textContent = `${quickFault.value}%`;
-      calculate();
-    });
+    if (quickFault) {
+      quickFault.addEventListener('input', () => {
+        if (quickFaultVal) quickFaultVal.textContent = `${quickFault.value}%`;
+        if (detailFault) {
+          detailFault.value = quickFault.value;
+          if (detailFaultVal) detailFaultVal.textContent = `${quickFault.value}%`;
+        }
+        calculate();
+      });
+    }
 
-    detailFault.addEventListener('input', () => {
-      detailFaultVal.textContent = `${detailFault.value}%`;
-      // Sync quick fault slider
-      quickFault.value = detailFault.value;
-      quickFaultVal.textContent = `${detailFault.value}%`;
-      calculate();
-    });
+    if (detailFault) {
+      detailFault.addEventListener('input', () => {
+        if (detailFaultVal) detailFaultVal.textContent = `${detailFault.value}%`;
+        if (quickFault) {
+          quickFault.value = detailFault.value;
+          if (quickFaultVal) quickFaultVal.textContent = `${detailFault.value}%`;
+        }
+        calculate();
+      });
+    }
 
-    detailMultiplier.addEventListener('input', () => {
-      detailMultiplierVal.textContent = `${detailMultiplier.value}x`;
-      calculate();
-    });
+    if (detailMultiplier) {
+      detailMultiplier.addEventListener('input', () => {
+        if (detailMultiplierVal) detailMultiplierVal.textContent = `${detailMultiplier.value}x`;
+        calculate();
+      });
+    }
 
     // Workers' comp rate input
-    const wcWageRateInput = document.getElementById('wc-wage-rate') as HTMLInputElement;
+    const wcWageRateInput = document.getElementById('wc-wage-rate');
     const wcWageRateVal = document.getElementById('wc-wage-rate-val');
 
     if (wcWageRateInput && wcWageRateVal) {
@@ -759,16 +768,16 @@ const sortedStates = Object.values(statesData)
 
     // Main Calculator core logic
     function calculate() {
-      const stateSlug = stateSelector.value;
+      const stateSlug = stateSelector ? stateSelector.value : (preselectedState || 'california');
       selectedStateSlug = stateSlug;
       const state = statesData[stateSlug];
       
       if (!state) return;
       
       // Update State Laws Card text in Panel 3
-      stateLawTitle.textContent = `${state.name} Insurance Laws`;
-      stateLawLimitations.textContent = `Statute: ${state.statuteOfLimitations} Years`;
-      stateLawExplanation.textContent = state.explanation;
+      if (stateLawTitle) stateLawTitle.textContent = `${state.name} Insurance Laws`;
+      if (stateLawLimitations) stateLawLimitations.textContent = `Statute: ${state.statuteOfLimitations} Years`;
+      if (stateLawExplanation) stateLawExplanation.textContent = state.explanation;
       
       // Systems display
       let systemText = "";
@@ -781,7 +790,7 @@ const sortedStates = Object.values(statesData)
       } else {
         systemText = "Pure Comparative Negligence (No fault bar)";
       }
-      stateLawRule.textContent = systemText;
+      if (stateLawRule) stateLawRule.textContent = systemText;
       
       let pipText = "";
       if (state.noFault) {
@@ -794,11 +803,13 @@ const sortedStates = Object.values(statesData)
       } else {
         pipText = "At-Fault / Tort-based State (No PIP required to sue)";
       }
-      stateLawNoFault.textContent = pipText;
+      if (stateLawNoFault) stateLawNoFault.textContent = pipText;
       
-      stateLawCaps.textContent = state.damageCap !== null 
-        ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
-        : "No caps on general pain and suffering damages for car accident claims.";
+      if (stateLawCaps) {
+        stateLawCaps.textContent = state.damageCap !== null 
+          ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
+          : "No caps on general pain and suffering damages for car accident claims.";
+      }
 
       // Calculation inputs
       let medicalBills = 0;
@@ -809,22 +820,22 @@ const sortedStates = Object.values(statesData)
       let policyLimit = 99999999;
       
       if (currentTab === 'quick') {
-        medicalBills = parseFloat(quickBills.value) || 0;
-        multiplier = parseFloat(quickInjury.value) || 2.5;
-        faultPct = parseFloat(quickFault.value) || 0;
+        medicalBills = parseFloat(quickBills ? quickBills.value : '0') || 0;
+        multiplier = parseFloat(quickInjury ? quickInjury.value : '2.5') || 2.5;
+        faultPct = parseFloat(quickFault ? quickFault.value : '0') || 0;
       } else {
         // Detailed inputs
-        const medPast = parseFloat(detailMedPast.value) || 0;
-        const medFuture = parseFloat(detailMedFuture.value) || 0;
-        const wagePast = parseFloat(detailWagePast.value) || 0;
-        const wageFuture = parseFloat(detailWageFuture.value) || 0;
+        const medPast = parseFloat(detailMedPast ? detailMedPast.value : '0') || 0;
+        const medFuture = parseFloat(detailMedFuture ? detailMedFuture.value : '0') || 0;
+        const wagePast = parseFloat(detailWagePast ? detailWagePast.value : '0') || 0;
+        const wageFuture = parseFloat(detailWageFuture ? detailWageFuture.value : '0') || 0;
         
         medicalBills = medPast + medFuture;
         wages = wagePast + wageFuture;
-        property = parseFloat(detailProperty.value) || 0;
-        multiplier = parseFloat(detailMultiplier.value) || 2.5;
-        faultPct = parseFloat(detailFault.value) || 0;
-        policyLimit = parseFloat(detailPolicyLimit.value) || 99999999;
+        property = parseFloat(detailProperty ? detailProperty.value : '0') || 0;
+        multiplier = parseFloat(detailMultiplier ? detailMultiplier.value : '2.5') || 2.5;
+        faultPct = parseFloat(detailFault ? detailFault.value : '0') || 0;
+        policyLimit = parseFloat(detailPolicyLimit ? detailPolicyLimit.value : '99999999') || 99999999;
       }
       
       // Calculate
@@ -884,7 +895,7 @@ const sortedStates = Object.values(statesData)
         if (state.monetaryThreshold && medicalBills < state.monetaryThreshold) {
           isPipAlert = true;
           pipAlertText = `In ${state.name}, medical bills must exceed ${formatUSD(state.monetaryThreshold)} to sue for pain and suffering. You may only claim PIP out-of-pocket medical coverage.`;
-        } else if (state.verbalThreshold && currentTab === 'quick' && quickInjury.value === "1.5") {
+        } else if (state.verbalThreshold && currentTab === 'quick' && quickInjury && quickInjury.value === "1.5") {
           isPipAlert = true;
           pipAlertText = `In ${state.name}, minor injuries do not meet the verbal threshold required to sue for pain and suffering. You can only claim out-of-pocket expenses under your PIP policy.`;
         }
@@ -940,69 +951,81 @@ const sortedStates = Object.values(statesData)
         isPipAlert = false;
         exceedsLimit = false;
 
-        stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
-        if (hasValidWageRate) {
-          stateAlertBox.innerHTML = `<strong>Workers' Compensation Mode:</strong> Calculation models 100% of approved medical bills plus <strong>${wageRatePct}%</strong> of lost wages (user-entered rate). Actual statutory benefits vary by state, weekly benefit caps, and disability classification. Pain & suffering and property damage are excluded from this calculator because this tool models statutory workers' compensation benefits rather than separate personal injury or property-damage claims.`;
-        } else {
-          stateAlertBox.innerHTML = `<strong>Wage Replacement Rate Required:</strong> Enter the wage-replacement percentage applicable to your state and benefit type above to calculate lost wage replacement. Currently displaying medical expenses only (${formatUSD(medicalBills)}). Pain & suffering and property damage are excluded.`;
+        if (stateAlertBox) {
+          stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
+          if (hasValidWageRate) {
+            stateAlertBox.innerHTML = `<strong>Workers' Compensation Mode:</strong> Calculation models 100% of approved medical bills plus <strong>${wageRatePct}%</strong> of lost wages (user-entered rate). Actual statutory benefits vary by state, weekly benefit caps, and disability classification. Pain & suffering and property damage are excluded from this calculator because this tool models statutory workers' compensation benefits rather than separate personal injury or property-damage claims.`;
+          } else {
+            stateAlertBox.innerHTML = `<strong>Wage Replacement Rate Required:</strong> Enter the wage-replacement percentage applicable to your state and benefit type above to calculate lost wage replacement. Currently displaying medical expenses only (${formatUSD(medicalBills)}). Pain & suffering and property damage are excluded.`;
+          }
         }
-      } else if (calculatorType === 'whiplash') {
-        stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
-        stateAlertBox.innerHTML = `<strong>Whiplash Claim Mode:</strong> Calculated base equals economic losses (medical bills + lost income) plus non-economic component (medical bills × illustrative severity multiplier). Property damage is excluded from this whiplash valuation model.`;
-      } else if (isBarred) {
-        stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
-        stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;
-      } else if (isPipAlert) {
-        stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
-        stateAlertBox.innerHTML = `<strong>PIP Constraints:</strong> ${pipAlertText}`;
-      } else if (exceedsLimit) {
-        stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
-        stateAlertBox.innerHTML = `<strong>Policy Cap Applied:</strong> Payout exceeds the chosen liability policy limit of ${formatUSD(policyLimit)}. You can sue the driver personally for the excess, but the insurance company will only cover up to the limit.`;
-      } else {
-        stateAlertBox.className = "hidden";
+      } else if (stateAlertBox) {
+        if (calculatorType === 'whiplash') {
+          stateAlertBox.className = "p-4 rounded-lg bg-violet/10 border border-violet/30 text-ink block";
+          stateAlertBox.innerHTML = `<strong>Whiplash Claim Mode:</strong> Calculated base equals economic losses (medical bills + lost income) plus non-economic component (medical bills × illustrative severity multiplier). Property damage is excluded from this whiplash valuation model.`;
+        } else if (isBarred) {
+          stateAlertBox.className = "p-4 rounded-lg bg-error-soft border border-error text-error-deep block";
+          stateAlertBox.innerHTML = `<strong>Compensation Barred!</strong> ${barReason}`;
+        } else if (isPipAlert) {
+          stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
+          stateAlertBox.innerHTML = `<strong>PIP Constraints:</strong> ${pipAlertText}`;
+        } else if (exceedsLimit) {
+          stateAlertBox.className = "p-4 rounded-lg bg-warning-soft border border-warning text-warning-deep block";
+          stateAlertBox.innerHTML = `<strong>Policy Cap Applied:</strong> Payout exceeds the chosen liability policy limit of ${formatUSD(policyLimit)}. You can sue the driver personally for the excess, but the insurance company will only cover up to the limit.`;
+        } else {
+          stateAlertBox.className = "hidden";
+        }
       }
 
       // Update Ledger values
-      ledgerEco.textContent = formatUSD(economicLosses);
-      ledgerPain.textContent = formatUSD(painSuffering);
+      if (ledgerEco) ledgerEco.textContent = formatUSD(economicLosses);
+      if (ledgerPain) ledgerPain.textContent = formatUSD(painSuffering);
       
       if (faultPct > 0) {
-        ledgerFaultRow.classList.remove('hidden');
-        ledgerFault.textContent = `-${formatUSD(faultReduction)}`;
-        legendFault.classList.remove('hidden');
+        if (ledgerFaultRow) ledgerFaultRow.classList.remove('hidden');
+        if (ledgerFault) ledgerFault.textContent = `-${formatUSD(faultReduction)}`;
+        if (legendFault) legendFault.classList.remove('hidden');
       } else {
-        ledgerFaultRow.classList.add('hidden');
-        legendFault.classList.add('hidden');
+        if (ledgerFaultRow) ledgerFaultRow.classList.add('hidden');
+        if (legendFault) legendFault.classList.add('hidden');
       }
       
       if (exceedsLimit) {
-        ledgerCapRow.classList.remove('hidden');
+        if (ledgerCapRow) ledgerCapRow.classList.remove('hidden');
       } else {
-        ledgerCapRow.classList.add('hidden');
+        if (ledgerCapRow) ledgerCapRow.classList.add('hidden');
       }
       
-      ledgerNet.textContent = formatUSD(finalCalculated);
+      if (ledgerNet) ledgerNet.textContent = formatUSD(finalCalculated);
       
-      // Big payout range
+      if (outputCalloutLabel) {
+        outputCalloutLabel.textContent = calculatorType === 'whiplash' ? 'Illustrative Calculated Estimate' : 'Estimated Payout Range';
+      }
+
+      // Big payout range / single estimate
       let lowEnd = finalCalculated * 0.85;
       let highEnd = finalCalculated * 1.15;
       
-      if (finalCalculated === 0) {
-        outputRange.textContent = "$0";
-      } else {
-        outputRange.textContent = `${formatUSD(lowEnd)} - ${formatUSD(highEnd)}`;
+      if (outputRange) {
+        if (finalCalculated === 0) {
+          outputRange.textContent = "$0";
+        } else if (calculatorType === 'whiplash') {
+          outputRange.textContent = formatUSD(finalCalculated);
+        } else {
+          outputRange.textContent = `${formatUSD(lowEnd)} - ${formatUSD(highEnd)}`;
+        }
       }
       
       // Update stacked breakdown chart widths
       if (finalCalculated === 0) {
-        barMed.style.width = "0%";
-        barWage.style.width = "0%";
-        barProp.style.width = "0%";
-        barPain.style.width = "0%";
-        barFault.style.width = "100%";
+        if (barMed) barMed.style.width = "0%";
+        if (barWage) barWage.style.width = "0%";
+        if (barProp) barProp.style.width = "0%";
+        if (barPain) barPain.style.width = "0%";
+        if (barFault) barFault.style.width = "100%";
       } else {
         // Compute parts relative to total gross
-        const totalForChart = grossSettlement;
+        const totalForChart = grossSettlement > 0 ? grossSettlement : 1;
         const pMed = (medicalBills / totalForChart) * 100;
         const pWage = (wages / totalForChart) * 100;
         const pProp = (property / totalForChart) * 100;
@@ -1012,13 +1035,13 @@ const sortedStates = Object.values(statesData)
         const pFault = (faultReduction / totalForChart) * 100;
         
         // Adjust for policy limit visual cap if needed, for simplicity we scale net parts
-        const netFactor = (finalCalculated / grossSettlement);
+        const netFactor = grossSettlement > 0 ? (finalCalculated / grossSettlement) : 0;
         
-        barMed.style.width = `${pMed * netFactor}%`;
-        barWage.style.width = `${pWage * netFactor}%`;
-        barProp.style.width = `${pProp * netFactor}%`;
-        barPain.style.width = `${pPain * netFactor}%`;
-        barFault.style.width = `${pFault + (netFactor < 1 ? (1 - netFactor) * 100 : 0)}%`;
+        if (barMed) barMed.style.width = `${pMed * netFactor}%`;
+        if (barWage) barWage.style.width = `${pWage * netFactor}%`;
+        if (barProp) barProp.style.width = `${pProp * netFactor}%`;
+        if (barPain) barPain.style.width = `${pPain * netFactor}%`;
+        if (barFault) barFault.style.width = `${pFault + (netFactor < 1 ? (1 - netFactor) * 100 : 0)}%`;
       }
 
       // Queue Google Analytics event tracking
@@ -1038,5 +1061,11 @@ const sortedStates = Object.values(statesData)
     
     // Initial execution
     calculate();
-  });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCalculator);
+  } else {
+    initCalculator();
+  }
 </script>
