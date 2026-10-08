@@ -119,12 +119,16 @@ const pageTitle = state === 'michigan'
   ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP Estimator'
   : state === 'missouri'
   ? 'Missouri Car Accident Settlement Calculator | Pure Comparative Fault'
+  : state === 'new-hampshire'
+  ? 'New Hampshire Car Accident Settlement Calculator | 51% Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
   ? 'Calculate your estimated Michigan auto accident settlement under No-Fault PIP rules and MCL § 500.3135 serious impairment thresholds. Free educational estimator.'
   : state === 'missouri'
   ? 'Calculate your estimated Missouri auto accident settlement under pure comparative fault rules (RSMo § 537.765) and 5-year statute of limitations (RSMo § 516.120). Free educational estimator.'
+  : state === 'new-hampshire'
+  ? 'Calculate your estimated New Hampshire car accident settlement payout. Applies New Hampshire\'s 51% modified comparative fault rule (RSA 507:7-d), 3-year statute of limitations (RSA 508:4), and financial responsibility laws.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -163,7 +167,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'michigan' || state === 'missouri') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -332,6 +336,46 @@ const customFaqSchema = {
                   Missouri Revised Statutes § 537.100 — 3-Year Wrongful Death Statute of Limitations
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 3-year deadline for bringing wrongful death claims resulting from motor vehicle accidents.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'new-hampshire' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative New Hampshire Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.nh.gov/insurance/consumers/auto.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  New Hampshire Insurance Department (NHID) — Auto Insurance Guide & Financial Responsibility
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official state overview of New Hampshire's Financial Responsibility Law, optional insurance, mandatory $1,000 MedPay, and UM requirements.</span>
+              </li>
+              <li>
+                <a href="https://www.gencourt.state.nh.us/rsa/html/LII/507/507-7-d.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  New Hampshire RSA § 507:7-d — Comparative Fault Standard (51% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 51% modified comparative fault rule allowing recovery when fault is 50% or less (reduced by fault share) and barring recovery at 51% or more.</span>
+              </li>
+              <li>
+                <a href="https://www.gencourt.state.nh.us/rsa/html/XXI/264/264-25.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  New Hampshire RSA § 264:25 — Minimum Auto Insurance Limits
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 25/50/25 liability insurance policy limits ($25,000 per person / $50,000 per accident bodily injury, $25,000 property damage).</span>
+              </li>
+              <li>
+                <a href="https://www.gencourt.state.nh.us/rsa/html/LII/508/508-4.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  New Hampshire RSA § 508:4 — Personal Actions 3-Year Statute of Limitations
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 3-year deadline for filing personal injury, property damage, and wrongful death lawsuits.</span>
+              </li>
+              <li>
+                <a href="https://www.gencourt.state.nh.us/rsa/html/LII/507-B/507-B-7.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  New Hampshire RSA § 507-B:7 — Municipal & Governmental Notice Requirements
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 60-day written notice requirement by registered mail for claims against city, town, or municipal government entities.</span>
               </li>
             </ul>
           </div>

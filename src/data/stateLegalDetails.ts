@@ -241,12 +241,12 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     legalAuthority: "Nevada's modified comparative negligence 51% bar."
   },
   "new-hampshire": {
-    statuteRef: "New Hampshire Revised Statutes § 507:7-d",
-    minInsurance: "25/50/25",
+    statuteRef: "NH RSA 507:7-d",
+    minInsurance: "Optional / Financial Responsibility (25/50/25 if insured, + mandatory $1,000 MedPay & matching UM)",
     majorCity: "Manchester",
     courtName: "New Hampshire Superior Court",
-    govDeadline: "180 days",
-    legalAuthority: "New Hampshire's 51% modified comparative negligence bar."
+    govDeadline: "60 days",
+    legalAuthority: "NH RSA 507:7-d (51% modified comparative fault) & RSA 264:3 (Financial Responsibility Law)."
   },
   "new-jersey": {
     statuteRef: "New Jersey Statutes § 2A:15-5.1",

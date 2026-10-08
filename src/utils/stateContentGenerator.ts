@@ -51,6 +51,10 @@ export function generateInsuranceContent(
     return `Under Missouri motor vehicle financial responsibility laws (RSMo § 303.026), every driver must maintain minimum liability insurance set at <strong>25/50/25</strong> ($25,000 per person / $50,000 per accident for Bodily Injury Liability, and $25,000 for Property Damage Liability). Additionally, under <strong>RSMo § 379.203</strong>, Missouri strictly mandates that all policies include <strong>Uninsured Motorist (UM) coverage</strong> of at least $25,000 per person / $50,000 per accident to protect you if struck by an uninsured or hit-and-run driver. Unlike mandatory UM coverage, Underinsured Motorist (UIM) coverage is optional in Missouri. Liability limits set the maximum amount an insurance carrier is obligated to pay under a policy, rather than guaranteeing a specific payout.`;
   }
 
+  if (stateName === "New Hampshire") {
+    return `New Hampshire is unique in that it does not generally require every driver to purchase auto liability insurance under its <strong>Financial Responsibility Law (RSA 264:3)</strong>. However, drivers are legally required to prove financial responsibility if involved in an at-fault accident or convicted of certain serious driving violations. When an auto liability policy is purchased, New Hampshire law (RSA 264:25) requires minimum policy limits of <strong>25/50/25</strong> ($25,000 per person / $50,000 per accident for Bodily Injury Liability, and $25,000 for Property Damage Liability). Furthermore, under <strong>RSA 264:16</strong>, all auto policies issued in NH must include a minimum of <strong>$1,000 in Medical Payments (MedPay)</strong> coverage. Under <strong>RSA 264:15</strong>, policies must also include <strong>Uninsured/Underinsured Motorist (UM/UIM) coverage</strong> matching the policy's bodily injury liability limits. Policy limits set maximum carrier liability rather than guaranteeing a settlement payout.`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -87,6 +91,16 @@ export function generateStatuteContent(
     </ul>`;
   }
 
+  if (stateName === "New Hampshire") {
+    return `In New Hampshire, personal injury and property damage civil claims are governed by statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Tort Lawsuits (3 Years):</strong> Under <strong>RSA 508:4</strong>, you have 3 years from the date of the collision to file a personal injury lawsuit in court.</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Claims for damage to your motor vehicle must also be filed within 3 years under <strong>RSA 508:4</strong>.</li>
+      <li><strong>Wrongful Death Lawsuits (3 Years):</strong> Under <strong>RSA 508:4</strong>, claims for wrongful death arising from a vehicle crash must be initiated within 3 years.</li>
+      <li><strong>Municipal Entity Notice (60 Days):</strong> If your accident involves a town, city, or municipal government agency (such as a municipal vehicle or town road maintenance defect), a formal written notice of claim must be delivered by registered mail to the clerk within <strong>60 days</strong> under <strong>RSA 507-B:7</strong> before filing a lawsuit.</li>
+    </ul>`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -107,6 +121,10 @@ export function generateDamageCapContent(
 
   if (stateName === "Missouri") {
     return `Under Missouri law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. Under the Missouri Constitution (Art. I, § 22) and Missouri Supreme Court precedent (such as <em>Watts v. Lester E. Cox Medical Centers</em>), determining non-economic damages is a constitutional jury function. Non-economic loss is evaluated based on severity of injury, treatment history, and impact on daily living. Illustrative multipliers are tools for calculation models rather than statutory mandates.`;
+  }
+
+  if (stateName === "New Hampshire") {
+    return `Under New Hampshire law, there are no statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle personal injury claims. Following landmark decisions by the New Hampshire Supreme Court (such as <em>Carson v. Maurer</em> and <em>Brannigan v. Usitalo</em>), statutory damage caps on personal injury torts were declared unconstitutional. Non-economic damages are evaluated based on injury severity, diagnostic evidence, medical treatment history, and impact on daily living. Illustrative calculation multipliers serve as modeling tools rather than statutory rules.`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -157,6 +175,19 @@ export function generateSettlementExample(
       <li><strong>Pure Comparative Fault Principle:</strong> Even if a driver is 80% responsible for a crash, Missouri law permits recovering 20% of their total proven damages from the other negligent party.</li>
     </ul>
     This illustrative framework models potential recovery when presenting a demand to an insurer or filing in the ${courtName}.`;
+    return explanation;
+  }
+
+  if (stateSlug === "new-hampshire") {
+    explanation = `Let's look at a localized settlement example in <strong>${majorCity}, New Hampshire</strong> under state comparative fault and financial responsibility rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Medical treatment ($15,000) and lost wages ($5,000) equal $20,000 in documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> General damages estimated at $37,500 (calculated at a 2.5x multiplier of medical bills).</li>
+      <li><strong>Gross Calculated Value:</strong> $20,000 + $37,500 = $57,500 gross total.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under NH RSA 507:7-d, because fault (20%) is 50% or less, the claimant can recover. The payout is reduced by 20% (-$11,500), resulting in an estimated net settlement of <strong>$46,000</strong>.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant were found 51% or more at fault for the accident, recovery would be completely barred ($0).</li>
+    </ul>
+    This illustrative framework models potential recovery when presenting a claim to an insurer or filing in the ${courtName}.`;
     return explanation;
   }
 
@@ -281,6 +312,35 @@ export function generateFAQs(
       {
         question: "What is the difference between Uninsured (UM) and Underinsured (UIM) coverage in Missouri?",
         answer: "Uninsured Motorist (UM) coverage ($25k/$50k) is mandatory under RSMo § 379.203 and covers your injuries if you are struck by a driver with no auto insurance or a hit-and-run vehicle. Underinsured Motorist (UIM) coverage is optional in Missouri and pays excess damages if the at-fault driver has insurance but their liability policy limit is too low to cover your full damages."
+      }
+    ];
+  }
+
+  if (stateName === "New Hampshire") {
+    return [
+      {
+        question: "How are car accident settlements calculated in New Hampshire?",
+        answer: "New Hampshire auto accident settlements combine documented economic losses (medical bills, lost income, vehicle damage) with non-economic damages (pain and suffering), adjusted for shared fault. Pain and suffering multipliers are illustrative estimation tools rather than legal formulas. Under New Hampshire's 51% modified comparative fault rule (RSA 507:7-d), your final recovery is reduced by your exact percentage of fault."
+      },
+      {
+        question: "How does New Hampshire's 51% modified comparative fault rule work?",
+        answer: "Under NH RSA 507:7-d, you can recover financial compensation as long as your fault is <strong>50% or less</strong>. Your total recovery is reduced proportionally by your percentage of blame (for example, a 20% fault share reduces a $50,000 award to $40,000). However, if you are found <strong>51% or more at fault</strong>, you are legally barred from recovering any damages."
+      },
+      {
+        question: "Is auto insurance mandatory in New Hampshire?",
+        answer: "No. New Hampshire is the only state in the U.S. that does not generally mandate auto insurance for all drivers. Instead, drivers operate under the state's <strong>Financial Responsibility Law (RSA 264:3)</strong>. However, if a driver chooses to purchase an auto liability policy, RSA 264:25 requires minimum policy limits of <strong>25/50/25</strong>, RSA 264:16 mandates at least <strong>$1,000 in Medical Payments (MedPay)</strong>, and RSA 264:15 mandates <strong>Uninsured/Underinsured Motorist (UM/UIM) coverage</strong> matching the liability limits."
+      },
+      {
+        question: "How long do I have to file a car accident lawsuit in New Hampshire?",
+        answer: "Under <strong>RSA 508:4</strong>, New Hampshire provides a <strong>3-year statute of limitations</strong> from the date of the crash for personal injury, property damage, and wrongful death lawsuits. However, if your claim involves a town, city, or municipal government entity, a formal written notice of claim must be delivered by registered mail within <strong>60 days</strong> under <strong>RSA 507-B:7</strong>."
+      },
+      {
+        question: "Does New Hampshire place caps on pain and suffering damages?",
+        answer: "No. New Hampshire does not impose statutory caps or legislative limits on general non-economic damages (pain and suffering) for standard passenger vehicle car accident claims. The New Hampshire Supreme Court has struck down statutory personal injury damage caps as unconstitutional."
+      },
+      {
+        question: "What is the importance of Uninsured Motorist (UM) coverage in New Hampshire?",
+        answer: "Because auto insurance is optional for drivers in New Hampshire, Uninsured Motorist (UM/UIM) coverage on your own policy is vital. Under RSA 264:15, if you purchase auto insurance in New Hampshire, UM/UIM coverage is mandatory and matches your liability limits, protecting you if you are struck by an uninsured driver."
       }
     ];
   }

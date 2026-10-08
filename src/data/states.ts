@@ -401,7 +401,7 @@ export const statesData: Record<string, StateLaw> = {
     damageCap: null,
     damageCapExplanation: null,
     statuteOfLimitations: 3,
-    explanation: "New Hampshire follows the 51% modified comparative negligence bar, meaning you can recover compensation as long as your fault does not exceed 50%."
+    explanation: "New Hampshire operates under a 51% modified comparative negligence rule (RSA 507:7-d), allowing recovery if your fault is 50% or less (reduced by your fault percentage), while barring recovery at 51% or greater. Claims must be filed within the 3-year statute of limitations (RSA 508:4)."
   },
   "new-jersey": {
     name: "New Jersey",
