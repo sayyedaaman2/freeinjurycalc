@@ -42,7 +42,7 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
   },
   california: {
     statuteRef: "California Civil Code § 1714",
-    minInsurance: "15/30/5",
+    minInsurance: "30/60/15",
     majorCity: "Los Angeles",
     courtName: "Superior Court of California",
     govDeadline: "6 months",

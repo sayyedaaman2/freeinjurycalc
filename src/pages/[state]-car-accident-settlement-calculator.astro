@@ -125,6 +125,8 @@ const pageTitle = state === 'michigan'
   ? 'Oklahoma Car Accident Settlement Calculator | 51% Comparative Fault'
   : state === 'pennsylvania'
   ? 'Pennsylvania Car Accident Settlement Calculator | Full Tort vs. Limited Tort'
+  : state === 'california'
+  ? 'California Car Accident Settlement Calculator | Pure Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
@@ -137,6 +139,8 @@ const pageDescription = state === 'michigan'
   ? 'Calculate your estimated Oklahoma car accident settlement payout. Applies Oklahoma\'s 51% modified comparative fault rule (23 O.S. § 13), 2-year statute of limitations (12 O.S. § 95), and 25/50/25 mandatory insurance laws.'
   : state === 'pennsylvania'
   ? 'Estimate a Pennsylvania car accident claim using the state\'s Full Tort and Limited Tort choices, comparative-fault rules, required medical benefits, and filing deadlines.'
+  : state === 'california'
+  ? 'Estimate a California car accident claim payout under pure comparative fault (Cal. Civ. Code § 1714), mandatory 30/60/15 insurance limits (SB 1107), 2-year SOL (CCP § 335.1), and Prop 213 rules. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -175,7 +179,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -268,6 +272,46 @@ const customFaqSchema = {
           <h3 class="text-sm font-semibold text-ink mb-2">Summary of {stateInfo.name} Car Accident Claims</h3>
           <p class="text-xs text-body leading-relaxed" set:html={summaryContent} />
         </div>
+
+        {state === 'california' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative California Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.insurance.ca.gov/01-consumers/105-type/95-auto/autoinsurancerights.cfm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  California Department of Insurance (CDI) — Automobile Insurance Rights & Coverage Guide
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official state guidance on mandatory 30/60/15 liability insurance requirements under Cal. Ins. Code § 11580.1b (SB 1107) and consumer policy protections.</span>
+              </li>
+              <li>
+                <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=1714." target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  California Civil Code § 1714 — Pure Comparative Fault Standard
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory responsibility framework and judicial doctrine (Li v. Yellow Cab Co.) allowing damage recovery reduced proportionally by fault share.</span>
+              </li>
+              <li>
+                <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CIV&sectionNum=3333.4" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  California Civil Code § 3333.4 — Proposition 213 Uninsured Motorist Restrictions
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory provisions restricting non-economic pain and suffering recovery for uninsured drivers and DUI-convicted motorists.</span>
+              </li>
+              <li>
+                <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=CCP&sectionNum=335.1." target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  California Code of Civil Procedure § 335.1 — Two-Year Statute of Limitations
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury and wrongful death civil lawsuits in California courts.</span>
+              </li>
+              <li>
+                <a href="https://leginfo.legislature.ca.gov/faces/codes_displaySection.xhtml?lawCode=GOV&sectionNum=911.2." target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  California Government Code § 911.2 — Public Entity Administrative Claim Notice
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 6-month deadline for presenting a formal written claim for money or damages against California state, county, or municipal entities.</span>
+              </li>
+            </ul>
+          </div>
+        )}
 
         {state === 'michigan' && (
           <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">

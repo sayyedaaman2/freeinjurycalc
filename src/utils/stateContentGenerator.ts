@@ -43,6 +43,10 @@ export function generateInsuranceContent(
   monetaryThreshold: number | null,
   minInsurance: string
 ): string {
+  if (stateName === "California") {
+    return `Under California motor vehicle financial responsibility laws (specifically governed by California Insurance Code <strong>§ 11580.1b</strong>, updated under SB 1107), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>30/60/15</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $15,000 for property damage). Under <strong>Cal. Ins. Code § 11580.2</strong>, insurance carriers are also statutorily required to offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching bodily injury limits unless rejected in writing. Liability insurance limits represent the maximum contractual coverage limit of a specific policy, rather than establishing the total possible financial recovery across all potential sources or defendants.`;
+  }
+
   if (stateName === "Michigan") {
     return `Under Michigan's No-Fault auto insurance system (updated under PA 21 of 2019), your first line of recovery is your own Personal Injury Protection (PIP) medical coverage, regardless of who caused the crash. Drivers select from <strong>6 PIP medical coverage levels</strong>: (1) Unlimited coverage (statutory default), (2) $500,000 cap, (3) $250,000 cap, (4) $250,000 with PIP medical exclusion for qualified health coverage, (5) $50,000 cap (Medicaid enrollees only), or (6) PIP medical opt-out (eligible Medicare Parts A & B beneficiaries). PIP also provides wage loss replacement for 85% of gross income for up to 3 years. For third-party residual liability when suing an at-fault driver, Michigan policyholders maintain Bodily Injury (BI) coverage set at a default limit of <strong>$250,000 per person / $500,000 per accident</strong> (governed by MCL § 500.3009), with an elective statutory minimum opt-down of <strong>$50,000 / $100,000</strong> upon signing a DIFS waiver.`;
   }
@@ -88,6 +92,16 @@ export function generateStatuteContent(
   statuteOfLimitations: number,
   govDeadline: string
 ): string {
+  if (stateName === "California") {
+    return `In California, personal injury and property damage civil claims are governed by statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under California Code of Civil Procedure <strong>§ 335.1</strong>, you generally have 2 years from the date of the collision to file a personal injury civil lawsuit against an at-fault driver, subject to statutory tolling exceptions.</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>Cal. CCP § 338(b)</strong>, claims for motor vehicle repair or property damage must be filed within 3 years.</li>
+      <li><strong>Government Entity Claims (6 Months Notice):</strong> Under the California Government Claims Act (<strong>Cal. Gov. Code § 911.2</strong>), if your claim for money or damages is against a public entity (such as a city transit bus, municipal vehicle, or state agency), a formal written claim presentation must be delivered within <strong>6 months</strong> of the incident before initiating litigation.</li>
+    </ul>
+    Applicable deadlines depend on specific facts, and individuals should consult qualified California legal counsel.`;
+  }
+
   if (stateName === "Michigan") {
     return `In Michigan, auto accident legal claims are governed by two distinct statutory deadlines:
     <ul class="list-disc pl-5 space-y-1 my-2">
@@ -145,6 +159,15 @@ export function generateDamageCapContent(
   cap: number | null,
   damageCapExplanation: string | null
 ): string {
+  if (stateName === "California") {
+    return `Under the California Civil Code (<strong>§ 1714</strong>) and landmark California Supreme Court precedent (<em>Li v. Yellow Cab Co.</em> (1975) 13 Cal.3d 804), California imposes no statutory dollar caps on general non-economic damages (pain and suffering) for standard passenger vehicle accident claims against private motorists. However, recovery is governed by key statutory and evidentiary rules:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Proposition 213 Non-Economic Restrictions (Cal. Civ. Code § 3333.4):</strong> Under Civil Code § 3333.4, drivers who are uninsured at the time of the crash (or drivers convicted of DUI in connection with the accident) are statutorily barred from recovering non-economic pain and suffering damages. Prop 213 does <em>not</em> bar recovery for out-of-pocket economic losses (medical bills, wage loss), nor does it restrict non-economic recovery for injured passengers who do not own the uninsured vehicle.</li>
+      <li><strong>Medical Expense Valuation under <em>Howell</em>:</strong> Under <em>Howell v. Hamilton Meats & Provisions, Inc.</em> (2011) 52 Cal.4th 541, recoverable medical economic damages are limited to the amounts actually paid by health insurance or accepted by medical providers as payment in full, rather than gross itemized billings.</li>
+      <li><strong>Pure Comparative Negligence:</strong> An injured party's total recoverable damages are reduced in direct proportion to their percentage of fault.</li>
+    </ul>`;
+  }
+
   if (stateName === "Michigan") {
     return `For third-party motor vehicle claims in Michigan, there are no statutory dollar caps on noneconomic damages (pain and suffering). However, under <strong>MCL § 500.3135(1) & (5)</strong>, recovery for pain and suffering is restricted by a strict statutory verbal threshold. To recover noneconomic damages from an at-fault driver, an injured victim must establish a <strong>"serious impairment of body function,"</strong> defined by a 3-part test:
     <ol class="list-decimal pl-5 space-y-1 my-2">
@@ -197,6 +220,19 @@ export function generateSettlementExample(
 ): string {
   let explanation = "";
   
+  if (stateSlug === "california") {
+    explanation = `Let's look at an illustrative settlement calculation example in <strong>${majorCity}, California</strong> under state pure comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses (Post-<em>Howell</em> Actual Costs):</strong> Medical treatment ($15,000 actual paid/accepted amount) and lost wages ($5,000) equal $20,000 in documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> Non-economic damages estimated at $37,500 using a 2.5x multiplier of actual medical expenses for severe <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Under Prop 213 (Cal. Civ. Code § 3333.4), this non-economic component requires the claimant to carry required insurance or be a qualified non-owner passenger.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
+      <li><strong>Pure Comparative Fault Adjustment (20% Fault):</strong> Under Cal. Civ. Code § 1714 and <em>Li v. Yellow Cab Co.</em>, if the claimant is found 20% responsible for the collision, the gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
+      <li><strong>Pure Comparative Fault Principle:</strong> Even if a driver is 80% responsible for a crash in California, state law permits recovering 20% of proven damages from another negligent driver.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
   if (stateSlug === "michigan") {
     explanation = `Let's look at how a claim is evaluated in <strong>${majorCity}, Michigan</strong> under state No-Fault rules:
     <ul class="list-disc pl-5 space-y-1 my-3">
@@ -330,6 +366,35 @@ export function generateFAQs(
   statuteRef: string,
   courtName: string
 ): Array<{ question: string; answer: string }> {
+  if (stateName === "California") {
+    return [
+      {
+        question: "How does pure comparative negligence work in California car accidents?",
+        answer: "Under California Civil Code § 1714 and <em>Li v. Yellow Cab Co.</em>, California follows a pure comparative negligence standard. You can seek compensation even if you were mostly responsible for the collision (up to 99% at fault). Your final monetary recovery is reduced in direct proportion to your share of fault (for example, if your damages total $50,000 and you are 20% at fault, your net recovery is $40,000)."
+      },
+      {
+        question: "What are California's minimum mandatory auto insurance limits?",
+        answer: "Under California Insurance Code § 11580.1b (updated under SB 1107 effective January 1, 2025), California drivers must carry minimum liability coverage of <strong>30/60/15</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $15,000 for property damage). These policy limits represent maximum insurer contract obligations for a specific policy, rather than guaranteed settlement amounts."
+      },
+      {
+        question: "What is Proposition 213 and how does it affect California settlement values?",
+        answer: "Under California Civil Code § 3333.4 (Proposition 213), drivers who operate a vehicle without mandatory liability insurance at the time of an accident are statutorily barred from recovering non-economic pain and suffering damages, even if the other driver was 100% at fault. However, Prop 213 does not bar recovery for out-of-pocket economic losses (medical bills and lost wages), nor does it restrict non-economic recovery for injured passengers who do not own the uninsured vehicle."
+      },
+      {
+        question: "How are medical bills evaluated in California after the Howell decision?",
+        answer: "Under the California Supreme Court decision in <em>Howell v. Hamilton Meats & Provisions, Inc.</em> (2011) 52 Cal.4th 541, an injured plaintiff's recoverable medical economic damages are limited to the amounts actually paid by health insurance or accepted by healthcare providers as payment in full, rather than gross itemized billings. Educational calculators that model non-economic multipliers typically apply factors to actual medical costs."
+      },
+      {
+        question: "What are the deadlines to file a car accident claim in California?",
+        answer: "Under California Code of Civil Procedure <strong>§ 335.1</strong>, you generally have <strong>2 years</strong> from the date of the collision to file a personal injury civil lawsuit in the Superior Court of California. Property damage claims have a 3-year deadline under Cal. CCP § 338(b). However, under California Government Code <strong>§ 911.2</strong>, claims for money or damages against a state, county, or municipal government entity require a formal written claim presentation within <strong>6 months</strong> of the incident."
+      },
+      {
+        question: "Does an auto insurance policy limit determine my total possible recovery?",
+        answer: "No. An insurance policy limit represents the contractual cap on that specific insurer's liability. It does not limit total proven damages legally owed by an at-fault driver, nor does it prevent seeking recovery through additional applicable policies, underinsured motorist (UIM) coverage, or multiple liable defendants."
+      }
+    ];
+  }
+
   if (stateName === "Michigan") {
     return [
       {
