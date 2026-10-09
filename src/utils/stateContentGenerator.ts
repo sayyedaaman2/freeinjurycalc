@@ -74,6 +74,10 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Texas") {
+    return `Under Texas motor vehicle financial responsibility laws (governed by Texas Transportation Code <strong>§ 601.072</strong>), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>30/60/25</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $25,000 for property damage). Under <strong>Texas Insurance Code § 1952.152</strong>, automobile liability policies issued in Texas must include <strong>Personal Injury Protection (PIP)</strong> coverage of at least $2,500 per person, unless the named insured rejects the coverage in writing. Under <strong>Tex. Ins. Code § 1952.153</strong>, PIP covers 100% of reasonable medical expenses and <strong>80% of actual lost income</strong> incurred within 3 years of the crash. Crucially, under <strong>Tex. Ins. Code § 1952.155</strong>, an insurer paying PIP benefits has <strong>no right of subrogation</strong> against any third-party liability settlement or recovery obtained by the injured party. Additionally, under <strong>Tex. Ins. Code § 1952.101</strong>, insurers must offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching bodily injury limits unless rejected in writing. Liability policy limits represent maximum contractual coverage caps rather than guaranteed settlement values.`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -151,6 +155,17 @@ export function generateStatuteContent(
     Applicable deadlines depend on the specific facts of your crash, and readers should consult qualified Pennsylvania legal counsel regarding their specific claim.`;
   }
 
+  if (stateName === "Texas") {
+    return `In Texas, car accident legal claims and administrative notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury & Property Damage Lawsuits (2 Years):</strong> Under Texas Civil Practice and Remedies Code <strong>§ 16.003(a)</strong>, you have 2 years from the date of the collision to file a personal injury or property damage civil lawsuit against an at-fault driver.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>Tex. Civ. Prac. & Rem. Code § 16.003(b)</strong>, wrongful death actions arising from a motor vehicle crash must be filed within 2 years of the date of death.</li>
+      <li><strong>State & County Government Entity Claims (6 Months Notice):</strong> Under the Texas Tort Claims Act (<strong>Tex. Civ. Prac. & Rem. Code § 101.101(a)</strong>), formal written notice of claim must be delivered to a state or county governmental unit within <strong>6 months (180 days)</strong> of the incident.</li>
+      <li><strong>Municipal Charter Claim Notice Deadlines (45–90 Days):</strong> Under <strong>Tex. Civ. Prac. & Rem. Code § 101.101(b)</strong>, city charter notice requirements are explicitly preserved. Many Texas municipalities enforce significantly shorter deadlines (e.g., City of Austin requires written notice within 45 days; City of Houston and City of San Antonio require notice within 90 days). Claimants should not assume a universal 180-day window applies to all public entities.</li>
+    </ul>
+    Applicable deadlines depend on specific facts, and readers should consult qualified Texas legal counsel regarding their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -192,6 +207,22 @@ export function generateDamageCapContent(
 
   if (stateName === "Pennsylvania") {
     return `Under the Pennsylvania Constitution (<strong>Art. III, § 18</strong>), the General Assembly is prohibited from limiting the amount of damages recovered for injuries resulting in death or for injuries to person or property in claims against private individuals. For claims against private motorists, Pennsylvania imposes no statutory dollar caps on economic or non-economic damages. However, for policyholders who selected Limited Tort, non-economic damages (pain and suffering) are barred unless the injury satisfies the <strong>75 Pa.C.S. § 1702</strong> "serious injury" threshold (death, serious impairment of body function, or permanent serious disfigurement) or a § 1705 statutory exception. Statutory damages caps do apply to government defendants ($250,000 per occurrence for state Commonwealth entities under 42 Pa.C.S. § 8528, and $500,000 total aggregate limit for local political subdivisions under 42 Pa.C.S. § 8553). Mathematical multipliers in software calculators serve as educational modeling tools rather than legal formulas or statutory guarantees.`;
+  }
+
+  if (stateName === "Texas") {
+    return `Under the Texas Constitution (Art. I, § 13) and Texas Civil Practice and Remedies Code (<strong>Chapter 41</strong>), Texas imposes no statutory dollar caps on general non-economic damages (pain and suffering) for standard personal injury claims against private motorists. However, recovery is subject to specific statutory frameworks and legal distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Proportionate Responsibility (§ 33.001):</strong> Under Tex. Civ. Prac. & Rem. Code § 33.001, a claimant cannot recover damages if their percentage of responsibility is greater than 50% (51% bar). Under <strong>§ 33.013(a)</strong>, each defendant is liable only for the percentage of responsibility assigned to them, unless <strong>§ 33.013(b)</strong> applies: joint and several liability is imposed on a defendant only if their percentage of responsibility is greater than 50% (or for specific intentional criminal acts).</li>
+      <li><strong>Government Entity Damage Caps (TTCA § 101.023):</strong> Unlike private-driver torts, claims against public entities under the Texas Tort Claims Act are subject to strict statutory liability caps:
+        <ul class="list-disc pl-5 space-y-1 my-1">
+          <li><strong>State Government:</strong> Capped at $250,000 per person and $500,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage (§ 101.023(a)).</li>
+          <li><strong>Unit of Local Government:</strong> Capped at $100,000 per person and $300,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage (§ 101.023(b)), except as provided by subsection (c).</li>
+          <li><strong>Municipality:</strong> Capped at $250,000 per person and $500,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage (§ 101.023(c)).</li>
+          <li><strong>Emergency Service Organization:</strong> Capped at $100,000 per person and $300,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage (§ 101.023(d)), subject to the statutory exception.</li>
+        </ul>
+      </li>
+      <li><strong>Medical Expense Valuation ("Paid vs. Incurred"):</strong> Under Tex. Civ. Prac. & Rem. Code <strong>§ 41.0105</strong>, recoverable medical expenses in court are limited to amounts actually paid or incurred by or on behalf of the claimant, rather than initial gross itemized billings.</li>
+    </ul>`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -293,6 +324,19 @@ export function generateSettlementExample(
       <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
       <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under 42 Pa.C.S. § 7102, because the claimant's fault (20%) is 50% or less, recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
       <li><strong>51% Bar Rule:</strong> If the claimant's negligence is 51% or greater, third-party recovery is completely barred ($0).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "texas") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Texas</strong> under state proportionate responsibility rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses (Post-§ 41.0105 Paid Costs):</strong> Documented medical treatment ($15,000 actual paid/incurred amount) and lost income ($5,000) equal $20,000 in economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical costs for severe <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
+      <li><strong>Proportionate Responsibility Adjustment (20% Fault):</strong> Under Tex. Civ. Prac. & Rem. Code § 33.001, because the claimant's fault (20%) is 50% or less, recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an estimated amount after the hypothetical comparative-fault reduction of <strong>$46,000</strong>.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant were found greater than 50% responsible (51% or higher), third-party recovery would be completely barred ($0).</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -543,6 +587,35 @@ export function generateFAQs(
       {
         question: "Does an auto insurance policy limit determine my total settlement value?",
         answer: "No. An insurance policy limit represents the contractual cap on the insurer's liability for that policy. It does not guarantee a settlement payout equal to that limit, nor does it restrict the total value of proven damages legally owed by an at-fault driver."
+      }
+    ];
+  }
+
+  if (stateName === "Texas") {
+    return [
+      {
+        question: "How does proportionate responsibility work in Texas car accidents?",
+        answer: "Under Texas Civil Practice and Remedies Code <strong>§ 33.001</strong>, Texas enforces a 51% modified comparative responsibility rule. You can recover compensation as long as your percentage of responsibility is <strong>50% or less</strong>. Your total award is reduced in direct proportion to your share of fault (for example, a 20% fault rating reduces a $50,000 claim to $40,000). If your share of responsibility is greater than 50% (51% or higher), you are legally barred from recovery. Under <strong>§ 33.013</strong>, a defendant is jointly and severally liable for all damages only if their percentage of responsibility exceeds 50% or specific statutory exceptions apply."
+      },
+      {
+        question: "What are Texas's minimum mandatory auto insurance requirements?",
+        answer: "Under Texas Transportation Code <strong>§ 601.072</strong>, drivers must carry minimum liability coverage of <strong>30/60/25</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $25,000 for property damage). Additionally, under Texas Insurance Code § 1952.101, insurance companies must offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching your bodily injury limits unless rejected in writing."
+      },
+      {
+        question: "What is Personal Injury Protection (PIP) in Texas and can insurers subrogate it?",
+        answer: "Under Texas Insurance Code <strong>§ 1952.152</strong>, automobile liability policies must include Personal Injury Protection (PIP) of at least $2,500 unless rejected in writing. PIP covers 100% of reasonable medical expenses and <strong>80% of lost income</strong> incurred within 3 years (Tex. Ins. Code § 1952.153). Crucially, under <strong>Tex. Ins. Code § 1952.155</strong>, an insurer paying PIP benefits has <strong>no right of subrogation</strong> against a third-party liability recovery."
+      },
+      {
+        question: "What are the deadlines for filing a car accident lawsuit and government notice in Texas?",
+        answer: "Under Texas Civil Practice and Remedies Code <strong>§ 16.003</strong>, the standard statute of limitations for personal injury, property damage, and wrongful death lawsuits is <strong>2 years</strong>. For claims against state or county government entities, written notice must be submitted within <strong>6 months (180 days)</strong> under Tex. Civ. Prac. & Rem. Code § 101.101(a). However, municipal charter deadlines (§ 101.101(b)) can be much shorter (such as 45 days in Austin or 90 days in Houston)."
+      },
+      {
+        question: "Does Texas place statutory caps on pain and suffering damages?",
+        answer: "For standard personal injury claims against private motorists, Texas law imposes no statutory caps on general non-economic damages (pain and suffering). However, under the Texas Tort Claims Act (<strong>Tex. Civ. Prac. & Rem. Code § 101.023</strong>), claims against governmental entities are subject to strict statutory liability caps: state government ($250,000 per person and $500,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage), unit of local government ($100,000 per person and $300,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage, except as provided by subsection (c)), municipality ($250,000 per person and $500,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage), and emergency service organization ($100,000 per person and $300,000 per occurrence for bodily injury or death; $100,000 per occurrence for property damage, subject to the statutory exception). Additionally, court-recoverable medical expenses are limited to amounts paid or incurred under Tex. Civ. Prac. & Rem. Code § 41.0105."
+      },
+      {
+        question: "What is a Stowers demand in Texas auto insurance negotiations?",
+        answer: "Originating from <em>G.A. Stowers Furniture Co. v. American Indemnity Co.</em> (1929), the <em>Stowers</em> doctrine is a fact-specific Texas common-law doctrine governing an insurance company's duty to its insured driver. When an injured party makes a settlement demand within policy limits where liability is reasonably clear and offers a full release, the insurer must act as an ordinarily prudent insurer in considering the offer. <em>Stowers</em> is an insurer duty owed to its policyholder—it is not a statutory guarantee allowing a claimant to automatically collect beyond policy limits."
       }
     ];
   }

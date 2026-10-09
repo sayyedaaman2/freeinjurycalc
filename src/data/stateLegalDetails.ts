@@ -357,8 +357,8 @@ export const stateLegalDetails: Record<string, LegalDetails> = {
     minInsurance: "30/60/25",
     majorCity: "Houston",
     courtName: "Texas District Court",
-    govDeadline: "180 days",
-    legalAuthority: "Texas's modified comparative negligence 51% bar."
+    govDeadline: "180 days (State) / 45-90 days (Municipal)",
+    legalAuthority: "Texas Proportionate Responsibility standard (Tex. Civ. Prac. & Rem. Code § 33.001), mandatory PIP rules (Tex. Ins. Code § 1952.152), and 2-year statute of limitations (Tex. Civ. Prac. & Rem. Code § 16.003)."
   },
   utah: {
     statuteRef: "Utah Code § 78B-5-818",

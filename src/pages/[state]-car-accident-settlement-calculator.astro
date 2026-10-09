@@ -127,6 +127,8 @@ const pageTitle = state === 'michigan'
   ? 'Pennsylvania Car Accident Settlement Calculator | Full Tort vs. Limited Tort'
   : state === 'california'
   ? 'California Car Accident Settlement Calculator | Pure Comparative Fault'
+  : state === 'texas'
+  ? 'Texas Car Accident Settlement Calculator | 51% Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'michigan'
@@ -141,6 +143,8 @@ const pageDescription = state === 'michigan'
   ? 'Estimate a Pennsylvania car accident claim using the state\'s Full Tort and Limited Tort choices, comparative-fault rules, required medical benefits, and filing deadlines.'
   : state === 'california'
   ? 'Estimate a California car accident claim payout under pure comparative fault (Cal. Civ. Code § 1714), mandatory 30/60/15 insurance limits (SB 1107), 2-year SOL (CCP § 335.1), and Prop 213 rules. Free educational tool.'
+  : state === 'texas'
+  ? 'Calculate your estimated Texas auto accident settlement under proportionate responsibility (Tex. Civ. Prac. & Rem. Code § 33.001), 30/60/25 insurance laws, and 2-year SOL (CCP § 16.003). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -179,7 +183,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -508,6 +512,52 @@ const customFaqSchema = {
                   42 Pa.C.S. § 5524 — Two-Year Statute of Limitations for Injury Torts
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury, property damage, and wrongful death lawsuits in Pennsylvania courts.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'texas' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Texas Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.tdi.texas.gov/pubs/consumer/cb020.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Department of Insurance (TDI) — Consumer Automobile Insurance Guide
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Official state guidance on mandatory 30/60/25 liability coverage, Personal Injury Protection (PIP) rules, and policy protections.</span>
+              </li>
+              <li>
+                <a href="https://statutes.capitol.texas.gov/Docs/CP/htm/CP.33.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Civil Practice & Remedies Code Chapter 33 — Proportionate Responsibility
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 51% modified comparative responsibility rule (§ 33.001) and joint-and-several liability conditions (§ 33.013).</span>
+              </li>
+              <li>
+                <a href="https://statutes.capitol.texas.gov/Docs/TN/htm/TN.601.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Transportation Code Chapter 601 — Motor Vehicle Safety Responsibility Act
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory financial responsibility requirements establishing mandatory minimum 30/60/25 liability policy limits (§ 601.072).</span>
+              </li>
+              <li>
+                <a href="https://statutes.capitol.texas.gov/Docs/IN/htm/IN.1952.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Insurance Code Chapter 1952 — Personal Injury Protection & Mandatory Policy Coverages
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory PIP coverage mandate (§ 1952.152), 80% lost wage replacement (§ 1952.153), and statutory prohibition against PIP subrogation (§ 1952.155).</span>
+              </li>
+              <li>
+                <a href="https://statutes.capitol.texas.gov/Docs/CP/htm/CP.16.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Civil Practice & Remedies Code § 16.003 — Two-Year Statute of Limitations
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year deadline for filing personal injury, property damage, and wrongful death civil lawsuits in Texas courts.</span>
+              </li>
+              <li>
+                <a href="https://statutes.capitol.texas.gov/Docs/CP/htm/CP.101.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Texas Civil Practice & Remedies Code Chapter 101 — Texas Tort Claims Act (TTCA)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 180-day state notice requirement (§ 101.101(a)), preservation of municipal charter notice deadlines (§ 101.101(b)), and statutory government liability caps (§ 101.023).</span>
               </li>
             </ul>
           </div>
