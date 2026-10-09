@@ -45,11 +45,17 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
     if (cardNumber === 5) {
       return {
         title: `${stateLaw.name} Auto Insurance Limits`,
-        text: `Every motorist in ${stateLaw.name} must maintain minimum liability coverage, currently set at <strong>${stateDetails.minInsurance}</strong>. Your payout from the insurer is capped at these policy limits unless you have underinsured motorist coverage or file a personal claim against the driver's assets.`
+        text: `Every motorist in ${stateLaw.name} must maintain minimum liability coverage, currently set at <strong>${stateDetails.minInsurance}</strong>. A policy's limits constrain what that specific policy may pay, while total potential recovery can depend on applicable coverage options, other liable parties, additional policies, and available assets.`
       };
     }
     
     if (cardNumber === 6) {
+      if (stateLaw.name === "Pennsylvania") {
+        return {
+          title: "First-Party Medical Benefits & Tort Options",
+          text: "Pennsylvania requires a minimum of $5,000 in First-Party Medical Benefits for medical expenses regardless of fault under 75 Pa.C.S. § 1711. Under Pennsylvania's Choice No-Fault system, Full Tort generally preserves the right to seek non-economic damages, while Limited Tort restricts those damages unless the statutory serious-injury threshold or an applicable exception is satisfied. Limited Tort does not eliminate the right to seek economic losses. This calculator cannot determine whether an injury qualifies under the law."
+        };
+      }
       return {
         title: stateLaw.noFault ? "No-Fault PIP Thresholds" : "At-Fault Tort Claim rules",
         text: stateLaw.noFault
@@ -155,7 +161,7 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
         <h3 class="text-base font-semibold text-ink font-sans mb-2">
           {getCard(5, "At-Fault Insurance Limits", "").title}
         </h3>
-        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(5, "", "Payouts are practically capped by the at-fault driver's insurance policy limits. Even if your damages are high, recovering beyond the insurer's liability maximum is difficult.").text} />
+        <p class="text-xs text-body leading-relaxed font-sans" set:html={getCard(5, "", "A policy's limits constrain what that specific policy may pay. Total potential recovery can depend on applicable coverage, other liable parties, other policies, and available assets.").text} />
       </div>
 
       <!-- Card 6: No-Fault Insurance (PIP) -->

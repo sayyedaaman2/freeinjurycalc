@@ -485,7 +485,7 @@ export function generateFAQs(
   const faqs = [
     {
       question: `How is a car accident settlement calculated in ${stateName}?`,
-      answer: `Settlements in ${stateName} are determined by combining your economic losses (including ambulance rides, hospital treatments, surgery, medications, and lost income) with non-economic damages (pain and suffering). To value pain and suffering, claims adjusters typically apply a multiplier of 1.5x to 5x your medical bills, depending on the severity of the injury. The final amount is then adjusted to match local negligence limits.`
+      answer: `Settlements in ${stateName} may be evaluated by considering documented economic losses (including medical treatments and lost income), injury impact, evidence, applicable state fault laws, and available insurance coverage. The formula used in this calculator provides an illustrative educational estimate and does not represent a universal insurance company formula or statutory guarantee.`
     }
   ];
 
