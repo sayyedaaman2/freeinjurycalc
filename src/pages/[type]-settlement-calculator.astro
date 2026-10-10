@@ -186,7 +186,7 @@ const { type } = Astro.params;
     <SpecialtyCalculators />
 
     <!-- General Educational section as secondary value -->
-    <Educational seedName={data.title} />
+    <Educational seedName={data.subtitle ? data.subtitle.replace(" Valuation", "").replace(" Settlement", "") : data.h1.replace(" Calculator", "")} />
   </main>
 
   <!-- Footer Section -->

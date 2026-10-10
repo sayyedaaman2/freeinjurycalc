@@ -53,10 +53,14 @@ const organizationSchema = isHomepage ? {
 } : null;
 
 // JSON-LD Software Application Schema
+const softwareName = stateName
+  ? `${stateName} Car Accident Settlement Calculator`
+  : (title && title.includes('|') ? title.split('|')[0].trim() : "Free Car Accident Settlement Calculator");
+
 const softwareSchema = {
   "@context": "https://schema.org",
   "@type": "SoftwareApplication",
-  "name": stateName ? `${stateName} Car Accident Settlement Calculator` : "Free Car Accident Settlement Calculator",
+  "name": softwareName,
   "operatingSystem": "All",
   "applicationCategory": "BusinessApplication",
   "offers": {
@@ -66,7 +70,7 @@ const softwareSchema = {
   },
   "description": stateName 
     ? `Calculate your estimated car accident settlement payout in ${stateName} instantly. Auto-calculates based on medical bills, lost wages, and ${stateName}'s comparative negligence laws.`
-    : "Estimate your car accident settlement payout instantly. Auto-calculates based on medical bills, lost wages, and state-specific comparative negligence laws.",
+    : description || "Estimate your car accident settlement payout instantly. Auto-calculates based on medical bills, lost wages, and state-specific comparative negligence laws.",
   "dateModified": "2026-08-28T00:00:00+00:00"
 };
 

@@ -458,95 +458,109 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "motorcycle-accident": {
     slug: "motorcycle-accident-settlement-calculator",
-    title: "Motorcycle Accident Settlement Calculator | Payout & Claim Estimator",
-    description: "Free online motorcycle accident settlement calculator. Estimate your motorbike accident claim compensation, average injury payouts, and understand how motorcycle risk factors affect your settlement.",
-    h1: "Motorcycle Accident Settlement Calculator",
-    intro: "Calculate your motorcycle injury claim compensation value. Use our free motorcycle accident compensation calculator to estimate payouts, evaluate motorbike accident claim values, and check your settlement range.",
+    title: "Motorcycle Accident Settlement & Compensation Calculator | Payout Estimator",
+    description: "Free online motorcycle accident settlement calculator. Estimate your motorbike accident claim compensation, review mathematical injury models, and understand how comparative fault rules apply.",
+    h1: "Motorcycle Accident Settlement & Compensation Calculator",
+    intro: "Calculate an illustrative motorcycle injury claim valuation using documented medical expenses, lost wages, motorcycle damage, and state fault rules. This tool provides an educational reference model and does not predict actual insurance or court payouts.",
     subtitle: "Motorcycle Injury Settlement Valuation",
     presetSeverity: "4.0",
     presetMedBills: 35000,
     presetTab: "detailed",
     calculatorType: "car-accident",
     aboutHeading1: "Motorcycle & Motorbike Accident Claim Calculators",
-    aboutContent1: "Filing a motorcycle accident claim (or a motorbike accident claim) involves unique calculations compared to standard car accidents. Because motorcycle riders are exposed to direct impact, injuries like severe fractures, head trauma, and road rash require extensive rehabilitation. Our motorcycle injury claim calculator helps you sum up medical bills, lost wages, and out-of-pocket costs, then applies standard insurer formulas to estimate your potential motorcycle accident settlement value. Using a dedicated motorcycle accident compensation calculator helps ensure you don't undervalue your claim when negotiating with insurance adjusters.",
-    aboutHeading2: "What is the Average Settlement for a Motorcycle Accident?",
-    aboutContent2: "When asking what is the average payout for a motorcycle accident, values typically range from $50,000 to $150,000 for moderate injuries, and can easily exceed $500,000 for severe, permanent disabilities. These high amounts reflect the massive medical expenses and long recovery periods. Additionally, insurers use complex liability math (similar to a motorcycle risk calculator) to evaluate how factors like helmet usage, road conditions, and lane splitting affect comparative negligence, which can reduce your net settlement. Using our motorcycle accident claim calculator helps you estimate these numbers beforehand.",
+    aboutContent1: "Filing a motorcycle accident claim (or a motorbike accident claim) involves distinct damage items compared to standard passenger car collisions. Because riders lack outer vehicle shielding, direct impacts often cause severe fractures, road rash, or traumatic head injuries requiring prolonged rehabilitation. Our motorcycle injury claim calculator helps sum up itemized medical bills, verified wage loss, protective gear replacement, and bike repair costs, then applies an illustrative severity multiplier to model a non-economic damage component. Using a dedicated motorcycle accident compensation calculator provides an educational baseline before evaluating insurance claim options.",
+    aboutHeading2: "How Are Motorcycle Accident Claim Valuations Calculated?",
+    aboutContent2: "Because motorcycle accidents often result in severe physical impacts, calculated claim estimates vary widely based on documented financial losses. Claims involving moderate injuries and missed work result in lower estimates, while cases involving permanent disability, extensive surgeries, or ongoing care yield significantly higher estimates due to high medical expenses and long-term lost earning capacity. Additionally, insurance adjusters analyze liability factors (such as speed, road conditions, and lane positioning) under state comparative negligence rules, which can directly reduce your net settlement. Using our motorcycle accident claim calculator helps you model these variables beforehand.",
     formulaExplanation: `
-      <p>Motorcycle accidents involve direct impacts resulting in high medical bills. Insurers use higher multipliers (typically <strong>3.0x to 5.0x</strong>) for pain and suffering due to the severe nature of riders' injuries.</p>
+      <p>This calculator uses an illustrative mathematical model combining documented economic losses with a severity multiplier applied to medical expenses:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
-        Motorcycle Settlement = (Meds + Wages + Bike damage) + (Meds &times; Bike Multiplier) - Fault deduction
+        Calculated Base = [(Meds + Wages + Bike/Gear Damage) + (Meds &times; Severity Multiplier)] &times; (100% - Fault %)
       </div>
-      <p>Because of bias against riders, claims adjusters frequently assign comparative negligence to the motorcyclist (e.g. alleging excessive speed or unsafe lane changes). Proving liability is key to securing your calculated settlement check.</p>
+      <p>In this calculator, the pain and suffering multiplier (ranging from 1.5x to 5.0x based on user selection) is strictly an <strong>illustrative model assumption</strong>, not a universal insurance practice or legal standard. Insurers do not use a single mandatory multiplier. The calculated figure is an educational reference model. Actual insurance settlements or jury verdicts depend on proved liability, verified medical records, policy coverage caps, and state negligence laws. To compare how different claim models structure damages, explore our <a href="/pain-and-suffering-calculator/" class="text-link hover:underline">pain and suffering calculator</a> or our <a href="/back-injury-settlement-calculator/" class="text-link hover:underline">back injury settlement calculator</a>.</p>
     `,
     inputsExplanation: `
-      <p>Key inputs for motorcycle claims:</p>
+      <p>Key inputs for motorcycle claim calculations:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Medical Bills:</strong> Treatment for orthopedic fractures, road rash skin grafts, concussions, or internal injuries.</li>
-        <li><strong>Bike Damage:</strong> The retail cost of repairing or replacing your motorcycle and protective riding gear.</li>
-        <li><strong>Rider Fault:</strong> Adjusted based on state comparative rules. A 10% fault rating will dock a $100,000 claim to $90,000.</li>
+        <li><strong>Medical Bills:</strong> Itemized invoices for emergency care, orthopedic surgery, skin grafting, physical therapy, and diagnostic imaging.</li>
+        <li><strong>Bike & Gear Damage:</strong> Retail repair/replacement cost for your motorcycle plus damaged protective gear (helmet, leather jacket, riding boots, gloves).</li>
+        <li><strong>Rider Fault (%):</strong> Under comparative negligence rules, an assigned fault percentage directly reduces your net calculated estimate (for example, in an illustrative $100,000 gross estimate, a 10% fault rating reduces the net estimate to $90,000).</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are two worked examples of motorcycle settlements:</p>
+      <p>The following examples illustrate how the mathematical model functions under different claim scenarios (assuming liability insurance policy limits are sufficient to cover bodily injury losses):</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Fractured Leg & Road Rash</strong>
-          <p>An SUV merges into you, fracturing your tibia and causing road rash. You require hardware placement. You carry 0% fault.</p>
+          <strong class="text-ink block mb-1">Scenario A: Leg Fracture & Road Rash (0% Fault, Sufficient Policy Limits)</strong>
+          <p>An SUV merges into a motorcyclist, causing a tibia fracture requiring surgical hardware and treatment for severe road rash. Comparative fault is 0%.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
             <li>Medical Bills (Past + Future): $45,000</li>
             <li>Lost Wages: $8,500</li>
             <li>Bike Damage & Gear: $9,200</li>
-            <li>Pain Multiplier: 4.0x (surgical hardware)</li>
-            <li>Pain & Suffering: $45,000 &times; 4.0 = $180,000</li>
-            <li>Gross Value: $62,700 + $180,000 = $242,700</li>
-            <li><strong>Final Settlement Check: $242,700</strong></li>
+            <li>Illustrative Multiplier: 4.0x (user-selected severity model)</li>
+            <li>Pain & Suffering Valuation: $45,000 &times; 4.0 = $180,000</li>
+            <li>Gross Calculated Value: ($45,000 + $8,500 + $9,200) + $180,000 = $242,700</li>
+            <li><strong>Illustrative Mathematical Estimate: $242,700</strong></li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Traumatic Brain Injury (Helmet worn, shared fault)</strong>
-          <p>A car turns left in front of you. You suffer a concussion and shoulder injury. The insurer alleges 20% shared fault for riding in a blind spot.</p>
+          <strong class="text-ink block mb-1">Scenario B: Concussion & Shoulder Injury (20% Shared Fault, Sufficient Policy Limits)</strong>
+          <p>A vehicle turns left in front of a motorcyclist. The rider suffers a concussion and shoulder strain. Comparative fault is assessed at 20% for riding in a blind spot.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
             <li>Medical Bills (Past + Future): $68,000</li>
             <li>Lost Wages: $15,000</li>
             <li>Bike Damage: $6,000</li>
-            <li>Pain Multiplier: 3.5x (head trauma)</li>
-            <li>Pain & Suffering: $68,000 &times; 3.5 = $238,000</li>
-            <li>Gross Value: $89,000 + $238,000 = $327,000</li>
+            <li>Illustrative Multiplier: 3.5x (user-selected severity model)</li>
+            <li>Pain & Suffering Valuation: $68,000 &times; 3.5 = $238,000</li>
+            <li>Gross Calculated Value: ($68,000 + $15,000 + $6,000) + $238,000 = $327,000</li>
             <li>20% Fault Deduction: -$65,400</li>
-            <li><strong>Final Settlement Check: $261,600</strong></li>
+            <li><strong>Illustrative Mathematical Estimate: $261,600</strong></li>
           </ul>
         </div>
       </div>
     `,
     legalBackground: `
-      <p>In motorcycle injury claims, jury bias is a common defense tactic. Defense lawyers try to portray motorcyclists as reckless. Proving helmet usage and compliance with speed limits is critical to minimizing comparative negligence assessments and maximizing your pain and suffering multiplier.</p>
+      <p>Motorcycle injury claims often encounter defense allegations of rider negligence. Defense adjusters may cite speed, lane positioning, or road conditions to argue comparative fault. Documenting full compliance with traffic laws and obtaining detailed police and medical records are critical steps in substantiating liability. Read our guide on <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline">how car accident settlements are calculated</a> for additional detail on insurance evaluation methods.</p>
     `,
+    sources: [
+      {
+        title: "National Highway Traffic Safety Administration (NHTSA) — Motorcycle Safety Statistics",
+        url: "https://www.nhtsa.gov/road-safety/motorcycles"
+      },
+      {
+        title: "Centers for Disease Control and Prevention (CDC) — Transportation Safety Data",
+        url: "https://www.cdc.gov/transportation-safety/"
+      },
+      {
+        title: "Legal Information Institute (LII) — Comparative Negligence Definition",
+        url: "https://www.law.cornell.edu/wex/comparative_negligence"
+      }
+    ],
     faqs: [
       {
         question: "How does a motorcycle accident settlement calculator work?",
-        answer: "Our motorcycle accident settlement calculator adds your economic damages (medical treatments, lost income) and applies a pain and suffering multiplier (usually 2x to 5x) to estimate non-economic damages. This generates a realistic motorcycle accident compensation calculator estimation."
+        answer: "The calculator applies an illustrative mathematical model combining itemized economic losses (medical treatment, lost wages, bike and protective gear repairs) with a severity multiplier applied to medical expenses, adjusted for assigned comparative fault."
       },
       {
         question: "What is the average payout for a motorcycle accident?",
-        answer: "While minor bumps can settle for $10,000 to $25,000, the average settlement for a motorcycle accident with moderate injuries ranges between $50,000 and $150,000. Catastrophic motorbike accident claims involving surgery or brain injuries frequently yield payouts exceeding $300,000."
+        answer: "Settlement estimates vary significantly based on documented medical expenses, lost wages, and liability determination. Minor soft-tissue injury claims generally calculate lower figures, whereas moderate injuries requiring physical therapy or minor surgery result in higher estimates. Severe or catastrophic claims involving surgery, permanent impairment, or traumatic brain injury yield substantial estimates due to accumulated medical bills and projected long-term care."
       },
       {
         question: "How do motorcycle risk factors affect my injury claim value?",
-        answer: "Under comparative negligence rules, insurers use a motorcycle risk calculator approach to evaluate liability. If you weren't wearing a helmet, or if road hazards contributed to the crash, your percentage of fault might reduce your total motorcycle injury claim calculator payout. Proving the other driver was fully at fault is key."
+        answer: "Under comparative negligence rules, factors like speed, road hazards, or vehicle positioning are evaluated to assign fault percentages. If shared fault is assigned, your net calculated estimate is reduced proportionally by state law rules."
       },
       {
-        question: "Does not wearing a helmet bar my injury claim?",
-        answer: "In comparative negligence states, it does not bar your claim, but it can significantly increase your percentage of fault for head/neck injuries, reducing your overall settlement."
+        question: "Does not wearing a helmet affect my injury claim?",
+        answer: "The legal impact of helmet non-use depends on applicable state vehicle codes and comparative fault statutes. In some jurisdictions, failing to wear a helmet may be raised by insurers to argue comparative negligence regarding head or neck injury severity, while in other states helmet non-use has specific statutory limitations. Injured riders should consult state-specific traffic and personal injury laws."
       },
       {
         question: "Can I claim compensation for damaged safety gear?",
-        answer: "Yes. Helments, leather jackets, boots, and gloves damaged in the crash are recoverable under the property damage portion of your claim."
+        answer: "Yes. Helmets, leather jackets, riding boots, body armor, and gloves damaged in a collision can generally be claimed under property damage documentation."
       },
       {
         question: "What if the driver claims they did not see me?",
-        answer: "A driver's failure to see a motorcyclist does not excuse their liability. Drivers have a legal duty to look for all vehicles, including motorcycles, before turning or changing lanes."
+        answer: "A driver's failure to observe a motorcyclist does not excuse legal liability. All motorists owe a duty of care to maintain proper lookout for all vehicles sharing the road."
       }
     ]
   },
