@@ -167,93 +167,126 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
   },
   "back-injury": {
     slug: "back-injury-settlement-calculator",
-    title: "Back Injury Calculator | Back Injury Settlement & Payout",
-    description: "Calculate your back injury settlement and spinal injury compensation. Check back injury value for lower back injury, spine injury claim, and back pain settlement.",
-    h1: "Back Injury Settlement Calculator.",
-    intro: "Estimate your back injury claim value and spinal injury compensation. Use our back injury calculator to calculate potential back injury payout and damages.",
+    title: "Back Injury Settlement Calculator | FreeInjuryCalc",
+    description: "Calculate an illustrative back injury settlement estimate using medical expenses, lost income, and injury severity. Learn how spinal claims are evaluated.",
+    h1: "Back Injury Settlement Calculator",
+    intro: "Estimate an illustrative back injury claim valuation using documented medical expenses, lost wages, and case information. This tool provides an educational reference model and does not predict what an insurer or court will pay.",
     subtitle: "Spinal & Back Injury Settlement Valuation",
     presetSeverity: "2.5",
     presetMedBills: 15000,
     presetTab: "detailed",
     calculatorType: "car-accident",
-    aboutHeading1: "Filing a Back Injury Claim for Spine Injury Compensation",
-    aboutContent1: "When you pursue a spine injury claim, calculating the back injury value is essential. A back injury claim, especially for a lower back injury, can cause permanent pain and require surgeries like spinal fusion. Finding a fair back injury settlement involves summing up all medical bills, therapy costs, and lost earnings to find your total back injury compensation.",
-    aboutHeading2: "How a Back Injury Calculator Estimates a Back Pain Settlement",
-    aboutContent2: "A typical back injury payout ranges from $15,000 for minor strains to over $100,000 for herniated discs. Our back injury calculator is designed to model these calculations, giving you a ballpark back pain settlement range. The system applies standard insurance multipliers to estimate spinal injury compensation based on your medical bills.",
+    aboutHeading1: "Evaluating Economic and Non-Economic Losses in Back Injury Claims",
+    aboutContent1: "Evaluating a back or spinal injury claim involves analyzing quantifiable financial losses alongside subjective physical impact. In civil injury law, damages are categorized into economic losses and non-economic losses. Economic damages represent concrete financial costs supported by billing and payroll documentation, including emergency room care, diagnostic imaging, specialist consultations, physical therapy, prescription medications, and verified lost wages. Non-economic damages address physical pain, physical impairment, and diminished quality of life resulting from lumbar or thoracic spine injuries. When back injuries occur on the job rather than in a motor vehicle collision, compensation is typically governed by statutory wage-replacement rules rather than tort damages; explore our <a href=\"/workers-compensation-calculator/\" class=\"text-link hover:underline\">workers' compensation calculator</a> to see how statutory benefit models operate. To understand how non-monetary impacts are estimated in personal injury claims, consult our dedicated <a href=\"/pain-and-suffering-calculator/\" class=\"text-link hover:underline\">pain and suffering calculator</a>.",
+    aboutHeading2: "What Influences the Evaluation of a Back Injury Claim?",
+    aboutContent2: "The negotiated valuation of an injury claim depends on a combination of medical, evidentiary, and legal factors. First, objective medical records—such as magnetic resonance imaging (MRI), electromyography (EMG) studies, and clinical examination notes—provide the foundation for documenting trauma severity and necessary care. If your injury also involves cervical spine trauma or radiating symptoms in the neck, see our <a href=\"/neck-injury-settlement-calculator/\" class=\"text-link hover:underline\">neck injury calculator</a>. Second, recovery timeline and permanent functional limitations shape non-economic assessments. Third, legal principles determine recovery: comparative fault rules can reduce or bar recovery if fault is shared, while available recovery depends on applicable insurance coverage, policy terms, liability, and other potentially available sources of recovery. Online calculators cannot replicate insurance negotiations; our guide on <a href=\"/blog/how-car-accident-settlements-are-calculated/\" class=\"text-link hover:underline\">how car accident settlements are calculated</a> explains how insurance adjusters and attorneys analyze these variables.",
     formulaExplanation: `
-      <p>Back injuries are calculated by summing special damages (medical bills, lost wages, future surgical needs) and applying a higher multiplier range (often <strong>2.0x to 5.0x</strong>) for pain and suffering. The spine contains crucial nerves and structural discs that dictate daily mobility.</p>
+      <p>This calculator uses an illustrative multiplier-based model to demonstrate how financial inputs mathematically interact. There is no statutory formula, universal insurance multiplier, or standard payout schedule required by law for personal injury claims.</p>
+      <p>In this tool, the mathematical model combines documented economic losses with an illustrative multiplier applied to medical expenses to model a potential non-economic damages component:</p>
       <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
-        Total Spine Claim = (Past Meds + Future Meds + Lost Wages) + (Total Meds &times; Spine Multiplier)
+        Calculated Base = Economic Losses + (Medical Expenses &times; Illustrative Multiplier)
       </div>
-      <p>Minor lower back muscle strains settle at low multipliers (1.5x–2.0x). However, chronic conditions like lumbar herniated discs, spinal stenosis, or cases requiring spinal fusion surgeries command multipliers starting at <strong>3.5x up to 5.0x</strong>.</p>
+      <p>This calculated base represents the gross modeled amount before any comparative-fault deduction; any subsequent fault adjustment in the calculator is applied as a separate mathematical step.</p>
+      <p>The multiplier is an illustrative modeling assumption used only by this calculator. Actual claim evaluations depend on the evidence, documented losses, applicable law, coverage, and individual circumstances.</p>
+      <p class="text-xs text-mute mt-2"><em>Note: Calculated figures represent hypothetical mathematical estimates, not a guarantee or prediction of an actual settlement outcome.</em></p>
     `,
     inputsExplanation: `
-      <p>Understanding these inputs is essential for a realistic spinal injury calculation:</p>
+      <p>To use this calculator effectively, here is how each input functions within the educational model:</p>
       <ul class="list-disc pl-5 space-y-2">
-        <li><strong>Past Medical Bills:</strong> Emergency room charges, chiropractic treatments, and spinal injections already received.</li>
-        <li><strong>Projected Future Medicals:</strong> Critical for spinal injuries. If a doctor states you will need future microdiscectomy surgery or ongoing injections, these projected costs must be included in your special damages.</li>
-        <li><strong>Multiplier:</strong> Set to 1.5x–2.0x for soft tissue issues, 2.5x–3.5x for herniated discs, and 4.0x–5.0x for surgical spinal fusion or spinal cord damage.</li>
+        <li><strong>Past Medical Expenses:</strong> Actual itemized medical costs incurred to date, including emergency services, diagnostic imaging (X-rays, MRIs), physician visits, physical therapy, and spinal injections.</li>
+        <li><strong>Projected Future Medicals:</strong> Estimated costs for reasonably anticipated future care, such as planned surgeries, ongoing rehabilitation, or pain management protocols, supported by medical provider assessments.</li>
+        <li><strong>Lost Income & Future Earning Capacity:</strong> Documented income missed during recovery plus any verified reduction in future earning capacity caused by long-term spinal mobility limitations.</li>
+        <li><strong>Illustrative Multiplier:</strong> A user-selected factor (1.5x to 5.0x) used in this tool to illustrate potential non-economic damages. Users can select different multipliers to explore hypothetical scenarios; these values are not medically or legally validated valuation standards.</li>
+        <li><strong>Comparative Fault Percentage:</strong> Depending on applicable state law, holding an assigned share of fault can reduce calculated recovery proportionally or bar financial recovery entirely.</li>
+        <li><strong>Insurance Policy Limits:</strong> Available financial recovery from a given policy is subject to applicable coverage, contractual policy limits, and policy terms. Total potential recovery in a claim may also depend on proved liability, multiple coverage options, or other potentially available sources of recovery.</li>
       </ul>
     `,
     workedExamples: `
-      <p>Here are two worked examples of back injury settlements:</p>
+      <p>The following scenarios demonstrate how the calculator's mathematical model processes hypothetical input values (assuming liability insurance coverage is sufficient to cover calculated damages):</p>
       
       <div class="space-y-4 my-4">
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario A: Lumbar Herniated Disc (No Surgery)</strong>
-          <p>An MRI confirms a L4-L5 herniated disc causing sciatica. You require epidural steroid injections. Fault is 0%.</p>
+          <strong class="text-ink block mb-1">Scenario A: Lumbar Disc Bulge with Non-Surgical Care (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>Hypothetical mathematical example for educational modeling, not an actual settlement prediction.</em></p>
+          <p>An individual sustains an L4-L5 disc injury requiring imaging, physical therapy, and epidural injections, with 0% claimant fault.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Bills (Past + Future): $18,000</li>
+            <li>Medical Expenses (Past + Future): $18,000</li>
             <li>Lost Wages: $4,200</li>
-            <li>Pain Multiplier: 3.0x (nerve impingement)</li>
-            <li>Pain & Suffering: $18,000 &times; 3.0 = $54,000</li>
-            <li>Gross Value: $18,000 + $4,200 + $54,000 = $76,200</li>
-            <li><strong>Final Settlement Check: $76,200</strong></li>
+            <li>Property Damage: $0</li>
+            <li>Illustrative Multiplier: 3.0x (user-selected model assumption)</li>
+            <li>Illustrative Pain & Suffering: $18,000 &times; 3.0 = $54,000</li>
+            <li>Economic Losses: $18,000 + $4,200 = $22,200</li>
+            <li>Calculated Base Total: $22,200 + $54,000 = $76,200</li>
+            <li><strong>Illustrative Mathematical Estimate: $76,200</strong></li>
           </ul>
         </div>
 
         <div class="p-4 border border-hairline bg-canvas rounded">
-          <strong class="text-ink block mb-1">Scenario B: Lumbar Spine Fusion Surgery</strong>
-          <p>You undergo a single-level lumbar spinal fusion. Fault is 10% because you were slightly speeding.</p>
+          <strong class="text-ink block mb-1">Scenario B: Surgical Spinal Fusion with Shared Fault (Hypothetical)</strong>
+          <p class="text-xs text-mute mb-2"><em>Hypothetical mathematical example for educational modeling, not an actual settlement prediction.</em></p>
+          <p>An individual undergoes single-level lumbar fusion surgery with extensive lost work time, evaluated at 10% comparative fault in a comparative negligence jurisdiction.</p>
           <ul class="list-disc pl-5 mt-2 space-y-1">
-            <li>Medical Bills (Past + Future): $85,000</li>
+            <li>Medical Expenses (Past + Future): $85,000</li>
             <li>Lost Wages (Past + Future): $25,000</li>
-            <li>Pain Multiplier: 4.5x (invasive spinal surgery)</li>
-            <li>Pain & Suffering: $85,000 &times; 4.5 = $382,500</li>
-            <li>Gross Value: $110,000 + $382,500 = $492,500</li>
-            <li>10% Fault Reduction: -$49,250</li>
-            <li><strong>Final Settlement Payout: $443,250</strong></li>
+            <li>Property Damage: $0</li>
+            <li>Illustrative Multiplier: 4.5x (user-selected model assumption)</li>
+            <li>Illustrative Pain & Suffering: $85,000 &times; 4.5 = $382,500</li>
+            <li>Gross Calculated Value: ($85,000 + $25,000) + $382,500 = $492,500</li>
+            <li>10% Comparative Fault Reduction: -$49,250</li>
+            <li><strong>Illustrative Mathematical Estimate: $443,250</strong></li>
           </ul>
         </div>
       </div>
+      <p class="text-xs text-mute"><em>Disclaimer: Actual settlement outcomes depend on verified liability, medical causation, policy coverage limits, and state-specific laws. These examples do not guarantee or predict actual financial recovery.</em></p>
     `,
     legalBackground: `
-      <p>Spinal injury claims are heavily scrutinized for pre-existing degenerative disc disease (DDD). Insurers will try to blame your herniated disc on age-related wear-and-tear rather than the collision. To secure a fair settlement, you must show that your symptoms began immediately after the crash and were verified by a medical doctor.</p>
+      <p>Spinal injury claims involve detailed legal and medical evaluation considerations:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Pre-Existing Conditions & Causation:</strong> Spinal injury claims frequently involve distinguishing newly sustained acute trauma or traumatic aggravation from pre-existing conditions such as degenerative disc disease or arthritis. Medical records may help document reported symptoms, clinical findings, treatment, and the relationship the claimant describes between the injury and the event.</li>
+        <li><strong>Medical Evaluation and Documentation:</strong> Prompt medical evaluation can help address symptoms and document clinical findings and treatment related to the reported injury.</li>
+        <li><strong>Diagnostic Evidence:</strong> Objective diagnostic testing (such as MRIs, CT scans, and nerve conduction studies) helps clinicians identify structural pathology, such as disc herniations or nerve root compression, providing clinical documentation that substantiates subjective pain reports.</li>
+        <li><strong>Insurance Coverage and Recovery Sources:</strong> Financial recovery from an insurer is constrained by applicable coverage limits and policy terms. Overall recovery depends on proved liability, policy language, and whether other potentially available sources of recovery (such as underinsured motorist coverage, umbrella policies, or multiple liable parties) apply.</li>
+        <li><strong>Comparative Negligence Rules:</strong> Applicable state laws govern whether an injured party's share of responsibility reduces their recovery proportionally or bars financial recovery entirely.</li>
+      </ul>
     `,
+    sources: [
+      {
+        title: "MedlinePlus (NIH / U.S. National Library of Medicine) — Back Injuries",
+        url: "https://medlineplus.gov/backinjuries.html"
+      },
+      {
+        title: "National Institute of Neurological Disorders and Stroke (NINDS / NIH) — Low Back Pain",
+        url: "https://www.ninds.nih.gov/health-information/disorders/back-pain"
+      },
+      {
+        title: "Legal Information Institute (LII / Cornell Law School) — Damages",
+        url: "https://www.law.cornell.edu/wex/damages"
+      }
+    ],
     faqs: [
       {
-        question: "How does a back injury calculator value a lower back injury?",
-        answer: "Our back injury calculator uses your medical costs and negligence rules to estimate the back injury value. This estimates a realistic back injury settlement or back injury payout range."
+        question: "How does this back injury calculator estimate a claim?",
+        answer: "The calculator combines documented financial expenses (medical bills and lost income) with a user-selected illustrative multiplier to model a potential non-economic damages component. It provides an educational reference model to illustrate how different claim factors interact mathematically."
       },
       {
-        question: "What affects a spine injury claim and back pain settlement value?",
-        answer: "A spine injury claim value is heavily influenced by diagnostic tests (like MRIs) showing herniated discs. Confirming physical injury increases the back injury compensation and spinal injury compensation multipliers."
+        question: "Is there an average settlement payout for a back injury claim?",
+        answer: "No. There is no universal, standard, or guaranteed settlement amount. Actual settlements vary widely depending on the severity of the injury, documented medical expenses, whether surgical intervention was required, verified lost income, available insurance policy limits, liability evidence, and applicable state laws."
       },
       {
-        question: "What is the average payout for a back injury claim?",
-        answer: "For a minor back injury claim, payouts are usually $5,000 to $15,000. For serious disk damage or spinal cord injuries, a back injury settlement can exceed $100,000."
+        question: "What expenses can be included in a back injury claim?",
+        answer: "Economic damages typically include itemized medical expenses (emergency care, imaging, physical therapy, physician consultations, medications, and future medical procedures) and verified past and future lost earnings. Non-economic damages address pain, discomfort, and physical limitations."
       },
       {
-        question: "How does a spinal fusion affect my settlement?",
-        answer: "A spinal fusion surgery drastically increases your claim value because it represents permanent changes to your spine, increasing the pain multiplier and your future medical needs."
+        question: "How does surgery or spinal fusion affect a claim?",
+        answer: "Surgical interventions generally increase the economic damages component due to higher medical expenses, hospital bills, and extended recovery periods away from work. However, any financial recovery remains subject to proved liability, medical necessity documentation, and available insurance policy coverage limits."
       },
       {
-        question: "Can I claim future chiropractic treatments?",
-        answer: "Yes, as long as a medical professional documents that future chiropractic care is medically necessary to manage your chronic pain."
+        question: "Can I claim future medical treatments like physical therapy or chiropractic care?",
+        answer: "Future medical expenses can be included in economic damages when a licensed healthcare provider establishes that continuing care is medically necessary as a direct result of the injury and provides an estimated cost of treatment."
       },
       {
-        question: "Does my state's negligence bar affect my spinal injury claim?",
-        answer: "Yes. Under modified comparative fault rules, if you are found 50% or 51% at fault (depending on the state), you will receive $0 regardless of how severe your spinal injuries are."
+        question: "How does fault affect a back injury settlement?",
+        answer: "Depending on the jurisdiction and applicable state law, holding a share of fault can reduce financial recovery proportionally or bar recovery entirely. Some legal systems reduce compensation by the claimant's percentage of responsibility, while others prohibit recovery once fault reaches specific statutory thresholds or if the claimant contributed to the incident at all."
       }
     ]
   },
