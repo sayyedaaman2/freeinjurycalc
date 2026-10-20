@@ -806,9 +806,13 @@ const sortedStates = Object.values(statesData)
       if (stateLawNoFault) stateLawNoFault.textContent = pipText;
       
       if (stateLawCaps) {
-        stateLawCaps.textContent = state.damageCap !== null 
-          ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
-          : "No caps on general pain and suffering damages for car accident claims.";
+        if (stateSlug === 'kansas') {
+          stateLawCaps.textContent = "Statutory cap (K.S.A. § 60-19a02) held facially unconstitutional under Kansas Constitution § 5 per Hilburn v. Enerpipe Ltd., 309 Kan. 1127 (2019); no enforceable cap on pain and suffering for ordinary car accident claims.";
+        } else {
+          stateLawCaps.textContent = state.damageCap !== null
+            ? `${state.damageCapExplanation || `Capped at ${formatUSD(state.damageCap)}`}`
+            : "No caps on general pain and suffering damages for car accident claims.";
+        }
       }
 
       // Calculation inputs
@@ -843,7 +847,9 @@ const sortedStates = Object.values(statesData)
       let painSuffering = medicalBills * multiplier;
       
       // Apply damage caps on pain and suffering if state enforces them
-      if (state.damageCap !== null && painSuffering > state.damageCap) {
+      // Kansas cap (K.S.A. § 60-19a02) held facially unconstitutional in Hilburn v. Enerpipe Ltd., 309 Kan. 1127 (2019)
+      const enforceCap = state.damageCap !== null && stateSlug !== 'kansas';
+      if (enforceCap && painSuffering > state.damageCap) {
         painSuffering = state.damageCap;
       }
       

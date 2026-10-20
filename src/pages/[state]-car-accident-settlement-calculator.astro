@@ -131,6 +131,8 @@ const pageTitle = state === 'georgia'
   ? 'California Car Accident Settlement Calculator | Pure Comparative Fault'
   : state === 'texas'
   ? 'Texas Car Accident Settlement Calculator | 51% Comparative Fault'
+  : state === 'kansas'
+  ? 'Kansas Car Accident Settlement Calculator | No-Fault PIP, 50% Fault Bar'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -149,6 +151,8 @@ const pageDescription = state === 'georgia'
   ? 'Estimate a California car accident claim payout under pure comparative fault (Cal. Civ. Code § 1714), mandatory 30/60/15 insurance limits (SB 1107), 2-year SOL (CCP § 335.1), and Prop 213 rules. Free educational tool.'
   : state === 'texas'
   ? 'Calculate your estimated Texas auto accident settlement under proportionate responsibility (Tex. Civ. Prac. & Rem. Code § 33.001), 30/60/25 insurance laws, and 2-year SOL (CCP § 16.003). Free educational tool.'
+  : state === 'kansas'
+  ? 'Estimate a Kansas car accident settlement under no-fault PIP ($4,500), 50% modified comparative fault bar (K.S.A. § 60-258a), $2,000 medical threshold to sue (K.S.A. § 40-3117), and 2-year SOL (K.S.A. § 60-513). Note: Kansas statutory non-economic damages cap (K.S.A. § 60-19a02) was held facially unconstitutional in Hilburn v. Enerpipe Ltd., 309 Kan. 1127 (2019). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -187,7 +191,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -608,6 +612,51 @@ const customFaqSchema = {
                   Texas Civil Practice & Remedies Code Chapter 101 — Texas Tort Claims Act (TTCA)
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 180-day state notice requirement (§ 101.101(a)), preservation of municipal charter notice deadlines (§ 101.101(b)), and statutory government liability caps (§ 101.023).</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'kansas' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Kansas Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-60/article-2/section-60-258a/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 60-258a — Comparative Negligence (50% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory modified comparative negligence rule: plaintiff recovers only if negligence is less than the causal negligence of the defendant(s); damages reduced in proportion to plaintiff's fault; 50% bar under subsection (a).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-40/article-31/section-40-3117/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 40-3117 — Tort Actions; Conditions Precedent to Recovery for Pain and Suffering
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Threshold to sue for non-economic damages: medical treatment with reasonable value of $2,000 or more, or specified serious injuries (permanent disfigurement, fracture to weight-bearing bone, compound/comminuted/displaced/compressed fracture, loss of body member, permanent injury/loss of function, or death).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-60/article-19a/section-60-19a02/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 60-19a02 — Limitation on Damages for Pain and Suffering
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory cap on non-economic loss ($350,000 for actions accruing on/after July 1, 2022), but held <strong>facially unconstitutional</strong> under Section 5 of the Kansas Constitution Bill of Rights in <em>Hilburn v. Enerpipe Ltd.</em>, 309 Kan. 1127, 442 P.3d 509 (2019). The Kansas Supreme Court ruled the cap intrudes on the jury's determination of compensation. The statute remains published but is unenforceable for ordinary personal injury claims. Medical malpractice and wrongful death have separate frameworks (§ 60-3407, § 60-1903).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-60/article-5/section-60-513/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 60-513 — Actions Limited to Two Years
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statute of limitations for personal injury and property damage actions: 2 years from the date the cause of action accrues (typically the collision date), with a 10-year statute of repose.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-12/article-1/section-12-105b/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 12-105b — Municipal Tort Claims Notice Requirements
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Written notice to municipality clerk/governing body within 1 year of injury; must specify claimant details, facts, injury, and monetary amount; action cannot commence until 120 days after notice or denial, whichever occurs first.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/kansas/chapter-40/article-31/section-40-3107/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
               </li>
             </ul>
           </div>

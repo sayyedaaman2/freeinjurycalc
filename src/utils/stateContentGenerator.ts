@@ -768,7 +768,11 @@ export function generateFAQs(
   // Dynamic Q7: Damage Caps
   let damageCapText = "";
   if (damageCap !== null) {
-    damageCapText = `Yes. ${stateName} imposes statutory caps on certain non-economic damages, particularly under specific categories such as medical malpractice or against municipal government agencies. Under the code, these limits restrict general damages.`;
+    if (stateName === "Kansas") {
+      damageCapText = `Kansas enacted a statutory cap on non-economic damages (pain and suffering) under K.S.A. § 60-19a02, currently set at $350,000 for causes of action accruing on or after July 1, 2022. However, the Kansas Supreme Court held this cap <strong>facially unconstitutional</strong> under Section 5 of the Kansas Constitution Bill of Rights in <em>Hilburn v. Enerpipe Ltd.</em>, 309 Kan. 1127, 442 P.3d 509 (2019). The Court ruled the cap intrudes upon the jury's determination of compensation owed to personal injury plaintiffs. As a result, the statutory cap is unenforceable for ordinary personal injury claims, including motor vehicle accidents. The statute remains published but has no operative effect. Medical malpractice and wrongful death actions are governed by separate statutory frameworks (K.S.A. § 60-3407 and § 60-1903).`;
+    } else {
+      damageCapText = `Yes. ${stateName} imposes statutory caps on certain non-economic damages, particularly under specific categories such as medical malpractice or against municipal government agencies. Under the code, these limits restrict general damages.`;
+    }
   } else {
     damageCapText = `No. ${stateName} does not impose legislative limits or caps on pain and suffering or general damages resulting from standard passenger vehicle car accidents. You can pursue the full value of your non-economic damages.`;
   }
