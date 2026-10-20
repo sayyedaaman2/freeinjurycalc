@@ -56,6 +56,12 @@ function getCard(cardNumber: number, defaultTitle: string, defaultText: string) 
           text: "Pennsylvania requires a minimum of $5,000 in First-Party Medical Benefits for medical expenses regardless of fault under 75 Pa.C.S. § 1711. Under Pennsylvania's Choice No-Fault system, Full Tort generally preserves the right to seek non-economic damages, while Limited Tort restricts those damages unless the statutory serious-injury threshold or an applicable exception is satisfied. Limited Tort does not eliminate the right to seek economic losses. This calculator cannot determine whether an injury qualifies under the law."
         };
       }
+      if (stateLaw.name === "Georgia") {
+        return {
+          title: "At-Fault System & Optional First-Party Coverage",
+          text: "Georgia is an at-fault (tort) state and does not require no-fault Personal Injury Protection (PIP). You may seek economic and non-economic damages directly from an at-fault driver's liability coverage. Policyholders may also carry optional Medical Payments (MedPay) under O.C.G.A. § 33-34-2(1) to cover medical expenses regardless of fault, or optional Uninsured/Underinsured Motorist (UM/UIM) coverage under O.C.G.A. § 33-7-11."
+        };
+      }
       return {
         title: stateLaw.noFault ? "No-Fault PIP Thresholds" : "At-Fault Tort Claim rules",
         text: stateLaw.noFault

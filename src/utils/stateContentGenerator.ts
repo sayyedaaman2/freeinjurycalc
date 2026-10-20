@@ -16,6 +16,10 @@ export function generateNegligenceContent(
 ): string {
   const commonIntro = `Under ${stateName} personal injury statutes (specifically governed by the provisions of ${statuteRef}), liability for a motor vehicle collision is decided by establishing fault. `;
   
+  if (stateName === "Georgia") {
+    return `${commonIntro}Georgia enforces a <strong>50% modified comparative negligence bar</strong> under <strong>O.C.G.A. § 51-12-33(g)</strong>. Under this rule, you remain eligible to seek damages from an at-fault driver only if your share of responsibility is strictly less than 50% (49% or lower). If you are found 50% or more responsible for the collision, you are completely barred from recovering any damages. Under subsection (a), if you are less than 50% at fault, the judge reduces your damages in direct proportion to your percentage of fault (for example, a 20% fault rating on a $50,000 award reduces net recovery to $40,000). Crucially, under subsection (b), liability is several rather than joint, meaning each defendant is responsible only for their apportioned percentage of fault, with no right of contribution. Under subsections (c) and (d), the jury must consider the fault of contributing non-parties, but a non-party's fault can be submitted to the jury only if the plaintiff settled with that non-party or a defending party filed a formal notice designating the non-party at least <strong>120 days prior to trial</strong>.`;
+  }
+
   if (rule === "contributory") {
     return `${commonIntro}The jurisdiction of ${stateName} is one of the very few in the United States that strictly adheres to the traditional <strong>pure contributory negligence doctrine</strong>. Under this severe legal standard, if you are found to have contributed to the car accident in any way whatsoever—even if your share of blame is evaluated at a mere 1%—you are legally barred from recovering any financial compensation from the other driver. In practice, this makes it extremely critical to secure exhaustive documentation (such as dashcam footage, witness reports, and police files) proving the other motorist was 100% responsible for the collision. Insurance adjusters will search for any reason to assign a tiny fraction of fault to you to deny your claim.`;
   }
@@ -45,6 +49,15 @@ export function generateInsuranceContent(
 ): string {
   if (stateName === "California") {
     return `Under California motor vehicle financial responsibility laws (specifically governed by California Insurance Code <strong>§ 11580.1b</strong>, updated under SB 1107), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>30/60/15</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $15,000 for property damage). Under <strong>Cal. Ins. Code § 11580.2</strong>, insurance carriers are also statutorily required to offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching bodily injury limits unless rejected in writing. Liability insurance limits represent the maximum contractual coverage limit of a specific policy, rather than establishing the total possible financial recovery across all potential sources or defendants.`;
+  }
+
+  if (stateName === "Georgia") {
+    return `Under Georgia motor vehicle financial responsibility laws and <strong>O.C.G.A. § 33-7-11(a)(1)</strong>, every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>25/50/25</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $25,000 for property damage). These policy limits represent the maximum contractual coverage of that specific policy, rather than establishing a cap on an at-fault driver's legal liability or guaranteeing a settlement value. Georgia is a traditional at-fault (tort) state and does not require no-fault Personal Injury Protection (PIP). Key policy protections in Georgia include:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Optional Medical Payments (MedPay) Coverage:</strong> Defined under <strong>O.C.G.A. § 33-34-2(1)</strong>, MedPay is optional first-party coverage that reimburses reasonable and necessary medical and funeral expenses incurred from a motor vehicle accident regardless of fault. Georgia law does not mandate MedPay or require a statutory waiver if omitted.</li>
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>O.C.G.A. § 33-7-11</strong>, auto insurers are statutorily required to offer UM/UIM coverage up to the policy's bodily injury liability limits. UM/UIM coverage is optional and applies unless the named insured rejects or selects lower limits in writing (O.C.G.A. § 33-7-11(a)(3)).</li>
+      <li><strong>"Add-On" vs. "Reduced" UM Coverage:</strong> Under <strong>O.C.G.A. § 33-7-11(b)(1)(D)(ii)</strong>, "add-on" coverage is the statutory default for Georgia auto policies. Add-on UM coverage stacks on top of the at-fault driver's available liability policy. An insurer may apply "reduced-by" (offset) coverage—which deducts the at-fault driver's payment from your UM limit—only if the named insured specifically selected that reduced option in writing.</li>
+    </ul>`;
   }
 
   if (stateName === "Michigan") {
@@ -104,6 +117,23 @@ export function generateStatuteContent(
       <li><strong>Government Entity Claims (6 Months Notice):</strong> Under the California Government Claims Act (<strong>Cal. Gov. Code § 911.2</strong>), if your claim for money or damages is against a public entity (such as a city transit bus, municipal vehicle, or state agency), a formal written claim presentation must be delivered within <strong>6 months</strong> of the incident before initiating litigation.</li>
     </ul>
     Applicable deadlines depend on specific facts, and individuals should consult qualified California legal counsel.`;
+  }
+
+  if (stateName === "Georgia") {
+    return `In Georgia, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>O.C.G.A. § 9-3-33</strong>, actions for injuries to the person must be brought within <strong>2 years</strong> after the right of action accrues (typically the date of the crash). Actions for loss of consortium carry a 4-year limitation period.</li>
+      <li><strong>Property Damage Lawsuits (4 Years):</strong> Under <strong>O.C.G.A. § 9-3-32</strong>, actions for the recovery of personal property or damages for conversion or destruction (including motor vehicle repairs or total vehicle loss) must be brought within <strong>4 years</strong> after the right of action accrues.</li>
+      <li><strong>Criminal Prosecution Tolling (O.C.G.A. § 9-3-99):</strong> If the civil cause of action in tort arises out of facts and circumstances relating to an alleged crime committed in Georgia (such as DUI, reckless driving, or hit-and-run), the limitation period is tolled from the date of the crime until the criminal prosecution becomes final or otherwise terminates, up to a statutory ceiling of <strong>6 years</strong>.</li>
+      <li><strong>Government Entity Ante Litem Notice Requirements:</strong> Before filing a lawsuit against a governmental entity in Georgia, claimants must serve a timely written notice of claim (ante litem notice). Deadlines and procedural requirements differ significantly depending on the level of government:
+        <ul class="list-disc pl-5 space-y-1 my-1">
+          <li><strong>Municipalities (Cities):</strong> Under <strong>O.C.G.A. § 36-33-5</strong>, written notice must be presented to the municipal governing authority within <strong>6 months</strong> of the event. The notice must specify the time, place, extent of injury, alleged negligence, and a <strong>specific monetary amount</strong> of damages claimed (subsection (e)). Notice must be served personally or via certified mail/statutory overnight delivery to the mayor or council chair (subsection (f)). The city has 30 days to act before a lawsuit may be filed.</li>
+          <li><strong>Counties:</strong> Under <strong>O.C.G.A. § 36-11-1</strong>, all claims against a county must be presented within <strong>12 months</strong> after they accrue or become payable. Minors and persons under legal disabilities are allowed 12 months after the removal of the disability to present claims.</li>
+          <li><strong>State of Georgia (Georgia Tort Claims Act):</strong> Under <strong>O.C.G.A. § 50-21-26</strong>, written notice of claim must be given within <strong>12 months</strong> of the date the loss was discovered or should have been discovered. Notice must be delivered to the Risk Management Division of the Department of Administrative Services (DOAS) and a copy to the involved state agency. Lawsuits cannot be filed until DOAS denies the claim in writing or 90 days elapse without a decision, and notice receipts must be attached to the complaint.</li>
+        </ul>
+      </li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Georgia legal counsel to verify deadlines for their claim.`;
   }
 
   if (stateName === "Michigan") {
@@ -183,6 +213,10 @@ export function generateDamageCapContent(
     </ul>`;
   }
 
+  if (stateName === "Georgia") {
+    return `For standard passenger vehicle car accident claims against private motorists, Georgia law does <strong>not</strong> impose statutory dollar caps on general non-economic damages, which encompass pain and suffering, physical impairment, mental anguish, and loss of enjoyment of life. Determining non-economic damages is a core fact-finding function protected under the right to trial by jury in Article I, Section I, Paragraph XI of the Georgia Constitution. In <em>Atlanta Oculoplastic Surgery, P.C. v. Nestlehutt</em>, 286 Ga. 731, 691 S.E.2d 218 (2010), the Supreme Court of Georgia struck down legislative caps on non-economic damages in medical malpractice cases (former O.C.G.A. § 51-13-1) on constitutional right-to-jury grounds; standard car accident claims against private motorists were never subject to statutory non-economic damages caps. Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
   if (stateName === "Michigan") {
     return `For third-party motor vehicle claims in Michigan, there are no statutory dollar caps on noneconomic damages (pain and suffering). However, under <strong>MCL § 500.3135(1) & (5)</strong>, recovery for pain and suffering is restricted by a strict statutory verbal threshold. To recover noneconomic damages from an at-fault driver, an injured victim must establish a <strong>"serious impairment of body function,"</strong> defined by a 3-part test:
     <ol class="list-decimal pl-5 space-y-1 my-2">
@@ -259,6 +293,20 @@ export function generateSettlementExample(
       <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
       <li><strong>Pure Comparative Fault Adjustment (20% Fault):</strong> Under Cal. Civ. Code § 1714 and <em>Li v. Yellow Cab Co.</em>, if the claimant is found 20% responsible for the collision, the gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
       <li><strong>Pure Comparative Fault Principle:</strong> Even if a driver is 80% responsible for a crash in California, state law permits recovering 20% of proven damages from another negligent driver.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "georgia") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Georgia</strong> under state modified comparative fault and insurance rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses (Medical & Wages):</strong> Documented medical expenses ($15,000 past and reasonably expected treatment) and lost income ($5,000) equal $20,000 in total documented economic losses.</li>
+      <li><strong>Property Damage Assumption:</strong> In this bodily injury illustration, property damage is assumed to be <strong>$0</strong> to isolate injury damages, whereas the calculator's detailed ledger form defaults to <strong>$6,500</strong> for vehicle repair or replacement.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Pain and suffering damages</a> are estimated at $37,500 using an illustrative 2.5x multiplier applied to medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
+      <li><strong>50% Modified Comparative Fault Adjustment (20% Fault):</strong> Under O.C.G.A. § 51-12-33, because the claimant's fault (20%) is strictly less than 50%, recovery is permitted. The gross estimate is reduced in direct proportion to the claimant's fault share by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
+      <li><strong>50% Bar Rule:</strong> If the claimant were found 50% or more responsible for the collision (50% or higher), recovery would be completely barred under O.C.G.A. § 51-12-33(g) ($0).</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -435,6 +483,55 @@ export function generateFAQs(
       {
         question: "Does an auto insurance policy limit determine my total possible recovery?",
         answer: "No. An insurance policy limit represents the contractual cap on that specific insurer's liability. It does not limit total proven damages legally owed by an at-fault driver, nor does it prevent seeking recovery through additional applicable policies, underinsured motorist (UIM) coverage, or multiple liable defendants."
+      }
+    ];
+  }
+
+  if (stateName === "Georgia") {
+    return [
+      {
+        question: "How are car accident settlements evaluated in Georgia?",
+        answer: "Georgia car accident claims combine documented economic losses (medical bills, lost income, property damage) with non-economic damages (pain and suffering), adjusted for comparative fault. Pain and suffering multipliers in educational calculators are modeling tools rather than statutory rules. Under Georgia's 50% modified comparative fault rule (O.C.G.A. § 51-12-33), your settlement is reduced by your exact percentage of responsibility, provided your fault is under 50%."
+      },
+      {
+        question: "How does Georgia's 50% modified comparative negligence rule work?",
+        answer: "Under <strong>O.C.G.A. § 51-12-33(g)</strong>, you can recover financial compensation only if your fault is <strong>strictly less than 50%</strong> (49% or less). If you are found <strong>50% or more at fault</strong>, you are completely barred from recovering any damages. If eligible, your award is reduced in direct proportion to your share of fault under subsection (a) (for example, a 20% fault share reduces a $50,000 award to $40,000)."
+      },
+      {
+        question: "How does non-party fault work under O.C.G.A. § 51-12-33?",
+        answer: "Under O.C.G.A. § 51-12-33(c) and (d), the trier of fact can consider and allocate fault to non-parties who contributed to the incident, but only if: (1) the plaintiff entered into a settlement agreement with the non-party, or (2) a defending party filed a formal notice designating the non-party at least <strong>120 days prior to trial</strong>. Under subsection (b), liability among liable persons is several, not joint, with no right of contribution."
+      },
+      {
+        question: "What are Georgia's minimum mandatory auto insurance requirements?",
+        answer: "Under Georgia financial responsibility laws and O.C.G.A. § 33-7-11(a)(1), drivers must carry minimum liability coverage of <strong>25/50/25</strong> ($25,000 per person for bodily injury, $50,000 per accident total bodily injury, and $25,000 for property damage). These policy limits represent the maximum contractual obligation of the insurer under that policy, not a guaranteed settlement payout or a ceiling on the at-fault driver's legal liability."
+      },
+      {
+        question: "Is Medical Payments (MedPay) or PIP mandatory in Georgia?",
+        answer: "No. Georgia is a traditional at-fault state and does not have mandatory no-fault Personal Injury Protection (PIP). Medical Payments (MedPay) coverage, defined under <strong>O.C.G.A. § 33-34-2(1)</strong>, is optional first-party coverage that reimburses reasonable and necessary medical and funeral expenses incurred in a collision regardless of fault. Policyholders are not legally required to purchase MedPay."
+      },
+      {
+        question: "What is the difference between 'Add-On' and 'Reduced' Uninsured Motorist (UM) coverage in Georgia?",
+        answer: "Under <strong>O.C.G.A. § 33-7-11</strong>, auto insurers must offer UM/UIM coverage up to liability limits unless rejected in writing. Crucially, under subsection (b)(1)(D)(ii), <strong>'add-on' coverage is the statutory default</strong> in Georgia. Add-on UM stacks on top of whatever liability coverage the at-fault driver carries. An insurer may apply 'reduced-by' (offset) coverage—where the tortfeasor's payment is deducted from your UM limit—only if the named insured affirmatively selected that reduced option in writing."
+      },
+      {
+        question: "What are the statutes of limitations for car accident claims in Georgia?",
+        answer: "Under <strong>O.C.G.A. § 9-3-33</strong>, the statute of limitations for personal injury lawsuits is <strong>2 years</strong> from the date the cause of action accrues (typically the crash date). Actions for loss of consortium have a 4-year limit. For personal property damage (vehicle repair or replacement), <strong>O.C.G.A. § 9-3-32</strong> provides a <strong>4-year</strong> limitation period. Additionally, under <strong>O.C.G.A. § 9-3-99</strong>, if the incident arose from an alleged crime (such as DUI or reckless driving), the civil statute of limitations may be tolled while the criminal prosecution is pending, up to a maximum of <strong>6 years</strong>."
+      },
+      {
+        question: "What are Georgia's ante litem notice requirements for claims against government entities?",
+        answer: "Before filing a lawsuit against a governmental entity in Georgia, you must provide written ante litem notice within specific deadlines: (1) <strong>Municipalities (Cities):</strong> 6 months under O.C.G.A. § 36-33-5, specifying the exact monetary amount claimed and served on the mayor or council chair; (2) <strong>Counties:</strong> 12 months under O.C.G.A. § 36-11-1; and (3) <strong>State of Georgia:</strong> 12 months from discovery under the Georgia Tort Claims Act (O.C.G.A. § 50-21-26), delivered to DOAS and the involved agency. Failure to satisfy ante litem notice bars subsequent litigation."
+      },
+      {
+        question: "Does Georgia place statutory caps on pain and suffering damages?",
+        answer: "No. For standard car accident claims against private motorists, Georgia law does not impose statutory dollar caps on general non-economic damages (pain and suffering). In <em>Atlanta Oculoplastic Surgery, P.C. v. Nestlehutt</em> (2010), the Georgia Supreme Court affirmed that legislative caps on non-economic damages in medical malpractice cases violated the constitutional right to a jury trial; standard car accident claims against private drivers have never been subject to statutory non-economic damages caps."
+      },
+      {
+        question: "What are the requirements for a pre-suit settlement offer under O.C.G.A. § 9-11-67.1?",
+        answer: "Under <strong>O.C.G.A. § 9-11-67.1</strong>, pre-suit settlement offers for motor vehicle injuries must be in writing, provide a response window of not less than <strong>30 days</strong> from receipt, include only the mandatory material terms specified in the statute (amount, parties released, scope of release), and provide sufficient medical records to allow the recipient to evaluate the claim."
+      },
+      {
+        question: "How does a personal injury lawyer assist with a Georgia car accident claim?",
+        answer: "A personal injury attorney in Georgia can help investigate crash facts, obtain police and witness reports, calculate economic and non-economic damages, verify whether add-on UM or other insurance policies apply, ensure compliance with strict ante litem notice deadlines or O.C.G.A. § 9-11-67.1 settlement demand rules, and file formal pleadings in the Georgia Superior Court if an insurer refuses a fair settlement."
       }
     ];
   }

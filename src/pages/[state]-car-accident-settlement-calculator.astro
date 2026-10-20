@@ -115,7 +115,9 @@ const settlementExampleContent = generateSettlementExample(state, stateInfo.name
 const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.statuteOfLimitations, stateInfo.damageCap, stateInfo.noFault, stateInfo.pipLimit, stateInfo.verbalThreshold, stateInfo.monetaryThreshold, stateDetails.statuteRef, stateDetails.courtName);
 
 // Custom page title & description for maximum SEO relevance
-const pageTitle = state === 'michigan'
+const pageTitle = state === 'georgia'
+  ? 'Georgia Car Accident Settlement Calculator | 50% Comparative Fault'
+  : state === 'michigan'
   ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP Estimator'
   : state === 'missouri'
   ? 'Missouri Car Accident Settlement Calculator | Pure Comparative Fault'
@@ -131,7 +133,9 @@ const pageTitle = state === 'michigan'
   ? 'Texas Car Accident Settlement Calculator | 51% Comparative Fault'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
-const pageDescription = state === 'michigan'
+const pageDescription = state === 'georgia'
+  ? 'Estimate a Georgia car accident settlement payout under the 50% modified comparative fault rule (O.C.G.A. § 51-12-33), 25/50/25 liability insurance limits, and 2-year personal injury limitation period (O.C.G.A. § 9-3-33). Free educational tool.'
+  : state === 'michigan'
   ? 'Calculate your estimated Michigan auto accident settlement under No-Fault PIP rules and MCL § 500.3135 serious impairment thresholds. Free educational estimator.'
   : state === 'missouri'
   ? 'Calculate your estimated Missouri auto accident settlement under pure comparative fault rules (RSMo § 537.765) and 5-year statute of limitations (RSMo § 516.120). Free educational estimator.'
@@ -183,7 +187,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -312,6 +316,52 @@ const customFaqSchema = {
                   California Government Code § 911.2 — Public Entity Administrative Claim Notice
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Statutory 6-month deadline for presenting a formal written claim for money or damages against California state, county, or municipal entities.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+
+        {state === 'georgia' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Georgia Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-51/chapter-12/section-51-12-33/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. § 51-12-33 — Georgia Modified Comparative Negligence Standard (50% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 50% bar rule under subsection (g) barring recovery if claimant fault is 50% or more, several liability without contribution under subsection (b), and non-party fault apportionment under subsections (c) and (d) upon 120-day pre-trial notice.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-9/chapter-3/article-2/section-9-3-33/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. § 9-3-33 & § 9-3-32 — Statutes of Limitations for Injury and Property Damage
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 2-year limitation period for personal injury actions (§ 9-3-33; 4 years for loss of consortium) and 4-year limitation period for personal property damage (§ 9-3-32).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-9/chapter-3/article-7/section-9-3-99/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. § 9-3-99 — Criminal Prosecution Tolling for Tort Actions
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory tolling of civil tort limitation periods while an alleged criminal prosecution arising out of the same facts is pending, subject to a maximum 6-year tolling ceiling.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-36/chapter-33/section-36-33-5/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. §§ 36-33-5, 36-11-1 & 50-21-26 — Government Ante Litem Notice Requirements
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory ante litem requirements: 6-month written notice specifying exact dollar amount for municipalities (§ 36-33-5); 12-month notice for counties (§ 36-11-1); and 12-month notice to DOAS and state agencies under the Georgia Tort Claims Act (§ 50-21-26).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-33/chapter-7/section-33-7-11/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. § 33-7-11 & § 33-34-2(1) — Mandatory Liability Limits, MedPay & UM/UIM Coverage
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory 25/50/25 liability limits, optional Medical Payments (MedPay) definition under § 33-34-2(1), and statutory Uninsured Motorist rules establishing "add-on" coverage as the legal default unless reduced coverage is elected in writing.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/georgia/title-9/chapter-11/article-4/section-9-11-67.1/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  O.C.G.A. § 9-11-67.1 — Pre-Suit Settlement Offer Requirements for Motor Vehicle Injuries
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory framework for pre-suit settlement offers in motor-vehicle injury claims, requiring written demands, a minimum 30-day acceptance window, exclusive material terms, and medical-records documentation.</span>
               </li>
             </ul>
           </div>
