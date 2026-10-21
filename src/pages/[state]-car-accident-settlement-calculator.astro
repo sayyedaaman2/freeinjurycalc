@@ -133,6 +133,8 @@ const pageTitle = state === 'georgia'
   ? 'Texas Car Accident Settlement Calculator | 51% Comparative Fault'
   : state === 'kansas'
   ? 'Kansas Car Accident Settlement Calculator | No-Fault PIP, 50% Fault Bar'
+  : state === 'nevada'
+  ? 'Nevada Car Accident Settlement Calculator | 51% Comparative Fault, 25/50/20 Limits'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -153,6 +155,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Texas auto accident settlement under proportionate responsibility (Tex. Civ. Prac. & Rem. Code § 33.001), 30/60/25 insurance laws, and 2-year SOL (CCP § 16.003). Free educational tool.'
   : state === 'kansas'
   ? 'Estimate a Kansas car accident settlement under no-fault PIP ($4,500), 50% modified comparative fault bar (K.S.A. § 60-258a), $2,000 medical threshold to sue (K.S.A. § 40-3117), and 2-year SOL (K.S.A. § 60-513). Note: Kansas statutory non-economic damages cap (K.S.A. § 60-19a02) was held facially unconstitutional in Hilburn v. Enerpipe Ltd., 309 Kan. 1127 (2019). Free educational tool.'
+  : state === 'nevada'
+  ? 'Calculate your estimated Nevada car accident settlement under 51% modified comparative fault (NRS 41.141), 25/50/20 liability limits (NRS 485.185), 2-year personal injury SOL (NRS 11.190), 2-year government notice (NRS 41.036), and no cap on pain and suffering. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -191,7 +195,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -657,6 +661,57 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'nevada' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Nevada Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-041.html#NRS041Sec141" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 41.141 — Comparative Negligence (51% Bar & Several Liability)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory modified comparative negligence: plaintiff recovers if negligence not greater than defendant's; 51% bar; several liability for multiple defendants (subsection 4); exceptions for strict liability, intentional torts, concerted acts, toxic spills, product liability (subsection 5); settlement with one defendant reduces recovery and excludes settling defendant's fault from jury.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-485.html#NRS485Sec185" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 485.185 — Motor Vehicle Financial Responsibility (25/50/20 Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory minimum liability insurance limits of $25,000 per person / $50,000 per accident bodily injury, $20,000 property damage, effective July 1, 2018 per SB 308 (2017). Prior limits were 15/30/10.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-11.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 11.190 — Limitation of Actions (2-Year Personal Injury, 3-Year Property)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statute of limitations: 2 years for personal injury (subsection 4(e)), 3 years for property damage (subsection 3(c)); tolled for minors under NRS 11.250 and defendant absence under NRS 11.300.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-041.html#NRS041Sec036" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 41.036 — Government Tort Claims Notice (2-Year Filing)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Claims against State must be filed with Attorney General within 2 years; claims against political subdivisions filed with governing body within 2 years. Prerequisite to suit under NRS 41.031. NRS 41.035 caps government tort claims at $200,000.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-687B.html#NRS687BSec145" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 687B.145 & NRS 690B.020 — Uninsured/Underinsured Motorist Offer Requirement
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM coverage at limits not less than bodily injury liability limits; named insured may reject or select lower limits in writing.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-41A.html#NRS41ASec035" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 41A.035 — Medical Malpractice Non-Economic Damages Cap
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Non-economic damages cap for professional negligence against healthcare providers (e.g., $590,000 in 2026, increasing annually). Does NOT apply to ordinary motor vehicle accident claims.</span>
+              </li>
+              <li>
+                <a href="https://www.leg.state.nv.us/nrs/nrs-484E.html#NRS484ESec070" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  NRS 484E.070 — Duty to Report Crash (Property Damage >$750)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory requirement to report crashes involving bodily injury, death, or property damage exceeding $750 to police immediately.</span>
               </li>
             </ul>
           </div>

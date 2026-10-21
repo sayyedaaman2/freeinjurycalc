@@ -91,6 +91,15 @@ export function generateInsuranceContent(
     return `Under Texas motor vehicle financial responsibility laws (governed by Texas Transportation Code <strong>§ 601.072</strong>), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>30/60/25</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $25,000 for property damage). Under <strong>Texas Insurance Code § 1952.152</strong>, automobile liability policies issued in Texas must include <strong>Personal Injury Protection (PIP)</strong> coverage of at least $2,500 per person, unless the named insured rejects the coverage in writing. Under <strong>Tex. Ins. Code § 1952.153</strong>, PIP covers 100% of reasonable medical expenses and <strong>80% of actual lost income</strong> incurred within 3 years of the crash. Crucially, under <strong>Tex. Ins. Code § 1952.155</strong>, an insurer paying PIP benefits has <strong>no right of subrogation</strong> against any third-party liability settlement or recovery obtained by the injured party. Additionally, under <strong>Tex. Ins. Code § 1952.101</strong>, insurers must offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching bodily injury limits unless rejected in writing. Liability policy limits represent maximum contractual coverage caps rather than guaranteed settlement values.`;
   }
 
+  if (stateName === "Nevada") {
+    return `Under Nevada motor vehicle financial responsibility laws (<strong>NRS 485.185</strong>), every driver operating a motor vehicle must maintain minimum liability insurance limits of <strong>25/50/20</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $20,000 for property damage), effective July 1, 2018 under Senate Bill 308 (2017). These limits represent the maximum contractual coverage of a specific policy, not a cap on an at-fault driver's legal liability. Nevada is a traditional <strong>at-fault (tort) state</strong> and does not require no-fault Personal Injury Protection (PIP). Key Nevada insurance provisions include:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Payments (MedPay) Coverage:</strong> Optional first-party coverage that reimburses reasonable medical and funeral expenses regardless of fault. Nevada law does not mandate MedPay, but many policies include it.</li>
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>NRS 687B.145</strong> and <strong>NRS 690B.020</strong>, insurers must offer UM/UIM coverage at limits not less than the liability limits purchased. The named insured must reject or select lower limits in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>No PIP Requirement to Sue:</strong> Unlike no-fault states, Nevada imposes no threshold (verbal or monetary) to bring a tort claim for pain and suffering against an at-fault driver.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -196,6 +205,19 @@ export function generateStatuteContent(
     Applicable deadlines depend on specific facts, and readers should consult qualified Texas legal counsel regarding their claim.`;
   }
 
+  if (stateName === "Nevada") {
+    return `In Nevada, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>NRS 11.190(4)(e)</strong>, actions for injuries to the person must be brought within <strong>2 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>NRS 11.190(3)(c)</strong>, actions for injury to personal property (including motor vehicle repairs or total vehicle loss) must be brought within <strong>3 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>NRS 41.085(4)</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>Government Entity Claims (2 Years Notice):</strong> Under <strong>NRS 41.036</strong>, a tort claim against the State of Nevada or any of its agencies must be filed with the Attorney General within <strong>2 years</strong> after the cause of action accrues. A claim against a political subdivision (city, county, school district) must be filed with the governing body of that subdivision within <strong>2 years</strong>. This administrative filing is a prerequisite to suit under NRS 41.031.</li>
+      <li><strong>Tolling for Minors:</strong> Under <strong>NRS 11.250</strong>, the statute of limitations is tolled while the injured person is under 18 years of age.</li>
+      <li><strong>Defendant Absent from State:</strong> Under <strong>NRS 11.300</strong>, the limitations period may be tolled during periods when the defendant is outside Nevada.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Nevada legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -257,6 +279,16 @@ export function generateDamageCapContent(
       </li>
       <li><strong>Medical Expense Valuation ("Paid vs. Incurred"):</strong> Under Tex. Civ. Prac. & Rem. Code <strong>§ 41.0105</strong>, recoverable medical expenses in court are limited to amounts actually paid or incurred by or on behalf of the claimant, rather than initial gross itemized billings.</li>
     </ul>`;
+  }
+
+  if (stateName === "Nevada") {
+    return `For standard passenger vehicle car accident claims against private motorists, Nevada law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the Nevada Revised Statutes for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Malpractice Only:</strong> Under <strong>NRS 41A.035</strong>, non-economic damages in professional negligence actions against healthcare providers are capped (e.g., $590,000 for 2026, increasing annually). This cap <em>does not apply</em> to motor vehicle accident claims.</li>
+      <li><strong>Government Claims:</strong> Under <strong>NRS 41.035</strong>, tort claims against the State or political subdivisions are capped at $200,000 (excluding interest), with no punitive damages allowed against public employees acting within scope.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>NRS 42.005</strong>, punitive damages are capped at 3x compensatory damages (if compensatory ≥ $100,000) or $300,000 (if less), with exceptions for DUI drivers (NRS 42.010), defective products, and toxic exposure where no cap applies.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
   if (cap !== null && damageCapExplanation) {
@@ -385,6 +417,20 @@ export function generateSettlementExample(
       <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
       <li><strong>Proportionate Responsibility Adjustment (20% Fault):</strong> Under Tex. Civ. Prac. & Rem. Code § 33.001, because the claimant's fault (20%) is 50% or less, recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an estimated amount after the hypothetical comparative-fault reduction of <strong>$46,000</strong>.</li>
       <li><strong>51% Bar Rule:</strong> If the claimant were found greater than 50% responsible (51% or higher), third-party recovery would be completely barred ($0).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "nevada") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Nevada</strong> under state modified comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal $20,000 in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = $57,500 gross total.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under NRS 41.141, because the claimant's fault (20%) is 50% or less (not greater than the defendant's negligence), recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant's negligence is greater than the defendant's (51% or higher), recovery is completely barred ($0).</li>
+      <li><strong>Several Liability (NRS 41.141(4)):</strong> In multi-defendant cases, each defendant is severally liable only for their percentage of negligence, except for strict liability, intentional torts, concerted acts, toxic spills, or product liability.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -713,6 +759,51 @@ export function generateFAQs(
       {
         question: "What is a Stowers demand in Texas auto insurance negotiations?",
         answer: "Originating from <em>G.A. Stowers Furniture Co. v. American Indemnity Co.</em> (1929), the <em>Stowers</em> doctrine is a fact-specific Texas common-law doctrine governing an insurance company's duty to its insured driver. When an injured party makes a settlement demand within policy limits where liability is reasonably clear and offers a full release, the insurer must act as an ordinarily prudent insurer in considering the offer. <em>Stowers</em> is an insurer duty owed to its policyholder—it is not a statutory guarantee allowing a claimant to automatically collect beyond policy limits."
+      }
+    ];
+  }
+
+  if (stateName === "Nevada") {
+    return [
+      {
+        question: "How does Nevada's 51% modified comparative negligence rule work?",
+        answer: "Under <strong>NRS 41.141</strong>, you can recover financial compensation as long as your share of fault is <strong>not greater than the negligence of the defendant(s)</strong>. In a single-defendant case, this means you must be <strong>50% or less at fault</strong> (a 50/50 split allows recovery). Your award is reduced in direct proportion to your fault percentage. If you are <strong>51% or more at fault</strong> (your negligence exceeds the defendant's), you are completely barred from recovery. This is a modified comparative negligence standard with a 51% bar."
+      },
+      {
+        question: "What is several liability under NRS 41.141(4)?",
+        answer: "Under <strong>NRS 41.141(4)</strong>, when recovery is allowed against multiple defendants, each defendant is <strong>severally liable</strong> only for the portion of the judgment representing their percentage of negligence. This means defendants are not jointly and severally liable for the full amount (with exceptions for strict liability, intentional torts, concerted acts, toxic/hazardous substance spills, and product liability under NRS 41.141(5)). A defendant who settles before judgment has their comparative negligence and settlement amount excluded from evidence."
+      },
+      {
+        question: "What are Nevada's minimum mandatory auto insurance limits?",
+        answer: "Under <strong>NRS 485.185</strong> (updated by Senate Bill 308, 2017, effective July 1, 2018), Nevada drivers must carry minimum liability coverage of <strong>25/50/20</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $20,000 for property damage). Prior to July 1, 2018, the limits were 15/30/10. These policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Nevada?",
+        answer: "Under <strong>NRS 687B.145</strong> and <strong>NRS 690B.020</strong>, Nevada insurers <strong>must offer</strong> UM/UIM coverage at limits not less than the bodily injury liability limits purchased. The named insured may reject or select lower limits in writing. UM/UIM coverage protects you if the at-fault driver has no insurance or insufficient coverage. It is not mandatory to purchase, but the offer is mandatory."
+      },
+      {
+        question: "Does Nevada require Personal Injury Protection (PIP) or MedPay?",
+        answer: "No. Nevada is an <strong>at-fault (tort) state</strong> and does not have mandatory no-fault PIP. <strong>Medical Payments (MedPay)</strong> coverage is optional first-party coverage that many Nevada policies include, but there is no statutory requirement to carry it. You can sue the at-fault driver immediately for both economic and non-economic damages without meeting any injury threshold."
+      },
+      {
+        question: "What are the statutes of limitations for car accident claims in Nevada?",
+        answer: "Under <strong>NRS 11.190(4)(e)</strong>, personal injury lawsuits must be filed within <strong>2 years</strong> of the crash. Under <strong>NRS 11.190(3)(c)</strong>, property damage claims have a <strong>3-year</strong> deadline. Under <strong>NRS 41.085(4)</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death. Claims against government entities require administrative notice within <strong>2 years</strong> under <strong>NRS 41.036</strong> (filed with the Attorney General for state claims, or the governing body for political subdivisions)."
+      },
+      {
+        question: "What is the police accident report threshold in Nevada?",
+        answer: "Under <strong>NRS 484E.070</strong>, drivers must immediately report any crash to police if it results in <strong>bodily injury, death, or property damage exceeding $750</strong>. This is the specific statutory threshold—earlier sources citing $500–$1,000 ranges are outdated or imprecise. A police report serves as critical neutral evidence for insurance claims."
+      },
+      {
+        question: "Does Nevada cap pain and suffering damages in car accident cases?",
+        answer: "No. For standard passenger vehicle car accident claims against private motorists, <strong>Nevada imposes no statutory cap on non-economic damages</strong> (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). The only damage caps in Nevada apply to: (1) <strong>Medical malpractice</strong> under NRS 41A.035 ($590,000 in 2026, rising annually); (2) <strong>Government tort claims</strong> under NRS 41.035 ($200,000 cap); and (3) <strong>Punitive damages</strong> under NRS 42.005 (3x compensatory or $300,000, with exceptions for DUI, defective products, toxic exposure)."
+      },
+      {
+        question: "What are the government claim notice requirements in Nevada?",
+        answer: "Under <strong>NRS 41.036</strong>, a tort claim against the State of Nevada or its agencies must be filed with the <strong>Attorney General</strong> within <strong>2 years</strong> of accrual. A claim against a political subdivision (city, county, school district) must be filed with the <strong>governing body of that subdivision</strong> within <strong>2 years</strong>. This administrative filing is a prerequisite to suit under NRS 41.031. The 2-year deadline is absolute—there is no 'typically' or variable window."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Nevada settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. A Nevada personal injury attorney can investigate crash facts, obtain police and witness reports, calculate economic and non-economic damages, verify UM/UIM and other applicable coverage, ensure compliance with NRS 41.036 government notice deadlines, and file formal pleadings in the Nevada District Court if an insurer refuses a fair settlement."
       }
     ];
   }
