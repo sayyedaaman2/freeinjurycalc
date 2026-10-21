@@ -135,6 +135,8 @@ const pageTitle = state === 'georgia'
   ? 'Kansas Car Accident Settlement Calculator | No-Fault PIP, 50% Fault Bar'
   : state === 'nevada'
   ? 'Nevada Car Accident Settlement Calculator | 51% Comparative Fault, 25/50/20 Limits'
+  : state === 'florida'
+  ? 'Florida Car Accident Settlement Calculator | No-Fault PIP, 51% Fault, Verbal Threshold'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -157,6 +159,8 @@ const pageDescription = state === 'georgia'
   ? 'Estimate a Kansas car accident settlement under no-fault PIP ($4,500), 50% modified comparative fault bar (K.S.A. § 60-258a), $2,000 medical threshold to sue (K.S.A. § 40-3117), and 2-year SOL (K.S.A. § 60-513). Note: Kansas statutory non-economic damages cap (K.S.A. § 60-19a02) was held facially unconstitutional in Hilburn v. Enerpipe Ltd., 309 Kan. 1127 (2019). Free educational tool.'
   : state === 'nevada'
   ? 'Calculate your estimated Nevada car accident settlement under 51% modified comparative fault (NRS 41.141), 25/50/20 liability limits (NRS 485.185), 2-year personal injury SOL (NRS 11.190), 2-year government notice (NRS 41.036), and no cap on pain and suffering. Free educational tool.'
+  : state === 'florida'
+  ? 'Calculate your estimated Florida car accident settlement under no-fault PIP ($10k, 80% med/60% wages), 51% modified comparative fault (F.S. § 768.81), verbal threshold (F.S. § 627.737), 2-year SOL (F.S. § 95.11), and no BI requirement. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -195,7 +199,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -661,6 +665,63 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'florida' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Florida Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/768.81" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 768.81 — Comparative Fault (51% Bar, Several Liability)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory modified comparative negligence: plaintiff recovers if fault ≤ 50%; barred if > 50%. Each defendant liable only for their percentage of fault (several liability). Amended by HB 837 (Ch. 2023-15) effective March 24, 2023.</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/627.736" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 627.736 — Personal Injury Protection (PIP) Benefits
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Mandatory $10,000 PIP covering 80% medical, 60% lost wages, $5,000 death benefit. 14-day initial treatment rule; $2,500 non-emergency cap. Priority of payment rules and fee schedules (200% Medicare).</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/627.737" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 627.737 — Tort Exemption & Verbal Threshold
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">At-fault driver exempt from tort liability for pain/suffering unless plaintiff meets verbal threshold: (a) significant permanent loss of bodily function, (b) permanent injury, (c) significant permanent scarring/disfigurement, or (d) death. No punitive damages against auto insurer over policy limits (subsection 4).</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/95.11" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 95.11 — Statute of Limitations (2 Years Negligence)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Negligence actions: 2 years (subsection 4(a)), reduced from 4 years by HB 837 effective March 24, 2023. Property damage: 4 years (subsection 3(h)). Wrongful death: 2 years (subsection 4(d)). Pre-March 2023 claims may retain 4-year SOL.</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/768.28" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 768.28 — Waiver of Sovereign Immunity (Government Claims)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">3-year written notice to agency (and DFS for state); 180-day wait before suit. Liability capped at $200,000 per person / $300,000 per incident. No punitive damages against government. Pre-suit notice is condition precedent.</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/627.727" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 627.727 — Uninsured/Underinsured Motorist Coverage
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM matching BI limits if BI purchased; rejection must be in writing. Stacking rules; no UM/UIM required if no BI. Critical in Florida due to low BI compliance.</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/316.066" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 316.066 — Duty to Report Crash ($500 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Must report crashes involving bodily injury, death, or property damage ≥ $500. Police report is critical evidence for PIP and tort claims.</span>
+              </li>
+              <li>
+                <a href="https://www.flsenate.gov/Laws/Statutes/2025/624.155" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  F.S. § 624.155 — Bad Faith Insurance Claims
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">First-party bad faith action for failure to settle in good faith. HB 837 added 90-day safe harbor for tender of policy limits/demand amount. Third-party bad faith governed by specific procedural requirements.</span>
               </li>
             </ul>
           </div>

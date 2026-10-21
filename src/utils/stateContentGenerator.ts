@@ -100,6 +100,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Florida") {
+    return `Under Florida's Motor Vehicle No-Fault Law (<strong>F.S. § 627.730–627.7405</strong>), Florida is a <strong>no-fault state</strong> requiring <strong>$10,000 in Personal Injury Protection (PIP)</strong> coverage. PIP pays <strong>80% of reasonable medical expenses</strong> and <strong>60% of lost wages</strong> (plus $5,000 death benefit) up to the $10,000 limit, regardless of fault (<strong>F.S. § 627.736</strong>). Initial treatment must be received within <strong>14 days</strong> of the accident; non-emergency conditions are limited to <strong>$2,500</strong>. Key Florida insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>No Mandatory Bodily Injury Liability (BI):</strong> Florida requires only <strong>$10,000 Property Damage Liability (PDL)</strong> and <strong>$10,000 PIP</strong> (<strong>10/20/10</strong> — the middle "20" refers to PIP per accident). BI liability is optional but strongly recommended.</li>
+      <li><strong>Verbal Threshold to Sue for Pain & Suffering:</strong> Under <strong>F.S. § 627.737</strong>, you cannot recover non-economic damages unless the injury involves: (a) significant and permanent loss of an important bodily function, (b) permanent injury within a reasonable degree of medical probability, (c) significant and permanent scarring or disfigurement, or (d) death.</li>
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM):</strong> Insurers must offer UM/UIM matching BI limits if BI is purchased; rejection must be in writing (<strong>F.S. § 627.727</strong>). Given Florida's low BI compliance, UM/UIM is critical.</li>
+      <li><strong>MedPay Optional:</strong> Medical Payments coverage is available but not required; it can cover the 20% medical / 40% wage gap left by PIP.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -218,6 +228,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Nevada legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Florida") {
+    return `In Florida, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>F.S. § 95.11(4)(a)</strong>, actions founded on negligence (including car accidents) must be filed within <strong>2 years</strong> of the incident. <em>Critical:</em> This was reduced from 4 years by <strong>HB 837 (Ch. 2023-15)</strong> effective <strong>March 24, 2023</strong>. Claims accruing before that date may still have 4 years.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>F.S. § 95.11(4)(d)</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>Property Damage Lawsuits (4 Years):</strong> Under <strong>F.S. § 95.11(3)(h)</strong>, property damage claims (vehicle repair) have a <strong>4-year</strong> statute of limitations.</li>
+      <li><strong>PIP Claims (5 Years for Contract / 14-Day Treatment Rule):</strong> PIP benefits are governed by the insurance contract (typically 5-year contract SOL under <strong>F.S. § 95.11(2)(b)</strong>), but initial treatment must occur within <strong>14 days</strong> of the accident (<strong>F.S. § 627.736(1)(a)</strong>) or benefits are forfeited.</li>
+      <li><strong>Government Entity Claims (3 Years Notice / 2-Year Cap):</strong> Under <strong>F.S. § 768.28(6)(a)</strong>, a written claim must be presented to the appropriate agency (and the Department of Financial Services for state claims) within <strong>3 years</strong> of accrual. Suit cannot be filed until 180 days after notice or denial. Liability is capped at <strong>$200,000 per person / $300,000 per incident</strong> (<strong>F.S. § 768.28(5)</strong>); no punitive damages against government.</li>
+      <li><strong>Tolling for Minors:</strong> Under <strong>F.S. § 95.051</strong>, the statute of limitations is tolled until the minor reaches age 18 (with a 7-year statute of repose for medical malpractice).</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Florida legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -287,6 +310,17 @@ export function generateDamageCapContent(
       <li><strong>Medical Malpractice Only:</strong> Under <strong>NRS 41A.035</strong>, non-economic damages in professional negligence actions against healthcare providers are capped (e.g., $590,000 for 2026, increasing annually). This cap <em>does not apply</em> to motor vehicle accident claims.</li>
       <li><strong>Government Claims:</strong> Under <strong>NRS 41.035</strong>, tort claims against the State or political subdivisions are capped at $200,000 (excluding interest), with no punitive damages allowed against public employees acting within scope.</li>
       <li><strong>Punitive Damages:</strong> Under <strong>NRS 42.005</strong>, punitive damages are capped at 3x compensatory damages (if compensatory ≥ $100,000) or $300,000 (if less), with exceptions for DUI drivers (NRS 42.010), defective products, and toxic exposure where no cap applies.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Florida") {
+    return `For standard passenger vehicle car accident claims against private motorists, Florida law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, mental anguish, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the Florida Statutes for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Malpractice:</strong> Under <strong>F.S. § 766.118</strong>, non-economic damages in medical negligence actions were previously capped but the Florida Supreme Court struck down caps in <em>North Broward Hospital District v. Kalitan</em>, 219 So. 3d 49 (Fla. 2017). No current cap.</li>
+      <li><strong>Government Claims:</strong> Under <strong>F.S. § 768.28(5)</strong>, tort claims against the state or its subdivisions are capped at <strong>$200,000 per person / $300,000 per incident</strong>; no punitive damages allowed.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>F.S. § 768.73</strong>, punitive damages are capped at <strong>3x compensatory or $500,000</strong> (whichever is greater), with exceptions for intentional misconduct, DUI, and certain statutory violations where no cap applies.</li>
+      <li><strong>No Punitive Against Auto Insurer Over Limits:</strong> Under <strong>F.S. § 627.737(4)</strong>, no punitive damages may be awarded against an automobile liability insurer for damages in excess of its policy limits.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -431,6 +465,22 @@ export function generateSettlementExample(
       <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under NRS 41.141, because the claimant's fault (20%) is 50% or less (not greater than the defendant's negligence), recovery is permitted. The gross estimate is reduced by 20% (-$11,500), producing an Illustrative Calculated Estimate of <strong>$46,000</strong>.</li>
       <li><strong>51% Bar Rule:</strong> If the claimant's negligence is greater than the defendant's (51% or higher), recovery is completely barred ($0).</li>
       <li><strong>Several Liability (NRS 41.141(4)):</strong> In multi-defendant cases, each defendant is severally liable only for their percentage of negligence, except for strict liability, intentional torts, concerted acts, toxic spills, or product liability.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "florida") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Florida</strong> under state no-fault and modified comparative fault rules:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>PIP Recovery (Your Insurer):</strong> Pays 80% of medical bills ($12,000 of $15,000) and 60% of lost wages ($3,000 of $5,000) = <strong>$15,000</strong> (subject to $10,000 PIP limit; assume $10,000 paid).</li>
+      <li><strong>Economic Losses (Beyond PIP):</strong> Remaining 20% medical ($3,000) + 40% lost wages ($2,000) = <strong>$5,000</strong> out-of-pocket economic loss.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using a 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. <em>Requires meeting F.S. § 627.737 verbal threshold (permanent injury, significant scarring, or death).</em></li>
+      <li><strong>Gross Calculated Target Value:</strong> $5,000 (out-of-pocket economic) + $37,500 (pain and suffering) = <strong>$42,500</strong> gross tort claim against at-fault driver.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (20% Fault):</strong> Under F.S. § 768.81 (HB 837), because the claimant's fault (20%) is 50% or less, recovery is permitted. The tort claim is reduced by 20% (-$8,500), producing an Illustrative Calculated Estimate of <strong>$34,000</strong> from the at-fault driver.</li>
+      <li><strong>Total Estimated Recovery:</strong> $10,000 (PIP) + $34,000 (tort) = <strong>$44,000</strong> combined.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant's negligence exceeds the defendant's (51% or higher), tort recovery is completely barred ($0), though PIP benefits remain available.</li>
+      <li><strong>Several Liability (F.S. § 768.81(3)):</strong> Each defendant is liable only for their percentage of fault; no joint and several liability for non-economic damages.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -804,6 +854,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Nevada settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. A Nevada personal injury attorney can investigate crash facts, obtain police and witness reports, calculate economic and non-economic damages, verify UM/UIM and other applicable coverage, ensure compliance with NRS 41.036 government notice deadlines, and file formal pleadings in the Nevada District Court if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Florida") {
+    return [
+      {
+        question: "How does Florida's 51% modified comparative negligence rule work?",
+        answer: "Under <strong>F.S. § 768.81</strong> (as amended by <strong>HB 837, Ch. 2023-15</strong> effective March 24, 2023), you can recover tort damages only if your fault is <strong>50% or less</strong>. Your award is reduced proportionally by your fault percentage. If you are <strong>51% or more at fault</strong>, you are barred from tort recovery. <em>Note:</em> This applies to claims accruing on or after March 24, 2023; earlier claims follow the prior pure comparative negligence standard."
+      },
+      {
+        question: "What is Florida's no-fault PIP coverage and what does it pay?",
+        answer: "Under <strong>F.S. § 627.736</strong>, every Florida motor vehicle owner must carry <strong>$10,000 in Personal Injury Protection (PIP)</strong>. PIP pays <strong>80% of reasonable medical expenses</strong> and <strong>60% of lost wages</strong> (plus a <strong>$5,000 death benefit</strong>) up to the $10,000 limit, regardless of fault. You must seek initial treatment within <strong>14 days</strong> of the accident. Non-emergency medical conditions are limited to <strong>$2,500</strong> in benefits."
+      },
+      {
+        question: "What is the 'verbal threshold' to sue for pain and suffering in Florida?",
+        answer: "Under <strong>F.S. § 627.737(2)</strong>, you cannot recover non-economic damages (pain, suffering, mental anguish, inconvenience) unless the injury consists of: (a) <strong>significant and permanent loss of an important bodily function</strong>; (b) <strong>permanent injury within a reasonable degree of medical probability</strong> (other than scarring/disfigurement); (c) <strong>significant and permanent scarring or disfigurement</strong>; or (d) <strong>death</strong>. This threshold applies to the at-fault driver's tort exemption."
+      },
+      {
+        question: "Does Florida require Bodily Injury (BI) Liability insurance?",
+        answer: "<strong>No.</strong> Florida is one of the few states that does <strong>not</strong> require drivers to carry Bodily Injury Liability coverage. The mandatory minimums are <strong>$10,000 PIP</strong> and <strong>$10,000 Property Damage Liability (PDL)</strong> — often shown as <strong>10/20/10</strong> (the middle '20' is the PIP per-accident limit). However, carrying BI is strongly recommended; without it, you are personally liable for injuries you cause."
+      },
+      {
+        question: "What is the statute of limitations for a Florida car accident?",
+        answer: "Under <strong>F.S. § 95.11(4)(a)</strong>, negligence actions (including car accidents) must be filed within <strong>2 years</strong> of the crash. This was reduced from 4 years by <strong>HB 837 (Ch. 2023-15)</strong> effective <strong>March 24, 2023</strong>. Claims accruing before that date may still have 4 years. Property damage claims have a <strong>4-year</strong> SOL (<strong>F.S. § 95.11(3)(h)</strong>). Wrongful death: <strong>2 years</strong> from date of death (<strong>F.S. § 95.11(4)(d)</strong>)."
+      },
+      {
+        question: "What are the government claim notice requirements in Florida?",
+        answer: "Under <strong>F.S. § 768.28(6)(a)</strong>, a written claim must be presented to the appropriate agency (and the Department of Financial Services for state claims) within <strong>3 years</strong> of accrual. Suit cannot be filed until 180 days after notice or denial. Government liability is capped at <strong>$200,000 per person / $300,000 per incident</strong> (<strong>F.S. § 768.28(5)</strong>); no punitive damages against government entities."
+      },
+      {
+        question: "What is the police accident report threshold in Florida?",
+        answer: "Under <strong>F.S. § 316.066</strong>, a crash must be reported to law enforcement if it results in <strong>bodily injury, death, or property damage of $500 or more</strong>. The $500 threshold is specific—earlier sources citing higher ranges are imprecise. A police report is critical evidence for PIP and tort claims."
+      },
+      {
+        question: "Does Florida cap pain and suffering damages in car accident cases?",
+        answer: "No. For standard car accident claims against private motorists, <strong>Florida imposes no statutory cap on non-economic damages</strong>. The only damage caps apply to: (1) <strong>Government claims</strong> under F.S. § 768.28 ($200k per person / $300k per incident); (2) <strong>Punitive damages</strong> under F.S. § 768.73 (3x compensatory or $500k, with exceptions for DUI/intentional misconduct); (3) <strong>No punitive against auto insurer over policy limits</strong> per F.S. § 627.737(4)."
+      },
+      {
+        question: "How does UM/UIM coverage work in Florida?",
+        answer: "Under <strong>F.S. § 627.727</strong>, insurers must offer Uninsured/Underinsured Motorist (UM/UIM) coverage matching Bodily Injury (BI) liability limits if BI is purchased. Rejection must be in writing. Given Florida's low BI compliance, UM/UIM is often the only meaningful recovery source when the at-fault driver lacks BI coverage."
+      },
+      {
+        question: "What is Florida's bad faith statute for insurance claims?",
+        answer: "Under <strong>F.S. § 624.155</strong>, a first-party insured may bring a bad faith action against their insurer for failing to act in good faith to settle a claim when, under all the circumstances, it could and should have done so. <strong>HB 837</strong> added a 90-day safe harbor: if the insurer tenders policy limits (or the amount demanded) within 90 days of notice, no bad faith action lies. The statute also governs third-party bad faith with specific procedural requirements."
       }
     ];
   }
