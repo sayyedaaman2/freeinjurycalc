@@ -139,6 +139,8 @@ const pageTitle = state === 'georgia'
   ? 'Florida Car Accident Settlement Calculator | No-Fault PIP, 51% Fault, Verbal Threshold'
   : state === 'north-carolina'
   ? 'North Carolina Car Accident Settlement Calculator | Pure Contributory Negligence'
+  : state === 'virginia'
+  ? 'Virginia Car Accident Settlement Calculator | Pure Contributory Negligence, Guest Statute'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -165,6 +167,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Florida car accident settlement under no-fault PIP ($10k, 80% med/60% wages), 51% modified comparative fault (F.S. § 768.81), verbal threshold (F.S. § 627.737), 2-year SOL (F.S. § 95.11), and no BI requirement. Free educational tool.'
   : state === 'north-carolina'
   ? 'Calculate your estimated North Carolina car accident settlement under pure contributory negligence (1% bars recovery), 30/60/25 liability limits (G.S. § 20-279.21), 3-year SOL (G.S. § 1-52), mandatory UM/UIM (G.S. § 20-279.21), and no pain and suffering cap. Free educational tool.'
+  : state === 'virginia'
+  ? 'Calculate your estimated Virginia car accident settlement under pure contributory negligence (1% bars recovery), 30/60/20 liability limits (Va. Code § 46.2-472), 2-year SOL (Va. Code § 8.01-243), Guest Statute (Va. Code § 8.01-63), mandatory UM/UIM (Va. Code § 38.2-2206), and no pain and suffering cap. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -203,7 +207,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -669,6 +673,63 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'virginia' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Virginia Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title8.01/chapter3/section8.01-58/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 8.01-58 — Contributory Negligence (Railroad Employee Exception)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory exception to contributory negligence only for railroad employee actions under FELA. The general pure contributory negligence doctrine (1% bars recovery) remains common law in Virginia.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title8.01/chapter4/section8.01-243/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 8.01-243 — Statute of Limitations (2 Years PI, 5 Years Property)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Personal injury: 2 years (subsection A). Property damage: 5 years (subsection B). Wrongful death: 2 years from death (Va. Code § 8.01-244). Tolled for minors/disability under Va. Code § 8.01-229.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/46.2-472/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 46.2-472 — Motor Vehicle Liability Policy Minimums (30/60/20 → 50/100/25)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability limits: 30/60/20 for policies effective Jan 1, 2022–Dec 31, 2024; 50/100/25 effective Jan 1, 2025 per 2021 Sp. Sess. I, c. 273.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title38.2/chapter22/section38.2-2206/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 38.2-2206 — Mandatory UM/UIM Coverage (Matching Liability Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">UM/UIM mandatory at limits equal to liability limits; rejection of higher limits must be in writing. UIM equals UM limits. Subrogation rights for UIM carrier under subsection G.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title8.01/chapter3/section8.01-63/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 8.01-63 — Guest Statute (Gross Negligence/Intoxication Only)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Guest passenger (no payment for ride) cannot recover for simple negligence — only gross negligence or intoxication. Does not apply to paying passengers or those conferring tangible benefit.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title8.01/chapter3/article18.1/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 8.01-195.1 et seq. — Virginia Tort Claims Act (1-Year Notice, $100k Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">1-year notice to Division of Risk Management or Attorney General (Va. Code § 8.01-195.6); 18-month SOL from notice or 2 years from accrual (Va. Code § 8.01-195.7); $100,000 cap per claimant (Va. Code § 8.01-195.3); contributory negligence is complete defense; no punitive damages/pre-judgment interest.</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/46.2-894/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 46.2-894 — Duty to Report Accident (Injury/Death/Attended Property)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately stop and report if injury, death, or damage to attended property. Criminal penalty: Class 5 felony if >$1,000 property damage or injury/death; Class 1 misdemeanor if ≤$1,000. Police must file written report at $3,000+ damage (Va. Code § 46.2-373).</span>
+              </li>
+              <li>
+                <a href="https://law.lis.virginia.gov/vacode/title8.01/chapter3/section8.01-38.1/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Va. Code § 8.01-38.1 — Punitive Damages Cap ($350,000)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages capped at $350,000. Medical malpractice total damages cap under Va. Code § 8.01-581.15 ($2.6M in 2024, increasing annually).</span>
               </li>
             </ul>
           </div>

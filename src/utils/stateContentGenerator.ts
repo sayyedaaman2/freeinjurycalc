@@ -120,6 +120,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Virginia") {
+    return `Under Virginia's motor vehicle insurance requirements (<strong>Va. Code § 46.2-472</strong>), every driver must maintain minimum liability insurance limits of <strong>30/60/20</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $20,000 for property damage) for policies effective January 1, 2022 through December 31, 2024. <strong>Effective January 1, 2025, limits increase to 50/100/25</strong> per 2021 Sp. Sess. I, c. 273. Virginia is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Virginia insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>Va. Code § 38.2-2206</strong>, UM/UIM coverage is mandatory at limits <strong>equal to the liability limits</strong> in the policy. The named insured may reject higher UM/UIM limits in writing, but the default is matching liability limits. UIM coverage equals UM limits.</li>
+      <li><strong>No PIP / MedPay Required:</strong> Virginia does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+      <li><strong>Guest Statute:</strong> Under <strong>Va. Code § 8.01-63</strong>, a guest passenger (no payment for ride) cannot recover for simple negligence — only gross negligence or intoxication. This does not apply to paying passengers.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -264,6 +274,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified North Carolina legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Virginia") {
+    return `In Virginia, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>Va. Code § 8.01-243(A)</strong>, actions for personal injuries (including car accidents) must be filed within <strong>2 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (5 Years):</strong> Under <strong>Va. Code § 8.01-243(B)</strong>, actions for injury to property (vehicle damage) must be filed within <strong>5 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>Va. Code § 8.01-244</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>State Government Tort Claims (1-Year Notice / 18-Month SOL):</strong> Under the <strong>Virginia Tort Claims Act (Va. Code § 8.01-195.1 et seq.)</strong>, a written notice of claim must be filed with the <strong>Director of the Division of Risk Management or the Attorney General</strong> within <strong>1 year</strong> of accrual (<strong>Va. Code § 8.01-195.6</strong>). Suit may be filed upon denial or after 6 months; all claims are forever barred unless commenced within <strong>18 months of filing notice</strong> or <strong>2 years after accrual</strong> (<strong>Va. Code § 8.01-195.7</strong>). Contributory negligence is a complete defense (<strong>Va. Code § 8.01-195.3</strong>). Damages capped at <strong>$100,000 per claimant</strong> (<strong>Va. Code § 8.01-195.3</strong>).</li>
+      <li><strong>Local Government Claims:</strong> Counties/cities may have specific notice requirements under <strong>Va. Code § 15.2-209</strong> et seq.; consult counsel. The 2-year SOL applies.</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>Va. Code § 8.01-229</strong>, the statute of limitations is tolled while the injured person is under 18 or legally incapacitated.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Virginia legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -355,6 +378,18 @@ export function generateDamageCapContent(
       <li><strong>Government Claims (State):</strong> Under <strong>G.S. § 143-299.2</strong>, tort claims against the State are capped at <strong>$150,000 per claimant</strong> arising from a single occurrence; excess paid from State Excess Liability Fund (G.S. § 143-299.4). Contributory negligence is a complete defense (G.S. § 143-291).</li>
       <li><strong>Government Claims (Local):</strong> Local government liability is generally limited by statute and available insurance; no single statewide cap, but immunity defenses apply.</li>
       <li><strong>Punitive Damages:</strong> Under <strong>G.S. § 1D-25</strong>, punitive damages are capped at <strong>3x compensatory damages or $250,000</strong> (whichever is greater), with exceptions for DUI (G.S. § 1D-20) and certain intentional torts.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Virginia") {
+    return `For standard passenger vehicle car accident claims against private motorists, Virginia law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the Code of Virginia for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Malpractice:</strong> Under <strong>Va. Code § 8.01-581.15</strong>, total damages (economic + non-economic) in medical malpractice actions are capped (e.g., <strong>$2.6 million in 2024</strong>, increasing annually). This cap <em>does not apply</em> to motor vehicle accident claims.</li>
+      <li><strong>Government Claims (State):</strong> Under <strong>Va. Code § 8.01-195.3</strong>, tort claims against the Commonwealth are capped at <strong>$100,000 per claimant</strong> (or policy limits if greater); no punitive damages; no pre-judgment interest.</li>
+      <li><strong>Government Claims (Local):</strong> Local government liability is generally limited by statute and available insurance; no single statewide cap, but sovereign immunity defenses apply.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>Va. Code § 8.01-38.1</strong>, punitive damages are capped at <strong>$350,000</strong>.</li>
+      <li><strong>No Comparative Fault — Pure Contributory Negligence:</strong> Virginia follows the <strong>pure contributory negligence doctrine</strong> (common law; <strong>Va. Code § 8.01-58</strong> applies only to railroad employee actions). Any fault by the plaintiff (even 1%) completely bars recovery. This is the most critical "cap" — a total bar to recovery.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -529,6 +564,21 @@ export function generateSettlementExample(
       <li><strong>Pure Contributory Negligence Adjustment (10% Fault):</strong> Under North Carolina's pure contributory negligence doctrine, <strong>any fault by the claimant (even 1%) completely bars recovery</strong>. Because the claimant bears 10% responsibility, the Illustrative Calculated Estimate is <strong>$0</strong> — no tort recovery permitted.</li>
       <li><strong>Zero-Fault Requirement:</strong> To recover <em>any</em> damages in North Carolina, the claimant must prove the at-fault driver was <strong>100% responsible</strong>. This makes exhaustive documentation (dashcam footage, witness statements, police reports) critically important.</li>
       <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under G.S. § 20-279.21) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "virginia") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Virginia</strong> under the state's strict pure contributory negligence rule:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Pure Contributory Negligence Adjustment (10% Fault):</strong> Under Virginia's pure contributory negligence doctrine, <strong>any fault by the claimant (even 1%) completely bars recovery</strong>. Because the claimant bears 10% responsibility, the Illustrative Calculated Estimate is <strong>$0</strong> — no tort recovery permitted.</li>
+      <li><strong>Zero-Fault Requirement:</strong> To recover <em>any</em> damages in Virginia, the claimant must prove the at-fault driver was <strong>100% responsible</strong>. This makes exhaustive documentation (dashcam footage, witness statements, police reports) critically important.</li>
+      <li><strong>Guest Statute Exception (Va. Code § 8.01-63):</strong> If the claimant was a <strong>guest passenger</strong> (no payment for the ride), they can only recover for <strong>gross negligence or intoxication</strong>, not simple negligence. Paying passengers are not subject to this limitation.</li>
+      <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under Va. Code § 38.2-2206, matching liability limits) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -992,6 +1042,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my North Carolina settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In North Carolina's <strong>pure contributory negligence</strong> system, a lawyer is especially critical: insurance adjusters aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely. A North Carolina personal injury attorney can investigate crash facts, obtain police/witness reports, rebut contributory negligence defenses, calculate damages, and file formal complaints in <strong>North Carolina Superior Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Virginia") {
+    return [
+      {
+        question: "How does Virginia's pure contributory negligence rule work?",
+        answer: "Virginia is one of only a few states (with Alabama, Maryland, North Carolina, and D.C.) that follows the <strong>pure contributory negligence doctrine</strong>. Under this rule, if you are found to have contributed to the accident <strong>in any way whatsoever — even 1% — you are completely barred from recovering any damages</strong> from the other party. This is a common-law doctrine; <strong>Va. Code § 8.01-58</strong> applies only to railroad employee actions (FELA) and does not modify the general rule. You must prove the at-fault driver was 100% responsible to recover anything."
+      },
+      {
+        question: "What are Virginia's minimum auto insurance limits?",
+        answer: "Under <strong>Va. Code § 46.2-472</strong>, for policies effective January 1, 2022 through December 31, 2024, minimums are <strong>30/60/20</strong> ($30,000 per person bodily injury, $60,000 per accident bodily injury, $20,000 property damage). <strong>Effective January 1, 2025, limits increase to 50/100/25</strong> per 2021 Sp. Sess. I, c. 273. These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Virginia?",
+        answer: "Yes. Under <strong>Va. Code § 38.2-2206</strong>, <strong>UM/UIM coverage is mandatory</strong> at limits <strong>equal to the bodily injury liability limits</strong> in the policy. The named insured may reject higher UM/UIM limits in writing, but the default is matching liability limits. UIM coverage equals UM limits. Given the contributory negligence bar, UM/UIM is a critical safety net."
+      },
+      {
+        question: "What is the statute of limitations for a Virginia car accident?",
+        answer: "Under <strong>Va. Code § 8.01-243(A)</strong>, personal injury lawsuits must be filed within <strong>2 years</strong> of the crash. Property damage claims have a <strong>5-year</strong> deadline (<strong>Va. Code § 8.01-243(B)</strong>). Wrongful death actions have a <strong>2-year</strong> deadline from date of death (<strong>Va. Code § 8.01-244</strong>). Claims against the Commonwealth under the Virginia Tort Claims Act (Va. Code § 8.01-195.1 et seq.) require 1-year notice (Va. Code § 8.01-195.6) and must be commenced within 18 months of notice or 2 years of accrual (Va. Code § 8.01-195.7)."
+      },
+      {
+        question: "What is the police accident report threshold in Virginia?",
+        answer: "Under <strong>Va. Code § 46.2-894</strong>, the driver must immediately stop and report to law enforcement if the accident involves <strong>injury, death, or damage to attended property</strong>. The criminal penalty threshold is <strong>$1,000 property damage</strong> (Class 5 felony if >$1,000; Class 1 misdemeanor if ≤$1,000). Under <strong>Va. Code § 46.2-373</strong>, law enforcement must file a written report for accidents involving injury/death or <strong>$3,000+ total property damage</strong>. The $1,000/$3,000 distinction is critical — drivers must report any attended property damage; police must file reports at $3,000+."
+      },
+      {
+        question: "Does Virginia cap pain and suffering damages in car accident cases?",
+        answer: "No. For standard car accident claims against private motorists, <strong>Virginia imposes no statutory cap on non-economic damages</strong>. The only damage caps apply to: (1) <strong>Medical malpractice</strong> under Va. Code § 8.01-581.15 ($2.6M in 2024, increasing annually); (2) <strong>State government claims</strong> under Va. Code § 8.01-195.3 ($100,000 per claimant); (3) <strong>Punitive damages</strong> under Va. Code § 8.01-38.1 ($350,000). <strong>The most severe 'cap' is pure contributory negligence:</strong> any fault (even 1%) = $0 recovery."
+      },
+      {
+        question: "What are the government claim requirements in Virginia?",
+        answer: "Under the <strong>Virginia Tort Claims Act (Va. Code § 8.01-195.1 et seq.)</strong>, a written notice of claim must be filed with the <strong>Director of the Division of Risk Management or the Attorney General</strong> within <strong>1 year</strong> of accrual (<strong>Va. Code § 8.01-195.6</strong>). Suit may be filed upon denial or after 6 months; all claims are forever barred unless commenced within <strong>18 months of filing notice</strong> or <strong>2 years after accrual</strong> (<strong>Va. Code § 8.01-195.7</strong>). Contributory negligence is a complete defense (<strong>Va. Code § 8.01-195.3</strong>). Damages capped at <strong>$100,000 per claimant</strong> (<strong>Va. Code § 8.01-195.3</strong>). Local governments may have separate notice requirements under Va. Code § 15.2-209."
+      },
+      {
+        question: "What is Virginia's Guest Statute?",
+        answer: "Under <strong>Va. Code § 8.01-63</strong>, a <strong>guest passenger</strong> (someone riding without payment for the ride) <strong>cannot recover for simple negligence</strong> — only for <strong>gross negligence or intoxication</strong> of the driver. This does not apply to paying passengers, business passengers, or passengers who confer a tangible benefit on the driver. It is a critical limitation for social passengers."
+      },
+      {
+        question: "How does MedPay work in Virginia?",
+        answer: "Medical Payments (MedPay) coverage is <strong>optional</strong> in Virginia. It provides first-party reimbursement for reasonable medical and funeral expenses regardless of fault, up to the policy limit (typically $1,000–$10,000). Unlike PIP in no-fault states, there is no requirement to carry MedPay, no loss-of-wage component, and no threshold to sue. It simply supplements health insurance or covers out-of-pocket costs while the liability claim is pending."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Virginia settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Virginia's <strong>pure contributory negligence</strong> system, a lawyer is especially critical: insurance adjusters aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely. A Virginia personal injury attorney can investigate crash facts, obtain police/witness reports, rebut contributory negligence defenses, navigate the Guest Statute (Va. Code § 8.01-63), calculate damages, and file formal complaints in <strong>Virginia Circuit Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
