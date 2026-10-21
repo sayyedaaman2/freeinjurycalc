@@ -137,6 +137,8 @@ const pageTitle = state === 'georgia'
   ? 'Nevada Car Accident Settlement Calculator | 51% Comparative Fault, 25/50/20 Limits'
   : state === 'florida'
   ? 'Florida Car Accident Settlement Calculator | No-Fault PIP, 51% Fault, Verbal Threshold'
+  : state === 'north-carolina'
+  ? 'North Carolina Car Accident Settlement Calculator | Pure Contributory Negligence'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -161,6 +163,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Nevada car accident settlement under 51% modified comparative fault (NRS 41.141), 25/50/20 liability limits (NRS 485.185), 2-year personal injury SOL (NRS 11.190), 2-year government notice (NRS 41.036), and no cap on pain and suffering. Free educational tool.'
   : state === 'florida'
   ? 'Calculate your estimated Florida car accident settlement under no-fault PIP ($10k, 80% med/60% wages), 51% modified comparative fault (F.S. § 768.81), verbal threshold (F.S. § 627.737), 2-year SOL (F.S. § 95.11), and no BI requirement. Free educational tool.'
+  : state === 'north-carolina'
+  ? 'Calculate your estimated North Carolina car accident settlement under pure contributory negligence (1% bars recovery), 30/60/25 liability limits (G.S. § 20-279.21), 3-year SOL (G.S. § 1-52), mandatory UM/UIM (G.S. § 20-279.21), and no pain and suffering cap. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -199,7 +203,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -665,6 +669,63 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'north-carolina' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative North Carolina Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_1/GS_1-139.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 1-139 — Burden of Proof of Contributory Negligence
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Statutory burden-of-proof rule: defendant bears burden of proving plaintiff's contributory negligence. The pure contributory negligence doctrine itself is common law; any fault (even 1%) bars recovery.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_1/GS_1-52.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 1-52 — Statute of Limitations (3 Years Personal Injury/Property)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Personal injury (subsection 5) and property damage (subsection 4) actions: 3 years. Wrongful death: 2 years under G.S. § 1-53(4). Tolled for minors under G.S. § 1-17(a).</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-279.21.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 20-279.21 — Motor Vehicle Liability Policy (30/60/25 Minimums, UM/UIM Mandate)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability limits of 30/60/25 (increasing to 50/100/50 effective July 1, 2025). UM mandatory at BI limits (subsection b3); UIM mandatory on policies exceeding minimum BI (subsection b4). Rejection/selection must be in writing.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_143/GS_143-291.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 143-291 — State Tort Claims Act (Industrial Commission, $150k Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">State tort claims heard exclusively by NC Industrial Commission. Contributory negligence is complete defense. Damages capped at $150,000 per claimant (G.S. § 143-299.2); excess from State Excess Liability Fund (G.S. § 143-299.4). No separate notice statute.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-4.01.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 20-4.01(33b) — Reportable Accident Definition ($1,000 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Defines 'reportable accident' as injury/death OR property damage ≥ $1,000 (increased from $500 in 1996). Driver must immediately notify law enforcement per G.S. § 20-166.1.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_20/GS_20-166.1.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 20-166.1 — Duty to Report Accident to Law Enforcement
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver of vehicle in reportable accident must immediately notify appropriate law enforcement agency. Report must be made within 48 hours for collisions with unattended vehicles.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_1D/GS_1D-25.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 1D-25 — Punitive Damages Cap (3x Compensatory / $250k)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages capped at 3x compensatory or $250,000 (whichever greater). Exceptions for DUI (G.S. § 1D-20) and intentional torts where no cap applies.</span>
+              </li>
+              <li>
+                <a href="https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/BySection/Chapter_90/GS_90-21.19.html" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  G.S. § 90-21.19 — Medical Malpractice Non-Economic Damages Cap
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Non-economic damages cap for medical malpractice ($562,338 in 2024, adjusted annually). Does NOT apply to ordinary motor vehicle accident claims.</span>
               </li>
             </ul>
           </div>

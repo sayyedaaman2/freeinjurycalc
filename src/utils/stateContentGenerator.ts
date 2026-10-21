@@ -110,6 +110,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "North Carolina") {
+    return `Under North Carolina's Motor Vehicle Safety and Financial Responsibility Act (<strong>G.S. § 20-279.21</strong>), every driver must maintain minimum liability insurance limits of <strong>30/60/25</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $25,000 for property damage). <strong>Effective July 1, 2025, limits increase to 50/100/50</strong> per NCDMV rulemaking. North Carolina is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key North Carolina insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured Motorist (UM) Coverage:</strong> Under <strong>G.S. § 20-279.21(b)(3)</strong>, UM coverage is mandatory at limits equal to the highest bodily injury liability limits in the policy (minimum 30/60). Rejection must be in writing on a Rate Bureau form.</li>
+      <li><strong>Underinsured Motorist (UIM) Coverage:</strong> Under <strong>G.S. § 20-279.21(b)(4)</strong>, UIM is mandatory on policies with BI limits exceeding the minimum (i.e., >30/60). UIM limits must equal the policy's BI limits. Rejection/selection must be in writing.</li>
+      <li><strong>No PIP / MedPay Required:</strong> North Carolina does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -241,6 +251,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Florida legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "North Carolina") {
+    return `In North Carolina, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (3 Years):</strong> Under <strong>G.S. § 1-52(5)</strong>, actions for injury to the person (including car accidents) must be filed within <strong>3 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>G.S. § 1-52(4)</strong>, actions for injury to personal property (vehicle damage) must be filed within <strong>3 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>G.S. § 1-53(4)</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>State Government Tort Claims (No Fixed Notice Period / 3-Year SOL):</strong> Under the <strong>State Tort Claims Act (G.S. § 143-291 et seq.)</strong>, claims against state departments/agencies are heard exclusively by the <strong>North Carolina Industrial Commission</strong>. There is <strong>no mandatory pre-suit notice statute</strong>, but the claim must be filed within the <strong>3-year statute of limitations (G.S. § 1-52)</strong>. Contributory negligence is a complete defense (G.S. § 143-291). Damages are capped at <strong>$150,000 per claimant</strong> (G.S. § 143-299.2), with excess paid from the State Excess Liability Fund (G.S. § 143-299.4).</li>
+      <li><strong>Local Government Claims:</strong> Under <strong>G.S. § 153A-445</strong> (counties) and <strong>G.S. § 160A-485</strong> (municipalities), claims against local governments may have specific notice requirements; consult counsel. The 3-year SOL applies.</li>
+      <li><strong>Tolling for Minors:</strong> Under <strong>G.S. § 1-17(a)</strong>, the statute of limitations is tolled while the injured person is under 18 (or legally incompetent), with a statute of repose of 10 years for medical malpractice.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified North Carolina legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -321,6 +344,17 @@ export function generateDamageCapContent(
       <li><strong>Government Claims:</strong> Under <strong>F.S. § 768.28(5)</strong>, tort claims against the state or its subdivisions are capped at <strong>$200,000 per person / $300,000 per incident</strong>; no punitive damages allowed.</li>
       <li><strong>Punitive Damages:</strong> Under <strong>F.S. § 768.73</strong>, punitive damages are capped at <strong>3x compensatory or $500,000</strong> (whichever is greater), with exceptions for intentional misconduct, DUI, and certain statutory violations where no cap applies.</li>
       <li><strong>No Punitive Against Auto Insurer Over Limits:</strong> Under <strong>F.S. § 627.737(4)</strong>, no punitive damages may be awarded against an automobile liability insurer for damages in excess of its policy limits.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "North Carolina") {
+    return `For standard passenger vehicle car accident claims against private motorists, North Carolina law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the North Carolina General Statutes for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Malpractice:</strong> Under <strong>G.S. § 90-21.19</strong>, non-economic damages in medical malpractice actions are capped at <strong>$562,338 (2024)</strong>, adjusted annually for inflation. This cap <em>does not apply</em> to motor vehicle accident claims.</li>
+      <li><strong>Government Claims (State):</strong> Under <strong>G.S. § 143-299.2</strong>, tort claims against the State are capped at <strong>$150,000 per claimant</strong> arising from a single occurrence; excess paid from State Excess Liability Fund (G.S. § 143-299.4). Contributory negligence is a complete defense (G.S. § 143-291).</li>
+      <li><strong>Government Claims (Local):</strong> Local government liability is generally limited by statute and available insurance; no single statewide cap, but immunity defenses apply.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>G.S. § 1D-25</strong>, punitive damages are capped at <strong>3x compensatory damages or $250,000</strong> (whichever is greater), with exceptions for DUI (G.S. § 1D-20) and certain intentional torts.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -481,6 +515,20 @@ export function generateSettlementExample(
       <li><strong>Total Estimated Recovery:</strong> $10,000 (PIP) + $34,000 (tort) = <strong>$44,000</strong> combined.</li>
       <li><strong>51% Bar Rule:</strong> If the claimant's negligence exceeds the defendant's (51% or higher), tort recovery is completely barred ($0), though PIP benefits remain available.</li>
       <li><strong>Several Liability (F.S. § 768.81(3)):</strong> Each defendant is liable only for their percentage of fault; no joint and several liability for non-economic damages.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "north-carolina") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, North Carolina</strong> under the state's strict pure contributory negligence rule:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Pure Contributory Negligence Adjustment (10% Fault):</strong> Under North Carolina's pure contributory negligence doctrine, <strong>any fault by the claimant (even 1%) completely bars recovery</strong>. Because the claimant bears 10% responsibility, the Illustrative Calculated Estimate is <strong>$0</strong> — no tort recovery permitted.</li>
+      <li><strong>Zero-Fault Requirement:</strong> To recover <em>any</em> damages in North Carolina, the claimant must prove the at-fault driver was <strong>100% responsible</strong>. This makes exhaustive documentation (dashcam footage, witness statements, police reports) critically important.</li>
+      <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under G.S. § 20-279.21) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -899,6 +947,51 @@ export function generateFAQs(
       {
         question: "What is Florida's bad faith statute for insurance claims?",
         answer: "Under <strong>F.S. § 624.155</strong>, a first-party insured may bring a bad faith action against their insurer for failing to act in good faith to settle a claim when, under all the circumstances, it could and should have done so. <strong>HB 837</strong> added a 90-day safe harbor: if the insurer tenders policy limits (or the amount demanded) within 90 days of notice, no bad faith action lies. The statute also governs third-party bad faith with specific procedural requirements."
+      }
+    ];
+  }
+
+  if (stateName === "North Carolina") {
+    return [
+      {
+        question: "How does North Carolina's pure contributory negligence rule work?",
+        answer: "North Carolina is one of only a few states (with Alabama, Maryland, Virginia, and D.C.) that follows the <strong>pure contributory negligence doctrine</strong>. Under this rule, if you are found to have contributed to the accident <strong>in any way whatsoever — even 1% — you are completely barred from recovering any damages</strong> from the other party. This is not a statutory rule but a common-law doctrine; <strong>G.S. § 1-139</strong> merely places the burden of proof on the defendant to establish contributory negligence. You must prove the at-fault driver was 100% responsible to recover anything."
+      },
+      {
+        question: "What are North Carolina's minimum auto insurance limits?",
+        answer: "Under <strong>G.S. § 20-279.21</strong>, the current minimums are <strong>30/60/25</strong> ($30,000 per person bodily injury, $60,000 per accident bodily injury, $25,000 property damage). <strong>Effective July 1, 2025, limits increase to 50/100/50</strong> per NCDMV rulemaking. These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in North Carolina?",
+        answer: "Yes. Under <strong>G.S. § 20-279.21(b)(3)</strong>, <strong>UM coverage is mandatory</strong> at limits equal to the highest bodily injury liability limits in the policy (minimum 30/60). Under <strong>G.S. § 20-279.21(b)(4)</strong>, <strong>UIM coverage is mandatory</strong> on policies with BI limits exceeding the minimum. Rejection or selection of different limits must be in writing on a Rate Bureau form. Given the contributory negligence bar, UM/UIM is a critical safety net."
+      },
+      {
+        question: "What is the statute of limitations for a North Carolina car accident?",
+        answer: "Under <strong>G.S. § 1-52(5)</strong>, personal injury lawsuits must be filed within <strong>3 years</strong> of the crash. Property damage claims also have a <strong>3-year</strong> deadline (<strong>G.S. § 1-52(4)</strong>). Wrongful death actions have a <strong>2-year</strong> deadline (<strong>G.S. § 1-53(4)</strong>). Claims against state agencies under the State Tort Claims Act (G.S. § 143-291 et seq.) must be filed with the Industrial Commission within the 3-year SOL; there is no separate notice statute."
+      },
+      {
+        question: "What is the police accident report threshold in North Carolina?",
+        answer: "Under <strong>G.S. § 20-4.01(33b)</strong>, a 'reportable accident' is one resulting in <strong>injury, death, or property damage of $1,000 or more</strong> (increased from $500 in 1996). Under <strong>G.S. § 20-166.1</strong>, the driver must <strong>immediately notify law enforcement</strong> of a reportable accident. The threshold for police investigation is the same $1,000 property damage or any injury/death."
+      },
+      {
+        question: "Does North Carolina cap pain and suffering damages in car accident cases?",
+        answer: "No. For standard car accident claims against private motorists, <strong>North Carolina imposes no statutory cap on non-economic damages</strong>. The only damage caps apply to: (1) <strong>Medical malpractice</strong> under G.S. § 90-21.19 ($562,338 in 2024, adjusted annually); (2) <strong>State government claims</strong> under G.S. § 143-299.2 ($150,000 per claimant); (3) <strong>Punitive damages</strong> under G.S. § 1D-25 (3x compensatory or $250,000, with DUI/intentional tort exceptions)."
+      },
+      {
+        question: "What are the government claim requirements in North Carolina?",
+        answer: "<strong>State claims:</strong> Under the <strong>State Tort Claims Act (G.S. § 143-291 et seq.)</strong>, claims against state agencies are heard exclusively by the <strong>North Carolina Industrial Commission</strong>. There is <strong>no mandatory pre-suit notice statute</strong>, but the claim must be filed within the <strong>3-year statute of limitations (G.S. § 1-52)</strong>. Contributory negligence is a complete defense (G.S. § 143-291). Damages capped at <strong>$150,000 per claimant</strong> (G.S. § 143-299.2). <strong>Local government claims:</strong> May have specific notice requirements under G.S. § 153A-445 (counties) and G.S. § 160A-485 (municipalities); consult counsel."
+      },
+      {
+        question: "How does MedPay work in North Carolina?",
+        answer: "Medical Payments (MedPay) coverage is <strong>optional</strong> in North Carolina. It provides first-party reimbursement for reasonable medical and funeral expenses regardless of fault, up to the policy limit (typically $1,000–$10,000). Unlike PIP in no-fault states, there is no requirement to carry MedPay, no loss-of-wage component, and no threshold to sue. It simply supplements health insurance or covers out-of-pocket costs while the liability claim is pending."
+      },
+      {
+        question: "Can a passenger recover if the driver they were with was partially at fault?",
+        answer: "Yes. <strong>Passengers are almost never at fault</strong> for a car accident. In North Carolina, a passenger can file a claim against the insurance policy of the driver of the car they were in, or the policy of the other driver who caused the collision. The passenger's recovery is not barred by the driver's negligence — the passenger must only prove <em>they personally</em> did not contribute to the crash (e.g., by distracting the driver)."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my North Carolina settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In North Carolina's <strong>pure contributory negligence</strong> system, a lawyer is especially critical: insurance adjusters aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely. A North Carolina personal injury attorney can investigate crash facts, obtain police/witness reports, rebut contributory negligence defenses, calculate damages, and file formal complaints in <strong>North Carolina Superior Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
