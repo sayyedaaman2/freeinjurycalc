@@ -141,6 +141,8 @@ const pageTitle = state === 'georgia'
   ? 'North Carolina Car Accident Settlement Calculator | Pure Contributory Negligence'
   : state === 'virginia'
   ? 'Virginia Car Accident Settlement Calculator | Pure Contributory Negligence, Guest Statute'
+  : state === 'tennessee'
+  ? 'Tennessee Car Accident Settlement Calculator | 50% Bar, 1-Year SOL, $750k Cap'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -169,6 +171,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated North Carolina car accident settlement under pure contributory negligence (1% bars recovery), 30/60/25 liability limits (G.S. § 20-279.21), 3-year SOL (G.S. § 1-52), mandatory UM/UIM (G.S. § 20-279.21), and no pain and suffering cap. Free educational tool.'
   : state === 'virginia'
   ? 'Calculate your estimated Virginia car accident settlement under pure contributory negligence (1% bars recovery), 30/60/20 liability limits (Va. Code § 46.2-472), 2-year SOL (Va. Code § 8.01-243), Guest Statute (Va. Code § 8.01-63), mandatory UM/UIM (Va. Code § 38.2-2206), and no pain and suffering cap. Free educational tool.'
+  : state === 'tennessee'
+  ? 'Calculate your estimated Tennessee car accident settlement under 50% modified comparative fault (T.C.A. § 29-11-139), 1-year SOL (T.C.A. § 28-3-104), $750k/$1M damage caps (T.C.A. § 29-39-102), 25/50/15 limits (T.C.A. § 55-12-102), and $50 police report threshold. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -207,7 +211,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -673,6 +677,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'tennessee' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Tennessee Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-29/chapter-11/section-29-11-139/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 29-11-139 — Modified Comparative Fault (50% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">50% bar rule: plaintiff recovers if fault < 50%; barred if ≥ 50%. Damages reduced proportionally. Replaced contributory negligence in McIntyre v. Balentine, 833 S.W.2d 52 (Tenn. 1992).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-28/chapter-3/part-1/section-28-3-104/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 28-3-104 — Statute of Limitations (1 Year PI, 2-Year Criminal Extension)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Personal injury: 1 year (shortest in U.S.). 2-year extension if criminal charges filed within 1 year (subsection a2). Property damage: 3 years (T.C.A. § 28-3-105). Tolled for minors (T.C.A. § 28-1-106).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-29/chapter-39/section-29-39-102/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 29-39-102 — Non-Economic Damages Cap ($750k Standard, $1M Catastrophic)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">$750,000 per plaintiff aggregate cap on non-economic damages; $1,000,000 for catastrophic injuries (spinal cord, amputation, 40%+ burns, wrongful death of parent with minor children). Special verdict required for catastrophic (T.C.A. § 29-39-103). Applies to all civil actions including med mal.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-55/chapter-12/part-1/section-55-12-102/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 55-12-102 — Financial Responsibility Law (25/50/15 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability limits: $25,000 per person / $50,000 per accident bodily injury, $15,000 property damage. Proof required for registration. Higher limits for DUI convictions.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-56/chapter-7/part-12/section-56-7-1201/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 56-7-1201 — Mandatory UM/UIM Offer (Matching Liability Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM at limits equal to liability limits; rejection must be in writing. UM/UIM subject to same 50% comparative fault bar.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-9/chapter-8/part-4/section-9-8-402/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 9-8-402 — State Claims (Division of Claims & Risk Management, $300k Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Written notice to Division of Claims & Risk Management required as condition precedent. Claims Commission exclusive jurisdiction. State liability: $300,000 per claimant / $1,000,000 per occurrence (T.C.A. § 9-8-307). No punitive damages.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-29/chapter-20/part-4/section-29-20-403/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 29-20-403 — Local Government Liability ($300k Cap, GTLA)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Governmental Tort Liability Act removes immunity for certain acts. Local government liability capped at $300,000 per person / $1,000,000 per occurrence. No punitive damages against government.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-55/chapter-10/part-1/section-55-10-106/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 55-10-106 — Immediate Notice of Accident ($50 Property Damage Threshold)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately notify police if injury, death, or property damage ≥ $50 — one of the lowest thresholds in the U.S. Written report to Dept. of Safety within 20 days if required (T.C.A. § 55-10-107).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/tennessee/title-29/chapter-39/section-29-39-104/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  T.C.A. § 29-39-104 — Punitive Damages Cap (2x Compensatory / $500k)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages capped at 2x compensatory or $500,000 (whichever greater). Exceptions: intentional fraud, DUI, certain felonies — no cap. Clear and convincing evidence required.</span>
               </li>
             </ul>
           </div>

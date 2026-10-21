@@ -130,6 +130,15 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Tennessee") {
+    return `Under Tennessee's Financial Responsibility Law (<strong>T.C.A. § 55-12-102</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/15</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $15,000 for property damage). Tennessee is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Tennessee insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>T.C.A. § 56-7-1201</strong>, insurers must offer UM/UIM coverage at limits equal to the liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>No PIP / MedPay Required:</strong> Tennessee does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -287,6 +296,20 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Virginia legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Tennessee") {
+    return `In Tennessee, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (1 Year):</strong> Under <strong>T.C.A. § 28-3-104(a)(1)</strong>, actions for injuries to the person (including car accidents) must be filed within <strong>1 year</strong> after the cause of action accrues — the shortest SOL in the U.S. for car accidents.</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>T.C.A. § 28-3-105(a)(2)</strong>, actions for injury to personal property (vehicle damage) must be filed within <strong>3 years</strong> after the cause of action accrues.</li>
+      <li><strong>2-Year Extension for Criminal Charges:</strong> Under <strong>T.C.A. § 28-3-104(a)(2)</strong>, if criminal charges are brought against the at-fault driver within 1 year, the personal injury SOL extends to <strong>2 years</strong>.</li>
+      <li><strong>Wrongful Death Lawsuits (1 Year):</strong> Under <strong>T.C.A. § 28-3-104(a)(1)</strong>, wrongful death actions must be filed within <strong>1 year</strong> of the date of death.</li>
+      <li><strong>State Government Claims (Tennessee Claims Commission Act):</strong> Under <strong>T.C.A. § 9-8-402</strong>, a written notice of claim must be given to the <strong>Division of Claims and Risk Management</strong> as a condition precedent to recovery. The claim must be filed within the applicable statute of limitations (1 year for personal injury). The Claims Commission has exclusive jurisdiction; state liability capped at <strong>$300,000 per claimant / $1,000,000 per occurrence</strong> (<strong>T.C.A. § 9-8-307</strong>).</li>
+      <li><strong>Local Government Claims (Governmental Tort Liability Act):</strong> Under <strong>T.C.A. § 29-20-101 et seq.</strong>, governmental entities are immune unless immunity is removed. Notice requirements vary; liability capped at <strong>$300,000 per person / $1,000,000 per occurrence</strong> (<strong>T.C.A. § 29-20-403</strong>). No punitive damages against government.</li>
+      <li><strong>Tolling for Minors:</strong> Under <strong>T.C.A. § 28-1-106</strong>, the statute of limitations is tolled while the injured person is under 18.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Tennessee legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -390,6 +413,20 @@ export function generateDamageCapContent(
       <li><strong>Government Claims (Local):</strong> Local government liability is generally limited by statute and available insurance; no single statewide cap, but sovereign immunity defenses apply.</li>
       <li><strong>Punitive Damages:</strong> Under <strong>Va. Code § 8.01-38.1</strong>, punitive damages are capped at <strong>$350,000</strong>.</li>
       <li><strong>No Comparative Fault — Pure Contributory Negligence:</strong> Virginia follows the <strong>pure contributory negligence doctrine</strong> (common law; <strong>Va. Code § 8.01-58</strong> applies only to railroad employee actions). Any fault by the plaintiff (even 1%) completely bars recovery. This is the most critical "cap" — a total bar to recovery.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Tennessee") {
+    return `Tennessee imposes statutory caps on non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life) under the <strong>Tennessee Civil Justice Act of 2011 (T.C.A. § 29-39-101 et seq.)</strong>:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Standard Cap:</strong> <strong>$750,000 per injured plaintiff</strong> for non-economic damages in all civil actions (<strong>T.C.A. § 29-39-102(a)(2), (b)</strong>). This aggregate includes pain and suffering, loss of consortium, and derivative claims by spouse/children.</li>
+      <li><strong>Catastrophic Injury Cap:</strong> <strong>$1,000,000 per injured plaintiff</strong> if the injury is "catastrophic in nature" (<strong>T.C.A. § 29-39-102(c)</strong>), defined as: (1) spinal cord injury resulting in paraplegia/quadriplegia; (2) amputation of two hands, two feet, or one of each; (3) third-degree burns over 40%+ of body or face; or (4) wrongful death of a parent leaving surviving minor children. Requires special verdict by trier of fact (<strong>T.C.A. § 29-39-103</strong>).</li>
+      <li><strong>Medical Malpractice:</strong> Same caps apply (<strong>T.C.A. § 29-39-102(b)</strong>). Health care liability actions also subject to $750,000/$1M caps.</li>
+      <li><strong>Government Claims (State):</strong> Under <strong>T.C.A. § 9-8-307</strong>, total damages (economic + non-economic) against the State capped at <strong>$300,000 per claimant / $1,000,000 per occurrence</strong>. No punitive damages.</li>
+      <li><strong>Government Claims (Local):</strong> Under <strong>T.C.A. § 29-20-403</strong>, total damages against local governments capped at <strong>$300,000 per person / $1,000,000 per occurrence</strong>. No punitive damages.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>T.C.A. § 29-39-104</strong>, punitive damages capped at <strong>2x compensatory damages or $500,000</strong> (whichever is greater), with exceptions for intentional fraud, DUI, and certain felonies where no cap applies.</li>
+      <li><strong>50% Bar Rule:</strong> Under <strong>T.C.A. § 29-11-139</strong>, if plaintiff's fault is 50% or greater, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -579,6 +616,21 @@ export function generateSettlementExample(
       <li><strong>Zero-Fault Requirement:</strong> To recover <em>any</em> damages in Virginia, the claimant must prove the at-fault driver was <strong>100% responsible</strong>. This makes exhaustive documentation (dashcam footage, witness statements, police reports) critically important.</li>
       <li><strong>Guest Statute Exception (Va. Code § 8.01-63):</strong> If the claimant was a <strong>guest passenger</strong> (no payment for the ride), they can only recover for <strong>gross negligence or intoxication</strong>, not simple negligence. Paying passengers are not subject to this limitation.</li>
       <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under Va. Code § 38.2-2206, matching liability limits) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "tennessee") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Tennessee</strong> under the state's 50% modified comparative negligence bar and statutory damage caps:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>50% Modified Comparative Fault Adjustment (10% Fault):</strong> Under T.C.A. § 29-11-139, because the claimant's fault (10%) is less than 50%, recovery is permitted. The gross estimate is reduced by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
+      <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$750,000 standard cap</strong> (T.C.A. § 29-39-102). If injuries were catastrophic (e.g., spinal cord injury), the cap would be <strong>$1,000,000</strong> (T.C.A. § 29-39-102(c)).</li>
+      <li><strong>50% Bar Rule:</strong> If the claimant's negligence is 50% or greater, recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
+      <li><strong>Ultra-Short Statute of Limitations:</strong> Personal injury claims must be filed within <strong>1 year</strong> (T.C.A. § 28-3-104) — the shortest in the U.S. Property damage: 3 years (T.C.A. § 28-3-105). If criminal charges are filed against the at-fault driver, PI SOL extends to 2 years (T.C.A. § 28-3-104(a)(2)).</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1087,6 +1139,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Virginia settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Virginia's <strong>pure contributory negligence</strong> system, a lawyer is especially critical: insurance adjusters aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely. A Virginia personal injury attorney can investigate crash facts, obtain police/witness reports, rebut contributory negligence defenses, navigate the Guest Statute (Va. Code § 8.01-63), calculate damages, and file formal complaints in <strong>Virginia Circuit Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Tennessee") {
+    return [
+      {
+        question: "How does Tennessee's 50% modified comparative negligence rule work?",
+        answer: "Under <strong>T.C.A. § 29-11-139</strong> (the Tennessee Comparative Fault Act), you can recover damages only if your fault is <strong>less than 50%</strong> (49% or lower). If you are <strong>50% or more at fault</strong>, you are <strong>completely barred from recovery ($0)</strong>. If you qualify for recovery, your award is reduced proportionally by your fault percentage. This is a 50% bar rule — distinct from the 51% bar used in many other states."
+      },
+      {
+        question: "What is Tennessee's statute of limitations for car accidents?",
+        answer: "Under <strong>T.C.A. § 28-3-104(a)(1)</strong>, personal injury lawsuits must be filed within <strong>1 year</strong> of the crash — the shortest SOL in the U.S. for car accidents. Property damage claims have a <strong>3-year</strong> deadline (<strong>T.C.A. § 28-3-105(a)(2)</strong>). <strong>Critical exception:</strong> If criminal charges are brought against the at-fault driver within 1 year, the personal injury SOL extends to <strong>2 years</strong> (<strong>T.C.A. § 28-3-104(a)(2)</strong>). Wrongful death: 1 year from date of death."
+      },
+      {
+        question: "Does Tennessee cap pain and suffering damages?",
+        answer: "Yes. Under the <strong>Tennessee Civil Justice Act of 2011 (T.C.A. § 29-39-102)</strong>, non-economic damages are capped at <strong>$750,000 per injured plaintiff</strong> for standard injuries. For <strong>catastrophic injuries</strong> (spinal cord injury causing paraplegia/quadriplegia, amputation of two limbs, third-degree burns over 40%+ of body/face, or wrongful death of a parent leaving minor children), the cap rises to <strong>$1,000,000</strong> (<strong>T.C.A. § 29-39-102(c)</strong>). A special verdict by the trier of fact is required for the catastrophic cap (<strong>T.C.A. § 29-39-103</strong>). These caps apply to all civil actions, including medical malpractice."
+      },
+      {
+        question: "What are Tennessee's minimum auto insurance limits?",
+        answer: "Under <strong>T.C.A. § 55-12-102</strong>, the minimums are <strong>25/50/15</strong> ($25,000 per person bodily injury, $50,000 per accident bodily injury, $15,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Tennessee?",
+        answer: "Under <strong>T.C.A. § 56-7-1201</strong>, insurers <strong>must offer</strong> UM/UIM coverage at limits equal to the liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage. Given the 50% bar and damage caps, UM/UIM is an important safety net."
+      },
+      {
+        question: "What is the police accident report threshold in Tennessee?",
+        answer: "Under <strong>T.C.A. § 55-10-106</strong>, the driver must immediately notify law enforcement if the accident involves <strong>injury, death, or property damage of $50 or more</strong>. This is one of the lowest reporting thresholds in the country — police involvement is required in nearly every collision. A written report to the Department of Safety may also be required within 20 days (<strong>T.C.A. § 55-10-107</strong>)."
+      },
+      {
+        question: "What are the government claim requirements in Tennessee?",
+        answer: "<strong>State claims:</strong> Under the <strong>Tennessee Claims Commission Act (T.C.A. § 9-8-402)</strong>, a written notice of claim must be given to the <strong>Division of Claims and Risk Management</strong> as a condition precedent to recovery. The claim must be filed within the applicable statute of limitations (1 year for PI). The Claims Commission has exclusive jurisdiction. State liability capped at <strong>$300,000 per claimant / $1,000,000 per occurrence</strong> (<strong>T.C.A. § 9-8-307</strong>). <strong>Local government claims:</strong> Under the <strong>Governmental Tort Liability Act (T.C.A. § 29-20-101 et seq.)</strong>, immunity is removed for certain acts. Liability capped at <strong>$300,000 per person / $1,000,000 per occurrence</strong> (<strong>T.C.A. § 29-20-403</strong>). No punitive damages against government."
+      },
+      {
+        question: "How does MedPay work in Tennessee?",
+        answer: "Medical Payments (MedPay) coverage is <strong>optional</strong> in Tennessee. It provides first-party reimbursement for reasonable medical and funeral expenses regardless of fault, up to the policy limit (typically $1,000–$10,000). Unlike PIP in no-fault states, there is no requirement to carry MedPay, no loss-of-wage component, and no threshold to sue. It simply supplements health insurance or covers out-of-pocket costs while the liability claim is pending."
+      },
+      {
+        question: "What happens if I share fault for an accident in Tennessee?",
+        answer: "Under <strong>T.C.A. § 29-11-139</strong>, if your fault is <strong>49% or less</strong>, you can recover damages reduced by your fault percentage. If your fault is <strong>50% or more</strong>, you are <strong>completely barred from recovery ($0)</strong>. This is a strict 50% bar — even a 50/50 split means no recovery. Comparative fault applies to UM/UIM claims as well."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Tennessee settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Tennessee's <strong>1-year statute of limitations</strong> and <strong>50% bar</strong> system, a lawyer is especially critical: the filing deadline is extremely short, and insurers aggressively argue for 50%+ fault to deny claims entirely. A Tennessee personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate government claim notice requirements, and file formal complaints in <strong>Tennessee Circuit Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
