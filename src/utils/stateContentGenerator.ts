@@ -179,6 +179,15 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Idaho") {
+    return `Under Idaho's Motor Vehicle Financial Responsibility Law (<strong>Idaho Code § 49-117</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/15</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $15,000 for property damage). Idaho is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Idaho insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>Idaho Code § 41-2502</strong>, insurers must offer UM and UIM bodily injury coverage at limits <strong>equal to the liability limits</strong> (minimum 25/50). The named insured may reject either or both coverages in writing or electronic record; the rejection applies to all renewals/replacements. A standard disclosure form approved by the Director of Insurance must be provided at new policy issuance (effective Jan 1, 2009).</li>
+      <li><strong>No PIP / MedPay Required:</strong> Idaho does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -401,6 +410,20 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Arizona legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Idaho") {
+    return `In Idaho, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>Idaho Code § 5-219(4)</strong>, actions for personal injuries (including car accidents) must be filed within <strong>2 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>Idaho Code § 5-218</strong>, actions for injury to personal property (vehicle damage) must be filed within <strong>3 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>Idaho Code § 5-311</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>State Government Claims (Idaho Tort Claims Act):</strong> Under <strong>Idaho Code § 6-905</strong>, a claim against the State or its employee must be filed with the <strong>Secretary of State</strong> within <strong>180 days</strong> after the claim arose or reasonably should have been discovered. Suit must be filed within <strong>2 years</strong> (<strong>Idaho Code § 6-911</strong>).</li>
+      <li><strong>Local Government Claims (Idaho Tort Claims Act):</strong> Under <strong>Idaho Code § 6-906</strong>, a claim against a political subdivision (city, county) or its employee must be filed with the <strong>clerk or secretary of the political subdivision</strong> within <strong>180 days</strong> after the claim arose or reasonably should have been discovered. Suit must be filed within <strong>2 years</strong> (<strong>Idaho Code § 6-911</strong>).</li>
+      <li><strong>Tolling for Minors:</strong> Under <strong>Idaho Code § 5-230</strong>, the statute of limitations is tolled for minors until the earlier of <strong>6 years after the injury</strong> or the <strong>minor's 18th birthday</strong>. Under <strong>Idaho Code § 6-906A</strong>, minors have 180 days after turning 18 to file a tort claim against a governmental entity.</li>
+      <li><strong>Tolling for Defendant Absent from State:</strong> Under <strong>Idaho Code § 5-229</strong>, the limitations period is tolled while the defendant is absent from Idaho, up to 6 years after the injury or when the defendant returns.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Idaho legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -572,6 +595,24 @@ export function generateDamageCapContent(
       <li><strong>Punitive Damages:</strong> Under <strong>A.R.S. § 12-2501</strong>, punitive damages require <strong>clear and convincing evidence</strong> of an "evil mind" (actual malice, fraud, or willful/wanton conduct). No statutory cap on punitive damages when awarded.</li>
       <li><strong>Pure Comparative Negligence:</strong> Under <strong>A.R.S. § 12-2505</strong>, plaintiff's recovery is reduced by their fault percentage — even 99% fault allows recovery of 1% of damages. No contributory negligence bar.</li>
     </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Idaho") {
+    return `Idaho imposes a statutory cap on non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life) under <strong>Idaho Code § 6-1603</strong> (Limitation on Noneconomic Damages):
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Base Cap ($250,000 — 2003):</strong> The cap was set at $250,000 by House Bill 92 (2003), effective July 1, 2004.</li>
+      <li><strong>Annual Inflation Adjustment:</strong> Beginning July 1, 2004, and each July 1 thereafter, the cap increases or decreases by the <strong>percentage change in the average annual wage</strong> as computed by the <strong>Idaho Industrial Commission</strong> pursuant to <strong>Idaho Code § 72-409(2)</strong>.</li>
+      <li><strong>Current Cap (July 1, 2025 – June 30, 2026):</strong> <strong>$509,013</strong> (per Idaho Industrial Commission calculation). As of July 1, 2026, the cap will be <strong>$538,425</strong>.</li>
+      <li><strong>Aggregate Per Claimant:</strong> The cap applies to the <strong>sum of all non-economic damages</strong> sustained by a claimant, regardless of the number of defendants or actions filed (<strong>Idaho Code § 6-1603(2)</strong>).</li>
+      <li><strong>Exceptions (No Cap):</strong> The cap does <strong>not apply</strong> to: (a) causes of action arising out of <strong>willful or reckless misconduct</strong>; (b) causes of action arising out of acts the trier of fact finds beyond a reasonable doubt would constitute a <strong>felony under state or federal law</strong> (<strong>Idaho Code § 6-1603(4)</strong>).</li>
+      <li><strong>Jury Not Informed:</strong> If a case is tried to a jury, the jury <strong>shall not be informed</strong> of the limitation (<strong>Idaho Code § 6-1603(3)</strong>).</li>
+      <li><strong>Medical Malpractice:</strong> Same cap applies (<strong>Idaho Code § 6-1603</strong>); no separate med mal cap.</li>
+      <li><strong>Government Claims:</strong> Under <strong>Idaho Code § 6-918</strong>, total damages against a governmental entity are capped at <strong>$500,000 per claimant</strong> (no separate non-economic cap).</li>
+      <li><strong>Punitive Damages:</strong> Not subject to the non-economic cap; require <strong>clear and convincing evidence</strong> of "oppression, fraud, wantonness, malice or reckless indifference" (<strong>Idaho Code § 6-1604</strong>). No statutory cap on punitive damages when awarded.</li>
+      <li><strong>50% Bar Rule:</strong> Under <strong>Idaho Code § 6-801</strong>, if plaintiff's fault is 50% or greater (not less than defendant's), <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
+    </ul>
+    <em>Note: The Idaho Industrial Commission publishes the adjusted cap annually. Effective July 1, 2025, the cap is $509,013; effective July 1, 2026, it will be $538,425.</em>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
@@ -835,6 +876,21 @@ export function generateSettlementExample(
       <li><strong>Pure Comparative Fault Adjustment (10% Fault):</strong> Under <strong>A.R.S. § 12-2505</strong>, because Arizona follows pure comparative negligence, the claimant's fault (10%) reduces the gross estimate proportionally by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
       <li><strong>No Damage Cap:</strong> Under <strong>Arizona Constitution Article II, Section 31</strong>, <strong>no statutory cap exists on non-economic damages</strong> for car accident claims. The full $33,750 in non-economic damages (after 10% fault reduction) is recoverable.</li>
       <li><strong>99% Fault Recovery:</strong> Even if the claimant were <strong>99% at fault</strong>, they would still recover <strong>1% of damages ($575)</strong> — pure comparative negligence has no bar threshold.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "idaho") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Idaho</strong> under the state's 50% modified comparative negligence bar and inflation-adjusted statutory damage cap:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>50% Modified Comparative Fault Adjustment (10% Fault):</strong> Under Idaho Code § 6-801, because the claimant's fault (10%) is less than 50% (i.e., "not as great as" the defendant's negligence), recovery is permitted. The gross estimate is reduced by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
+      <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$509,013 cap</strong> (Idaho Code § 6-1603, effective July 1, 2025). If the non-economic estimate exceeded the cap, it would be reduced to the cap amount.</li>
+      <li><strong>50% Bar Rule:</strong> If the claimant's negligence is "not less than" the defendant's (50% or greater), recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
+      <li><strong>Several Liability (Idaho Code § 6-803):</strong> In multi-defendant cases, each defendant is liable only for their proportionate share of negligence, except for concert of action or agency relationships where joint and several liability may apply.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1572,6 +1628,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Arizona settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Arizona's <strong>pure comparative negligence</strong> system with <strong>constitutional ban on damage caps</strong>, a lawyer is especially valuable: insurers aggressively argue for higher fault percentages to reduce payouts, and the absence of caps means full non-economic damages are recoverable. An Arizona personal injury attorney can preserve evidence, rebut comparative fault arguments, navigate the 180-day government notice deadline, and file formal complaints in <strong>Arizona Superior Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Idaho") {
+    return [
+      {
+        question: "How does Idaho's 50% modified comparative negligence rule work?",
+        answer: "Under <strong>Idaho Code § 6-801</strong>, you can recover damages only if your negligence was <strong>not as great as the defendant's</strong> — i.e., your fault is <strong>less than 50%</strong> (49% or lower). If you are <strong>50% or more at fault</strong> (your negligence is equal to or greater than the defendant's), you are <strong>completely barred from recovery ($0)</strong>. If you qualify for recovery, your award is reduced proportionally by your fault percentage. The jury returns special verdicts with total damages and each party's negligence percentage (<strong>Idaho Code § 6-802</strong>)."
+      },
+      {
+        question: "What is Idaho's non-economic damage cap?",
+        answer: "Under <strong>Idaho Code § 6-1603</strong>, non-economic damages are capped at a base of <strong>$250,000 (2003)</strong>, adjusted annually for inflation by the <strong>Idaho Industrial Commission</strong> based on the average annual wage (<strong>Idaho Code § 72-409(2)</strong>). As of <strong>July 1, 2025</strong>, the cap is <strong>$509,013</strong>; effective <strong>July 1, 2026</strong>, it will be <strong>$538,425</strong>. The cap is aggregate per claimant. Exceptions: no cap for willful/reckless misconduct or felony conduct (<strong>Idaho Code § 6-1603(4)</strong>). Jury is not informed of the cap (<strong>Idaho Code § 6-1603(3)</strong>)."
+      },
+      {
+        question: "What is Idaho's statute of limitations for car accidents?",
+        answer: "Under <strong>Idaho Code § 5-219(4)</strong>, personal injury lawsuits must be filed within <strong>2 years</strong> of the crash. Property damage claims have a <strong>3-year</strong> deadline (<strong>Idaho Code § 5-218</strong>). Wrongful death: <strong>2 years</strong> from date of death (<strong>Idaho Code § 5-311</strong>). <strong>Government claims:</strong> 180-day notice to State (Idaho Code § 6-905) or political subdivision (Idaho Code § 6-906); 2-year suit deadline (Idaho Code § 6-911). <strong>Tolling for minors:</strong> Tolled until earlier of 6 years post-injury or 18th birthday (Idaho Code § 5-230)."
+      },
+      {
+        question: "What are Idaho's minimum auto insurance limits?",
+        answer: "Under <strong>Idaho Code § 49-117</strong>, the minimums are <strong>25/50/15</strong> ($25,000 per person bodily injury, $50,000 per accident bodily injury, $15,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Idaho?",
+        answer: "Under <strong>Idaho Code § 41-2502</strong>, insurers <strong>must offer</strong> UM and UIM bodily injury coverage at limits <strong>equal to the liability limits</strong> (minimum 25/50). The named insured may reject either or both coverages in writing or electronic record; rejection applies to all renewals/replacements. A standard disclosure form approved by the Director of Insurance must be provided at new policy issuance (effective Jan 1, 2009). UM/UIM applies when the at-fault driver lacks sufficient coverage."
+      },
+      {
+        question: "What is the police accident report threshold in Idaho?",
+        answer: "Under <strong>Idaho Code § 49-1305</strong>, the driver must immediately notify law enforcement if the accident involves <strong>injury, death, or property damage in excess of $1,500</strong> (increased from $500 in 2005). Notice to local police (if in a city) or county sheriff/state police (if outside city). Failure to report is a misdemeanor."
+      },
+      {
+        question: "What are the government claim requirements in Idaho?",
+        answer: "Under the <strong>Idaho Tort Claims Act (Idaho Code § 6-901 et seq.)</strong>: <strong>State claims</strong> (Idaho Code § 6-905) — 180-day notice to Secretary of State; <strong>Local government claims</strong> (Idaho Code § 6-906) — 180-day notice to clerk/secretary of political subdivision. Both have <strong>2-year suit deadline</strong> (Idaho Code § 6-911). Total damages capped at <strong>$500,000 per claimant</strong> (Idaho Code § 6-918). <strong>Minors:</strong> 180 days after 18th birthday to file notice (Idaho Code § 6-906A)."
+      },
+      {
+        question: "Does Idaho cap pain and suffering damages in car accident cases?",
+        answer: "Yes. Under <strong>Idaho Code § 6-1603</strong>, non-economic damages are capped at an inflation-adjusted amount (<strong>$509,013 as of July 1, 2025</strong>; <strong>$538,425 as of July 1, 2026</strong>). The base $250,000 cap (2003) is adjusted annually by the Idaho Industrial Commission per Idaho Code § 72-409(2). <strong>Exceptions:</strong> No cap for willful/reckless misconduct or felony conduct (Idaho Code § 6-1603(4)). The 50% comparative fault bar (Idaho Code § 6-801) acts as a total recovery bar at 50%+ fault."
+      },
+      {
+        question: "What happens if I share fault for an accident in Idaho?",
+        answer: "Under <strong>Idaho Code § 6-801</strong>, if your fault is <strong>49% or less</strong> (your negligence is 'not as great as' the defendant's), you can recover damages reduced by your fault percentage. If your fault is <strong>50% or more</strong>, you are <strong>completely barred from recovery ($0)</strong>. This is a strict 50% bar — even a 50/50 split means no recovery. <strong>Several liability (Idaho Code § 6-803):</strong> Each defendant liable only for their proportionate share, except for concert of action/agency."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Idaho settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Idaho's <strong>50% bar</strong> system with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively argue for 50%+ fault to deny claims entirely, and the cap requires careful calculation. An Idaho personal injury attorney can preserve evidence immediately, calculate damages under the statutory cap, navigate the 180-day government notice deadline, and file formal complaints in <strong>Idaho District Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }

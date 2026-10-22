@@ -151,6 +151,8 @@ const pageTitle = state === 'georgia'
   ? 'Louisiana Car Accident Settlement Calculator | Pure→Modified Comparative Fault (2026), 2-Yr SOL (2024), Direct Action'
   : state === 'arizona'
   ? 'Arizona Car Accident Settlement Calculator | Pure Comparative Fault, No Damage Caps (Constitutional)'
+  : state === 'idaho'
+  ? 'Idaho Car Accident Settlement Calculator | 50% Bar, $509k Cap, 2-Year SOL'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -189,6 +191,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Louisiana car accident settlement under pure comparative fault (until 2026), modified comparative fault with 51% bar (effective Jan 2026, Acts 2025 No. 15), 2-year SOL (effective July 2024, Acts 2024 No. 423), direct action statute (La. R.S. 22:1269), 15/30/25 limits, and no damage caps. Free educational tool.'
   : state === 'arizona'
   ? 'Calculate your estimated Arizona car accident settlement under pure comparative fault (A.R.S. § 12-2505), constitutional ban on damage caps (Ariz. Const. Art. II § 31), 2-year SOL (A.R.S. § 12-542), 25/50/15 limits (A.R.S. § 28-4009), and 180-day government notice (A.R.S. § 12-821.01). Free educational tool.'
+  : state === 'idaho'
+  ? 'Calculate your estimated Idaho car accident settlement under 50% modified comparative fault (Idaho Code § 6-801), $509k inflation-adjusted damage cap (Idaho Code § 6-1603), 2-year SOL (Idaho Code § 5-219), 25/50/15 limits (Idaho Code § 49-117), and 180-day government notice (Idaho Code § 6-906). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -227,7 +231,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona' || state === 'idaho') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -693,6 +697,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'idaho' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Idaho Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title6/t6ch8/sect6-801/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 6-801 — Comparative Negligence (50% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">50% bar rule: recovery barred if plaintiff's negligence not less than defendant's ("not as great as"). Special verdicts for damages and negligence percentages (Idaho Code § 6-802). Several liability per § 6-803 (except concert of action/agency).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title6/t6ch16/sect6-1603/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 6-1603 — Non-Economic Damages Cap ($250k Base, Inflation-Adjusted)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">$250,000 base cap (2003, HB 92), adjusted annually July 1 by Idaho Industrial Commission per § 72-409(2) (avg annual wage). $509,013 (July 1, 2025), $538,425 (July 1, 2026). Aggregate per claimant. Exceptions: willful/reckless misconduct, felony conduct (§ 6-1603(4)). Jury not informed of cap (§ 6-1603(3)).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title5/t5ch2/sect5-219/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 5-219 — Statute of Limitations (2 Years PI, 3 Years Property)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Personal injury: 2 years (subsection 4). Property damage: 3 years (§ 5-218). Wrongful death: 2 years (§ 5-311). Tolled for minors until earlier of 6 years post-injury or 18th birthday (§ 5-230). Tolled for defendant absence up to 6 years (§ 5-229).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title49/t49ch1/sect49-117/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 49-117 — Financial Responsibility (25/50/15 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability: $25,000 per person / $50,000 per accident bodily injury, $15,000 property damage. Proof required for registration. Self-insurance option for 25+ vehicles (§ 49-117).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title41/t41ch25/sect41-2502/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 41-2502 — Mandatory UM/UIM Offer (Matching Liability Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM at limits equal to liability limits (min 25/50); rejection must be in writing/electronic record; applies to renewals. Standard disclosure form approved by Director of Insurance required at new policy (eff. Jan 1, 2009).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title6/t6ch9/sect6-906/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 6-906 — Government Claims (180-Day Notice, $500k Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">ITCA: 180-day notice to clerk/secretary of political subdivision (§ 6-906) or Secretary of State for state (§ 6-905). 2-year suit deadline (§ 6-911). Total damages capped at $500,000 per claimant (§ 6-918). Minors: 180 days after 18th birthday (§ 6-906A).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title49/t49ch13/sect49-1305/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 49-1305 — Immediate Notice of Accidents ($1,500 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately notify police if injury, death, or property damage >$1,500 (increased from $500 in 2005). Notice to local police (city) or county sheriff/state police (outside city). Failure is misdemeanor.</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title6/t6ch8/sect6-803/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 6-803 — Several Liability (Proportionate Share)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Each defendant liable only for proportionate share of negligence, except for concert of action or agency/servant relationships where joint and several liability applies. No contribution from released tortfeasor (§ 6-805).</span>
+              </li>
+              <li>
+                <a href="https://legislature.idaho.gov/statutesrules/idstat/title6/t6ch16/sect6-1604/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Idaho Code § 6-1604 — Punitive Damages (Clear & Convincing Standard)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages require clear and convincing evidence of "oppression, fraud, wantonness, malice or reckless indifference." No statutory cap on punitive damages. Not subject to § 6-1603 non-economic cap.</span>
               </li>
             </ul>
           </div>
