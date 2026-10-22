@@ -149,6 +149,8 @@ const pageTitle = state === 'georgia'
   ? 'Maryland Car Accident Settlement Calculator | Pure Contributory Negligence, $935k Cap, PIP'
   : state === 'louisiana'
   ? 'Louisiana Car Accident Settlement Calculator | Pure→Modified Comparative Fault (2026), 2-Yr SOL (2024), Direct Action'
+  : state === 'arizona'
+  ? 'Arizona Car Accident Settlement Calculator | Pure Comparative Fault, No Damage Caps (Constitutional)'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -185,6 +187,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Maryland car accident settlement under pure contributory negligence (1% bars recovery), $935k damage cap (Md. CJP § 11-108), 3-year SOL (Md. CJP § 5-101), mandatory PIP $2,5k (Md. Ins. § 19-505), mandatory UM/UIM/EUIM (Md. Ins. § 19-509/19-509.1), and 30/60/15 limits (Md. Transp. § 17-103). Free educational tool.'
   : state === 'louisiana'
   ? 'Calculate your estimated Louisiana car accident settlement under pure comparative fault (until 2026), modified comparative fault with 51% bar (effective Jan 2026, Acts 2025 No. 15), 2-year SOL (effective July 2024, Acts 2024 No. 423), direct action statute (La. R.S. 22:1269), 15/30/25 limits, and no damage caps. Free educational tool.'
+  : state === 'arizona'
+  ? 'Calculate your estimated Arizona car accident settlement under pure comparative fault (A.R.S. § 12-2505), constitutional ban on damage caps (Ariz. Const. Art. II § 31), 2-year SOL (A.R.S. § 12-542), 25/50/15 limits (A.R.S. § 28-4009), and 180-day government notice (A.R.S. § 12-821.01). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -223,7 +227,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -689,6 +693,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'arizona' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Arizona Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.azleg.gov/ars/12/02505.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 12-2505 — Pure Comparative Negligence (No Bar Threshold)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Pure comparative negligence: claimant's action not barred; damages reduced in proportion to relative degree of fault. Jury determines fault as question of fact. No comparative negligence for intentional/willful/wanton conduct. No 50% or 51% bar — recovery allowed even at 99% fault.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/constitution/arizona/2/31.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Arizona Constitution Article II, Section 31 — Constitutional Ban on Damage Caps
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">"No law shall be enacted in this state limiting the amount of damages to be recovered for causing the death or injury of any person." Crime victim exception added by Proposition 114 (2012). Makes legislative damage caps for personal injury/wrongful death unconstitutional.</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/12/00542.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 12-542 — Statute of Limitations (2 Years PI/Property/WD)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">2-year SOL for personal injury, property damage, and wrongful death. Accrues at date of injury (or date of death for WD). Medical malpractice also 2 years (A.R.S. § 12-563).</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/28/04009.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 28-4009 — Motor Vehicle Liability Policy (25/50/15 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability: $25,000 per person / $50,000 per accident bodily injury, $15,000 property damage (effective July 1, 2020; prior 15/30/10). Self-insurance option for 25+ vehicles. Proof required for registration.</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/20/00259-01.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 20-259.01 — Uninsured/Underinsured Motorist Coverage (Mandatory Offer)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM at limits equal to bodily injury liability limits; rejection must be in writing. Minimum UM/UIM limits match liability minimums (25/50). Primary to other coverage.</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/12/00821-01.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 12-821.01 — Government Claims Notice (180 Days, 1-Year SOL)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">180-day notice to authorized person (Attorney General for State; Az. R. Civ. P. 4.1 for local). Claims deemed denied after 60 days. 1-year SOL to sue (A.R.S. § 12-821). Minors/incompetent: 180 days after disability ceases.</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/28/00667.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 28-667 — Written Accident Report ($2,000 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Officer must complete written report for injury/death/property damage >$2,000 (or citation). Short report for ≤$2,000 without injury/death/citation. Report due within 24 hours of investigation.</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/28/00663.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 28-663 — Duty to Give Information and Render Aid
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately stop, render aid, exchange information at injury/death accidents. Failure is Class 3 misdemeanor (up to 30 days jail, $500 fine).</span>
+              </li>
+              <li>
+                <a href="https://www.azleg.gov/ars/12/002501.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  A.R.S. § 12-2501 — Punitive Damages (Clear & Convincing, "Evil Mind")
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages require clear and convincing evidence of "evil mind" (actual malice, fraud, willful/wanton conduct). No statutory cap on punitive damages when awarded. Constitutional ban on caps (Art. II § 31) applies.</span>
               </li>
             </ul>
           </div>

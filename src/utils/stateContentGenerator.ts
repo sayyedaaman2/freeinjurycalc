@@ -169,6 +169,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Arizona") {
+    return `Under Arizona's Motor Vehicle Financial Responsibility Law (<strong>A.R.S. § 28-4009</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/15</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $15,000 for property damage), effective July 1, 2020 (prior limits were 15/30/10). Arizona is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Arizona insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>A.R.S. § 20-259.01</strong>, insurers must offer UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>No PIP / MedPay Required:</strong> Arizona does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+      <li><strong>Constitutional Ban on Damage Caps:</strong> Under <strong>Arizona Constitution Article II, Section 31</strong>, <strong>no law shall be enacted limiting the amount of damages to be recovered for causing the death or injury of any person</strong> (with a crime victim exception added by Proposition 114). This constitutional provision makes damage caps for personal injury unconstitutional in Arizona.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -379,6 +389,18 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Louisiana legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Arizona") {
+    return `In Arizona, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>A.R.S. § 12-542</strong>, actions for injuries to the person (including car accidents) must be filed within <strong>2 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (2 Years):</strong> Under <strong>A.R.S. § 12-542</strong>, actions for injury to property (vehicle damage) must also be filed within <strong>2 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>A.R.S. § 12-542</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>Government Entity Claims (180-Day Notice / 1-Year SOL):</strong> Under <strong>A.R.S. § 12-821.01</strong>, a claim against a public entity or public employee must be filed with the person authorized to accept service within <strong>180 days</strong> after the cause of action accrues. Claims are deemed denied 60 days after filing unless expressly denied earlier (<strong>A.R.S. § 12-821.01(E)</strong>). The statute of limitations for suits against public entities is <strong>1 year</strong> (<strong>A.R.S. § 12-821</strong>). Notice to the State must be filed with the Attorney General; notice to local entities filed with the authorized person per Arizona Rules of Civil Procedure 4.1.</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>A.R.S. § 12-821.01(D)</strong>, minors and incompetent persons must file notice of claim within <strong>180 days after the disability ceases</strong> (e.g., after turning 18).</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Arizona legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -537,6 +559,18 @@ export function generateDamageCapContent(
       <li><strong>Government Claims:</strong> Under <strong>La. R.S. 13:5106</strong>, judgments against the state or political subdivisions are payable only from funds appropriated by the legislature; no single statewide statutory cap, but recovery is limited by legislative appropriation.</li>
       <li><strong>Punitive (Exemplary) Damages:</strong> Under <strong>La. Civ. Code Art. 2315.3</strong>, punitive damages are available only if authorized by statute (e.g., <strong>La. Civ. Code Art. 2315.4</strong> for DUI; <strong>La. R.S. 32:1471</strong> for intoxicated drivers; <strong>La. R.S. 51:1409</strong> for consumer fraud). No general statutory cap on punitive damages when authorized.</li>
       <li><strong>51% Bar Rule (Effective Jan 1, 2026):</strong> Under <strong>La. Civ. Code Art. 2323</strong> (as amended by <strong>Acts 2025, No. 15</strong> effective <strong>January 1, 2026</strong>), if plaintiff's fault is <strong>51% or greater, recovery is completely barred ($0)</strong>. If less than 51%, damages are reduced proportionally. <strong>Prior law (pre-2026) was pure comparative fault</strong> — plaintiff could recover even if 99% at fault. This 2025 Act changes Louisiana from pure to modified comparative fault with a 51% bar.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Arizona") {
+    return `For standard passenger vehicle car accident claims against private motorists, Arizona law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the <strong>Arizona Constitution Article II, Section 31</strong>, which provides: <strong>"No law shall be enacted in this state limiting the amount of damages to be recovered for causing the death or injury of any person"</strong> (with a crime victim exception added by Proposition 114). Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Constitutional Ban on Damage Caps:</strong> Arizona is one of the few states with a <strong>constitutional prohibition</strong> on legislative damage caps for personal injury and wrongful death. The Arizona Supreme Court has consistently struck down statutory caps as unconstitutional under this provision.</li>
+      <li><strong>Medical Malpractice:</strong> The constitutional ban applies equally to medical malpractice — no caps on non-economic damages.</li>
+      <li><strong>Government Claims:</strong> While the constitutional ban applies to state/local government claims, the <strong>180-day notice requirement (A.R.S. § 12-821.01)</strong> and <strong>1-year statute of limitations (A.R.S. § 12-821)</strong> are procedural prerequisites that must be strictly followed.</li>
+      <li><strong>Punitive Damages:</strong> Under <strong>A.R.S. § 12-2501</strong>, punitive damages require <strong>clear and convincing evidence</strong> of an "evil mind" (actual malice, fraud, or willful/wanton conduct). No statutory cap on punitive damages when awarded.</li>
+      <li><strong>Pure Comparative Negligence:</strong> Under <strong>A.R.S. § 12-2505</strong>, plaintiff's recovery is reduced by their fault percentage — even 99% fault allows recovery of 1% of damages. No contributory negligence bar.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -787,6 +821,20 @@ export function generateSettlementExample(
       <li><strong>No Statutory Damage Cap:</strong> Louisiana imposes no cap on non-economic damages for ordinary car accident claims.</li>
       <li><strong>Direct Action Option:</strong> Under <strong>La. R.S. 22:1269</strong>, if the at-fault driver is insolvent, bankrupt, or cannot be served, the claimant may sue the insurer <strong>directly</strong> (subject to policy limits).</li>
       <li><strong>Statute of Limitations (2 Years Effective July 1, 2024):</strong> Under <strong>La. Civ. Code Art. 3493.11</strong> (Acts 2024, No. 423), personal injury claims must be filed within <strong>2 years</strong> of the crash (for claims arising on/after July 1, 2024). <strong>Prior law provided only 1 year.</strong> Wrongful death: 1 year (Art. 2315.2).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "arizona") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Arizona</strong> under the state's pure comparative negligence doctrine and constitutional ban on damage caps:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Pure Comparative Fault Adjustment (10% Fault):</strong> Under <strong>A.R.S. § 12-2505</strong>, because Arizona follows pure comparative negligence, the claimant's fault (10%) reduces the gross estimate proportionally by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
+      <li><strong>No Damage Cap:</strong> Under <strong>Arizona Constitution Article II, Section 31</strong>, <strong>no statutory cap exists on non-economic damages</strong> for car accident claims. The full $33,750 in non-economic damages (after 10% fault reduction) is recoverable.</li>
+      <li><strong>99% Fault Recovery:</strong> Even if the claimant were <strong>99% at fault</strong>, they would still recover <strong>1% of damages ($575)</strong> — pure comparative negligence has no bar threshold.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1479,6 +1527,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Louisiana settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Louisiana's <strong>evolving legal landscape</strong> (new 2-year SOL effective July 2024, modified comparative fault effective Jan 2026, direct action statute), a lawyer is especially critical: the filing deadline doubled but is still short, the comparative fault regime is changing, and the direct action statute provides unique leverage. A Louisiana personal injury attorney can preserve evidence immediately, navigate the direct action statute (La. R.S. 22:1269), calculate damages under the correct fault regime, and file formal petitions in <strong>Louisiana District Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Arizona") {
+    return [
+      {
+        question: "How does Arizona's pure comparative negligence rule work?",
+        answer: "Under <strong>A.R.S. § 12-2505</strong>, Arizona follows a <strong>pure comparative negligence</strong> system. You can recover damages <strong>even if you are 99% at fault</strong> — your award is simply reduced by your fault percentage. The defense of contributory negligence or assumption of risk is <strong>always a question of fact for the jury</strong>. There is <strong>no bar threshold</strong> — unlike modified comparative fault states (50% or 51% bars), Arizona allows recovery at any fault level below 100%. Exception: no comparative negligence for claimants who intentionally, willfully, or wantonly caused the injury (<strong>A.R.S. § 12-2505</strong>)."
+      },
+      {
+        question: "Does Arizona cap pain and suffering damages?",
+        answer: "<strong>No.</strong> Under <strong>Arizona Constitution Article II, Section 31</strong>, <strong>no law shall be enacted limiting the amount of damages to be recovered for causing the death or injury of any person</strong>. This constitutional provision makes legislative damage caps on non-economic damages (pain and suffering, emotional distress, loss of consortium) <strong>unconstitutional in Arizona</strong>. The Arizona Supreme Court has consistently struck down statutory caps under this provision. A crime victim exception was added by Proposition 114 (2012)."
+      },
+      {
+        question: "What is Arizona's statute of limitations for car accidents?",
+        answer: "Under <strong>A.R.S. § 12-542</strong>, personal injury, property damage, and wrongful death lawsuits must be filed within <strong>2 years</strong> of the crash (or date of death for wrongful death). <strong>Government claims:</strong> Under <strong>A.R.S. § 12-821.01</strong>, a notice of claim must be filed within <strong>180 days</strong> of accrual; claims are deemed denied after 60 days. The statute of limitations for suits against public entities is <strong>1 year</strong> (<strong>A.R.S. § 12-821</strong>). Minors/incompetent persons have 180 days after disability ceases to file notice (<strong>A.R.S. § 12-821.01(D)</strong>)."
+      },
+      {
+        question: "What are Arizona's minimum auto insurance limits?",
+        answer: "Under <strong>A.R.S. § 28-4009</strong> (effective July 1, 2020), the minimums are <strong>25/50/15</strong> ($25,000 per person bodily injury, $50,000 per accident bodily injury, $15,000 property damage). Prior limits were 15/30/10. These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Arizona?",
+        answer: "Under <strong>A.R.S. § 20-259.01</strong>, insurers <strong>must offer</strong> UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. If UM/UIM is purchased, the minimum limits are 25/50 (matching the liability minimums). UM/UIM applies when the at-fault driver lacks sufficient coverage."
+      },
+      {
+        question: "What is the police accident report threshold in Arizona?",
+        answer: "Under <strong>A.R.S. § 28-667</strong>, a law enforcement officer must complete a written accident report if the accident results in <strong>bodily injury, death, or property damage in excess of $2,000</strong> (or issuance of a citation). For damage of $2,000 or less without injury/death/citation, a shortened report is completed. Drivers must immediately report accidents involving injury/death (<strong>A.R.S. § 28-663</strong>) and exchange information; failure to do so is a Class 3 misdemeanor."
+      },
+      {
+        question: "What are the government claim requirements in Arizona?",
+        answer: "Under <strong>A.R.S. § 12-821.01</strong>, a claim against a public entity or employee must be filed with the person authorized to accept service within <strong>180 days</strong> of accrual. Claims are deemed denied 60 days after filing unless expressly denied (<strong>A.R.S. § 12-821.01(E)</strong>). Suit must be filed within <strong>1 year</strong> (<strong>A.R.S. § 12-821</strong>). Notice to the State: Attorney General; local entities: authorized person per Az. R. Civ. P. 4.1. Minors/incompetent persons: 180 days after disability ceases (<strong>A.R.S. § 12-821.01(D)</strong>)."
+      },
+      {
+        question: "What is Arizona's constitutional ban on damage caps?",
+        answer: "<strong>Arizona Constitution Article II, Section 31</strong> provides: <strong>'No law shall be enacted in this state limiting the amount of damages to be recovered for causing the death or injury of any person'</strong> (with a crime victim exception added by Proposition 114, 2012). This constitutional provision makes <strong>legislative caps on non-economic damages unconstitutional</strong> for personal injury and wrongful death claims, including medical malpractice. It is one of the strongest anti-cap protections in the nation."
+      },
+      {
+        question: "What happens if I share fault for an accident in Arizona?",
+        answer: "Under <strong>A.R.S. § 12-2505</strong>, Arizona's <strong>pure comparative negligence</strong> means you can recover damages <strong>even if you are 99% at fault</strong>. Your recovery is reduced proportionally by your fault percentage. There is <strong>no 50% or 51% bar</strong> — you only lose recovery if you are 100% at fault. The jury determines fault percentages as a question of fact. Exception: intentional/willful/wanton conduct by claimant bars comparative negligence (<strong>A.R.S. § 12-2505</strong>)."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Arizona settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Arizona's <strong>pure comparative negligence</strong> system with <strong>constitutional ban on damage caps</strong>, a lawyer is especially valuable: insurers aggressively argue for higher fault percentages to reduce payouts, and the absence of caps means full non-economic damages are recoverable. An Arizona personal injury attorney can preserve evidence, rebut comparative fault arguments, navigate the 180-day government notice deadline, and file formal complaints in <strong>Arizona Superior Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
