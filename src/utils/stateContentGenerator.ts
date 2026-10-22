@@ -159,6 +159,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Louisiana") {
+    return `Under Louisiana's Motor Vehicle Safety Responsibility Law (<strong>La. R.S. 32:861</strong>), every driver must maintain minimum liability insurance limits of <strong>15/30/25</strong> ($15,000 per person for bodily injury, $30,000 per accident for total bodily injury, and $25,000 for property damage). Louisiana is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Louisiana insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>La. R.S. 22:1295</strong> (formerly 22:680), insurers must offer UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>Direct Action Statute:</strong> Under <strong>La. R.S. 22:1269</strong> (formerly R.S. 22:443), an injured party may bring a <strong>direct action against the insurer</strong> under specific circumstances: (1) insured's bankruptcy/insolvency, (2) inability to serve the insured, (3) intra-family immunity, (4) UM carrier, (5) insured's death, (6) insurer defending under reservation of rights or denying coverage. This right exists regardless of policy language forbidding direct action, provided the accident occurred in Louisiana.</li>
+      <li><strong>No PIP / MedPay Required:</strong> Louisiana does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -356,6 +366,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Maryland legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Louisiana") {
+    return `In Louisiana, car accident civil claims are governed by specific statutory deadlines that have recently changed:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years — Effective July 1, 2024):</strong> Under <strong>La. Civ. Code Art. 3493.11</strong> (enacted by <strong>Acts 2024, No. 423</strong> effective <strong>July 1, 2024</strong>), delictual (tort) actions are subject to a liberative prescription of <strong>2 years</strong>. This prescription commences from the day injury or damage is sustained. <strong>Prior law (old Art. 3492) provided only 1 year</strong> — the shortest in the nation. The 2-year period applies prospectively to claims arising on or after July 1, 2024.</li>
+      <li><strong>Property Damage Lawsuits (2 Years):</strong> Under <strong>La. Civ. Code Art. 3493.12</strong>, damage to immovable property has a <strong>2-year</strong> prescription commencing from the day the owner acquired or should have acquired knowledge of the damage.</li>
+      <li><strong>Wrongful Death Lawsuits (1 Year):</strong> Under <strong>La. Civ. Code Art. 2315.2</strong>, wrongful death actions must be filed within <strong>1 year</strong> of the date of death. This 1-year period was not changed by the 2024 reforms.</li>
+      <li><strong>Crime of Violence Exception:</strong> Under <strong>La. Civ. Code Art. 3493.10</strong>, delictual actions for damages arising from a crime of violence (except sexual assault) have a <strong>2-year</strong> prescriptive period. Sexual assault claims have a <strong>3-year</strong> period.</li>
+      <li><strong>Tolling for Minors/Interdicts:</strong> The prescription does <strong>not run against minors or interdicts</strong> in actions involving permanent disability brought under the Louisiana Products Liability Act (<strong>La. Civ. Code Art. 3493.11</strong>).</li>
+      <li><strong>No Separate Government Notice Statute:</strong> Claims against state/local entities follow the same 2-year prescriptive period; no separate pre-suit notice period is required (though La. R.S. 13:5107 provides procedures for suits against public entities).</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Louisiana legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -504,6 +527,17 @@ export function generateDamageCapContent(
       <li><strong>Pure Contributory Negligence — The Ultimate "Cap":</strong> Under Maryland common law (affirmed in <em>Coleman v. Soccer Association of Columbia</em>, 432 Md. 679 (2013)), if plaintiff is <strong>even 1% at fault, recovery is completely barred ($0)</strong> — this is the most severe limitation of all.</li>
     </ul>
     <em>Note: The § 11-108 cap was enacted in 1986 at $350,000, reset to $500,000 in 1994 with $15,000 annual escalator. As of Oct 1, 2024, the cap is $935,000; Oct 1, 2025 it will be $950,000.</em>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Louisiana") {
+    return `For standard passenger vehicle car accident claims against private motorists, Louisiana law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the Louisiana Civil Code for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Medical Malpractice:</strong> Under <strong>La. R.S. 40:1231.2</strong>, total damages (economic + non-economic) in medical malpractice actions are capped at <strong>$500,000</strong> (excluding future medical expenses and related benefits). This cap <em>does not apply</em> to motor vehicle accident claims.</li>
+      <li><strong>Government Claims:</strong> Under <strong>La. R.S. 13:5106</strong>, judgments against the state or political subdivisions are payable only from funds appropriated by the legislature; no single statewide statutory cap, but recovery is limited by legislative appropriation.</li>
+      <li><strong>Punitive (Exemplary) Damages:</strong> Under <strong>La. Civ. Code Art. 2315.3</strong>, punitive damages are available only if authorized by statute (e.g., <strong>La. Civ. Code Art. 2315.4</strong> for DUI; <strong>La. R.S. 32:1471</strong> for intoxicated drivers; <strong>La. R.S. 51:1409</strong> for consumer fraud). No general statutory cap on punitive damages when authorized.</li>
+      <li><strong>51% Bar Rule (Effective Jan 1, 2026):</strong> Under <strong>La. Civ. Code Art. 2323</strong> (as amended by <strong>Acts 2025, No. 15</strong> effective <strong>January 1, 2026</strong>), if plaintiff's fault is <strong>51% or greater, recovery is completely barred ($0)</strong>. If less than 51%, damages are reduced proportionally. <strong>Prior law (pre-2026) was pure comparative fault</strong> — plaintiff could recover even if 99% at fault. This 2025 Act changes Louisiana from pure to modified comparative fault with a 51% bar.</li>
+    </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
@@ -738,6 +772,21 @@ export function generateSettlementExample(
       <li><strong>Statutory Damage Cap Check:</strong> Even if 0% fault, the non-economic portion ($37,500) is well below the <strong>$935,000 standard cap</strong> (Md. Courts & Judicial Proceedings § 11-108, effective Oct 1, 2024). For wrongful death with 2+ beneficiaries, the cap would be <strong>$1,402,500</strong> (150% of standard cap).</li>
       <li><strong>PIP Recovery (Your Insurer):</strong> Regardless of fault, <strong>$2,500 PIP</strong> (Md. Insurance § 19-505) pays medical expenses and 85% lost wages from your own policy. PIP is mandatory unless waived.</li>
       <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under Md. Insurance § 19-509, matching liability limits) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "louisiana") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Louisiana</strong> under the state's evolving comparative fault rules and new 2-year statute of limitations:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Comparative Fault Adjustment (10% Fault):</strong> Under Louisiana's comparative fault rules, the claimant's recovery is reduced by their fault percentage. <strong>Current law (pure comparative fault, until Dec 31, 2025):</strong> 10% fault reduces the estimate by 10% (-$5,750) to <strong>$51,750</strong>. <strong>Effective Jan 1, 2026 (Acts 2025, No. 15):</strong> Same result at 10% fault (51% bar not triggered), but if fault were 51%+, recovery would be $0.</li>
+      <li><strong>No Statutory Damage Cap:</strong> Louisiana imposes no cap on non-economic damages for ordinary car accident claims.</li>
+      <li><strong>Direct Action Option:</strong> Under <strong>La. R.S. 22:1269</strong>, if the at-fault driver is insolvent, bankrupt, or cannot be served, the claimant may sue the insurer <strong>directly</strong> (subject to policy limits).</li>
+      <li><strong>Statute of Limitations (2 Years Effective July 1, 2024):</strong> Under <strong>La. Civ. Code Art. 3493.11</strong> (Acts 2024, No. 423), personal injury claims must be filed within <strong>2 years</strong> of the crash (for claims arising on/after July 1, 2024). <strong>Prior law provided only 1 year.</strong> Wrongful death: 1 year (Art. 2315.2).</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1385,6 +1434,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Maryland settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Maryland's <strong>pure contributory negligence</strong> system with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely, and the cap requires careful calculation. A Maryland personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate the 1-year government notice deadlines, and file formal complaints in <strong>Maryland Circuit Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Louisiana") {
+    return [
+      {
+        question: "How does Louisiana's comparative negligence rule work?",
+        answer: "<strong>Until December 31, 2025 (Pure Comparative Fault):</strong> Under the pre-2026 version of <strong>La. Civ. Code Art. 2323</strong>, you can recover damages <strong>even if you are 99% at fault</strong> — your award is simply reduced by your fault percentage. <strong>Effective January 1, 2026 (Modified Comparative Fault with 51% Bar):</strong> Under <strong>Acts 2025, No. 15</strong> amending <strong>La. Civ. Code Art. 2323</strong>, if your fault is <strong>51% or greater, you are completely barred from recovery ($0)</strong>. If your fault is <strong>less than 51%</strong>, your award is reduced proportionally. This is a major shift from pure to modified comparative fault. The law applies prospectively to claims arising on or after January 1, 2026."
+      },
+      {
+        question: "What is Louisiana's statute of limitations for car accidents?",
+        answer: "<strong>Effective July 1, 2024 (2 Years):</strong> Under <strong>La. Civ. Code Art. 3493.11</strong> (enacted by <strong>Acts 2024, No. 423</strong>), personal injury (delictual) actions must be filed within <strong>2 years</strong> of the crash. This applies prospectively to claims arising on or after July 1, 2024. <strong>Prior law (old Art. 3492) provided only 1 year</strong> — the shortest in the U.S. <strong>Wrongful death:</strong> 1 year from date of death (<strong>La. Civ. Code Art. 2315.2</strong>). <strong>Crime of violence:</strong> 2 years (<strong>Art. 3493.10</strong>); sexual assault: 3 years."
+      },
+      {
+        question: "Does Louisiana cap pain and suffering damages?",
+        answer: "No. For standard car accident claims against private motorists, <strong>Louisiana imposes no statutory cap on non-economic damages</strong>. The only damage caps apply to: (1) <strong>Medical malpractice</strong> under <strong>La. R.S. 40:1231.2</strong> ($500,000 total, excluding future medical); (2) <strong>Government claims</strong> — recovery limited by legislative appropriation (<strong>La. R.S. 13:5106</strong>). Punitive damages are available only when authorized by statute (e.g., DUI under La. Civ. Code Art. 2315.4, intoxicated drivers under La. R.S. 32:1471)."
+      },
+      {
+        question: "What are Louisiana's minimum auto insurance limits?",
+        answer: "Under <strong>La. R.S. 32:861</strong>, the minimums are <strong>15/30/25</strong> ($15,000 per person bodily injury, $30,000 per accident bodily injury, $25,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "What is Louisiana's Direct Action Statute?",
+        answer: "Under <strong>La. R.S. 22:1269</strong> (formerly R.S. 22:443), an injured party may bring a <strong>direct action against the insurer</strong> without first suing the insured, but <strong>only in specific circumstances</strong>: (1) insured's bankruptcy/insolvency, (2) service of citation attempted without success or insured refuses to defend within 180 days, (3) intra-family immunity (children/parents, married persons), (4) UM carrier, (5) insured's death, (6) insurer defending under reservation of rights or denying coverage. This right exists regardless of policy language forbidding direct action, provided the accident occurred in Louisiana."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Louisiana?",
+        answer: "Under <strong>La. R.S. 22:1295</strong> (formerly 22:680), insurers <strong>must offer</strong> UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage."
+      },
+      {
+        question: "What is the police accident report threshold in Louisiana?",
+        answer: "Under <strong>La. R.S. 32:398</strong>, the driver must immediately notify law enforcement if the accident involves <strong>injury, death, or property damage of $500 or more</strong>. Written reports may also be required to the Department of Public Safety within 24 hours (<strong>La. R.S. 32:399</strong>). The $500 threshold is specific — any injury/death or $500+ property damage triggers the duty."
+      },
+      {
+        question: "How does the 2025 comparative fault change (Acts 2025, No. 15) affect my claim?",
+        answer: "<strong>Effective January 1, 2026</strong>, Louisiana switches from <strong>pure comparative fault</strong> (recover even at 99% fault) to <strong>modified comparative fault with a 51% bar</strong> under <strong>Acts 2025, No. 15</strong> amending <strong>La. Civ. Code Art. 2323</strong>. If you are <strong>51% or more at fault</strong>, you recover <strong>$0</strong>. If <strong>less than 51%</strong>, your damages are reduced proportionally. Claims arising before Jan 1, 2026 remain under pure comparative fault. The intentional tortfeasor exception (Art. 2323(C)) preserves full recovery if the other party acted intentionally."
+      },
+      {
+        question: "Can I sue the insurance company directly in Louisiana?",
+        answer: "Yes, under <strong>La. R.S. 22:1269</strong> (Louisiana's unique <strong>Direct Action Statute</strong>), you may sue the insurer directly in limited circumstances: insured's bankruptcy/insolvency, inability to serve the insured, intra-family immunity, UM carrier, insured's death, or insurer denying coverage/defending under reservation of rights. This is a powerful tool when the at-fault driver cannot be located or is judgment-proof."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Louisiana settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Louisiana's <strong>evolving legal landscape</strong> (new 2-year SOL effective July 2024, modified comparative fault effective Jan 2026, direct action statute), a lawyer is especially critical: the filing deadline doubled but is still short, the comparative fault regime is changing, and the direct action statute provides unique leverage. A Louisiana personal injury attorney can preserve evidence immediately, navigate the direct action statute (La. R.S. 22:1269), calculate damages under the correct fault regime, and file formal petitions in <strong>Louisiana District Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }

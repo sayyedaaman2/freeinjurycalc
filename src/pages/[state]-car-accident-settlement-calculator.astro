@@ -147,6 +147,8 @@ const pageTitle = state === 'georgia'
   ? 'Colorado Car Accident Settlement Calculator | 50% Bar, $642k Cap, 3-Year SOL'
   : state === 'maryland'
   ? 'Maryland Car Accident Settlement Calculator | Pure Contributory Negligence, $935k Cap, PIP'
+  : state === 'louisiana'
+  ? 'Louisiana Car Accident Settlement Calculator | Pure→Modified Comparative Fault (2026), 2-Yr SOL (2024), Direct Action'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -181,6 +183,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Colorado car accident settlement under 50% modified comparative fault (C.R.S. § 13-21-111), $642k/$1.28M damage caps (C.R.S. § 13-21-102.5), 3-year SOL (C.R.S. § 13-80-101), 25/50/15 limits (C.R.S. § 42-7-103), and 182-day government notice. Free educational tool.'
   : state === 'maryland'
   ? 'Calculate your estimated Maryland car accident settlement under pure contributory negligence (1% bars recovery), $935k damage cap (Md. CJP § 11-108), 3-year SOL (Md. CJP § 5-101), mandatory PIP $2,5k (Md. Ins. § 19-505), mandatory UM/UIM/EUIM (Md. Ins. § 19-509/19-509.1), and 30/60/15 limits (Md. Transp. § 17-103). Free educational tool.'
+  : state === 'louisiana'
+  ? 'Calculate your estimated Louisiana car accident settlement under pure comparative fault (until 2026), modified comparative fault with 51% bar (effective Jan 2026, Acts 2025 No. 15), 2-year SOL (effective July 2024, Acts 2024 No. 423), direct action statute (La. R.S. 22:1269), 15/30/25 limits, and no damage caps. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -219,7 +223,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -685,6 +689,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'louisiana' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Louisiana Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109387" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. Civ. Code Art. 2323 — Comparative Fault (Pure → Modified 51% Bar eff. Jan 1, 2026)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Until Dec 31, 2025: pure comparative fault (recover even at 99% fault). Effective Jan 1, 2026 (Acts 2025, No. 15): modified comparative fault with 51% bar — if plaintiff ≥ 51% at fault, $0 recovery; if < 51%, reduced proportionally. Intentional tortfeasor exception preserves full recovery (Art. 2323(C)).</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=110515" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. Civ. Code Art. 3493.11 — Delictual Actions (2-Year Prescription eff. July 1, 2024)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Enacted by Acts 2024, No. 423 effective July 1, 2024. Delictual actions subject to 2-year liberative prescription from day injury sustained. Does not run against minors/interdicts in permanent disability/product liability. Old Art. 3492 (1 year) repealed. Applies prospectively to claims arising on/after July 1, 2024.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=508142" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. R.S. 22:1269 — Direct Action Against Insurer (Limited Circumstances)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Direct action against insurer permitted only if: (1) insured bankrupt/insolvent, (2) service attempted without success or insured refuses to defend 180 days, (3) intra-family immunity, (4) UM carrier, (5) insured deceased, (6) insurer defending under reservation of rights/denying coverage. Exists regardless of policy language, if accident in Louisiana.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109388" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. R.S. 22:1295 — Uninsured/Underinsured Motorist Coverage (Mandatory Offer)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM at limits equal to bodily injury liability limits; rejection must be in writing. Includes property damage (UMPD). Primary to MAIF recovery. Anti-stacking provisions.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109386" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. R.S. 32:861 — Motor Vehicle Safety Responsibility Law (15/30/25 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability security: $15,000 per person / $30,000 per accident bodily injury, $25,000 property damage. Proof required for registration. Self-insurance option for 25+ vehicles.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109389" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. R.S. 32:398 — Duty to Report Accident ($500 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately notify police if injury, death, or property damage ≥ $500. Written report to Dept. of Public Safety within 24 hours if required (R.S. 32:399).</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109390" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. Civ. Code Art. 2315.2 — Wrongful Death (1-Year Prescription)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Wrongful death actions subject to 1-year liberative prescription from date of death. Not changed by 2024 tort reform. Survival action (Art. 2315.1) follows general delictual prescription (now 2 years under Art. 3493.11).</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109391" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. Civ. Code Art. 2315.3 — Exemplary Damages (Statutory Authorization Only)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages available only when authorized by statute: DUI (Art. 2315.4), intoxicated drivers (R.S. 32:1471), consumer fraud (R.S. 51:1409), defective products (R.S. 9:2800.52). No general cap when authorized.</span>
+              </li>
+              <li>
+                <a href="https://www.legis.la.gov/legis/Law.aspx?d=109392" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  La. R.S. 40:1231.2 — Medical Malpractice Cap ($500k Total, Excl. Future Medical)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">$500,000 total damages cap (economic + non-economic) for medical malpractice; future medical expenses and related benefits excluded. Does NOT apply to ordinary motor vehicle accident claims.</span>
               </li>
             </ul>
           </div>
