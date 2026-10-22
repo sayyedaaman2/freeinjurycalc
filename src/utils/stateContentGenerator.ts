@@ -149,6 +149,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Maryland") {
+    return `Under Maryland's Motor Vehicle Insurance Requirements (<strong>Md. Transportation § 17-103</strong>), every driver must maintain minimum liability insurance limits of <strong>30/60/15</strong> ($30,000 per person for bodily injury, $60,000 per accident for total bodily injury, and $15,000 for property damage). Maryland is a traditional <strong>at-fault (tort) state</strong> with mandatory PIP. Key Maryland insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Protection (PIP):</strong> Under <strong>Md. Insurance § 19-505</strong>, <strong>$2,500 in PIP coverage is mandatory</strong> (full PIP), unless waived in writing for limited PIP. PIP covers medical expenses, lost wages (85%), and essential services.</li>
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>Md. Insurance § 19-509</strong>, UM/UIM coverage is <strong>mandatory and must equal the liability limits</strong> (30/60/15 minimum) unless waived in writing. <strong>Enhanced Underinsured Motorist (EUIM) coverage</strong> under <strong>Md. Insurance § 19-509.1</strong> is the default option (stacks on top of at-fault driver's limits) unless affirmatively waived.</li>
+      <li><strong>MedPay Optional:</strong> Medical Payments coverage is available but not required; it supplements PIP.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold to bring a tort claim, but pure contributory negligence bars recovery if plaintiff is even 1% at fault.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -333,6 +343,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Colorado legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Maryland") {
+    return `In Maryland, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (3 Years):</strong> Under <strong>Md. Courts & Judicial Proceedings § 5-101</strong>, a civil action at law shall be filed within <strong>3 years</strong> from the date it accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Same 3-year statute under <strong>Md. Courts & Judicial Proceedings § 5-101</strong> for vehicle damage claims.</li>
+      <li><strong>Wrongful Death Lawsuits (3 Years):</strong> Under <strong>Md. Courts & Judicial Proceedings § 3-904</strong>, wrongful death actions must be filed within <strong>3 years</strong> of the date of death.</li>
+      <li><strong>State Government Tort Claims (1-Year Notice / $400k Cap):</strong> Under the <strong>Maryland Tort Claims Act (Md. State Government § 12-106)</strong>, a written claim must be submitted to the <strong>State Treasurer or designee</strong> within <strong>1 year</strong> after the injury. The claim is denied or 1 year passes; suit must be filed within <strong>3 years</strong> of accrual. State liability capped at <strong>$400,000 per claimant</strong> (<strong>Md. State Government § 12-104</strong>).</li>
+      <li><strong>Local Government Claims (1-Year Notice / $400k Cap):</strong> Under the <strong>Local Government Tort Claims Act (Md. Courts & Judicial Proceedings § 5-304)</strong>, notice must be given within <strong>1 year</strong> after the injury (extended from 180 days effective Oct 1, 2015 per Ch. 131). Notice to county commissioners/council or county attorney. Local government liability capped at <strong>$400,000 per individual claim / $800,000 per total claims</strong> from same occurrence (<strong>Md. Courts & Judicial Proceedings § 5-303</strong>).</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>Md. Courts & Judicial Proceedings § 5-201</strong>, the statute of limitations is tolled while the injured person is under 18 or mentally incompetent.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Maryland legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -465,6 +488,22 @@ export function generateDamageCapContent(
       <li><strong>50% Bar Rule:</strong> Under <strong>C.R.S. § 13-21-111</strong>, if plaintiff's fault is 50% or greater, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
     </ul>
     <em>Note: Caps are adjusted for inflation every two years (January 1) based on the Denver-Aurora-Lakewood CPI per C.R.S. § 13-21-102.5(3)(c)(III) and § 13-21-203.7.</em>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Maryland") {
+    return `Maryland imposes statutory caps on non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life) under <strong>Md. Courts & Judicial Proceedings § 11-108</strong>:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Standard Cap (Personal Injury):</strong> <strong>$935,000</strong> (as of October 1, 2024) for claims accruing on or after October 1, 1994. The cap increases by <strong>$15,000 each year on October 1</strong> (<strong>Md. Courts & Judicial Proceedings § 11-108(b)(2)(ii)</strong>). This is an aggregate cap per plaintiff for all non-economic damages.</li>
+      <li><strong>Wrongful Death Cap:</strong> <strong>150% of the standard cap</strong> ($1,402,500 as of Oct 1, 2024) for two or more beneficiaries, shared among all beneficiaries (<strong>Md. Courts & Judicial Proceedings § 11-108(b)(3)(ii)</strong>). For a single beneficiary, the standard cap applies ($935,000).</li>
+      <li><strong>Survival Action Cap:</strong> The standard cap ($935,000) applies separately to a survival action (estate claim), allowing combined recovery of up to <strong>$2,337,500</strong> in wrongful death + survival (<strong>Md. Courts & Judicial Proceedings § 11-108(b)(3)(iii)</strong>).</li>
+      <li><strong>Medical Malpractice:</strong> Separate, lower cap under <strong>Md. Courts & Judicial Proceedings § 3-2A-09</strong> ($875,000 in 2024, increases $15,000/year).</li>
+      <li><strong>Government Claims (State):</strong> Under <strong>Md. State Government § 12-104</strong>, total damages capped at <strong>$400,000 per claimant</strong> against the State.</li>
+      <li><strong>Government Claims (Local):</strong> Under <strong>Md. Courts & Judicial Proceedings § 5-303</strong>, liability capped at <strong>$400,000 per individual claim / $800,000 per occurrence</strong>.</li>
+      <li><strong>Punitive Damages:</strong> <strong>No statutory cap</strong> on punitive damages in Maryland; available for actual malice, fraud, or evil intent.</li>
+      <li><strong>Pure Contributory Negligence — The Ultimate "Cap":</strong> Under Maryland common law (affirmed in <em>Coleman v. Soccer Association of Columbia</em>, 432 Md. 679 (2013)), if plaintiff is <strong>even 1% at fault, recovery is completely barred ($0)</strong> — this is the most severe limitation of all.</li>
+    </ul>
+    <em>Note: The § 11-108 cap was enacted in 1986 at $350,000, reset to $500,000 in 1994 with $15,000 annual escalator. As of Oct 1, 2024, the cap is $935,000; Oct 1, 2025 it will be $950,000.</em>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
@@ -683,6 +722,22 @@ export function generateSettlementExample(
       <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$642,180 standard cap</strong> (C.R.S. § 13-21-102.5, effective Jan 1, 2024). If the court finds clear and convincing justification, the cap can increase to <strong>$1,284,370</strong>.</li>
       <li><strong>50% Bar Rule:</strong> If the claimant's negligence is 50% or greater, recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
       <li><strong>Exemplary Damages Not Reduced:</strong> If exemplary damages are awarded (C.R.S. § 13-21-102), they are <strong>not subject to reduction</strong> by the claimant's comparative negligence (C.R.S. § 13-21-111.5).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "maryland") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Maryland</strong> under the state's pure contributory negligence doctrine and inflation-adjusted statutory damage caps:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Pure Contributory Negligence Adjustment (10% Fault):</strong> Under Maryland's pure contributory negligence doctrine, <strong>any fault by the claimant (even 1%) completely bars recovery</strong>. Because the claimant bears 10% responsibility, the Illustrative Calculated Estimate is <strong>$0</strong> — no tort recovery permitted.</li>
+      <li><strong>Zero-Fault Requirement:</strong> To recover <em>any</em> damages in Maryland, the claimant must prove the at-fault driver was <strong>100% responsible</strong>. This makes exhaustive documentation (dashcam footage, witness statements, police reports) critically important.</li>
+      <li><strong>Statutory Damage Cap Check:</strong> Even if 0% fault, the non-economic portion ($37,500) is well below the <strong>$935,000 standard cap</strong> (Md. Courts & Judicial Proceedings § 11-108, effective Oct 1, 2024). For wrongful death with 2+ beneficiaries, the cap would be <strong>$1,402,500</strong> (150% of standard cap).</li>
+      <li><strong>PIP Recovery (Your Insurer):</strong> Regardless of fault, <strong>$2,500 PIP</strong> (Md. Insurance § 19-505) pays medical expenses and 85% lost wages from your own policy. PIP is mandatory unless waived.</li>
+      <li><strong>UM/UIM Safety Net:</strong> If the at-fault driver is uninsured/underinsured, the claimant's own UM/UIM policy (mandatory under Md. Insurance § 19-509, matching liability limits) may provide coverage, but the <strong>same contributory negligence bar applies</strong> — the claimant must still prove 0% fault.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1281,6 +1336,55 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Colorado settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Colorado's <strong>50% bar</strong> system and with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively argue for 50%+ fault to deny claims, and caps require careful calculation. A Colorado personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate the 182-day government notice deadline, and file formal complaints in <strong>Colorado District Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Maryland") {
+    return [
+      {
+        question: "How does Maryland's pure contributory negligence rule work?",
+        answer: "Maryland is one of only five U.S. jurisdictions (with Alabama, North Carolina, Virginia, and D.C.) that follows the <strong>pure contributory negligence doctrine</strong>. Under this rule, if you are found to have contributed to the accident <strong>in any way whatsoever — even 1% — you are completely barred from recovering any damages</strong> from the other party. This is a common-law doctrine affirmed by the Maryland Court of Appeals in <em>Coleman v. Soccer Association of Columbia</em>, 432 Md. 679 (2013). You must prove the at-fault driver was 100% responsible to recover anything."
+      },
+      {
+        question: "What are Maryland's non-economic damage caps?",
+        answer: "Under <strong>Md. Courts & Judicial Proceedings § 11-108</strong>, non-economic damages are capped at <strong>$935,000</strong> (as of October 1, 2024) for personal injury. The cap increases by <strong>$15,000 each year on October 1</strong>. For <strong>wrongful death with 2+ beneficiaries</strong>, the cap is <strong>150% ($1,402,500)</strong>, shared among all beneficiaries. A <strong>survival action</strong> has a separate $935,000 cap, allowing combined recovery up to <strong>$2,337,500</strong>. Medical malpractice has a separate, lower cap under § 3-2A-09 ($875,000 in 2024)."
+      },
+      {
+        question: "What is Maryland's statute of limitations for car accidents?",
+        answer: "Under <strong>Md. Courts & Judicial Proceedings § 5-101</strong>, personal injury, property damage, and wrongful death lawsuits must be filed within <strong>3 years</strong> of the crash (or date of death for wrongful death). <strong>Government claims:</strong> State (Md. State Government § 12-106) — 1-year notice to Treasurer, $400k cap; Local (Md. Courts & Judicial Proceedings § 5-304) — 1-year notice (extended from 180 days in 2015), $400k/$800k caps."
+      },
+      {
+        question: "What are Maryland's minimum auto insurance limits?",
+        answer: "Under <strong>Md. Transportation § 17-103</strong>, the minimums are <strong>30/60/15</strong> ($30,000 per person bodily injury, $60,000 per accident bodily injury, $15,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is PIP coverage required in Maryland?",
+        answer: "Yes. Under <strong>Md. Insurance § 19-505</strong>, <strong>$2,500 in Personal Injury Protection (PIP) is mandatory</strong> (full PIP) unless waived in writing for limited PIP. PIP covers medical expenses, 85% of lost wages, and essential services. It pays regardless of fault and is primary before health insurance."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Maryland?",
+        answer: "Yes. Under <strong>Md. Insurance § 19-509</strong>, UM/UIM coverage is <strong>mandatory and must equal the liability limits</strong> (minimum 30/60/15) unless waived in writing. <strong>Enhanced Underinsured Motorist (EUIM) coverage</strong> under <strong>Md. Insurance § 19-509.1</strong> is the default (stacks on top of at-fault driver's limits) unless affirmatively waived in writing. Given the contributory negligence bar, UM/UIM/EUIM is a critical safety net."
+      },
+      {
+        question: "What is the police accident report threshold in Maryland?",
+        answer: "Under <strong>Md. Transportation § 20-107</strong>, the driver must file a written report with the Administration within <strong>15 days</strong> if the accident involves <strong>bodily injury or death</strong>. A written report is <strong>not required</strong> if the accident was investigated by a police officer and a report was filed with the Department of State Police. For property-damage-only accidents, no written report to the Administration is required."
+      },
+      {
+        question: "What are the government claim requirements in Maryland?",
+        answer: "<strong>State claims:</strong> Under the <strong>Maryland Tort Claims Act (Md. State Government § 12-106)</strong>, a written claim must be submitted to the <strong>State Treasurer or designee</strong> within <strong>1 year</strong> of injury. Suit must be filed within 3 years. Liability capped at <strong>$400,000 per claimant</strong> (Md. State Government § 12-104). <strong>Local government claims:</strong> Under the <strong>Local Government Tort Claims Act (Md. Courts & Judicial Proceedings § 5-304)</strong>, notice must be given within <strong>1 year</strong> (extended from 180 days in 2015). Notice to county commissioners/council or county attorney. Liability capped at <strong>$400,000 per claim / $800,000 per occurrence</strong> (Md. Courts & Judicial Proceedings § 5-303)."
+      },
+      {
+        question: "Does Maryland cap punitive damages?",
+        answer: "No. <strong>Maryland has no statutory cap on punitive damages</strong>. They are available for actual malice, fraud, or evil intent, and must be proven by clear and convincing evidence. Punitive damages are not considered 'non-economic damages' under § 11-108 and are not subject to that cap."
+      },
+      {
+        question: "What happens if I share fault for an accident in Maryland?",
+        answer: "Under Maryland's <strong>pure contributory negligence</strong> doctrine, if your fault is <strong>even 1%</strong>, you are <strong>completely barred from recovery ($0)</strong>. This is not a statutory rule but a common-law doctrine affirmed by the Court of Appeals. You must prove the at-fault driver was 100% responsible to recover anything. The <strong>last clear chance</strong> doctrine may provide an exception if the defendant had the last opportunity to avoid the accident."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Maryland settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Maryland's <strong>pure contributory negligence</strong> system with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively search for any evidence of claimant fault (even 1%) to deny the claim entirely, and the cap requires careful calculation. A Maryland personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate the 1-year government notice deadlines, and file formal complaints in <strong>Maryland Circuit Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }

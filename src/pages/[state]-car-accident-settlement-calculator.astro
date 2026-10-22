@@ -145,6 +145,8 @@ const pageTitle = state === 'georgia'
   ? 'Tennessee Car Accident Settlement Calculator | 50% Bar, 1-Year SOL, $750k Cap'
   : state === 'colorado'
   ? 'Colorado Car Accident Settlement Calculator | 50% Bar, $642k Cap, 3-Year SOL'
+  : state === 'maryland'
+  ? 'Maryland Car Accident Settlement Calculator | Pure Contributory Negligence, $935k Cap, PIP'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -177,6 +179,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Tennessee car accident settlement under 50% modified comparative fault (T.C.A. § 29-11-139), 1-year SOL (T.C.A. § 28-3-104), $750k/$1M damage caps (T.C.A. § 29-39-102), 25/50/15 limits (T.C.A. § 55-12-102), and $50 police report threshold. Free educational tool.'
   : state === 'colorado'
   ? 'Calculate your estimated Colorado car accident settlement under 50% modified comparative fault (C.R.S. § 13-21-111), $642k/$1.28M damage caps (C.R.S. § 13-21-102.5), 3-year SOL (C.R.S. § 13-80-101), 25/50/15 limits (C.R.S. § 42-7-103), and 182-day government notice. Free educational tool.'
+  : state === 'maryland'
+  ? 'Calculate your estimated Maryland car accident settlement under pure contributory negligence (1% bars recovery), $935k damage cap (Md. CJP § 11-108), 3-year SOL (Md. CJP § 5-101), mandatory PIP $2,5k (Md. Ins. § 19-505), mandatory UM/UIM/EUIM (Md. Ins. § 19-509/19-509.1), and 30/60/15 limits (Md. Transp. § 17-103). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -215,7 +219,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -681,6 +685,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'maryland' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Maryland Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcj&section=11-108" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Courts & Judicial Proceedings § 11-108 — Non-Economic Damages Cap ($935k, +$15k/yr)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">$935,000 cap (Oct 1, 2024); increases $15,000/year on Oct 1. Wrongful death: 150% cap ($1,402,500 for 2+ beneficiaries). Survival action: separate $935k cap. Medical malpractice: separate cap under § 3-2A-09. Enacted 1986 at $350k, reset to $500k in 1994 with escalator.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcj&section=5-101" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Courts & Judicial Proceedings § 5-101 — Statute of Limitations (3 Years)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">3-year SOL for personal injury, property damage, and wrongful death. Tolled for minors/disability under § 5-201. Accrues at date of injury (or date of death for wrongful death under § 3-904).</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=17-103" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Transportation § 17-103 — Financial Responsibility (30/60/15 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability: $30,000 per person / $60,000 per accident bodily injury, $15,000 property damage. PIP $2,500 mandatory (Ins. § 19-505) unless waived. UM/UIM mandatory matching liability limits (Ins. § 19-509). EUIM default (Ins. § 19-509.1) unless waived.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gin&section=19-505" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Insurance § 19-505 — Mandatory PIP ($2,500, Waivable)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Full PIP $2,500 mandatory unless waived in writing for limited PIP. Covers medical expenses, 85% lost wages, essential services. Primary before health insurance. No threshold to sue.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gin&section=19-509" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Insurance § 19-509 — Mandatory UM/UIM (Matching Liability Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">UM/UIM mandatory equal to liability limits (min 30/60/15); waiver must be in writing. Primary to MAIF recovery. Includes property damage (UMPD) per 2020 amendment. Covers hit-and-run.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gin&section=19-509.1" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Insurance § 19-509.1 — Enhanced Underinsured Motorist (EUIM) Default
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">EUIM (stacks on top of at-fault driver's limits) is default unless affirmatively waived in writing. Waiver requires insurer to provide written notice of nature, extent, benefit, and cost. Commissioner-approved form required.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=sgp&section=12-106" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. State Government § 12-106 — State Tort Claims Act (1-Year Notice, $400k Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Written claim to State Treasurer/designee within 1 year of injury. Suit within 3 years of accrual. $400,000 cap per claimant (State Govt § 12-104). No punitive damages against State.</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gcj&section=5-304" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Courts & Judicial Proceedings § 5-304 — Local Govt Tort Claims (1-Year Notice, $400k/$800k)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">1-year notice to county commissioners/council or county attorney (extended from 180 days effective Oct 1, 2015, Ch. 131). $400,000 per claim / $800,000 per occurrence (§ 5-303). Good cause exception for late notice (§ 5-304(d)).</span>
+              </li>
+              <li>
+                <a href="https://mgaleg.maryland.gov/mgawebsite/Laws/StatuteText?article=gtr&section=20-107" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  Md. Transportation § 20-107 — Written Accident Report (15 Days, Injury/Death Only)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Written report to Administration within 15 days for injury/death. Not required if police investigated and filed report with State Police. No property-damage-only written report requirement. Evidence of insurance must accompany report.</span>
               </li>
             </ul>
           </div>
