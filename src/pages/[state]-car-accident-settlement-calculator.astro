@@ -143,6 +143,8 @@ const pageTitle = state === 'georgia'
   ? 'Virginia Car Accident Settlement Calculator | Pure Contributory Negligence, Guest Statute'
   : state === 'tennessee'
   ? 'Tennessee Car Accident Settlement Calculator | 50% Bar, 1-Year SOL, $750k Cap'
+  : state === 'colorado'
+  ? 'Colorado Car Accident Settlement Calculator | 50% Bar, $642k Cap, 3-Year SOL'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -173,6 +175,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Virginia car accident settlement under pure contributory negligence (1% bars recovery), 30/60/20 liability limits (Va. Code § 46.2-472), 2-year SOL (Va. Code § 8.01-243), Guest Statute (Va. Code § 8.01-63), mandatory UM/UIM (Va. Code § 38.2-2206), and no pain and suffering cap. Free educational tool.'
   : state === 'tennessee'
   ? 'Calculate your estimated Tennessee car accident settlement under 50% modified comparative fault (T.C.A. § 29-11-139), 1-year SOL (T.C.A. § 28-3-104), $750k/$1M damage caps (T.C.A. § 29-39-102), 25/50/15 limits (T.C.A. § 55-12-102), and $50 police report threshold. Free educational tool.'
+  : state === 'colorado'
+  ? 'Calculate your estimated Colorado car accident settlement under 50% modified comparative fault (C.R.S. § 13-21-111), $642k/$1.28M damage caps (C.R.S. § 13-21-102.5), 3-year SOL (C.R.S. § 13-80-101), 25/50/15 limits (C.R.S. § 42-7-103), and 182-day government notice. Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -211,7 +215,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -677,6 +681,69 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'colorado' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Colorado Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-13/damages-and-limitations-on-actions/article-21/part-1/section-13-21-111/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 13-21-111 — Comparative Negligence (50% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">50% bar rule: plaintiff recovers if negligence not as great as defendant's; barred if equal to or greater than. Jury returns special verdict with total damages and each party's negligence percentage. Exemplary damages not reduced by comparative fault (C.R.S. § 13-21-111.5).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-13/damages-and-limitations-on-actions/article-21/part-1/section-13-21-102-5/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 13-21-102.5 — Non-Economic Damages Cap ($642,180 Standard, $1,284,370 with Clear & Convincing)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Inflation-adjusted cap: $642,180 for claims accruing Jan 1, 2024+ (adjusted every 2 years per C.R.S. § 13-21-203.7). Court may increase to $1,284,370 upon clear and convincing evidence. Separate caps for med mal (C.R.S. § 13-64-302), wrongful death (C.R.S. § 13-21-203), government (C.R.S. § 24-10-114).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-13/limitation-of-actions/article-80/section-13-80-101/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 13-80-101 — Statute of Limitations (3 Years Motor Vehicle Tort)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">3-year SOL for bodily injury/property damage from motor vehicle use (subsection 1(n)). Wrongful death: 2 years (C.R.S. § 13-80-102). UM/UIM: 3 years or 2 years from discovery of uninsured status (C.R.S. § 13-80-107.5). Tolled for minors/disability (C.R.S. § 13-81-103).</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-42/regulation-of-vehicles-and-traffic/article-7/section-42-7-103/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 42-7-103 — Financial Responsibility (25/50/15 Minimums)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Minimum liability limits: $25,000 per person / $50,000 per accident bodily injury, $15,000 property damage. Self-insurance option for 25+ vehicles. Proof required for registration.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-10/property-and-casualty-insurance/article-4/part-6/section-10-4-609/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 10-4-609 — Mandatory UM/UIM Offer (Matching Liability Limits)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer UM/UIM at limits equal to bodily injury liability limits; rejection must be in writing. TNC drivers cannot reject for engaged periods. No setoff against other coverages.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-10/property-and-casualty-insurance/article-4/part-6/section-10-4-601/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 10-4-601 — Mandatory MedPay Offer ($5,000 Minimum)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Insurers must offer at least $5,000 in optional Medical Payments coverage; rejection must be in writing. Covers medical/funeral expenses regardless of fault.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-24/administration/article-10/section-24-10-109/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 24-10-109 — Governmental Immunity Act (182-Day Notice, $424k/$1.145M Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">182-day written notice to Attorney General (state) or governing body (local) after discovery of injury — jurisdictional prerequisite. Liability capped at $424,000 per person / $1,145,000 per occurrence (C.R.S. § 24-10-114, inflation-adjusted). No punitive damages.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-42/regulation-of-vehicles-and-traffic/article-4/part-16/section-42-4-1606/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 42-4-1606 — Duty to Report Accidents (Any Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately notify police if injury, serious bodily injury, death, or ANY property damage — no dollar threshold. Police must submit reports to Dept. of Revenue within 5 days. Class 2 misdemeanor for violation.</span>
+              </li>
+              <li>
+                <a href="https://law.justia.com/codes/colorado/title-13/damages-and-limitations-on-actions/article-21/part-1/section-13-21-102/" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  C.R.S. § 13-21-102 — Exemplary Damages (Not Reduced by Comparative Fault)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Punitive damages capped at actual compensatory damages; court may increase up to 3x for fraud/malice/willful-wanton. <strong>Not subject to reduction by plaintiff's comparative negligence</strong> (C.R.S. § 13-21-111.5).</span>
               </li>
             </ul>
           </div>

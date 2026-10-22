@@ -139,6 +139,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Colorado") {
+    return `Under Colorado's Motor Vehicle Financial Responsibility Act (<strong>C.R.S. § 42-7-103</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/15</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $15,000 for property damage). Colorado is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Colorado insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>C.R.S. § 10-4-609</strong>, insurers must offer UM/UIM coverage at limits equal to the insured's bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>Medical Payments (MedPay) Coverage:</strong> Under <strong>C.R.S. § 10-4-601</strong>, insurers must offer at least $5,000 in optional MedPay coverage. The named insured may reject in writing. MedPay provides first-party reimbursement for reasonable medical expenses regardless of fault.</li>
+      <li><strong>No PIP Required:</strong> Colorado does not require Personal Injury Protection. No threshold (verbal or monetary) to bring a tort claim against an at-fault driver.</li>
+      <li><strong>Immediate Tort Right:</strong> You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -310,6 +320,19 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Tennessee legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Colorado") {
+    return `In Colorado, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (3 Years):</strong> Under <strong>C.R.S. § 13-80-101(1)(n)</strong>, tort actions for bodily injury or property damage arising out of the use or operation of a motor vehicle must be filed within <strong>3 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Same 3-year statute under <strong>C.R.S. § 13-80-101(1)(n)</strong> for vehicle damage claims.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>C.R.S. § 13-80-102(1)(a)</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>Government Entity Claims (182-Day Notice):</strong> Under the <strong>Colorado Governmental Immunity Act (C.R.S. § 24-10-109)</strong>, a written notice of claim must be filed within <strong>182 days</strong> after discovery of the injury. For state claims, file with the <strong>Attorney General</strong>; for local entities, file with the <strong>governing body</strong>. This notice is a jurisdictional prerequisite — failure to comply forever bars the action. State liability is capped at <strong>$424,000 per person / $1,145,000 per occurrence</strong> (adjusted for inflation under C.R.S. § 24-10-114).</li>
+      <li><strong>UM/UIM Claims:</strong> Under <strong>C.R.S. § 13-80-107.5</strong>, uninsured/underinsured motorist claims have a 3-year statute from the accident, or 2 years from when the insured knew the tortfeasor was uninsured/underinsured, whichever is later (minimum 3 years).</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>C.R.S. § 13-81-103</strong>, the statute of limitations is tolled while the injured person is under 18 or legally disabled.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Colorado legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -428,6 +451,20 @@ export function generateDamageCapContent(
       <li><strong>Punitive Damages:</strong> Under <strong>T.C.A. § 29-39-104</strong>, punitive damages capped at <strong>2x compensatory damages or $500,000</strong> (whichever is greater), with exceptions for intentional fraud, DUI, and certain felonies where no cap applies.</li>
       <li><strong>50% Bar Rule:</strong> Under <strong>T.C.A. § 29-11-139</strong>, if plaintiff's fault is 50% or greater, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
     </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Colorado") {
+    return `Colorado imposes statutory caps on non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life) under the <strong>Colorado Revised Statutes § 13-21-102.5</strong>:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Standard Cap (General Civil Actions):</strong> <strong>$642,180</strong> for claims accruing on or after January 1, 2024 (adjusted for inflation per C.R.S. § 13-21-102.5(3)(c)(III)). The court may increase this to a maximum of <strong>$1,284,370</strong> upon proof by <strong>clear and convincing evidence</strong> of justification.</li>
+      <li><strong>Medical Malpractice:</strong> Separate cap under <strong>C.R.S. § 13-64-302</strong> (<strong>$1,000,000 total</strong>, with $300,000 max for non-economic).</li>
+      <li><strong>Wrongful Death:</strong> Under <strong>C.R.S. § 13-21-203</strong>, non-economic damages capped at <strong>$598,350</strong> (adjusted for inflation), with solatium of <strong>$135,990</strong> for grief/loss of companionship (C.R.S. § 13-21-203.5). No clear-and-convincing increase for wrongful death.</li>
+      <li><strong>Government Claims (State/Local):</strong> Under <strong>C.R.S. § 24-10-114</strong>, liability capped at <strong>$424,000 per person / $1,145,000 per occurrence</strong> (adjusted for inflation). No punitive damages against government.</li>
+      <li><strong>Punitive (Exemplary) Damages:</strong> Under <strong>C.R.S. § 13-21-102</strong>, punitive damages capped at the amount of <strong>actual (compensatory) damages awarded</strong>; court may increase up to 3x actual damages for fraud, malice, or willful/wanton conduct. <strong>Not subject to reduction by comparative negligence</strong> (C.R.S. § 13-21-111.5).</li>
+      <li><strong>50% Bar Rule:</strong> Under <strong>C.R.S. § 13-21-111</strong>, if plaintiff's fault is 50% or greater, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
+    </ul>
+    <em>Note: Caps are adjusted for inflation every two years (January 1) based on the Denver-Aurora-Lakewood CPI per C.R.S. § 13-21-102.5(3)(c)(III) and § 13-21-203.7.</em>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
@@ -631,6 +668,21 @@ export function generateSettlementExample(
       <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$750,000 standard cap</strong> (T.C.A. § 29-39-102). If injuries were catastrophic (e.g., spinal cord injury), the cap would be <strong>$1,000,000</strong> (T.C.A. § 29-39-102(c)).</li>
       <li><strong>50% Bar Rule:</strong> If the claimant's negligence is 50% or greater, recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
       <li><strong>Ultra-Short Statute of Limitations:</strong> Personal injury claims must be filed within <strong>1 year</strong> (T.C.A. § 28-3-104) — the shortest in the U.S. Property damage: 3 years (T.C.A. § 28-3-105). If criminal charges are filed against the at-fault driver, PI SOL extends to 2 years (T.C.A. § 28-3-104(a)(2)).</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "colorado") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Colorado</strong> under the state's 50% modified comparative negligence bar and inflation-adjusted statutory damage caps:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>50% Modified Comparative Fault Adjustment (10% Fault):</strong> Under C.R.S. § 13-21-111, because the claimant's fault (10%) is less than 50%, recovery is permitted. The gross estimate is reduced by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
+      <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$642,180 standard cap</strong> (C.R.S. § 13-21-102.5, effective Jan 1, 2024). If the court finds clear and convincing justification, the cap can increase to <strong>$1,284,370</strong>.</li>
+      <li><strong>50% Bar Rule:</strong> If the claimant's negligence is 50% or greater, recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
+      <li><strong>Exemplary Damages Not Reduced:</strong> If exemplary damages are awarded (C.R.S. § 13-21-102), they are <strong>not subject to reduction</strong> by the claimant's comparative negligence (C.R.S. § 13-21-111.5).</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1184,6 +1236,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Tennessee settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Tennessee's <strong>1-year statute of limitations</strong> and <strong>50% bar</strong> system, a lawyer is especially critical: the filing deadline is extremely short, and insurers aggressively argue for 50%+ fault to deny claims entirely. A Tennessee personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate government claim notice requirements, and file formal complaints in <strong>Tennessee Circuit Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Colorado") {
+    return [
+      {
+        question: "How does Colorado's 50% modified comparative negligence rule work?",
+        answer: "Under <strong>C.R.S. § 13-21-111</strong>, you can recover damages only if your fault is <strong>less than 50%</strong> (49% or lower). If you are <strong>50% or more at fault</strong>, you are <strong>completely barred from recovery ($0)</strong>. If you qualify for recovery, your award is reduced proportionally by your fault percentage. This is a 50% bar rule — distinct from the 51% bar used in many other states. The jury returns a special verdict stating total damages and each party's negligence percentage."
+      },
+      {
+        question: "What are Colorado's non-economic damage caps?",
+        answer: "Under <strong>C.R.S. § 13-21-102.5</strong>, non-economic damages in general civil actions are capped at <strong>$642,180</strong> for claims accruing on or after January 1, 2024 (adjusted for inflation every two years per C.R.S. § 13-21-203.7). The court may increase this to <strong>$1,284,370</strong> upon proof by <strong>clear and convincing evidence</strong>. Separate caps apply for: medical malpractice (C.R.S. § 13-64-302: $1M total/$300k non-economic); wrongful death (C.R.S. § 13-21-203: $598,350); government claims (C.R.S. § 24-10-114: $424k/$1.145M)."
+      },
+      {
+        question: "What is Colorado's statute of limitations for car accidents?",
+        answer: "Under <strong>C.R.S. § 13-80-101(1)(n)</strong>, tort actions for bodily injury or property damage arising from motor vehicle use must be filed within <strong>3 years</strong> of the crash. Wrongful death: <strong>2 years</strong> from date of death (C.R.S. § 13-80-102). UM/UIM claims: 3 years from accident or 2 years from discovery of uninsured status, whichever is later (C.R.S. § 13-80-107.5). Government claims: 182-day notice under Colorado Governmental Immunity Act (C.R.S. § 24-10-109)."
+      },
+      {
+        question: "What are Colorado's minimum auto insurance limits?",
+        answer: "Under <strong>C.R.S. § 42-7-103</strong>, the minimums are <strong>25/50/15</strong> ($25,000 per person bodily injury, $50,000 per accident bodily injury, $15,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Colorado?",
+        answer: "Under <strong>C.R.S. § 10-4-609</strong>, insurers <strong>must offer</strong> UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage. Given the 50% bar and damage caps, UM/UIM is an important safety net."
+      },
+      {
+        question: "What is the police accident report threshold in Colorado?",
+        answer: "Under <strong>C.R.S. § 42-4-1606</strong>, the driver must immediately notify law enforcement if the accident involves <strong>injury, serious bodily injury, death, or any property damage</strong>. There is <strong>no minimum dollar threshold</strong> for property damage — any property damage triggers the reporting duty. Law enforcement must submit reports to the Department of Revenue within 5 days (C.R.S. § 42-4-1606(4))."
+      },
+      {
+        question: "What are the government claim requirements in Colorado?",
+        answer: "Under the <strong>Colorado Governmental Immunity Act (C.R.S. § 24-10-109)</strong>, a written notice of claim must be filed within <strong>182 days</strong> after discovery of the injury. For state claims, file with the <strong>Attorney General</strong>; for local entities, file with the <strong>governing body</strong>. This is a jurisdictional prerequisite — failure to comply forever bars the action. State/local liability capped at <strong>$424,000 per person / $1,145,000 per occurrence</strong> (C.R.S. § 24-10-114, inflation-adjusted). No punitive damages against government."
+      },
+      {
+        question: "Does Colorado have a MedPay requirement?",
+        answer: "Under <strong>C.R.S. § 10-4-601</strong>, insurers <strong>must offer</strong> at least <strong>$5,000 in Medical Payments (MedPay) coverage</strong>. The named insured may reject in writing. MedPay provides first-party reimbursement for reasonable medical expenses regardless of fault. Unlike PIP in no-fault states, there is no requirement to carry MedPay, no loss-of-wage component, and no threshold to sue."
+      },
+      {
+        question: "What happens if I share fault for an accident in Colorado?",
+        answer: "Under <strong>C.R.S. § 13-21-111</strong>, if your fault is <strong>49% or less</strong>, you can recover damages reduced by your fault percentage. If your fault is <strong>50% or more</strong>, you are <strong>completely barred from recovery ($0)</strong>. This is a strict 50% bar — even a 50/50 split means no recovery. <strong>Exemplary (punitive) damages are NOT reduced by comparative fault</strong> (C.R.S. § 13-21-111.5)."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Colorado settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Colorado's <strong>50% bar</strong> system and with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively argue for 50%+ fault to deny claims, and caps require careful calculation. A Colorado personal injury attorney can preserve evidence immediately, calculate damages under the statutory caps, navigate the 182-day government notice deadline, and file formal complaints in <strong>Colorado District Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
