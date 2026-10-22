@@ -188,6 +188,16 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+  if (stateName === "Hawaii") {
+    return `Under Hawaii's Motor Vehicle Insurance Law (<strong>HRS § 431:10C-104</strong>), every driver must maintain minimum liability insurance limits of <strong>20/40/10</strong> ($20,000 per person for bodily injury, $40,000 per accident for total bodily injury, and $10,000 for property damage). <strong>Effective January 1, 2026, limits increase to 40/80/20</strong> ($40,000 per person / $80,000 per accident bodily injury, $20,000 property damage) per the CCA Hawaii FAQ. Hawaii is a <strong>no-fault state</strong> with mandatory PIP. Key Hawaii insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Protection (PIP):</strong> Under <strong>HRS § 431:10C-103.5</strong>, <strong>$10,000 in PIP coverage is mandatory</strong> per person. PIP covers medical and rehabilitation costs regardless of fault. Proof of PIP coverage must be carried when driving.</li>
+      <li><strong>Verbal/Monetary Threshold to Sue:</strong> Under <strong>HRS § 431:10C-306</strong>, you cannot sue the at-fault driver for non-economic damages (pain and suffering) unless: (a) PIP benefits exceed <strong>$5,000</strong>; (b) significant permanent loss of use of a body part/function; (c) serious permanent disfigurement; or (d) death.</li>
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>HRS § 431:10C-301(b)(3)-(4)</strong>, UM/UIM coverage must be offered at limits equal to the liability limits (minimum 20/40, becoming 40/80 in 2026). The named insured may reject in writing.</li>
+      <li><strong>No PIP / MedPay Required Beyond Mandatory PIP:</strong> Additional MedPay is optional; basic PIP is the primary no-fault coverage.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -424,6 +434,20 @@ export function generateStatuteContent(
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Idaho legal counsel to verify deadlines for their claim.`;
   }
 
+  if (stateName === "Hawaii") {
+    return `In Hawaii, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (2 Years):</strong> Under <strong>HRS § 657-7</strong>, actions for damage to persons or property must be filed within <strong>2 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (2 Years):</strong> Same 2-year statute under <strong>HRS § 657-7</strong> for vehicle damage claims.</li>
+      <li><strong>Wrongful Death Lawsuits (2 Years):</strong> Under <strong>HRS § 663-3</strong>, wrongful death actions must be filed within <strong>2 years</strong> of the date of death.</li>
+      <li><strong>State Government Claims (State Tort Liability Act):</strong> Under <strong>HRS § 662-4</strong>, a tort claim against the State must be filed within <strong>2 years</strong> after the claim accrues. Medical tort claims follow <strong>HRS § 657-7.3</strong>. No separate pre-suit notice statute for the State; the 2-year limitation is the prerequisite.</li>
+      <li><strong>County/Municipal Claims:</strong> Under <strong>HRS § 46-72</strong>, claims against a county require written notice to the county clerk/council chair within <strong>2 years</strong> after the injury accrues (the 2006 six-month limit was held unconstitutional in <em>Cox v. City & County of Honolulu</em>, 115 H. 1 (2007)). The same 2-year SOL applies.</li>
+      <li><strong>Insurance Contract Claims:</strong> Under <strong>HRS § 431:10C-315</strong>, suits on motor vehicle insurance contracts must be brought within <strong>2 years</strong> of the accident, last payment of benefits, or final arbitration/judgment.</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>HRS § 657-13</strong>, the statute of limitations is tolled during minority, insanity, or imprisonment.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Hawaii legal counsel to verify deadlines for their claim.`;
+  }
+
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
 }
 
@@ -613,6 +637,19 @@ export function generateDamageCapContent(
       <li><strong>50% Bar Rule:</strong> Under <strong>Idaho Code § 6-801</strong>, if plaintiff's fault is 50% or greater (not less than defendant's), <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
     </ul>
     <em>Note: The Idaho Industrial Commission publishes the adjusted cap annually. Effective July 1, 2025, the cap is $509,013; effective July 1, 2026, it will be $538,425.</em>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Hawaii") {
+    return `Hawaii imposes a statutory cap on pain and suffering damages under <strong>HRS § 663-8.7</strong> (Limitation on pain and suffering):
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Pain and Suffering Cap:</strong> <strong>$375,000</strong> maximum award for pain and suffering damages as defined in <strong>HRS § 663-8.5</strong>. This cap has been in place since 1986 (Act 2) and was last affirmed in 1995 (Act 130).</li>
+      <li><strong>Scope:</strong> The cap applies to <strong>pain and suffering</strong> as a subset of non-economic damages (HRS § 663-8.5). Other non-economic damages (mental anguish, disfigurement, loss of enjoyment of life, loss of consortium) are defined in HRS § 663-8.5 but the $375,000 cap is specifically for "pain and suffering."</li>
+      <li><strong>Exceptions:</strong> The cap does <strong>not apply</strong> to tort actions enumerated in <strong>HRS § 663-10.9(2)</strong> (certain claims involving electric utilities and other specific actions).</li>
+      <li><strong>Medical Malpractice:</strong> Separate provisions under <strong>HRS § 671-2</strong> govern medical tort claims; the $375,000 pain and suffering cap applies but additional procedural requirements exist.</li>
+      <li><strong>Government Claims:</strong> Under <strong>HRS § 662-2</strong>, the State waives immunity but is not liable for pre-judgment interest or punitive damages. No separate damages cap for tort claims against the State under HRS § 662-4 (2-year SOL).</li>
+      <li><strong>51% Bar Rule:</strong> Under <strong>HRS § 663-31</strong>, if plaintiff's negligence is <strong>greater than the defendant's (51% or higher)</strong>, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
+    </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
 
@@ -891,6 +928,23 @@ export function generateSettlementExample(
       <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$509,013 cap</strong> (Idaho Code § 6-1603, effective July 1, 2025). If the non-economic estimate exceeded the cap, it would be reduced to the cap amount.</li>
       <li><strong>50% Bar Rule:</strong> If the claimant's negligence is "not less than" the defendant's (50% or greater), recovery is <strong>completely barred ($0)</strong> regardless of damages.</li>
       <li><strong>Several Liability (Idaho Code § 6-803):</strong> In multi-defendant cases, each defendant is liable only for their proportionate share of negligence, except for concert of action or agency relationships where joint and several liability may apply.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "hawaii") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Hawaii</strong> under the state's no-fault PIP system, 51% modified comparative negligence, and $375,000 pain and suffering cap:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>PIP Recovery (Your Insurer):</strong> Pays medical expenses up to <strong>$10,000</strong> (HRS § 431:10C-103.5) regardless of fault. Assume $10,000 paid toward $15,000 in medical bills.</li>
+      <li><strong>Economic Losses (Beyond PIP):</strong> Remaining medical bills ($5,000) + lost income ($5,000) = <strong>$10,000</strong> out-of-pocket economic loss.</li>
+      <li><strong>Tort Threshold Check:</strong> PIP benefits ($10,000) exceed the <strong>$5,000 monetary threshold</strong> (HRS § 431:10C-306), so the claimant <strong>may sue the at-fault driver</strong> for non-economic damages and remaining economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $10,000 (out-of-pocket economic) + $37,500 (pain and suffering) = <strong>$47,500</strong> gross tort claim against at-fault driver.</li>
+      <li><strong>51% Modified Comparative Fault Adjustment (10% Fault):</strong> Under HRS § 663-31, because the claimant's fault (10%) is not greater than the defendant's (i.e., less than 51%), recovery is permitted. The gross estimate is reduced by 10% (-$4,750), producing an Illustrative Calculated Estimate of <strong>$42,750</strong>.</li>
+      <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$375,000 pain and suffering cap</strong> (HRS § 663-8.7). If the estimate exceeded $375,000, it would be reduced to the cap.</li>
+      <li><strong>51% Bar Rule:</strong> If the claimant's negligence is <strong>greater than the defendant's (51% or higher)</strong>, recovery is <strong>completely barred ($0)</strong>.</li>
+      <li><strong>Total Estimated Recovery:</strong> $10,000 (PIP) + $42,750 (tort) = <strong>$52,750</strong> combined.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1673,6 +1727,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Idaho settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Idaho's <strong>50% bar</strong> system with <strong>inflation-adjusted damage caps</strong>, a lawyer is especially critical: insurers aggressively argue for 50%+ fault to deny claims entirely, and the cap requires careful calculation. An Idaho personal injury attorney can preserve evidence immediately, calculate damages under the statutory cap, navigate the 180-day government notice deadline, and file formal complaints in <strong>Idaho District Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Hawaii") {
+    return [
+      {
+        question: "How does Hawaii's 51% modified comparative negligence rule work?",
+        answer: "Under <strong>HRS § 663-31</strong>, you can recover damages as long as your negligence is <strong>not greater than the negligence of the defendant(s)</strong> — i.e., your fault is <strong>50% or less</strong>. If your negligence is <strong>51% or greater</strong> (greater than the defendant's), you are <strong>completely barred from recovery ($0)</strong>. If you qualify for recovery, your award is reduced proportionally by your fault percentage. The court/jury returns special verdicts with total damages and each party's negligence percentage (<strong>HRS § 663-31(b)</strong>). The 'known or obvious danger' defense is no longer viable in Hawaii."
+      },
+      {
+        question: "What is Hawaii's no-fault PIP coverage and what does it pay?",
+        answer: "Under <strong>HRS § 431:10C-103.5</strong>, every motor vehicle insurance policy must include at least <strong>$10,000 in Personal Injury Protection (PIP)</strong> per person. PIP pays medical and rehabilitation costs regardless of fault. Proof of PIP coverage must be carried when driving. Optional additional PIP coverage can be purchased for higher limits."
+      },
+      {
+        question: "What is the threshold to sue for pain and suffering in Hawaii?",
+        answer: "Under <strong>HRS § 431:10C-306</strong>, you cannot sue the at-fault driver for non-economic damages unless your injuries meet <strong>one of these thresholds</strong>: (a) PIP benefits exceed <strong>$5,000</strong>; (b) <strong>significant and permanent loss of the use of a body part or body function</strong>; (c) <strong>serious permanent disfigurement</strong> causing mental or emotional suffering; or (d) <strong>death</strong>. This is a monetary/verbal threshold hybrid."
+      },
+      {
+        question: "What are Hawaii's minimum auto insurance limits?",
+        answer: "Under <strong>HRS § 431:10C-104</strong>, current minimums are <strong>20/40/10</strong> ($20,000 per person bodily injury, $40,000 per accident bodily injury, $10,000 property damage). <strong>Effective January 1, 2026, limits increase to 40/80/20</strong> ($40,000 per person / $80,000 per accident bodily injury, $20,000 property damage) per CCA Hawaii FAQ. These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Hawaii?",
+        answer: "Under <strong>HRS § 431:10C-301(b)(3)-(4)</strong>, UM and UIM coverage <strong>must be offered</strong> at limits equal to the bodily injury liability limits (minimum 20/40, becoming 40/80 in 2026). The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage."
+      },
+      {
+        question: "What is the statute of limitations for a Hawaii car accident?",
+        answer: "Under <strong>HRS § 657-7</strong>, personal injury and property damage lawsuits must be filed within <strong>2 years</strong> of the crash. Wrongful death: <strong>2 years</strong> from date of death (<strong>HRS § 663-3</strong>). <strong>Government claims:</strong> State (HRS § 662-4) — 2 years; County (HRS § 46-72) — 2 years notice (2006 six-month limit held unconstitutional). Insurance contract claims: 2 years (<strong>HRS § 431:10C-315</strong>). Tolled for minors/insanity/imprisonment (<strong>HRS § 657-13</strong>)."
+      },
+      {
+        question: "Does Hawaii cap pain and suffering damages?",
+        answer: "Yes. Under <strong>HRS § 663-8.7</strong>, damages recoverable for <strong>pain and suffering</strong> (as defined in HRS § 663-8.5) are capped at <strong>$375,000</strong>. This cap has been in place since 1986 (Act 2) and last affirmed in 1995 (Act 130). <strong>Exceptions:</strong> The cap does not apply to tort actions enumerated in <strong>HRS § 663-10.9(2)</strong> (certain electric utility actions). The 51% bar (HRS § 663-31) acts as a total recovery bar at 51%+ fault."
+      },
+      {
+        question: "What are the government claim requirements in Hawaii?",
+        answer: "<strong>State claims:</strong> Under the <strong>State Tort Liability Act (HRS § 662-4)</strong>, a tort claim against the State must be filed within <strong>2 years</strong> after the claim accrues. No pre-judgment interest or punitive damages against the State (<strong>HRS § 662-2</strong>). <strong>County claims:</strong> Under <strong>HRS § 46-72</strong>, written notice must be given to the county clerk/council chair within <strong>2 years</strong> (the 2006 six-month limit was held unconstitutional in <em>Cox v. City & County of Honolulu</em>, 115 H. 1 (2007)). Same 2-year SOL applies."
+      },
+      {
+        question: "What is the police accident report threshold in Hawaii?",
+        answer: "Under <strong>HRS § 291C-12</strong>, the driver must immediately report any accident resulting in <strong>bodily injury, death, or property damage exceeding $3,000</strong> (or any amount if a government vehicle is involved). Police may also require a written report within 24 hours (<strong>HRS § 291C-13</strong>). The $3,000 threshold is specific — earlier sources citing $500–$1,000 are outdated."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Hawaii settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Hawaii's <strong>no-fault PIP system</strong> with <strong>$5,000 tort threshold</strong> and <strong>$375,000 pain and suffering cap</strong>, a lawyer is especially critical: insurers aggressively argue the threshold isn't met or the cap applies, and comparative fault arguments can trigger the 51% bar. A Hawaii personal injury attorney can document injuries to meet the HRS § 431:10C-306 threshold, calculate damages under the statutory cap, navigate government claim deadlines, and file formal complaints in <strong>Hawaii Circuit Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }

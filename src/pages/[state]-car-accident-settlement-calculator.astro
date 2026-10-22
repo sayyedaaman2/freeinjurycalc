@@ -153,6 +153,8 @@ const pageTitle = state === 'georgia'
   ? 'Arizona Car Accident Settlement Calculator | Pure Comparative Fault, No Damage Caps (Constitutional)'
   : state === 'idaho'
   ? 'Idaho Car Accident Settlement Calculator | 50% Bar, $509k Cap, 2-Year SOL'
+  : state === 'hawaii'
+  ? 'Hawaii Car Accident Settlement Calculator | No-Fault PIP, 51% Bar, $375k Cap, 40/80/20 Limits (2026)'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -193,6 +195,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Arizona car accident settlement under pure comparative fault (A.R.S. § 12-2505), constitutional ban on damage caps (Ariz. Const. Art. II § 31), 2-year SOL (A.R.S. § 12-542), 25/50/15 limits (A.R.S. § 28-4009), and 180-day government notice (A.R.S. § 12-821.01). Free educational tool.'
   : state === 'idaho'
   ? 'Calculate your estimated Idaho car accident settlement under 50% modified comparative fault (Idaho Code § 6-801), $509k inflation-adjusted damage cap (Idaho Code § 6-1603), 2-year SOL (Idaho Code § 5-219), 25/50/15 limits (Idaho Code § 49-117), and 180-day government notice (Idaho Code § 6-906). Free educational tool.'
+  : state === 'hawaii'
+  ? 'Calculate your estimated Hawaii car accident settlement under no-fault PIP $10k (HRS § 431:10C-103.5), 51% modified comparative fault (HRS § 663-31), $5,000 tort threshold (HRS § 431:10C-306), $375k pain/suffering cap (HRS § 663-8.7), 2-year SOL (HRS § 657-7), and 40/80/20 limits effective 2026 (HRS § 431:10C-104). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -231,7 +235,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona' || state === 'idaho') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona' || state === 'idaho' || state === 'hawaii') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
         </h1>
         
         <!-- State-Specific Subheading -->
@@ -697,6 +701,75 @@ const customFaqSchema = {
                   K.S.A. § 40-3107 — Motor Vehicle Liability Insurance Policies; Required Contents
                 </a>
                 <span class="block text-[11px] text-mute mt-0.5">Mandatory minimum liability limits of 25/50/25 ($25K per person / $50K per accident bodily injury, $25K property damage); requires PIP benefits including $4,500 for medical expenses, $900/month for disability/loss of income, and other benefits.</span>
+              </li>
+            </ul>
+          </div>
+        )}
+        {state === 'hawaii' && (
+          <div class="mt-8 mb-12 p-6 border border-hairline bg-canvas-soft-2 rounded-lg font-sans">
+            <h3 class="text-sm font-bold text-ink mb-3 uppercase tracking-wider font-mono">
+              Authoritative Hawaii Legal & Statutory Sources
+            </h3>
+            <ul class="space-y-3 text-xs text-body">
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0663/HRS_0663-0031.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 663-31 — Comparative Negligence (51% Bar)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">51% bar: plaintiff recovers if negligence not greater than defendant's; barred if >50%. Special verdicts required for damages and negligence percentages. Known/obvious danger defense not viable.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0663/HRS_0663-0008_0007.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 663-8.7 — Limitation on Pain and Suffering ($375,000 Cap)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Pain and suffering damages capped at $375,000 (since 1986, affirmed 1995). Does not apply to tort actions in HRS § 663-10.9(2) (certain electric utility actions). Non-economic damages defined in § 663-8.5.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol09_Ch0431-0435H/HRS0431/HRS_0431-0010C-0306.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 431:10C-306 — Tort Threshold ($5,000 PIP / Verbal Threshold)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Cannot sue for non-economic damages unless: (a) PIP benefits >$5,000; (b) significant permanent loss of body part/function; (c) serious permanent disfigurement; or (d) death. Threshold is condition precedent to tort action.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol09_Ch0431-0435H/HRS0431/HRS_0431-0010C-0103_0005.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 431:10C-103.5 — Mandatory PIP ($10,000)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Every policy must include at least $10,000 PIP per person for medical/rehabilitation costs regardless of fault. Proof of coverage must be carried when driving. Optional additional PIP available.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol09_Ch0431-0435H/HRS0431/HRS_0431-0010C-0104.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 431:10C-104 — Minimum Liability Limits (20/40/10 → 40/80/20 eff. Jan 1, 2026)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Current: 20/40/10. Effective Jan 1, 2026: 40/80/20 ($40k/$80k BI, $20k PD) per CCA Hawaii FAQ. PIP $10,000 mandatory. UM/UIM must be offered matching BI limits (§ 431:10C-301).</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0657/HRS_0657-0007.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 657-7 — Statute of Limitations (2 Years)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Actions for damage to persons or property: 2 years from accrual. Wrongful death: 2 years (§ 663-3). Tolled for minority/insanity/imprisonment (§ 657-13). Insurance contract claims: 2 years (§ 431:10C-315).</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0662/HRS_0662-0004.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 662-4 — State Tort Liability Act (2-Year SOL, No Punitive)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">State tort claims: 2-year SOL from accrual (medical torts: § 657-7.3). State waives immunity (§ 662-2) but no pre-judgment interest or punitive damages. County claims: 2-year notice (§ 46-72, 2006 six-month limit unconstitutional per Cox v. City & County).</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0431/HRS_0431-0010C-0315.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 431:10C-315 — Insurance Contract Statute of Limitations (2 Years)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Suits on motor vehicle insurance contracts: 2 years from accident, last payment, final arbitration/judgment, or payment of liability coverage (UIM). Multiple triggering dates.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0291/HRS_0291C-0012.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 291C-12 — Accident Reports ($3,000 Property Damage)
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Driver must immediately report injury/death/property damage >$3,000 (or any amount if government vehicle). Written report within 24 hours if required (§ 291C-13). $3,000 threshold is specific — earlier $500–$1,000 sources outdated.</span>
+              </li>
+              <li>
+                <a href="https://www.capitol.hawaii.gov/hrscurrent/Vol13_Ch0601-0676/HRS0663/HRS_0663-.htm" target="_blank" rel="noopener noreferrer" class="text-link hover:underline font-semibold">
+                  HRS § 663-8.5 / 663-10.9 — Non-Economic Damages Definition & Cap Exceptions
+                </a>
+                <span class="block text-[11px] text-mute mt-0.5">Non-economic damages include pain/suffering, mental anguish, disfigurement, loss of enjoyment, loss of consortium (§ 663-8.5). $375k cap on pain/suffering only (§ 663-8.7). Cap exception for electric utility tort actions (§ 663-10.9(2)).</span>
               </li>
             </ul>
           </div>
