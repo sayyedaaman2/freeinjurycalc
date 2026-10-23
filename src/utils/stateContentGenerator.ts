@@ -198,6 +198,25 @@ export function generateInsuranceContent(
     </ul>`;
   }
 
+if (stateName === "Washington") {
+    return `Under Washington's Motor Vehicle Financial Responsibility Law (<strong>RCW 42-7-103</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/15</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $15,000 for property damage). Washington is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Washington insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>RCW 10-4-609</strong>, insurers must offer UM/UIM coverage at limits equal to the insured's bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>Medical Payments (MedPay) Coverage:</strong> Under <strong>RCW 10-4-601</strong>, insurers must offer at least $5,000 in optional MedPay coverage. The named insured may reject in writing. MedPay provides first-party reimbursement for reasonable medical expenses regardless of fault.</li>
+      <li><strong>No PIP Required:</strong> Washington does not require Personal Injury Protection. No threshold (verbal or monetary) to bring a tort claim against an at-fault driver.</li>
+      <li><strong>Immediate Tort Right:</strong> You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
+  if (stateName === "Illinois") {
+    return `Under Illinois's Financial Responsibility Law (<strong>735 ILCS 5/5-101</strong>), every driver must maintain minimum liability insurance limits of <strong>25/50/20</strong> ($25,000 per person for bodily injury, $50,000 per accident for total bodily injury, and $20,000 for property damage). Illinois is a traditional <strong>at-fault (tort) state</strong> with no no-fault PIP requirement. Key Illinois insurance provisions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Uninsured/Underinsured Motorist (UM/UIM) Coverage:</strong> Under <strong>215 ILCS 5/143a</strong>, insurers must offer UM/UIM coverage at limits equal to the bodily injury liability limits. The named insured may reject in writing. UM/UIM applies when the at-fault driver lacks sufficient coverage.</li>
+      <li><strong>No PIP / MedPay Required:</strong> Illinois does not require Personal Injury Protection or Medical Payments coverage. MedPay is optional first-party coverage.</li>
+      <li><strong>Immediate Tort Right:</strong> No threshold (verbal or monetary) to bring a tort claim against an at-fault driver. You can sue immediately for both economic and non-economic damages.</li>
+    </ul>`;
+  }
+
   const limitsIntro = `Every registered vehicle owner in ${stateName} must maintain minimum auto liability policy coverage, currently set at ${minInsurance}. `;
   
   if (!noFault) {
@@ -431,7 +450,7 @@ export function generateStatuteContent(
       <li><strong>Tolling for Minors:</strong> Under <strong>Idaho Code § 5-230</strong>, the statute of limitations is tolled for minors until the earlier of <strong>6 years after the injury</strong> or the <strong>minor's 18th birthday</strong>. Under <strong>Idaho Code § 6-906A</strong>, minors have 180 days after turning 18 to file a tort claim against a governmental entity.</li>
       <li><strong>Tolling for Defendant Absent from State:</strong> Under <strong>Idaho Code § 5-229</strong>, the limitations period is tolled while the defendant is absent from Idaho, up to 6 years after the injury or when the defendant returns.</li>
     </ul>
-    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Idaho legal counsel to verify deadlines for their claim.`;
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Illinois legal counsel to verify deadlines for their claim.`;
   }
 
   if (stateName === "Hawaii") {
@@ -446,6 +465,20 @@ export function generateStatuteContent(
       <li><strong>Tolling for Minors/Disability:</strong> Under <strong>HRS § 657-13</strong>, the statute of limitations is tolled during minority, insanity, or imprisonment.</li>
     </ul>
     Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Hawaii legal counsel to verify deadlines for their claim.`;
+  }
+
+  if (stateName === "Washington") {
+    return `In Washington, car accident civil claims and governmental notices are governed by specific statutory deadlines:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>Personal Injury Lawsuits (3 Years):</strong> Under <strong>RCW 4.16.080(2)</strong>, actions for injuries to the person or rights of another (including car accidents) must be filed within <strong>3 years</strong> after the cause of action accrues (typically the date of the crash).</li>
+      <li><strong>Property Damage Lawsuits (3 Years):</strong> Under <strong>RCW 4.16.080(2)</strong>, actions for taking, detaining, or injuring personal property (vehicle damage) must be filed within <strong>3 years</strong> after the cause of action accrues.</li>
+      <li><strong>Wrongful Death Lawsuits (3 Years):</strong> Under <strong>RCW 4.16.080(2)</strong>, actions for injury to the person resulting in death must be filed within <strong>3 years</strong> of the date of death.</li>
+      <li><strong>State Government Claims (Standard Tort Claim / 120-Day Notice):</strong> Under <strong>RCW 4.92.100</strong> and <strong>RCW 4.92.110</strong>, all tort claims against the State must be presented to the <strong>Office of Risk Management</strong> on the standard tort claim form. No suit may be commenced until <strong>60 calendar days</strong> have elapsed after presentment (<strong>RCW 4.92.110</strong>). The applicable statute of limitations is tolled during this 60-day period. Claims must be filed within the standard 3-year SOL (<strong>RCW 4.16.080</strong>).</li>
+      <li><strong>Local Government Claims:</strong> Under <strong>RCW 4.96.020</strong>, claims against local entities (cities, counties) require presentment to the appropriate local authority. No suit may be commenced until <strong>60 calendar days</strong> have elapsed after presentment. The same 3-year SOL applies.</li>
+      <li><strong>Tolling for Minors/Disability:</strong> Under <strong>RCW 4.16.190</strong>, the statute of limitations is tolled for minors and persons under disability.</li>
+      <li><strong>Defendant Absent from State:</strong> Under <strong>RCW 4.16.180</strong>, the limitations period is tolled while the defendant is outside Washington.</li>
+    </ul>
+    Applicable deadlines and tolling exceptions depend on the specific facts of your collision. Claimants should consult qualified Washington legal counsel to verify deadlines for their claim.`;
   }
 
   return `To preserve your legal right to seek recovery in ${stateName}, you must file a personal injury lawsuit within a strict time frame. The standard statute of limitations for car accident claims is <strong>${statuteOfLimitations} years</strong> from the date of the collision. If you let this deadline expire without filing your civil complaint, you lose your right to sue permanently. Furthermore, if your accident involved a government vehicle or municipal entity (such as a city bus or state vehicle), you must file a formal administrative notice of claim much sooner, typically within <strong>${govDeadline}</strong> of the incident. This notice is a mandatory prerequisite to suing a government agency.`;
@@ -649,6 +682,18 @@ export function generateDamageCapContent(
       <li><strong>Medical Malpractice:</strong> Separate provisions under <strong>HRS § 671-2</strong> govern medical tort claims; the $375,000 pain and suffering cap applies but additional procedural requirements exist.</li>
       <li><strong>Government Claims:</strong> Under <strong>HRS § 662-2</strong>, the State waives immunity but is not liable for pre-judgment interest or punitive damages. No separate damages cap for tort claims against the State under HRS § 662-4 (2-year SOL).</li>
       <li><strong>51% Bar Rule:</strong> Under <strong>HRS § 663-31</strong>, if plaintiff's negligence is <strong>greater than the defendant's (51% or higher)</strong>, <strong>recovery is completely barred ($0)</strong> — this acts as the most severe "cap" of all.</li>
+    </ul>
+    Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
+  }
+
+  if (stateName === "Washington") {
+    return `For standard passenger vehicle car accident claims against private motorists, Washington law does <strong>not</strong> impose statutory dollar caps on general non-economic damages (pain and suffering, emotional distress, loss of consortium, loss of enjoyment of life). This is confirmed by the absence of a general damages cap in the Revised Code of Washington for ordinary negligence claims. Key distinctions:
+    <ul class="list-disc pl-5 space-y-1 my-2">
+      <li><strong>No Damage Caps:</strong> Washington has <strong>no statutory cap on non-economic damages</strong> for car accident claims. The Washington Supreme Court has struck down damage caps as unconstitutional under the state constitution's right to trial by jury (<strong>Sofie v. Fibreboard Corp.</strong>, 112 Wn.2d 636 (1989)).</li>
+      <li><strong>Medical Malpractice:</strong> No statutory cap; the <strong>Sofie</strong> decision applies equally to medical malpractice.</li>
+      <li><strong>Government Claims:</strong> No separate statutory damages cap for state or local government tort claims under RCW 4.92/4.96. Standard liability rules apply, subject to procedural requirements (claim presentment, 60-day waiting period).</li>
+      <li><strong>Punitive Damages:</strong> <strong>Washington does not allow punitive damages</strong> in tort actions unless specifically authorized by statute (e.g., certain consumer protection claims under <strong>RCW 19.86</strong>). Common law punitive damages are not recognized.</li>
+      <li><strong>Pure Comparative Negligence:</strong> Under <strong>RCW 4.22.005</strong>, plaintiff's recovery is reduced by their fault percentage — <strong>even 99% fault allows recovery of 1% of damages</strong>. No bar threshold.</li>
     </ul>
     Multipliers used in software calculators serve as educational modeling tools rather than statutory rules or legal guarantees.`;
   }
@@ -945,6 +990,21 @@ export function generateSettlementExample(
       <li><strong>Statutory Damage Cap Check:</strong> The non-economic portion ($37,500 × 0.9 = $33,750) is well below the <strong>$375,000 pain and suffering cap</strong> (HRS § 663-8.7). If the estimate exceeded $375,000, it would be reduced to the cap.</li>
       <li><strong>51% Bar Rule:</strong> If the claimant's negligence is <strong>greater than the defendant's (51% or higher)</strong>, recovery is <strong>completely barred ($0)</strong>.</li>
       <li><strong>Total Estimated Recovery:</strong> $10,000 (PIP) + $42,750 (tort) = <strong>$52,750</strong> combined.</li>
+    </ul>
+    This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
+    return explanation;
+  }
+
+  if (stateSlug === "washington") {
+    explanation = `Let's look at an <a href="/blog/how-car-accident-settlements-are-calculated/" class="text-link hover:underline font-semibold">illustrative settlement calculation example</a> in <strong>${majorCity}, Washington</strong> under the state's pure comparative negligence doctrine and no damage caps:
+    <ul class="list-disc pl-5 space-y-1 my-3">
+      <li><strong>Economic Losses:</strong> Documented medical treatment ($15,000) and lost income ($5,000) equal <strong>$20,000</strong> in total documented economic losses.</li>
+      <li><strong>Pain and Suffering (Illustrative Estimate):</strong> <a href="/pain-and-suffering-calculator/" class="text-link hover:underline font-semibold">Non-economic damages</a> estimated at $37,500 using an illustrative 2.5x multiplier of medical expenses for moderate injuries such as <a href="/back-injury-settlement-calculator/" class="text-link hover:underline font-semibold">back injuries</a>. Multipliers are educational modeling tools rather than statutory requirements.</li>
+      <li><strong>Gross Calculated Target Value:</strong> $20,000 (economic) + $37,500 (pain and suffering) = <strong>$57,500</strong> gross total.</li>
+      <li><strong>Pure Comparative Fault Adjustment (10% Fault):</strong> Under <strong>RCW 4.22.005</strong>, because Washington follows pure comparative negligence, the claimant's fault (10%) reduces the gross estimate proportionally by 10% (-$5,750), producing an Illustrative Calculated Estimate of <strong>$51,750</strong>.</li>
+      <li><strong>No Damage Cap:</strong> Washington imposes <strong>no statutory cap on non-economic damages</strong>. The full $33,750 in non-economic damages (after 10% fault reduction) is recoverable.</li>
+      <li><strong>99% Fault Recovery:</strong> Even if the claimant were <strong>99% at fault</strong>, they would still recover <strong>1% of damages ($575)</strong> — pure comparative negligence has no bar threshold.</li>
+      <li><strong>No Punitive Damages:</strong> Washington does not allow punitive damages in tort actions unless specifically authorized by statute.</li>
     </ul>
     This illustrative framework is an educational mathematical estimate, not a prediction of an insurer's offer or a legal determination of recoverable damages. Learn more about our <a href="/" class="text-link hover:underline font-semibold">national injury calculator</a>.`;
     return explanation;
@@ -1772,6 +1832,51 @@ export function generateFAQs(
       {
         question: "How does hiring a personal injury lawyer affect my Hawaii settlement?",
         answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Hawaii's <strong>no-fault PIP system</strong> with <strong>$5,000 tort threshold</strong> and <strong>$375,000 pain and suffering cap</strong>, a lawyer is especially critical: insurers aggressively argue the threshold isn't met or the cap applies, and comparative fault arguments can trigger the 51% bar. A Hawaii personal injury attorney can document injuries to meet the HRS § 431:10C-306 threshold, calculate damages under the statutory cap, navigate government claim deadlines, and file formal complaints in <strong>Hawaii Circuit Court</strong> if an insurer refuses a fair settlement."
+      }
+    ];
+  }
+
+  if (stateName === "Washington") {
+    return [
+      {
+        question: "How does Washington's pure comparative negligence rule work?",
+        answer: "Under <strong>RCW 4.22.005</strong>, Washington follows a <strong>pure comparative negligence</strong> system. You can recover damages <strong>even if you are 99% at fault</strong> — your award is simply reduced by your fault percentage. The defense of contributory negligence does not bar recovery; it only reduces damages proportionally. There is <strong>no bar threshold</strong> — unlike modified comparative fault states (50% or 51% bars), Washington allows recovery at any fault level below 100%. The jury returns special verdicts with total damages and each party's negligence percentage (<strong>RCW 4.22.070</strong>)."
+      },
+      {
+        question: "Does Washington cap pain and suffering damages?",
+        answer: "<strong>No.</strong> Washington has <strong>no statutory cap on non-economic damages</strong> for car accident claims. The Washington Supreme Court struck down damage caps as unconstitutional under the state constitution's right to trial by jury (<strong>Sofie v. Fibreboard Corp.</strong>, 112 Wn.2d 636 (1989)). This applies to all personal injury claims, including medical malpractice. Punitive damages are generally not allowed in Washington tort actions unless specifically authorized by statute."
+      },
+      {
+        question: "What is Washington's statute of limitations for car accidents?",
+        answer: "Under <strong>RCW 4.16.080(2)</strong>, personal injury, property damage, and wrongful death lawsuits must be filed within <strong>3 years</strong> of the crash (or date of death for wrongful death). <strong>Government claims:</strong> State claims (RCW 4.92.100) — present to Office of Risk Management, 60-day waiting period before suit, 3-year SOL; Local claims (RCW 4.96.020) — 60-day waiting period, 3-year SOL. <strong>Tolling:</strong> Tolled for minors/disability (RCW 4.16.190) and defendant absence (RCW 4.16.180)."
+      },
+      {
+        question: "What are Washington's minimum auto insurance limits?",
+        answer: "Under <strong>RCW 46.29.090</strong>, the minimums are <strong>25/50/10</strong> ($25,000 per person bodily injury, $50,000 per accident bodily injury, $10,000 property damage). These are minimum liability limits — policy limits represent maximum contractual obligations, not guaranteed settlement amounts."
+      },
+      {
+        question: "Is Uninsured/Underinsured Motorist (UM/UIM) coverage required in Washington?",
+        answer: "Under <strong>RCW 48.22.030</strong>, insurers <strong>must offer</strong> UM/UIM coverage at limits <strong>equal to the bodily injury liability limits</strong>. The named insured may reject in writing. The offer must be made on new policies (not renewals). UIM coverage applies when the at-fault driver lacks sufficient coverage."
+      },
+      {
+        question: "Is PIP coverage required in Washington?",
+        answer: "No. Under <strong>RCW 48.22.085</strong>, insurers <strong>must offer</strong> PIP coverage (minimum $10,000), but it is <strong>optional</strong>. Rejection must be in writing. PIP covers medical expenses, 85% of lost wages (up to $200/week), and essential services. It is not mandatory to carry, but the offer is mandatory."
+      },
+      {
+        question: "What is the police accident report threshold in Washington?",
+        answer: "Under <strong>RCW 46.52.030</strong>, the driver must report any accident involving <strong>injury, death, or property damage of $500 or more</strong> (the threshold is set by rule of the Chief of the Washington State Patrol, currently $500). Reports must be made within 4 days. Law enforcement officers who investigate must also submit reports. Failure to report is a traffic infraction."
+      },
+      {
+        question: "What are the government claim requirements in Washington?",
+        answer: "<strong>State claims:</strong> Under <strong>RCW 4.92.100</strong>, a tort claim against the State must be presented to the <strong>Office of Risk Management</strong> on the standard tort claim form. No suit until <strong>60 days</strong> after presentment (RCW 4.92.110); 3-year SOL applies. <strong>Local government claims:</strong> Under <strong>RCW 4.96.020</strong>, present claim to the appropriate local authority; 60-day waiting period before suit; 3-year SOL. Both State and local claims follow the standard 3-year SOL (RCW 4.16.080)."
+      },
+      {
+        question: "What happens if I share fault for an accident in Washington?",
+        answer: "Under <strong>RCW 4.22.005</strong>, Washington's <strong>pure comparative negligence</strong> means you can recover damages <strong>even if you are 99% at fault</strong>. Your recovery is reduced proportionally by your fault percentage. There is <strong>no 50% or 51% bar</strong> — you only lose recovery if you are 100% at fault. The jury determines fault percentages as a question of fact (<strong>RCW 4.22.070</strong>)."
+      },
+      {
+        question: "How does hiring a personal injury lawyer affect my Washington settlement?",
+        answer: "Studies by the Insurance Research Council show that injury claimants represented by an attorney receive payouts 3 to 4 times higher on average than unrepresented claimants, even after paying attorney fees. In Washington's <strong>pure comparative negligence</strong> system with <strong>no damage caps</strong>, a lawyer is especially valuable: insurers aggressively argue for higher fault percentages to reduce payouts, and the absence of caps means full non-economic damages are recoverable. A Washington personal injury attorney can preserve evidence, rebut comparative fault arguments, navigate the 60-day government notice waiting period, and file formal complaints in <strong>Washington Superior Court</strong> if an insurer refuses a fair settlement."
       }
     ];
   }
