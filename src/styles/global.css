@@ -1,5 +1,23 @@
 @import "tailwindcss";
 
+/* Inter Variable font with font-display: swap for immediate rendering */
+@font-face {
+  font-family: "Inter Variable";
+  font-style: normal;
+  font-weight: 1 900;
+  font-display: swap;
+  src: url("@fontsource-variable/inter/weight-variable.css") format("woff2 var");
+}
+
+/* JetBrains Mono Variable font with font-display: swap for immediate rendering */
+@font-face {
+  font-family: "JetBrains Mono Variable";
+  font-style: normal;
+  font-weight: 1 900;
+  font-display: swap;
+  src: url("@fontsource-variable/jetbrains-mono/weight-variable.css") format("woff2 var");
+}
+
 :root {
   --primary: #171717;
   --on-primary: #ffffff;
@@ -77,7 +95,6 @@
   --color-success: var(--success);
   --color-error: var(--error);
   --color-error-soft: var(--error-soft);
-  --color-error-deep: var(--error-deep);
   --color-warning: var(--warning);
   --color-warning-soft: var(--warning-soft);
   --color-warning-deep: var(--warning-deep);

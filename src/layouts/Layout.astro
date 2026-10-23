@@ -291,11 +291,14 @@ const breadcrumbSchema = {
           document.head.appendChild(s);
         }
         var events = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
+        var calculatorUsed = window.__ficCalculatorUsed || false;
         function onFirstEvent() {
           events.forEach(function (e) {
             window.removeEventListener(e, onFirstEvent, { passive: true });
           });
-          loadThirdParty();
+          if (calculatorUsed) {
+            loadThirdParty();
+          }
         }
         events.forEach(function (e) {
           window.addEventListener(e, onFirstEvent, { passive: true });

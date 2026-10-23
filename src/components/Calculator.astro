@@ -768,6 +768,7 @@ const sortedStates = Object.values(statesData)
 
     // Main Calculator core logic
     function calculate() {
+      window.__ficCalculatorUsed = true;
       const stateSlug = stateSelector ? stateSelector.value : (preselectedState || 'california');
       selectedStateSlug = stateSlug;
       const state = statesData[stateSlug];
