@@ -116,45 +116,47 @@ const faqs = generateFAQs(stateInfo.name, stateInfo.negligenceRule, stateInfo.st
 
 // Custom page title & description for maximum SEO relevance
 const pageTitle = state === 'georgia'
-  ? 'Georgia Car Accident Settlement Calculator | 50% Comparative Fault'
+  ? 'Georgia Car Accident Settlement Calculator | 50% Fault Bar'
   : state === 'michigan'
-  ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP Estimator'
+  ? 'Michigan Car Accident Settlement Calculator | No-Fault & PIP'
   : state === 'missouri'
-  ? 'Missouri Car Accident Settlement Calculator | Pure Comparative Fault'
+  ? 'Missouri Car Accident Settlement Calculator | Pure Fault'
   : state === 'new-hampshire'
-  ? 'New Hampshire Car Accident Settlement Calculator | 51% Comparative Fault'
+  ? 'New Hampshire Car Accident Settlement Calculator | 51% Bar'
   : state === 'oklahoma'
-  ? 'Oklahoma Car Accident Settlement Calculator | 51% Comparative Fault'
+  ? 'Oklahoma Car Accident Settlement Calculator | 51% Fault Bar'
   : state === 'pennsylvania'
-  ? 'Pennsylvania Car Accident Settlement Calculator | Full Tort vs. Limited Tort'
+  ? 'Pennsylvania Car Accident Settlement Calculator | Tort Rules'
   : state === 'california'
-  ? 'California Car Accident Settlement Calculator | Pure Comparative Fault'
+  ? 'California Car Accident Settlement Calculator | Pure Fault'
   : state === 'texas'
-  ? 'Texas Car Accident Settlement Calculator | 51% Comparative Fault'
+  ? 'Texas Car Accident Settlement Calculator | 51% Fault Bar'
   : state === 'kansas'
-  ? 'Kansas Car Accident Settlement Calculator | No-Fault PIP, 50% Fault Bar'
+  ? 'Kansas Car Accident Settlement Calculator | No-Fault & 50% Bar'
   : state === 'nevada'
-  ? 'Nevada Car Accident Settlement Calculator | 51% Comparative Fault, 25/50/20 Limits'
+  ? 'Nevada Car Accident Settlement Calculator | 51% Fault Bar'
   : state === 'florida'
-  ? 'Florida Car Accident Settlement Calculator | No-Fault PIP, 51% Fault, Verbal Threshold'
+  ? 'Florida Car Accident Settlement Calculator | No-Fault PIP'
   : state === 'north-carolina'
-  ? 'North Carolina Car Accident Settlement Calculator | Pure Contributory Negligence'
+  ? 'North Carolina Car Accident Settlement Calculator | Contributory'
   : state === 'virginia'
-  ? 'Virginia Car Accident Settlement Calculator | Pure Contributory Negligence, Guest Statute'
+  ? 'Virginia Car Accident Settlement Calculator | Contributory Fault'
   : state === 'tennessee'
-  ? 'Tennessee Car Accident Settlement Calculator | 50% Bar, 1-Year SOL, $750k Cap'
+  ? 'Tennessee Car Accident Settlement Calculator | 50% Fault Bar'
   : state === 'colorado'
-  ? 'Colorado Car Accident Settlement Calculator | 50% Bar, $642k Cap, 3-Year SOL'
+  ? 'Colorado Car Accident Settlement Calculator | 50% Fault Bar'
   : state === 'maryland'
-  ? 'Maryland Car Accident Settlement Calculator | Pure Contributory Negligence, $935k Cap, PIP'
+  ? 'Maryland Car Accident Settlement Calculator | Contributory Fault'
   : state === 'louisiana'
-  ? 'Louisiana Car Accident Settlement Calculator | Pure→Modified Comparative Fault (2026), 2-Yr SOL (2024), Direct Action'
+  ? 'Louisiana Car Accident Settlement Calculator | Fault & 2-Yr SOL'
   : state === 'arizona'
-  ? 'Arizona Car Accident Settlement Calculator | Pure Comparative Fault, No Damage Caps (Constitutional)'
+  ? 'Arizona Car Accident Settlement Calculator | Pure Fault'
   : state === 'idaho'
-  ? 'Idaho Car Accident Settlement Calculator | 50% Bar, $509k Cap, 2-Year SOL'
+  ? 'Idaho Car Accident Settlement Calculator | 50% Fault Bar'
   : state === 'hawaii'
-  ? 'Hawaii Car Accident Settlement Calculator | No-Fault PIP, 51% Bar, $375k Cap, 40/80/20 Limits (2026)'
+  ? 'Hawaii Car Accident Settlement Calculator | No-Fault & 51% Bar'
+  : state === 'illinois'
+  ? 'Illinois Car Accident Settlement Calculator | 51% Fault Bar'
   : `${stateInfo.name} Car Accident Settlement Calculator | ${abbrev} Payouts`;
 
 const pageDescription = state === 'georgia'
@@ -197,6 +199,8 @@ const pageDescription = state === 'georgia'
   ? 'Calculate your estimated Idaho car accident settlement under 50% modified comparative fault (Idaho Code § 6-801), $509k inflation-adjusted damage cap (Idaho Code § 6-1603), 2-year SOL (Idaho Code § 5-219), 25/50/15 limits (Idaho Code § 49-117), and 180-day government notice (Idaho Code § 6-906). Free educational tool.'
   : state === 'hawaii'
   ? 'Calculate your estimated Hawaii car accident settlement under no-fault PIP $10k (HRS § 431:10C-103.5), 51% modified comparative fault (HRS § 663-31), $5,000 tort threshold (HRS § 431:10C-306), $375k pain/suffering cap (HRS § 663-8.7), 2-year SOL (HRS § 657-7), and 40/80/20 limits effective 2026 (HRS § 431:10C-104). Free educational tool.'
+  : state === 'illinois'
+  ? 'Calculate your estimated Illinois car accident settlement under 51% modified comparative fault (735 ILCS 5/2-1116), 25/50/20 liability limits, and 2-year statute of limitations (735 ILCS 5/13-202). Free educational tool.'
   : `Calculate your estimated ${stateInfo.name} car accident settlement value. Applies ${stateInfo.name} comparative fault negligence rules under ${stateDetails.statuteRef}, liability limits of ${stateDetails.minInsurance}, and local filing guidelines.`;
 
 // Dynamic custom FAQ Page Schema markup
@@ -235,7 +239,7 @@ const customFaqSchema = {
 
         <!-- State-Specific Heading -->
         <h1 class="text-3xl sm:text-5xl font-extrabold tracking-tight text-ink font-sans max-w-4xl mx-auto leading-tight mb-4">
-          {(state === 'california' || state === 'georgia' || state === 'michigan' || state === 'missouri' || state === 'new-hampshire' || state === 'oklahoma' || state === 'pennsylvania' || state === 'texas' || state === 'kansas' || state === 'nevada' || state === 'florida' || state === 'north-carolina' || state === 'virginia' || state === 'tennessee' || state === 'colorado' || state === 'maryland' || state === 'louisiana' || state === 'arizona' || state === 'idaho' || state === 'hawaii') ? `${stateInfo.name} Car Accident Settlement Calculator` : `${stateInfo.name} Car Accident Settlement Calculator.`}
+          {stateInfo.name} Car Accident Settlement Calculator
         </h1>
         
         <!-- State-Specific Subheading -->
