@@ -1022,5 +1022,47 @@ export const specialCalculators: Record<string, SpecialCalculator> = {
         answer: "You must treat until you reach MMI (usually 6 to 12 months after the accident). Once your doctor certifies the SLU rating, the board will review and approve the settlement within 2 to 4 months."
       }
     ]
+  },
+  "florida-diminished-value": {
+    slug: "florida-diminished-value-calculator",
+    title: "Florida Diminished Value Calculator | Claim Loss in Car Value",
+    description: "Estimate your vehicle's post-accident lost value in Florida using the standard 17c diminished value calculator formula. 100% free and instant.",
+    h1: "Florida Diminished Value Calculator",
+    intro: "When your car is damaged in an accident that wasn't your fault, it loses resale value even after repairs. Estimate your lost value using the insurance industry's standard 17c formula.",
+    subtitle: "Florida 17c Diminished Value",
+    presetSeverity: "20%",
+    presetMedBills: 0,
+    presetTab: "quick",
+    calculatorType: "car-accident",
+    aboutHeading1: "Understanding Florida Diminished Value Claims",
+    aboutContent1: "When an automobile is involved in a collision, its vehicle history report reflects accident damage, permanently reducing its resale market value even when repaired to factory standards. In Florida, you are legally entitled to recover this diminished value from the at-fault driver's insurance carrier under third-party property damage liability rules.",
+    aboutHeading2: "How the 17c Diminished Value Formula Works",
+    aboutContent2: "The 17c formula, originally established in State Farm Mut. Auto. Ins. Co. v. Mabry, begins with 10% of the vehicle's pre-accident NADA or KBB retail value as a base cap. A damage severity modifier (ranging from 0.00 to 1.00) and a mileage modifier (ranging from 0.00 to 1.00) are then applied to calculate the final recoverable diminished value amount.",
+    formulaExplanation: `
+      <p>The standard 17c calculation model calculates lost market value as follows:</p>
+      <div class="p-4 bg-canvas-soft-2 border border-hairline rounded font-mono my-3">
+        Diminished Value = (Pre-Accident Retail Value &times; 10%) &times; Damage Modifier &times; Mileage Modifier
+      </div>
+    `,
+    inputsExplanation: `
+      <p>Key inputs for the 17c diminished value model:</p>
+      <ul class="list-disc pl-5 space-y-2">
+        <li><strong>Pre-Accident Value:</strong> Clean retail value prior to the crash according to NADA or Kelley Blue Book.</li>
+        <li><strong>Damage Severity:</strong> Ranges from 1.00 (severe structural/frame damage) to 0.00 (no structural damage).</li>
+        <li><strong>Mileage Modifier:</strong> Ranges from 1.00 (0–19,999 miles) down to 0.00 (100,000+ miles).</li>
+      </ul>
+    `,
+    workedExamples: ``,
+    legalBackground: `<p>In Florida, third-party diminished value claims have a four-year statute of limitations under Fla. Stat. § 95.11(3)(h) for property damage tort actions.</p>`,
+    faqs: [
+      {
+        question: "Can I claim diminished value in Florida?",
+        answer: "Yes, under Florida common law, you can recover the lost market value of your vehicle from the at-fault driver's insurance carrier if you were not responsible for the crash."
+      },
+      {
+        question: "What is the statute of limitations for diminished value in Florida?",
+        answer: "Under Fla. Stat. § 95.11(3)(h), Florida has a 4-year statute of limitations for property damage actions arising from motor vehicle collisions."
+      }
+    ]
   }
 };
