@@ -291,26 +291,24 @@ const breadcrumbSchema = {
           document.head.appendChild(s);
         }
         var events = ['pointerdown', 'touchstart', 'keydown', 'wheel', 'scroll'];
-        var calculatorUsed = window.__ficCalculatorUsed || false;
         function onFirstEvent() {
           events.forEach(function (e) {
             window.removeEventListener(e, onFirstEvent, { passive: true });
           });
-          if (calculatorUsed) {
-            loadThirdParty();
-          }
+          loadThirdParty();
         }
         events.forEach(function (e) {
           window.addEventListener(e, onFirstEvent, { passive: true });
         });
-        (window.requestIdleCallback || function (cb) { setTimeout(cb, 4000); })(
+        window.__ficLoadThirdParty = loadThirdParty;
+        (window.requestIdleCallback || function (cb) { setTimeout(cb, 3000); })(
           function () {
             events.forEach(function (e) {
               window.removeEventListener(e, onFirstEvent, { passive: true });
             });
             loadThirdParty();
           },
-          { timeout: 5000 }
+          { timeout: 4000 }
         );
       })();
     </script>
