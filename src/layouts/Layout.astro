@@ -325,8 +325,13 @@ const breadcrumbSchema = {
     <!-- Canonical URL -->
     <link rel="canonical" href={canonicalURL} />
 
-    <!-- US English Alternate Link -->
-    <link rel="alternate" hreflang="en-US" href={canonicalURL} />
+    <!-- Regional & Language Alternate Links -->
+    {pathname.includes('/canada/') ? (
+      <link rel="alternate" hreflang="en-CA" href={canonicalURL} />
+    ) : (
+      <link rel="alternate" hreflang="en-US" href={canonicalURL} />
+    )}
+    <link rel="alternate" hreflang="x-default" href={canonicalURL} />
 
     {isHomepage && (
       <>
